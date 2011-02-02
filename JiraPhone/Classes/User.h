@@ -1,0 +1,21 @@
+//
+//  User.h
+//  JiraPhone
+//
+//  Created by Aleksey Maslov on 12/12/10.
+//  Copyright 2010 AMaslov. All rights reserved.
+//
+#import <Foundation/Foundation.h>
+#import "AbstractNamedEntity.h"
+
+@interface User : AbstractNamedEntity {
+	NSString *server; // server name
+}
+@property (nonatomic, retain) NSString *server;
+
+// returns logged in User;
++ (User *)loggedInUser;
+
+// insert or get logged in users data from local db
++ (void)setLoggedInUser:(User *)_user;
+@end

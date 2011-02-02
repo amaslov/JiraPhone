@@ -1,0 +1,928 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */; };
+		10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */; };
+		12D4BA26F3C8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EAC8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.h */; };
+		12D4BA26F3D8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EAD8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.m */; };
+		12D4BA26F3E8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EAE8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.h */; };
+		12D4BA26F3F8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EAF8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.m */; };
+		12D4BA26F408CD795070B8A4 /* JIPAbstractRemoteConstant.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB08CD795070B8A4 /* JIPAbstractRemoteConstant.h */; };
+		12D4BA26F418CD795070B8A4 /* JIPAbstractRemoteConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB18CD795070B8A4 /* JIPAbstractRemoteConstant.m */; };
+		12D4BA26F428CD795070B8A4 /* JIPAbstractRemoteEntity.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB28CD795070B8A4 /* JIPAbstractRemoteEntity.h */; };
+		12D4BA26F438CD795070B8A4 /* JIPAbstractRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB38CD795070B8A4 /* JIPAbstractRemoteEntity.m */; };
+		12D4BA26F448CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB48CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.h */; };
+		12D4BA26F458CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB58CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.m */; };
+		12D4BA26F468CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB68CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.h */; };
+		12D4BA26F478CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB78CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.m */; };
+		12D4BA26F488CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB88CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.h */; };
+		12D4BA26F498CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EB98CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.m */; };
+		12D4BA26F4A8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.h */; };
+		12D4BA26F4B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.m */; };
+		12D4BA26F4C8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.h */; };
+		12D4BA26F4D8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.m */; };
+		12D4BA26F4E8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.h */; };
+		12D4BA26F4F8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EBF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.m */; };
+		12D4BA26F508CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC08CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.h */; };
+		12D4BA26F518CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC18CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.m */; };
+		12D4BA26F528CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC28CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.h */; };
+		12D4BA26F538CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC38CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.m */; };
+		12D4BA26F548CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC48CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.h */; };
+		12D4BA26F558CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC58CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.m */; };
+		12D4BA26F568CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC68CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.h */; };
+		12D4BA26F578CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC78CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.m */; };
+		12D4BA26F588CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC88CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.h */; };
+		12D4BA26F598CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EC98CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.m */; };
+		12D4BA26F5A8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.h */; };
+		12D4BA26F5B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.m */; };
+		12D4BA26F5C8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECC8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.h */; };
+		12D4BA26F5D8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECD8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.m */; };
+		12D4BA26F5E8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECE8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.h */; };
+		12D4BA26F5F8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ECF8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.m */; };
+		12D4BA26F608CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED08CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.h */; };
+		12D4BA26F618CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED18CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.m */; };
+		12D4BA26F628CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED28CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.h */; };
+		12D4BA26F638CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED38CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.m */; };
+		12D4BA26F648CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED48CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.h */; };
+		12D4BA26F658CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED58CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.m */; };
+		12D4BA26F668CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED68CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.h */; };
+		12D4BA26F678CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED78CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.m */; };
+		12D4BA26F688CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED88CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.h */; };
+		12D4BA26F698CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26ED98CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.m */; };
+		12D4BA26F6A8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.h */; };
+		12D4BA26F6B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.m */; };
+		12D4BA26F6C8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.h */; };
+		12D4BA26F6D8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.m */; };
+		12D4BA26F6E8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.h */; };
+		12D4BA26F6F8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EDF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.m */; };
+		12D4BA26F708CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE08CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.h */; };
+		12D4BA26F718CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE18CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.m */; };
+		12D4BA26F728CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE28CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.h */; };
+		12D4BA26F738CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE38CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.m */; };
+		12D4BA26F748CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE48CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.h */; };
+		12D4BA26F758CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE58CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.m */; };
+		12D4BA26F768CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE68CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.h */; };
+		12D4BA26F778CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE78CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.m */; };
+		12D4BA26F788CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE88CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.h */; };
+		12D4BA26F798CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EE98CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.m */; };
+		12D4BA26F7A8CD795070B8A4 /* JIPArrayOf_xsd_string.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EEA8CD795070B8A4 /* JIPArrayOf_xsd_string.h */; };
+		12D4BA26F7B8CD795070B8A4 /* JIPArrayOf_xsd_string.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EEB8CD795070B8A4 /* JIPArrayOf_xsd_string.m */; };
+		12D4BA26F7C8CD795070B8A4 /* JIPJiraSoapServiceService.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EEC8CD795070B8A4 /* JIPJiraSoapServiceService.h */; };
+		12D4BA26F7D8CD795070B8A4 /* JIPJiraSoapServiceService.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EED8CD795070B8A4 /* JIPJiraSoapServiceService.m */; };
+		12D4BA26F7E8CD795070B8A4 /* JIPRemoteAttachment.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EEE8CD795070B8A4 /* JIPRemoteAttachment.h */; };
+		12D4BA26F7F8CD795070B8A4 /* JIPRemoteAttachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EEF8CD795070B8A4 /* JIPRemoteAttachment.m */; };
+		12D4BA26F808CD795070B8A4 /* JIPRemoteAuthenticationException.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF08CD795070B8A4 /* JIPRemoteAuthenticationException.h */; };
+		12D4BA26F818CD795070B8A4 /* JIPRemoteAuthenticationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF18CD795070B8A4 /* JIPRemoteAuthenticationException.m */; };
+		12D4BA26F828CD795070B8A4 /* JIPRemoteAvatar.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF28CD795070B8A4 /* JIPRemoteAvatar.h */; };
+		12D4BA26F838CD795070B8A4 /* JIPRemoteAvatar.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF38CD795070B8A4 /* JIPRemoteAvatar.m */; };
+		12D4BA26F848CD795070B8A4 /* JIPRemoteComment.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF48CD795070B8A4 /* JIPRemoteComment.h */; };
+		12D4BA26F858CD795070B8A4 /* JIPRemoteComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF58CD795070B8A4 /* JIPRemoteComment.m */; };
+		12D4BA26F868CD795070B8A4 /* JIPRemoteComponent.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF68CD795070B8A4 /* JIPRemoteComponent.h */; };
+		12D4BA26F878CD795070B8A4 /* JIPRemoteComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF78CD795070B8A4 /* JIPRemoteComponent.m */; };
+		12D4BA26F888CD795070B8A4 /* JIPRemoteConfiguration.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF88CD795070B8A4 /* JIPRemoteConfiguration.h */; };
+		12D4BA26F898CD795070B8A4 /* JIPRemoteConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EF98CD795070B8A4 /* JIPRemoteConfiguration.m */; };
+		12D4BA26F8A8CD795070B8A4 /* JIPRemoteCustomFieldValue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFA8CD795070B8A4 /* JIPRemoteCustomFieldValue.h */; };
+		12D4BA26F8B8CD795070B8A4 /* JIPRemoteCustomFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFB8CD795070B8A4 /* JIPRemoteCustomFieldValue.m */; };
+		12D4BA26F8C8CD795070B8A4 /* JIPRemoteEntity.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFC8CD795070B8A4 /* JIPRemoteEntity.h */; };
+		12D4BA26F8D8CD795070B8A4 /* JIPRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFD8CD795070B8A4 /* JIPRemoteEntity.m */; };
+		12D4BA26F8E8CD795070B8A4 /* JIPRemoteException.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFE8CD795070B8A4 /* JIPRemoteException.h */; };
+		12D4BA26F8F8CD795070B8A4 /* JIPRemoteException.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26EFF8CD795070B8A4 /* JIPRemoteException.m */; };
+		12D4BA26F908CD795070B8A4 /* JIPRemoteField.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F008CD795070B8A4 /* JIPRemoteField.h */; };
+		12D4BA26F918CD795070B8A4 /* JIPRemoteField.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F018CD795070B8A4 /* JIPRemoteField.m */; };
+		12D4BA26F928CD795070B8A4 /* JIPRemoteFieldValue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F028CD795070B8A4 /* JIPRemoteFieldValue.h */; };
+		12D4BA26F938CD795070B8A4 /* JIPRemoteFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F038CD795070B8A4 /* JIPRemoteFieldValue.m */; };
+		12D4BA26F948CD795070B8A4 /* JIPRemoteFilter.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F048CD795070B8A4 /* JIPRemoteFilter.h */; };
+		12D4BA26F958CD795070B8A4 /* JIPRemoteFilter.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F058CD795070B8A4 /* JIPRemoteFilter.m */; };
+		12D4BA26F968CD795070B8A4 /* JIPRemoteGroup.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F068CD795070B8A4 /* JIPRemoteGroup.h */; };
+		12D4BA26F978CD795070B8A4 /* JIPRemoteGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F078CD795070B8A4 /* JIPRemoteGroup.m */; };
+		12D4BA26F988CD795070B8A4 /* JIPRemoteIssue.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F088CD795070B8A4 /* JIPRemoteIssue.h */; };
+		12D4BA26F998CD795070B8A4 /* JIPRemoteIssue.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F098CD795070B8A4 /* JIPRemoteIssue.m */; };
+		12D4BA26F9A8CD795070B8A4 /* JIPRemoteIssueType.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0A8CD795070B8A4 /* JIPRemoteIssueType.h */; };
+		12D4BA26F9B8CD795070B8A4 /* JIPRemoteIssueType.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0B8CD795070B8A4 /* JIPRemoteIssueType.m */; };
+		12D4BA26F9C8CD795070B8A4 /* JIPRemoteNamedObject.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0C8CD795070B8A4 /* JIPRemoteNamedObject.h */; };
+		12D4BA26F9D8CD795070B8A4 /* JIPRemoteNamedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0D8CD795070B8A4 /* JIPRemoteNamedObject.m */; };
+		12D4BA26F9E8CD795070B8A4 /* JIPRemotePermission.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0E8CD795070B8A4 /* JIPRemotePermission.h */; };
+		12D4BA26F9F8CD795070B8A4 /* JIPRemotePermission.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F0F8CD795070B8A4 /* JIPRemotePermission.m */; };
+		12D4BA26FA08CD795070B8A4 /* JIPRemotePermissionException.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F108CD795070B8A4 /* JIPRemotePermissionException.h */; };
+		12D4BA26FA18CD795070B8A4 /* JIPRemotePermissionException.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F118CD795070B8A4 /* JIPRemotePermissionException.m */; };
+		12D4BA26FA28CD795070B8A4 /* JIPRemotePermissionMapping.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F128CD795070B8A4 /* JIPRemotePermissionMapping.h */; };
+		12D4BA26FA38CD795070B8A4 /* JIPRemotePermissionMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F138CD795070B8A4 /* JIPRemotePermissionMapping.m */; };
+		12D4BA26FA48CD795070B8A4 /* JIPRemotePermissionScheme.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F148CD795070B8A4 /* JIPRemotePermissionScheme.h */; };
+		12D4BA26FA58CD795070B8A4 /* JIPRemotePermissionScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F158CD795070B8A4 /* JIPRemotePermissionScheme.m */; };
+		12D4BA26FA68CD795070B8A4 /* JIPRemotePriority.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F168CD795070B8A4 /* JIPRemotePriority.h */; };
+		12D4BA26FA78CD795070B8A4 /* JIPRemotePriority.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F178CD795070B8A4 /* JIPRemotePriority.m */; };
+		12D4BA26FA88CD795070B8A4 /* JIPRemoteProject.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F188CD795070B8A4 /* JIPRemoteProject.h */; };
+		12D4BA26FA98CD795070B8A4 /* JIPRemoteProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F198CD795070B8A4 /* JIPRemoteProject.m */; };
+		12D4BA26FAA8CD795070B8A4 /* JIPRemoteProjectRole.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1A8CD795070B8A4 /* JIPRemoteProjectRole.h */; };
+		12D4BA26FAB8CD795070B8A4 /* JIPRemoteProjectRole.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1B8CD795070B8A4 /* JIPRemoteProjectRole.m */; };
+		12D4BA26FAC8CD795070B8A4 /* JIPRemoteProjectRoleActors.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1C8CD795070B8A4 /* JIPRemoteProjectRoleActors.h */; };
+		12D4BA26FAD8CD795070B8A4 /* JIPRemoteProjectRoleActors.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1D8CD795070B8A4 /* JIPRemoteProjectRoleActors.m */; };
+		12D4BA26FAE8CD795070B8A4 /* JIPRemoteResolution.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1E8CD795070B8A4 /* JIPRemoteResolution.h */; };
+		12D4BA26FAF8CD795070B8A4 /* JIPRemoteResolution.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F1F8CD795070B8A4 /* JIPRemoteResolution.m */; };
+		12D4BA26FB08CD795070B8A4 /* JIPRemoteRoleActor.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F208CD795070B8A4 /* JIPRemoteRoleActor.h */; };
+		12D4BA26FB18CD795070B8A4 /* JIPRemoteRoleActor.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F218CD795070B8A4 /* JIPRemoteRoleActor.m */; };
+		12D4BA26FB28CD795070B8A4 /* JIPRemoteRoleActors.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F228CD795070B8A4 /* JIPRemoteRoleActors.h */; };
+		12D4BA26FB38CD795070B8A4 /* JIPRemoteRoleActors.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F238CD795070B8A4 /* JIPRemoteRoleActors.m */; };
+		12D4BA26FB48CD795070B8A4 /* JIPRemoteScheme.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F248CD795070B8A4 /* JIPRemoteScheme.h */; };
+		12D4BA26FB58CD795070B8A4 /* JIPRemoteScheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F258CD795070B8A4 /* JIPRemoteScheme.m */; };
+		12D4BA26FB68CD795070B8A4 /* JIPRemoteSecurityLevel.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F268CD795070B8A4 /* JIPRemoteSecurityLevel.h */; };
+		12D4BA26FB78CD795070B8A4 /* JIPRemoteSecurityLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F278CD795070B8A4 /* JIPRemoteSecurityLevel.m */; };
+		12D4BA26FB88CD795070B8A4 /* JIPRemoteServerInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F288CD795070B8A4 /* JIPRemoteServerInfo.h */; };
+		12D4BA26FB98CD795070B8A4 /* JIPRemoteServerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F298CD795070B8A4 /* JIPRemoteServerInfo.m */; };
+		12D4BA26FBA8CD795070B8A4 /* JIPRemoteStatus.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2A8CD795070B8A4 /* JIPRemoteStatus.h */; };
+		12D4BA26FBB8CD795070B8A4 /* JIPRemoteStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2B8CD795070B8A4 /* JIPRemoteStatus.m */; };
+		12D4BA26FBC8CD795070B8A4 /* JIPRemoteTimeInfo.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2C8CD795070B8A4 /* JIPRemoteTimeInfo.h */; };
+		12D4BA26FBD8CD795070B8A4 /* JIPRemoteTimeInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2D8CD795070B8A4 /* JIPRemoteTimeInfo.m */; };
+		12D4BA26FBE8CD795070B8A4 /* JIPRemoteUser.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2E8CD795070B8A4 /* JIPRemoteUser.h */; };
+		12D4BA26FBF8CD795070B8A4 /* JIPRemoteUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F2F8CD795070B8A4 /* JIPRemoteUser.m */; };
+		12D4BA26FC08CD795070B8A4 /* JIPRemoteValidationException.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F308CD795070B8A4 /* JIPRemoteValidationException.h */; };
+		12D4BA26FC18CD795070B8A4 /* JIPRemoteValidationException.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F318CD795070B8A4 /* JIPRemoteValidationException.m */; };
+		12D4BA26FC28CD795070B8A4 /* JIPRemoteVersion.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F328CD795070B8A4 /* JIPRemoteVersion.h */; };
+		12D4BA26FC38CD795070B8A4 /* JIPRemoteVersion.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F338CD795070B8A4 /* JIPRemoteVersion.m */; };
+		12D4BA26FC48CD795070B8A4 /* JIPRemoteWorklog.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F348CD795070B8A4 /* JIPRemoteWorklog.h */; };
+		12D4BA26FC58CD795070B8A4 /* JIPRemoteWorklog.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F358CD795070B8A4 /* JIPRemoteWorklog.m */; };
+		12D4BA26FC68CD795070B8A4 /* JIPRemoteWorklogImpl.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F368CD795070B8A4 /* JIPRemoteWorklogImpl.h */; };
+		12D4BA26FC78CD795070B8A4 /* JIPRemoteWorklogImpl.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F378CD795070B8A4 /* JIPRemoteWorklogImpl.m */; };
+		12D4BA26FC88CD795070B8A4 /* JIPServices.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F388CD795070B8A4 /* JIPServices.h */; };
+		12D4BA26FC98CD795070B8A4 /* JIPServices.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F398CD795070B8A4 /* JIPServices.m */; };
+		12D4BA26FCA8CD795070B8A4 /* Soap+Prefix.h in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F3A8CD795070B8A4 /* Soap+Prefix.h */; };
+		12D4BA26FCB8CD795070B8A4 /* Soap+Prefix.m in Sources */ = {isa = PBXBuildFile; fileRef = 12D4BA26F3B8CD795070B8A4 /* Soap+Prefix.m */; };
+
+		1067D05812B7BA3D005BBFFD /* NSMutableArray+Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */; };
+		10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F93110C0A71008E8718 /* NSData+Base64.m */; };
+		10C72024110C0A71008E8718 /* Soap.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F95110C0A71008E8718 /* Soap.m */; };
+		10C72025110C0A71008E8718 /* SoapArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F97110C0A71008E8718 /* SoapArray.m */; };
+		10C72026110C0A71008E8718 /* SoapDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9A110C0A71008E8718 /* SoapDictionary.m */; };
+		10C72027110C0A71008E8718 /* SoapFault.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9C110C0A71008E8718 /* SoapFault.m */; };
+		10C72028110C0A71008E8718 /* SoapHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71F9E110C0A71008E8718 /* SoapHandler.m */; };
+		10C72029110C0A71008E8718 /* SoapNil.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA0110C0A71008E8718 /* SoapNil.m */; };
+		107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */ = {isa = PBXBuildFile; fileRef = 107DACA71217305B00F18A8A /* SoapLiteral.m */; };
+		10C7202A110C0A71008E8718 /* SoapObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA2110C0A71008E8718 /* SoapObject.m */; };
+		10C7202B110C0A71008E8718 /* SoapParameter.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA4110C0A71008E8718 /* SoapParameter.m */; };
+		10C7202C110C0A71008E8718 /* SoapReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA6110C0A71008E8718 /* SoapReachability.m */; };
+		10C7202D110C0A71008E8718 /* SoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FA8110C0A71008E8718 /* SoapRequest.m */; };
+		10C7202E110C0A71008E8718 /* SoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FAA110C0A71008E8718 /* SoapService.m */; };
+		10C7202F110C0A71008E8718 /* CXMLDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FAD110C0A71008E8718 /* CXMLDocument.m */; };
+		10C72030110C0A71008E8718 /* CXMLDocument_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FAF110C0A71008E8718 /* CXMLDocument_PrivateExtensions.m */; };
+		10C72031110C0A71008E8718 /* CXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB1110C0A71008E8718 /* CXMLElement.m */; };
+		10C72032110C0A71008E8718 /* CXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB3110C0A71008E8718 /* CXMLNode.m */; };
+		10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */; };
+		10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765FC0DF74451002DB57D /* CoreGraphics.framework */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SudzCExamplesAppDelegate.m; sourceTree = "<group>"; };
+		10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamplesAppDelegate.h; sourceTree = "<group>"; };
+		10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		12D4BA26EAC8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPJiraSoapServiceServiceExample.h"; sourceTree = "<group>"; };
+		12D4BA26EAD8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPJiraSoapServiceServiceExample.m"; sourceTree = "<group>"; };
+		12D4BA26EAE8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPAbstractNamedRemoteEntity.h"; sourceTree = "<group>"; };
+		12D4BA26EAF8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPAbstractNamedRemoteEntity.m"; sourceTree = "<group>"; };
+		12D4BA26EB08CD795070B8A4 /* JIPAbstractRemoteConstant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPAbstractRemoteConstant.h"; sourceTree = "<group>"; };
+		12D4BA26EB18CD795070B8A4 /* JIPAbstractRemoteConstant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPAbstractRemoteConstant.m"; sourceTree = "<group>"; };
+		12D4BA26EB28CD795070B8A4 /* JIPAbstractRemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPAbstractRemoteEntity.h"; sourceTree = "<group>"; };
+		12D4BA26EB38CD795070B8A4 /* JIPAbstractRemoteEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPAbstractRemoteEntity.m"; sourceTree = "<group>"; };
+		12D4BA26EB48CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteAttachment.h"; sourceTree = "<group>"; };
+		12D4BA26EB58CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteAttachment.m"; sourceTree = "<group>"; };
+		12D4BA26EB68CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteAvatar.h"; sourceTree = "<group>"; };
+		12D4BA26EB78CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteAvatar.m"; sourceTree = "<group>"; };
+		12D4BA26EB88CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteComment.h"; sourceTree = "<group>"; };
+		12D4BA26EB98CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteComment.m"; sourceTree = "<group>"; };
+		12D4BA26EBA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteComponent.h"; sourceTree = "<group>"; };
+		12D4BA26EBB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteComponent.m"; sourceTree = "<group>"; };
+		12D4BA26EBC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteCustomFieldValue.h"; sourceTree = "<group>"; };
+		12D4BA26EBD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteCustomFieldValue.m"; sourceTree = "<group>"; };
+		12D4BA26EBE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteEntity.h"; sourceTree = "<group>"; };
+		12D4BA26EBF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteEntity.m"; sourceTree = "<group>"; };
+		12D4BA26EC08CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteField.h"; sourceTree = "<group>"; };
+		12D4BA26EC18CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteField.m"; sourceTree = "<group>"; };
+		12D4BA26EC28CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteFieldValue.h"; sourceTree = "<group>"; };
+		12D4BA26EC38CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteFieldValue.m"; sourceTree = "<group>"; };
+		12D4BA26EC48CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteFilter.h"; sourceTree = "<group>"; };
+		12D4BA26EC58CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteFilter.m"; sourceTree = "<group>"; };
+		12D4BA26EC68CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteIssue.h"; sourceTree = "<group>"; };
+		12D4BA26EC78CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteIssue.m"; sourceTree = "<group>"; };
+		12D4BA26EC88CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteIssueType.h"; sourceTree = "<group>"; };
+		12D4BA26EC98CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteIssueType.m"; sourceTree = "<group>"; };
+		12D4BA26ECA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteNamedObject.h"; sourceTree = "<group>"; };
+		12D4BA26ECB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteNamedObject.m"; sourceTree = "<group>"; };
+		12D4BA26ECC8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemotePermission.h"; sourceTree = "<group>"; };
+		12D4BA26ECD8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemotePermission.m"; sourceTree = "<group>"; };
+		12D4BA26ECE8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemotePermissionMapping.h"; sourceTree = "<group>"; };
+		12D4BA26ECF8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemotePermissionMapping.m"; sourceTree = "<group>"; };
+		12D4BA26ED08CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemotePermissionScheme.h"; sourceTree = "<group>"; };
+		12D4BA26ED18CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemotePermissionScheme.m"; sourceTree = "<group>"; };
+		12D4BA26ED28CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemotePriority.h"; sourceTree = "<group>"; };
+		12D4BA26ED38CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemotePriority.m"; sourceTree = "<group>"; };
+		12D4BA26ED48CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteProject.h"; sourceTree = "<group>"; };
+		12D4BA26ED58CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteProject.m"; sourceTree = "<group>"; };
+		12D4BA26ED68CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteProjectRole.h"; sourceTree = "<group>"; };
+		12D4BA26ED78CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteProjectRole.m"; sourceTree = "<group>"; };
+		12D4BA26ED88CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteResolution.h"; sourceTree = "<group>"; };
+		12D4BA26ED98CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteResolution.m"; sourceTree = "<group>"; };
+		12D4BA26EDA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteRoleActor.h"; sourceTree = "<group>"; };
+		12D4BA26EDB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteRoleActor.m"; sourceTree = "<group>"; };
+		12D4BA26EDC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteScheme.h"; sourceTree = "<group>"; };
+		12D4BA26EDD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteScheme.m"; sourceTree = "<group>"; };
+		12D4BA26EDE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteSecurityLevel.h"; sourceTree = "<group>"; };
+		12D4BA26EDF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteSecurityLevel.m"; sourceTree = "<group>"; };
+		12D4BA26EE08CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteStatus.h"; sourceTree = "<group>"; };
+		12D4BA26EE18CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteStatus.m"; sourceTree = "<group>"; };
+		12D4BA26EE28CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteUser.h"; sourceTree = "<group>"; };
+		12D4BA26EE38CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteUser.m"; sourceTree = "<group>"; };
+		12D4BA26EE48CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteVersion.h"; sourceTree = "<group>"; };
+		12D4BA26EE58CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteVersion.m"; sourceTree = "<group>"; };
+		12D4BA26EE68CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_tns1_RemoteWorklog.h"; sourceTree = "<group>"; };
+		12D4BA26EE78CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_tns1_RemoteWorklog.m"; sourceTree = "<group>"; };
+		12D4BA26EE88CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_xsd_base64Binary.h"; sourceTree = "<group>"; };
+		12D4BA26EE98CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_xsd_base64Binary.m"; sourceTree = "<group>"; };
+		12D4BA26EEA8CD795070B8A4 /* JIPArrayOf_xsd_string.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPArrayOf_xsd_string.h"; sourceTree = "<group>"; };
+		12D4BA26EEB8CD795070B8A4 /* JIPArrayOf_xsd_string.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPArrayOf_xsd_string.m"; sourceTree = "<group>"; };
+		12D4BA26EEC8CD795070B8A4 /* JIPJiraSoapServiceService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPJiraSoapServiceService.h"; sourceTree = "<group>"; };
+		12D4BA26EED8CD795070B8A4 /* JIPJiraSoapServiceService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPJiraSoapServiceService.m"; sourceTree = "<group>"; };
+		12D4BA26EEE8CD795070B8A4 /* JIPRemoteAttachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteAttachment.h"; sourceTree = "<group>"; };
+		12D4BA26EEF8CD795070B8A4 /* JIPRemoteAttachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteAttachment.m"; sourceTree = "<group>"; };
+		12D4BA26EF08CD795070B8A4 /* JIPRemoteAuthenticationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteAuthenticationException.h"; sourceTree = "<group>"; };
+		12D4BA26EF18CD795070B8A4 /* JIPRemoteAuthenticationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteAuthenticationException.m"; sourceTree = "<group>"; };
+		12D4BA26EF28CD795070B8A4 /* JIPRemoteAvatar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteAvatar.h"; sourceTree = "<group>"; };
+		12D4BA26EF38CD795070B8A4 /* JIPRemoteAvatar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteAvatar.m"; sourceTree = "<group>"; };
+		12D4BA26EF48CD795070B8A4 /* JIPRemoteComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteComment.h"; sourceTree = "<group>"; };
+		12D4BA26EF58CD795070B8A4 /* JIPRemoteComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteComment.m"; sourceTree = "<group>"; };
+		12D4BA26EF68CD795070B8A4 /* JIPRemoteComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteComponent.h"; sourceTree = "<group>"; };
+		12D4BA26EF78CD795070B8A4 /* JIPRemoteComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteComponent.m"; sourceTree = "<group>"; };
+		12D4BA26EF88CD795070B8A4 /* JIPRemoteConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteConfiguration.h"; sourceTree = "<group>"; };
+		12D4BA26EF98CD795070B8A4 /* JIPRemoteConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteConfiguration.m"; sourceTree = "<group>"; };
+		12D4BA26EFA8CD795070B8A4 /* JIPRemoteCustomFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteCustomFieldValue.h"; sourceTree = "<group>"; };
+		12D4BA26EFB8CD795070B8A4 /* JIPRemoteCustomFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteCustomFieldValue.m"; sourceTree = "<group>"; };
+		12D4BA26EFC8CD795070B8A4 /* JIPRemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteEntity.h"; sourceTree = "<group>"; };
+		12D4BA26EFD8CD795070B8A4 /* JIPRemoteEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteEntity.m"; sourceTree = "<group>"; };
+		12D4BA26EFE8CD795070B8A4 /* JIPRemoteException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteException.h"; sourceTree = "<group>"; };
+		12D4BA26EFF8CD795070B8A4 /* JIPRemoteException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteException.m"; sourceTree = "<group>"; };
+		12D4BA26F008CD795070B8A4 /* JIPRemoteField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteField.h"; sourceTree = "<group>"; };
+		12D4BA26F018CD795070B8A4 /* JIPRemoteField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteField.m"; sourceTree = "<group>"; };
+		12D4BA26F028CD795070B8A4 /* JIPRemoteFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteFieldValue.h"; sourceTree = "<group>"; };
+		12D4BA26F038CD795070B8A4 /* JIPRemoteFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteFieldValue.m"; sourceTree = "<group>"; };
+		12D4BA26F048CD795070B8A4 /* JIPRemoteFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteFilter.h"; sourceTree = "<group>"; };
+		12D4BA26F058CD795070B8A4 /* JIPRemoteFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteFilter.m"; sourceTree = "<group>"; };
+		12D4BA26F068CD795070B8A4 /* JIPRemoteGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteGroup.h"; sourceTree = "<group>"; };
+		12D4BA26F078CD795070B8A4 /* JIPRemoteGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteGroup.m"; sourceTree = "<group>"; };
+		12D4BA26F088CD795070B8A4 /* JIPRemoteIssue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteIssue.h"; sourceTree = "<group>"; };
+		12D4BA26F098CD795070B8A4 /* JIPRemoteIssue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteIssue.m"; sourceTree = "<group>"; };
+		12D4BA26F0A8CD795070B8A4 /* JIPRemoteIssueType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteIssueType.h"; sourceTree = "<group>"; };
+		12D4BA26F0B8CD795070B8A4 /* JIPRemoteIssueType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteIssueType.m"; sourceTree = "<group>"; };
+		12D4BA26F0C8CD795070B8A4 /* JIPRemoteNamedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteNamedObject.h"; sourceTree = "<group>"; };
+		12D4BA26F0D8CD795070B8A4 /* JIPRemoteNamedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteNamedObject.m"; sourceTree = "<group>"; };
+		12D4BA26F0E8CD795070B8A4 /* JIPRemotePermission.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemotePermission.h"; sourceTree = "<group>"; };
+		12D4BA26F0F8CD795070B8A4 /* JIPRemotePermission.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemotePermission.m"; sourceTree = "<group>"; };
+		12D4BA26F108CD795070B8A4 /* JIPRemotePermissionException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemotePermissionException.h"; sourceTree = "<group>"; };
+		12D4BA26F118CD795070B8A4 /* JIPRemotePermissionException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemotePermissionException.m"; sourceTree = "<group>"; };
+		12D4BA26F128CD795070B8A4 /* JIPRemotePermissionMapping.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemotePermissionMapping.h"; sourceTree = "<group>"; };
+		12D4BA26F138CD795070B8A4 /* JIPRemotePermissionMapping.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemotePermissionMapping.m"; sourceTree = "<group>"; };
+		12D4BA26F148CD795070B8A4 /* JIPRemotePermissionScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemotePermissionScheme.h"; sourceTree = "<group>"; };
+		12D4BA26F158CD795070B8A4 /* JIPRemotePermissionScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemotePermissionScheme.m"; sourceTree = "<group>"; };
+		12D4BA26F168CD795070B8A4 /* JIPRemotePriority.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemotePriority.h"; sourceTree = "<group>"; };
+		12D4BA26F178CD795070B8A4 /* JIPRemotePriority.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemotePriority.m"; sourceTree = "<group>"; };
+		12D4BA26F188CD795070B8A4 /* JIPRemoteProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteProject.h"; sourceTree = "<group>"; };
+		12D4BA26F198CD795070B8A4 /* JIPRemoteProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteProject.m"; sourceTree = "<group>"; };
+		12D4BA26F1A8CD795070B8A4 /* JIPRemoteProjectRole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteProjectRole.h"; sourceTree = "<group>"; };
+		12D4BA26F1B8CD795070B8A4 /* JIPRemoteProjectRole.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteProjectRole.m"; sourceTree = "<group>"; };
+		12D4BA26F1C8CD795070B8A4 /* JIPRemoteProjectRoleActors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteProjectRoleActors.h"; sourceTree = "<group>"; };
+		12D4BA26F1D8CD795070B8A4 /* JIPRemoteProjectRoleActors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteProjectRoleActors.m"; sourceTree = "<group>"; };
+		12D4BA26F1E8CD795070B8A4 /* JIPRemoteResolution.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteResolution.h"; sourceTree = "<group>"; };
+		12D4BA26F1F8CD795070B8A4 /* JIPRemoteResolution.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteResolution.m"; sourceTree = "<group>"; };
+		12D4BA26F208CD795070B8A4 /* JIPRemoteRoleActor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteRoleActor.h"; sourceTree = "<group>"; };
+		12D4BA26F218CD795070B8A4 /* JIPRemoteRoleActor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteRoleActor.m"; sourceTree = "<group>"; };
+		12D4BA26F228CD795070B8A4 /* JIPRemoteRoleActors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteRoleActors.h"; sourceTree = "<group>"; };
+		12D4BA26F238CD795070B8A4 /* JIPRemoteRoleActors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteRoleActors.m"; sourceTree = "<group>"; };
+		12D4BA26F248CD795070B8A4 /* JIPRemoteScheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteScheme.h"; sourceTree = "<group>"; };
+		12D4BA26F258CD795070B8A4 /* JIPRemoteScheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteScheme.m"; sourceTree = "<group>"; };
+		12D4BA26F268CD795070B8A4 /* JIPRemoteSecurityLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteSecurityLevel.h"; sourceTree = "<group>"; };
+		12D4BA26F278CD795070B8A4 /* JIPRemoteSecurityLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteSecurityLevel.m"; sourceTree = "<group>"; };
+		12D4BA26F288CD795070B8A4 /* JIPRemoteServerInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteServerInfo.h"; sourceTree = "<group>"; };
+		12D4BA26F298CD795070B8A4 /* JIPRemoteServerInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteServerInfo.m"; sourceTree = "<group>"; };
+		12D4BA26F2A8CD795070B8A4 /* JIPRemoteStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteStatus.h"; sourceTree = "<group>"; };
+		12D4BA26F2B8CD795070B8A4 /* JIPRemoteStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteStatus.m"; sourceTree = "<group>"; };
+		12D4BA26F2C8CD795070B8A4 /* JIPRemoteTimeInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteTimeInfo.h"; sourceTree = "<group>"; };
+		12D4BA26F2D8CD795070B8A4 /* JIPRemoteTimeInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteTimeInfo.m"; sourceTree = "<group>"; };
+		12D4BA26F2E8CD795070B8A4 /* JIPRemoteUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteUser.h"; sourceTree = "<group>"; };
+		12D4BA26F2F8CD795070B8A4 /* JIPRemoteUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteUser.m"; sourceTree = "<group>"; };
+		12D4BA26F308CD795070B8A4 /* JIPRemoteValidationException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteValidationException.h"; sourceTree = "<group>"; };
+		12D4BA26F318CD795070B8A4 /* JIPRemoteValidationException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteValidationException.m"; sourceTree = "<group>"; };
+		12D4BA26F328CD795070B8A4 /* JIPRemoteVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteVersion.h"; sourceTree = "<group>"; };
+		12D4BA26F338CD795070B8A4 /* JIPRemoteVersion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteVersion.m"; sourceTree = "<group>"; };
+		12D4BA26F348CD795070B8A4 /* JIPRemoteWorklog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteWorklog.h"; sourceTree = "<group>"; };
+		12D4BA26F358CD795070B8A4 /* JIPRemoteWorklog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteWorklog.m"; sourceTree = "<group>"; };
+		12D4BA26F368CD795070B8A4 /* JIPRemoteWorklogImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPRemoteWorklogImpl.h"; sourceTree = "<group>"; };
+		12D4BA26F378CD795070B8A4 /* JIPRemoteWorklogImpl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPRemoteWorklogImpl.m"; sourceTree = "<group>"; };
+		12D4BA26F388CD795070B8A4 /* JIPServices.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "JIPServices.h"; sourceTree = "<group>"; };
+		12D4BA26F398CD795070B8A4 /* JIPServices.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "JIPServices.m"; sourceTree = "<group>"; };
+		12D4BA26F3A8CD795070B8A4 /* Soap+Prefix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Soap+Prefix.h"; sourceTree = "<group>"; };
+		12D4BA26F3B8CD795070B8A4 /* Soap+Prefix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Soap+Prefix.m"; sourceTree = "<group>"; };
+
+		1067D05612B7BA3D005BBFFD /* NSMutableArray+Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Soap.h"; sourceTree = "<group>"; };
+		1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Soap.m"; sourceTree = "<group>"; };
+		10C71F92110C0A71008E8718 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		10C71F93110C0A71008E8718 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		10C71F94110C0A71008E8718 /* Soap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Soap.h; sourceTree = "<group>"; };
+		10C71F95110C0A71008E8718 /* Soap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Soap.m; sourceTree = "<group>"; };
+		10C71F96110C0A71008E8718 /* SoapArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapArray.h; sourceTree = "<group>"; };
+		10C71F97110C0A71008E8718 /* SoapArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapArray.m; sourceTree = "<group>"; };
+		10C71F98110C0A71008E8718 /* SoapDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDelegate.h; sourceTree = "<group>"; };
+		10C71F99110C0A71008E8718 /* SoapDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapDictionary.h; sourceTree = "<group>"; };
+		10C71F9A110C0A71008E8718 /* SoapDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapDictionary.m; sourceTree = "<group>"; };
+		10C71F9B110C0A71008E8718 /* SoapFault.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapFault.h; sourceTree = "<group>"; };
+		10C71F9C110C0A71008E8718 /* SoapFault.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapFault.m; sourceTree = "<group>"; };
+		10C71F9D110C0A71008E8718 /* SoapHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapHandler.h; sourceTree = "<group>"; };
+		10C71F9E110C0A71008E8718 /* SoapHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapHandler.m; sourceTree = "<group>"; };
+		107DACA71217305B00F18A8A /* SoapLiteral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapLiteral.m; sourceTree = "<group>"; };
+		107DACA81217305B00F18A8A /* SoapLiteral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapLiteral.h; sourceTree = "<group>"; };
+		10C71F9F110C0A71008E8718 /* SoapNil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapNil.h; sourceTree = "<group>"; };
+		10C71FA0110C0A71008E8718 /* SoapNil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapNil.m; sourceTree = "<group>"; };
+		10C71FA1110C0A71008E8718 /* SoapObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapObject.h; sourceTree = "<group>"; };
+		10C71FA2110C0A71008E8718 /* SoapObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapObject.m; sourceTree = "<group>"; };
+		10C71FA3110C0A71008E8718 /* SoapParameter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapParameter.h; sourceTree = "<group>"; };
+		10C71FA4110C0A71008E8718 /* SoapParameter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapParameter.m; sourceTree = "<group>"; };
+		10C71FA5110C0A71008E8718 /* SoapReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapReachability.h; sourceTree = "<group>"; };
+		10C71FA6110C0A71008E8718 /* SoapReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapReachability.m; sourceTree = "<group>"; };
+		10C71FA7110C0A71008E8718 /* SoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapRequest.h; sourceTree = "<group>"; };
+		10C71FA8110C0A71008E8718 /* SoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapRequest.m; sourceTree = "<group>"; };
+		10C71FA9110C0A71008E8718 /* SoapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapService.h; sourceTree = "<group>"; };
+		10C71FAA110C0A71008E8718 /* SoapService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapService.m; sourceTree = "<group>"; };
+		10C71FAC110C0A71008E8718 /* CXMLDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument.h; sourceTree = "<group>"; };
+		10C71FAD110C0A71008E8718 /* CXMLDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument.m; sourceTree = "<group>"; };
+		10C71FAE110C0A71008E8718 /* CXMLDocument_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLDocument_PrivateExtensions.h; sourceTree = "<group>"; };
+		10C71FAF110C0A71008E8718 /* CXMLDocument_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLDocument_PrivateExtensions.m; sourceTree = "<group>"; };
+		10C71FB0110C0A71008E8718 /* CXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLElement.h; sourceTree = "<group>"; };
+		10C71FB1110C0A71008E8718 /* CXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLElement.m; sourceTree = "<group>"; };
+		10C71FB2110C0A71008E8718 /* CXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode.h; sourceTree = "<group>"; };
+		10C71FB3110C0A71008E8718 /* CXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode.m; sourceTree = "<group>"; };
+		10C71FB4110C0A71008E8718 /* CXMLNode_PrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_PrivateExtensions.h; sourceTree = "<group>"; };
+		10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_PrivateExtensions.m; sourceTree = "<group>"; };
+		10C71FB6110C0A71008E8718 /* CXMLNode_XPathExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXMLNode_XPathExtensions.h; sourceTree = "<group>"; };
+		10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CXMLNode_XPathExtensions.m; sourceTree = "<group>"; };		
+		10C71FB8110C0A71008E8718 /* TouchXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TouchXML.h; sourceTree = "<group>"; };
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D6058910D05DD3D006BFB54 /* SudzCExamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SudzCExamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765FC0DF74451002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* SudzCExamples_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SudzCExamples_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "SudzCExamples-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765FD0DF74451002DB57D /* CoreGraphics.framework in Frameworks */,
+				10C71E6E110B5EC0008E8718 /* SystemConfiguration.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		10C71DC8110B5D8E008E8718 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				10C71DCC110B5D9F008E8718 /* SudzCExamplesAppDelegate.m */,
+				10C71DCD110B5D9F008E8718 /* SudzCExamplesAppDelegate.h */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		10C71EBB110C0A71008E8718 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				1027CDDE110CDB4A00147F52 /* Examples */,
+				10C71EBC110C0A71008E8718 /* Generated */,
+				10C71F91110C0A71008E8718 /* Soap */,
+				10C71FAB110C0A71008E8718 /* TouchXML */,
+			);
+			name = Source;
+			path = ../Source;
+			sourceTree = SOURCE_ROOT;
+		};
+		1027CDDE110CDB4A00147F52 /* Examples */ = {
+
+			isa = PBXGroup;
+
+			children = (
+
+				12D4BA26EAC8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.h */,
+				12D4BA26EAD8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.m */,
+
+
+			);
+
+			path = Examples;
+
+			sourceTree = "<group>";
+
+		};
+		10C71EBC110C0A71008E8718 /* Generated */ = {
+			isa = PBXGroup;
+			children = (
+				12D4BA26EAE8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.h */,
+				12D4BA26EAF8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.m */,
+				12D4BA26EB08CD795070B8A4 /* JIPAbstractRemoteConstant.h */,
+				12D4BA26EB18CD795070B8A4 /* JIPAbstractRemoteConstant.m */,
+				12D4BA26EB28CD795070B8A4 /* JIPAbstractRemoteEntity.h */,
+				12D4BA26EB38CD795070B8A4 /* JIPAbstractRemoteEntity.m */,
+				12D4BA26EB48CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.h */,
+				12D4BA26EB58CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.m */,
+				12D4BA26EB68CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.h */,
+				12D4BA26EB78CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.m */,
+				12D4BA26EB88CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.h */,
+				12D4BA26EB98CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.m */,
+				12D4BA26EBA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.h */,
+				12D4BA26EBB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.m */,
+				12D4BA26EBC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.h */,
+				12D4BA26EBD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.m */,
+				12D4BA26EBE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.h */,
+				12D4BA26EBF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.m */,
+				12D4BA26EC08CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.h */,
+				12D4BA26EC18CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.m */,
+				12D4BA26EC28CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.h */,
+				12D4BA26EC38CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.m */,
+				12D4BA26EC48CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.h */,
+				12D4BA26EC58CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.m */,
+				12D4BA26EC68CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.h */,
+				12D4BA26EC78CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.m */,
+				12D4BA26EC88CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.h */,
+				12D4BA26EC98CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.m */,
+				12D4BA26ECA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.h */,
+				12D4BA26ECB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.m */,
+				12D4BA26ECC8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.h */,
+				12D4BA26ECD8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.m */,
+				12D4BA26ECE8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.h */,
+				12D4BA26ECF8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.m */,
+				12D4BA26ED08CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.h */,
+				12D4BA26ED18CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.m */,
+				12D4BA26ED28CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.h */,
+				12D4BA26ED38CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.m */,
+				12D4BA26ED48CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.h */,
+				12D4BA26ED58CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.m */,
+				12D4BA26ED68CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.h */,
+				12D4BA26ED78CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.m */,
+				12D4BA26ED88CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.h */,
+				12D4BA26ED98CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.m */,
+				12D4BA26EDA8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.h */,
+				12D4BA26EDB8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.m */,
+				12D4BA26EDC8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.h */,
+				12D4BA26EDD8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.m */,
+				12D4BA26EDE8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.h */,
+				12D4BA26EDF8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.m */,
+				12D4BA26EE08CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.h */,
+				12D4BA26EE18CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.m */,
+				12D4BA26EE28CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.h */,
+				12D4BA26EE38CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.m */,
+				12D4BA26EE48CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.h */,
+				12D4BA26EE58CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.m */,
+				12D4BA26EE68CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.h */,
+				12D4BA26EE78CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.m */,
+				12D4BA26EE88CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.h */,
+				12D4BA26EE98CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.m */,
+				12D4BA26EEA8CD795070B8A4 /* JIPArrayOf_xsd_string.h */,
+				12D4BA26EEB8CD795070B8A4 /* JIPArrayOf_xsd_string.m */,
+				12D4BA26EEC8CD795070B8A4 /* JIPJiraSoapServiceService.h */,
+				12D4BA26EED8CD795070B8A4 /* JIPJiraSoapServiceService.m */,
+				12D4BA26EEE8CD795070B8A4 /* JIPRemoteAttachment.h */,
+				12D4BA26EEF8CD795070B8A4 /* JIPRemoteAttachment.m */,
+				12D4BA26EF08CD795070B8A4 /* JIPRemoteAuthenticationException.h */,
+				12D4BA26EF18CD795070B8A4 /* JIPRemoteAuthenticationException.m */,
+				12D4BA26EF28CD795070B8A4 /* JIPRemoteAvatar.h */,
+				12D4BA26EF38CD795070B8A4 /* JIPRemoteAvatar.m */,
+				12D4BA26EF48CD795070B8A4 /* JIPRemoteComment.h */,
+				12D4BA26EF58CD795070B8A4 /* JIPRemoteComment.m */,
+				12D4BA26EF68CD795070B8A4 /* JIPRemoteComponent.h */,
+				12D4BA26EF78CD795070B8A4 /* JIPRemoteComponent.m */,
+				12D4BA26EF88CD795070B8A4 /* JIPRemoteConfiguration.h */,
+				12D4BA26EF98CD795070B8A4 /* JIPRemoteConfiguration.m */,
+				12D4BA26EFA8CD795070B8A4 /* JIPRemoteCustomFieldValue.h */,
+				12D4BA26EFB8CD795070B8A4 /* JIPRemoteCustomFieldValue.m */,
+				12D4BA26EFC8CD795070B8A4 /* JIPRemoteEntity.h */,
+				12D4BA26EFD8CD795070B8A4 /* JIPRemoteEntity.m */,
+				12D4BA26EFE8CD795070B8A4 /* JIPRemoteException.h */,
+				12D4BA26EFF8CD795070B8A4 /* JIPRemoteException.m */,
+				12D4BA26F008CD795070B8A4 /* JIPRemoteField.h */,
+				12D4BA26F018CD795070B8A4 /* JIPRemoteField.m */,
+				12D4BA26F028CD795070B8A4 /* JIPRemoteFieldValue.h */,
+				12D4BA26F038CD795070B8A4 /* JIPRemoteFieldValue.m */,
+				12D4BA26F048CD795070B8A4 /* JIPRemoteFilter.h */,
+				12D4BA26F058CD795070B8A4 /* JIPRemoteFilter.m */,
+				12D4BA26F068CD795070B8A4 /* JIPRemoteGroup.h */,
+				12D4BA26F078CD795070B8A4 /* JIPRemoteGroup.m */,
+				12D4BA26F088CD795070B8A4 /* JIPRemoteIssue.h */,
+				12D4BA26F098CD795070B8A4 /* JIPRemoteIssue.m */,
+				12D4BA26F0A8CD795070B8A4 /* JIPRemoteIssueType.h */,
+				12D4BA26F0B8CD795070B8A4 /* JIPRemoteIssueType.m */,
+				12D4BA26F0C8CD795070B8A4 /* JIPRemoteNamedObject.h */,
+				12D4BA26F0D8CD795070B8A4 /* JIPRemoteNamedObject.m */,
+				12D4BA26F0E8CD795070B8A4 /* JIPRemotePermission.h */,
+				12D4BA26F0F8CD795070B8A4 /* JIPRemotePermission.m */,
+				12D4BA26F108CD795070B8A4 /* JIPRemotePermissionException.h */,
+				12D4BA26F118CD795070B8A4 /* JIPRemotePermissionException.m */,
+				12D4BA26F128CD795070B8A4 /* JIPRemotePermissionMapping.h */,
+				12D4BA26F138CD795070B8A4 /* JIPRemotePermissionMapping.m */,
+				12D4BA26F148CD795070B8A4 /* JIPRemotePermissionScheme.h */,
+				12D4BA26F158CD795070B8A4 /* JIPRemotePermissionScheme.m */,
+				12D4BA26F168CD795070B8A4 /* JIPRemotePriority.h */,
+				12D4BA26F178CD795070B8A4 /* JIPRemotePriority.m */,
+				12D4BA26F188CD795070B8A4 /* JIPRemoteProject.h */,
+				12D4BA26F198CD795070B8A4 /* JIPRemoteProject.m */,
+				12D4BA26F1A8CD795070B8A4 /* JIPRemoteProjectRole.h */,
+				12D4BA26F1B8CD795070B8A4 /* JIPRemoteProjectRole.m */,
+				12D4BA26F1C8CD795070B8A4 /* JIPRemoteProjectRoleActors.h */,
+				12D4BA26F1D8CD795070B8A4 /* JIPRemoteProjectRoleActors.m */,
+				12D4BA26F1E8CD795070B8A4 /* JIPRemoteResolution.h */,
+				12D4BA26F1F8CD795070B8A4 /* JIPRemoteResolution.m */,
+				12D4BA26F208CD795070B8A4 /* JIPRemoteRoleActor.h */,
+				12D4BA26F218CD795070B8A4 /* JIPRemoteRoleActor.m */,
+				12D4BA26F228CD795070B8A4 /* JIPRemoteRoleActors.h */,
+				12D4BA26F238CD795070B8A4 /* JIPRemoteRoleActors.m */,
+				12D4BA26F248CD795070B8A4 /* JIPRemoteScheme.h */,
+				12D4BA26F258CD795070B8A4 /* JIPRemoteScheme.m */,
+				12D4BA26F268CD795070B8A4 /* JIPRemoteSecurityLevel.h */,
+				12D4BA26F278CD795070B8A4 /* JIPRemoteSecurityLevel.m */,
+				12D4BA26F288CD795070B8A4 /* JIPRemoteServerInfo.h */,
+				12D4BA26F298CD795070B8A4 /* JIPRemoteServerInfo.m */,
+				12D4BA26F2A8CD795070B8A4 /* JIPRemoteStatus.h */,
+				12D4BA26F2B8CD795070B8A4 /* JIPRemoteStatus.m */,
+				12D4BA26F2C8CD795070B8A4 /* JIPRemoteTimeInfo.h */,
+				12D4BA26F2D8CD795070B8A4 /* JIPRemoteTimeInfo.m */,
+				12D4BA26F2E8CD795070B8A4 /* JIPRemoteUser.h */,
+				12D4BA26F2F8CD795070B8A4 /* JIPRemoteUser.m */,
+				12D4BA26F308CD795070B8A4 /* JIPRemoteValidationException.h */,
+				12D4BA26F318CD795070B8A4 /* JIPRemoteValidationException.m */,
+				12D4BA26F328CD795070B8A4 /* JIPRemoteVersion.h */,
+				12D4BA26F338CD795070B8A4 /* JIPRemoteVersion.m */,
+				12D4BA26F348CD795070B8A4 /* JIPRemoteWorklog.h */,
+				12D4BA26F358CD795070B8A4 /* JIPRemoteWorklog.m */,
+				12D4BA26F368CD795070B8A4 /* JIPRemoteWorklogImpl.h */,
+				12D4BA26F378CD795070B8A4 /* JIPRemoteWorklogImpl.m */,
+				12D4BA26F388CD795070B8A4 /* JIPServices.h */,
+				12D4BA26F398CD795070B8A4 /* JIPServices.m */,
+				12D4BA26F3A8CD795070B8A4 /* Soap+Prefix.h */,
+				12D4BA26F3B8CD795070B8A4 /* Soap+Prefix.m */,
+
+			);
+			path = Generated;
+			sourceTree = "<group>";
+		};
+		10C71F91110C0A71008E8718 /* Soap */ = {
+			isa = PBXGroup;
+			children = (
+				1067D05612B7BA3D005BBFFD /* NSMutableArray+Soap.h */,
+				1067D05712B7BA3D005BBFFD /* NSMutableArray+Soap.m */,
+				10C71F92110C0A71008E8718 /* NSData+Base64.h */,
+				10C71F93110C0A71008E8718 /* NSData+Base64.m */,
+				10C71F94110C0A71008E8718 /* Soap.h */,
+				10C71F95110C0A71008E8718 /* Soap.m */,
+				10C71F96110C0A71008E8718 /* SoapArray.h */,
+				10C71F97110C0A71008E8718 /* SoapArray.m */,
+				10C71F98110C0A71008E8718 /* SoapDelegate.h */,
+				10C71F99110C0A71008E8718 /* SoapDictionary.h */,
+				10C71F9A110C0A71008E8718 /* SoapDictionary.m */,
+				10C71F9B110C0A71008E8718 /* SoapFault.h */,
+				10C71F9C110C0A71008E8718 /* SoapFault.m */,
+				10C71F9D110C0A71008E8718 /* SoapHandler.h */,
+				10C71F9E110C0A71008E8718 /* SoapHandler.m */,
+				10C71F9F110C0A71008E8718 /* SoapNil.h */,
+				10C71FA0110C0A71008E8718 /* SoapNil.m */,
+				107DACA71217305B00F18A8A /* SoapLiteral.m */,
+				107DACA81217305B00F18A8A /* SoapLiteral.h */,
+				10C71FA1110C0A71008E8718 /* SoapObject.h */,
+				10C71FA2110C0A71008E8718 /* SoapObject.m */,
+				10C71FA3110C0A71008E8718 /* SoapParameter.h */,
+				10C71FA4110C0A71008E8718 /* SoapParameter.m */,
+				10C71FA5110C0A71008E8718 /* SoapReachability.h */,
+				10C71FA6110C0A71008E8718 /* SoapReachability.m */,
+				10C71FA7110C0A71008E8718 /* SoapRequest.h */,
+				10C71FA8110C0A71008E8718 /* SoapRequest.m */,
+				10C71FA9110C0A71008E8718 /* SoapService.h */,
+				10C71FAA110C0A71008E8718 /* SoapService.m */,
+			);
+			path = Soap;
+			sourceTree = "<group>";
+		};
+		10C71FAB110C0A71008E8718 /* TouchXML */ = {
+			isa = PBXGroup;
+			children = (
+				10C71FAC110C0A71008E8718 /* CXMLDocument.h */,
+				10C71FAD110C0A71008E8718 /* CXMLDocument.m */,
+				10C71FAE110C0A71008E8718 /* CXMLDocument_PrivateExtensions.h */,
+				10C71FAF110C0A71008E8718 /* CXMLDocument_PrivateExtensions.m */,
+				10C71FB0110C0A71008E8718 /* CXMLElement.h */,
+				10C71FB1110C0A71008E8718 /* CXMLElement.m */,
+				10C71FB2110C0A71008E8718 /* CXMLNode.h */,
+				10C71FB3110C0A71008E8718 /* CXMLNode.m */,
+				10C71FB4110C0A71008E8718 /* CXMLNode_PrivateExtensions.h */,
+				10C71FB5110C0A71008E8718 /* CXMLNode_PrivateExtensions.m */,
+				10C71FB6110C0A71008E8718 /* CXMLNode_XPathExtensions.h */,
+				10C71FB7110C0A71008E8718 /* CXMLNode_XPathExtensions.m */,
+				10C71FB8110C0A71008E8718 /* TouchXML.h */,
+			);
+			path = TouchXML;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* SudzCExamples.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				10C71EBB110C0A71008E8718 /* Source */,
+				10C71DC8110B5D8E008E8718 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* SudzCExamples_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				8D1107310486CEB800E47090 /* SudzCExamples-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				10C71E6D110B5EC0008E8718 /* SystemConfiguration.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* SudzCExamples */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SudzCExamples" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SudzCExamples;
+			productName = SudzCExamples;
+			productReference = 1D6058910D05DD3D006BFB54 /* SudzCExamples.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SudzCExamples" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* SudzCExamples */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				10C71DCE110B5D9F008E8718 /* SudzCExamplesAppDelegate.m in Sources */,
+				12D4BA26F3D8CD795070B8A4 /* JIPJiraSoapServiceServiceExample.m in Sources */,
+				12D4BA26F3F8CD795070B8A4 /* JIPAbstractNamedRemoteEntity.m in Sources */,
+				12D4BA26F418CD795070B8A4 /* JIPAbstractRemoteConstant.m in Sources */,
+				12D4BA26F438CD795070B8A4 /* JIPAbstractRemoteEntity.m in Sources */,
+				12D4BA26F458CD795070B8A4 /* JIPArrayOf_tns1_RemoteAttachment.m in Sources */,
+				12D4BA26F478CD795070B8A4 /* JIPArrayOf_tns1_RemoteAvatar.m in Sources */,
+				12D4BA26F498CD795070B8A4 /* JIPArrayOf_tns1_RemoteComment.m in Sources */,
+				12D4BA26F4B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteComponent.m in Sources */,
+				12D4BA26F4D8CD795070B8A4 /* JIPArrayOf_tns1_RemoteCustomFieldValue.m in Sources */,
+				12D4BA26F4F8CD795070B8A4 /* JIPArrayOf_tns1_RemoteEntity.m in Sources */,
+				12D4BA26F518CD795070B8A4 /* JIPArrayOf_tns1_RemoteField.m in Sources */,
+				12D4BA26F538CD795070B8A4 /* JIPArrayOf_tns1_RemoteFieldValue.m in Sources */,
+				12D4BA26F558CD795070B8A4 /* JIPArrayOf_tns1_RemoteFilter.m in Sources */,
+				12D4BA26F578CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssue.m in Sources */,
+				12D4BA26F598CD795070B8A4 /* JIPArrayOf_tns1_RemoteIssueType.m in Sources */,
+				12D4BA26F5B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteNamedObject.m in Sources */,
+				12D4BA26F5D8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermission.m in Sources */,
+				12D4BA26F5F8CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionMapping.m in Sources */,
+				12D4BA26F618CD795070B8A4 /* JIPArrayOf_tns1_RemotePermissionScheme.m in Sources */,
+				12D4BA26F638CD795070B8A4 /* JIPArrayOf_tns1_RemotePriority.m in Sources */,
+				12D4BA26F658CD795070B8A4 /* JIPArrayOf_tns1_RemoteProject.m in Sources */,
+				12D4BA26F678CD795070B8A4 /* JIPArrayOf_tns1_RemoteProjectRole.m in Sources */,
+				12D4BA26F698CD795070B8A4 /* JIPArrayOf_tns1_RemoteResolution.m in Sources */,
+				12D4BA26F6B8CD795070B8A4 /* JIPArrayOf_tns1_RemoteRoleActor.m in Sources */,
+				12D4BA26F6D8CD795070B8A4 /* JIPArrayOf_tns1_RemoteScheme.m in Sources */,
+				12D4BA26F6F8CD795070B8A4 /* JIPArrayOf_tns1_RemoteSecurityLevel.m in Sources */,
+				12D4BA26F718CD795070B8A4 /* JIPArrayOf_tns1_RemoteStatus.m in Sources */,
+				12D4BA26F738CD795070B8A4 /* JIPArrayOf_tns1_RemoteUser.m in Sources */,
+				12D4BA26F758CD795070B8A4 /* JIPArrayOf_tns1_RemoteVersion.m in Sources */,
+				12D4BA26F778CD795070B8A4 /* JIPArrayOf_tns1_RemoteWorklog.m in Sources */,
+				12D4BA26F798CD795070B8A4 /* JIPArrayOf_xsd_base64Binary.m in Sources */,
+				12D4BA26F7B8CD795070B8A4 /* JIPArrayOf_xsd_string.m in Sources */,
+				12D4BA26F7D8CD795070B8A4 /* JIPJiraSoapServiceService.m in Sources */,
+				12D4BA26F7F8CD795070B8A4 /* JIPRemoteAttachment.m in Sources */,
+				12D4BA26F818CD795070B8A4 /* JIPRemoteAuthenticationException.m in Sources */,
+				12D4BA26F838CD795070B8A4 /* JIPRemoteAvatar.m in Sources */,
+				12D4BA26F858CD795070B8A4 /* JIPRemoteComment.m in Sources */,
+				12D4BA26F878CD795070B8A4 /* JIPRemoteComponent.m in Sources */,
+				12D4BA26F898CD795070B8A4 /* JIPRemoteConfiguration.m in Sources */,
+				12D4BA26F8B8CD795070B8A4 /* JIPRemoteCustomFieldValue.m in Sources */,
+				12D4BA26F8D8CD795070B8A4 /* JIPRemoteEntity.m in Sources */,
+				12D4BA26F8F8CD795070B8A4 /* JIPRemoteException.m in Sources */,
+				12D4BA26F918CD795070B8A4 /* JIPRemoteField.m in Sources */,
+				12D4BA26F938CD795070B8A4 /* JIPRemoteFieldValue.m in Sources */,
+				12D4BA26F958CD795070B8A4 /* JIPRemoteFilter.m in Sources */,
+				12D4BA26F978CD795070B8A4 /* JIPRemoteGroup.m in Sources */,
+				12D4BA26F998CD795070B8A4 /* JIPRemoteIssue.m in Sources */,
+				12D4BA26F9B8CD795070B8A4 /* JIPRemoteIssueType.m in Sources */,
+				12D4BA26F9D8CD795070B8A4 /* JIPRemoteNamedObject.m in Sources */,
+				12D4BA26F9F8CD795070B8A4 /* JIPRemotePermission.m in Sources */,
+				12D4BA26FA18CD795070B8A4 /* JIPRemotePermissionException.m in Sources */,
+				12D4BA26FA38CD795070B8A4 /* JIPRemotePermissionMapping.m in Sources */,
+				12D4BA26FA58CD795070B8A4 /* JIPRemotePermissionScheme.m in Sources */,
+				12D4BA26FA78CD795070B8A4 /* JIPRemotePriority.m in Sources */,
+				12D4BA26FA98CD795070B8A4 /* JIPRemoteProject.m in Sources */,
+				12D4BA26FAB8CD795070B8A4 /* JIPRemoteProjectRole.m in Sources */,
+				12D4BA26FAD8CD795070B8A4 /* JIPRemoteProjectRoleActors.m in Sources */,
+				12D4BA26FAF8CD795070B8A4 /* JIPRemoteResolution.m in Sources */,
+				12D4BA26FB18CD795070B8A4 /* JIPRemoteRoleActor.m in Sources */,
+				12D4BA26FB38CD795070B8A4 /* JIPRemoteRoleActors.m in Sources */,
+				12D4BA26FB58CD795070B8A4 /* JIPRemoteScheme.m in Sources */,
+				12D4BA26FB78CD795070B8A4 /* JIPRemoteSecurityLevel.m in Sources */,
+				12D4BA26FB98CD795070B8A4 /* JIPRemoteServerInfo.m in Sources */,
+				12D4BA26FBB8CD795070B8A4 /* JIPRemoteStatus.m in Sources */,
+				12D4BA26FBD8CD795070B8A4 /* JIPRemoteTimeInfo.m in Sources */,
+				12D4BA26FBF8CD795070B8A4 /* JIPRemoteUser.m in Sources */,
+				12D4BA26FC18CD795070B8A4 /* JIPRemoteValidationException.m in Sources */,
+				12D4BA26FC38CD795070B8A4 /* JIPRemoteVersion.m in Sources */,
+				12D4BA26FC58CD795070B8A4 /* JIPRemoteWorklog.m in Sources */,
+				12D4BA26FC78CD795070B8A4 /* JIPRemoteWorklogImpl.m in Sources */,
+				12D4BA26FC98CD795070B8A4 /* JIPServices.m in Sources */,
+				12D4BA26FCB8CD795070B8A4 /* Soap+Prefix.m in Sources */,
+
+				1067D05812B7BA3D005BBFFD /* NSMutableArray+Soap.m in Sources */,
+				10C72023110C0A71008E8718 /* NSData+Base64.m in Sources */,
+				10C72024110C0A71008E8718 /* Soap.m in Sources */,
+				10C72025110C0A71008E8718 /* SoapArray.m in Sources */,
+				10C72026110C0A71008E8718 /* SoapDictionary.m in Sources */,
+				10C72027110C0A71008E8718 /* SoapFault.m in Sources */,
+				10C72028110C0A71008E8718 /* SoapHandler.m in Sources */,
+				10C72029110C0A71008E8718 /* SoapNil.m in Sources */,
+				107DACA91217305B00F18A8A /* SoapLiteral.m in Sources */,
+				10C7202A110C0A71008E8718 /* SoapObject.m in Sources */,
+				10C7202B110C0A71008E8718 /* SoapParameter.m in Sources */,
+				10C7202C110C0A71008E8718 /* SoapReachability.m in Sources */,
+				10C7202D110C0A71008E8718 /* SoapRequest.m in Sources */,
+				10C7202E110C0A71008E8718 /* SoapService.m in Sources */,
+				10C7202F110C0A71008E8718 /* CXMLDocument.m in Sources */,
+				10C72030110C0A71008E8718 /* CXMLDocument_PrivateExtensions.m in Sources */,
+				10C72031110C0A71008E8718 /* CXMLElement.m in Sources */,
+				10C72032110C0A71008E8718 /* CXMLNode.m in Sources */,
+				10C72033110C0A71008E8718 /* CXMLNode_PrivateExtensions.m in Sources */,
+				10C72034110C0A71008E8718 /* CXMLNode_XPathExtensions.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
+				INFOPLIST_FILE = "SudzCExamples-Info.plist";
+				PRODUCT_NAME = SudzCExamples;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SudzCExamples_Prefix.pch;
+				INFOPLIST_FILE = "SudzCExamples-Info.plist";
+				PRODUCT_NAME = SudzCExamples;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = "-lxml2";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = /usr/include/libxml2;
+				OTHER_LDFLAGS = "-lxml2";
+				PREBINDING = NO;
+				SDKROOT = iphoneos4.2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "SudzCExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "SudzCExamples" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
