@@ -49,7 +49,7 @@
 // create new issue
 - (void)createIssue:(Issue *)_issue;
 
-// returns singletone Connector object
+// returns singleton Connector object
 + (Connector *)sharedConnector;
 
 @end
