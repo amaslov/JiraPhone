@@ -92,7 +92,6 @@
 			case ISSUE_SUMMARY_ROW:
 				ret = @"Summary: ";
 				break;
-	
 			default:
 				break;
 		}
@@ -116,7 +115,7 @@
 				break;
 			case ISSUE_UPDATED_ROW:
 				ret = @"Updated: ";
-				break;	
+				break;
 			default:
 				break;
 		}
@@ -248,7 +247,16 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return [NSString stringWithFormat:@"Category %d", section+1];
+	switch (section) {
+		case 0:
+			return [NSString stringWithFormat:@"Issue Data:"];
+		case 1:
+			return [NSString stringWithFormat:@"Issue Manager:"];
+		case 2:
+			return [NSString stringWithFormat:@"Issue Dates:"];
+		default:
+			return [NSString stringWithFormat:@"Category %d", section+1];
+	}
 }
 #pragma mark -
 #pragma mark Memory management
