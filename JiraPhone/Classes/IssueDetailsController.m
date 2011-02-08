@@ -66,7 +66,7 @@
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	// only first category has 5 items, the last two's has 2 items in each
+	// only first category has 6 items, the last two's has 2 items in each
     return section == ISSUE_DATA_SECTION ? 6 : 2;
 }
 
@@ -131,6 +131,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+		cell.textLabel.numberOfLines = 3;
     }
     
     // Configure the cell...
