@@ -271,7 +271,6 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -323,7 +322,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>03FD7E541302091A00A2F479</string>
+										<string>0330323413044F3A00912479</string>
 										<key>history</key>
 										<array>
 											<string>4F265DF412DFC2F000C864CF</string>
@@ -438,9 +437,6 @@
 											<string>030DA1DB12FECE66009B8142</string>
 											<string>030DA1DC12FECE66009B8142</string>
 											<string>030DA1DD12FECE66009B8142</string>
-											<string>030DA1DE12FECE66009B8142</string>
-											<string>030DA1DF12FECE66009B8142</string>
-											<string>030DA1E012FECE66009B8142</string>
 											<string>030DA1E112FECE66009B8142</string>
 											<string>030DA1E212FECE66009B8142</string>
 											<string>030DA1E312FECE66009B8142</string>
@@ -499,7 +495,10 @@
 											<string>030DA2BB12FF5E18009B8142</string>
 											<string>030DA2BC12FF5E18009B8142</string>
 											<string>031EF437130071D2006A6706</string>
-											<string>031EF43C130071D2006A6706</string>
+											<string>03FD7E6B1303493200A2F479</string>
+											<string>03FD7E6C1303493200A2F479</string>
+											<string>03FD7E6D1303493200A2F479</string>
+											<string>03FD7E6F1303493200A2F479</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -511,14 +510,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1081, 460}}</string>
+								<string>{{0, 0}, {1081, 455}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 121 1261 657 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>460pt</string>
+							<string>455pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -531,14 +530,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 465}, {1081, 151}}</string>
+								<string>{{0, 460}, {1081, 156}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 121 1261 657 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>151pt</string>
+							<string>156pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -557,9 +556,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>03FD7E551302091A00A2F479</string>
+				<string>0330322713044F1800912479</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>03FD7E561302091A00A2F479</string>
+				<string>0330322813044F1800912479</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -697,8 +696,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>4FA98D9F12DF8B4B009C33EA</string>
 		<string>/Users/alekseymaslov/Documents/Development/JiraPhone/JiraPhone/JiraPhone.xcodeproj</string>
 	</array>
@@ -780,7 +777,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>4FA98D9F12DF8B4B009C33EA</string>
-				<string>03FD7E571302091A00A2F479</string>
+				<string>0330322913044F1800912479</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>

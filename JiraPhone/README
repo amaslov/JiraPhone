@@ -1,0 +1,33 @@
+Files description.
+
+Key:
++ : Directory
+- : File
+
+-InternalClassesModel.xclassmodel: model of some of the internal classes. Automatically created by xCode from indexed code files.
+
++Connector
+
++Model
+
++Search Screen
+
++Login Screen
+
++Projects Screen
+
++Issue Details Screen
+
++Create Issue Screen
+
++Jira Soap Service
+
++fmdb
+
++Other Sources
+
++Resources
+
++Frameworks
+
++Products
