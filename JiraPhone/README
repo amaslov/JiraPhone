@@ -8,11 +8,11 @@ ____________________________________________________
 -InternalClassesModel.xclassmodel: model of some of the internal classes. Automatically created by xCode from indexed code files.
 
 +Connector:Connector, which is responsible for connecting to JiraSoapService class. This is the beginning and end of all communications with JIRA web service. Other classes call it.
--ConnectorDelegate.h
--Connector.h
--Connector.m
+-ConnectorDelegate.h:manages Connector
+-Connector.h:header of Connector
+-Connector.m:implementation
 
-+Model: Model of internal classes. Replicates JIRA classes with some simplifications. TODO: Specify, which other classes need implementation. Implement them. Check priority and other things, whether they are working as they should.
++Model: Model of internal classes. Replicates JIRA classes with some simplifications. For understanding check InternalClassesModel.xclassmodel as well as attached design files. TODO: Specify, which other classes need implementation. Implement them. Check priority and other things, whether they are working as they should.
 -AbstractEntity.h
 -AbstractEntity.m
 -AbstractNamedEntity.h
