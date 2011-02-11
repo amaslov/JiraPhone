@@ -3,31 +3,92 @@ Files description, as they are represented in xCode.
 Key:
 + : Directory
 - : File
+____________________________________________________
 
 -InternalClassesModel.xclassmodel: model of some of the internal classes. Automatically created by xCode from indexed code files.
 
-+Connector
++Connector:Connector, which is responsible for connecting to JiraSoapService class. This is the beginning and end of all communications with JIRA web service. Other classes call it.
+-ConnectorDelegate.h
+-Connector.h
+-Connector.m
 
-+Model
++Model: Model of internal classes. Replicates JIRA classes with some simplifications. TODO: Specify, which other classes need implementation. Implement them. Check priority and other things, whether they are working as they should.
+-AbstractEntity.h
+-AbstractEntity.m
+-AbstractNamedEntity.h
+-AbstractNamedEntity.m
+-Project.h
+-Project.m
+-Issue.h
+-Issue.m
+-User.h
+-User.m
+-AbstractConstant.h
+-AbstractConstant.m
+-IssueType.h
+-IssueType.m
+-Priority.h
+-Priority.m
 
-+Search Screen
++Search Screen: Search screen and search controller which are responsible for performing search. Currently performs only text search, displays all issues satisfying entered criteria. TODO: implement JQL search?
+-SearchController.h
+-SearchController.m
+-SearchController.xib
+++SearchCell
+--SearchCell.h
+--SearchCell.m
+--SearchSell.xib
 
-+Login Screen
++Login Screen:Login Controller, logs in, redirects to ProjectsController. TODO: Improve UI, change redirect to new MainMenuController.
+-LoginController.h
+-LoginController.m
+-LoginController.xib
 
-+Projects Screen
++Projects Screen: Displays all projects on the server. 1. Gets and displays cached projects from the local DB, then sends request for other projects to JIRA server. After project list from JIRA received Ñ refreshes the view. If you click on a project - redirects to Issues Screen. TODO - put somewhere else.
+-ProjectsController.h
+-ProjectsController.m
+-ProjectsController.xib
 
-+Issue Details Screen
++Issues Screen: Displays ALL issues in a project. No filtering, no limits. TODO: Impose limits, something like in Twitter app. Create support for filters. Add icons/change UI.
+-IssuesController.h
+-IssuesController.m
+-IssuesController.xib
 
-+Create Issue Screen
++Issue Details Screen. Displays issue details, sorted in 3 categories. TODO: update UI, add support to edit (with edit button???)
+-IssueDetailsController.h
+-IssueDetailsController.m
+-IssueDetailsController.xib
 
-+Jira Soap Service
++Create Issue Screen. Creates issues. TODO: Add more classes to the model. Make "roller selection" to choose priority etc.
+-CreateIssueDelegate.h
+-CreateIssueController.h
+-CreateIssueController.m
+++Mutable Issue Delegate
+--MutableIssueDelegate.h
+--MutableIssueDelegate.m
+--MutableIssueDelegate.xib
 
-+fmdb
++Jira Soap Service: Generated stuff. Most of the stuff to be deleted later.
+++Generated
+--JiraSoapService.h
+--JiraSoapService.m
 
-+Other Sources
++fmdb:Connect to SQLite, Db Management.
+-FMDatabase.h
+-FMDatabase.m
+-FMDatabaseAdditions.h
+-FMDatabaseAdditions.m
+-FMResultSet.h
+-FMResultSet.m
 
-+Resources
++Other Sources: prefixes, main.m file.
+-JiraPhoneAppDelegate.h
+-JiraPhoneAppDelegate.m
+-JiraPhone_Prefix.h
+-main.m
 
-+Frameworks
++Resources: resources, like pics used, main window (of the login screen), sqlite file.
 
-+Products
++Frameworks: Apple and 3-party frameworks.
+
++Products: compiled app.
