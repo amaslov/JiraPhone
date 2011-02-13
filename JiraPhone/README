@@ -13,25 +13,25 @@ ____________________________________________________
 -Connector.m:implementation
 
 +Model: Model of internal classes. Replicates JIRA classes with some simplifications. For understanding check InternalClassesModel.xclassmodel as well as attached design files. TODO: Specify, which other classes need implementation. Implement them. Check priority and other things, whether they are working as they should.
--AbstractEntity.h
+-AbstractEntity.h: root class for all the internal data classes
 -AbstractEntity.m
--AbstractNamedEntity.h
+-AbstractNamedEntity.h: root class for some of the internal data classes
 -AbstractNamedEntity.m
--Project.h
+-Project.h:Project
 -Project.m
--Issue.h
+-Issue.h:issue
 -Issue.m
--User.h
+-User.h:user
 -User.m
--AbstractConstant.h
+-AbstractConstant.h:some data is in form of constants
 -AbstractConstant.m
--IssueType.h
+-IssueType.h:type of issue
 -IssueType.m
 -Priority.h
--Priority.m
+-Priority.m - my implementation of priority.
 
 +Search Screen: Search screen and search controller which are responsible for performing search. Currently performs only text search, displays all issues satisfying entered criteria. TODO: implement JQL search?
--SearchController.h
+-SearchController.h - creates UITableView, populates it with search results
 -SearchController.m
 -SearchController.xib
 ++SearchCell
@@ -68,7 +68,7 @@ ____________________________________________________
 --MutableIssueDelegate.m
 --MutableIssueDelegate.xib
 
-+Jira Soap Service: Generated stuff. Most of the stuff to be deleted later.
++Jira Soap Service: Generated stuff.
 ++Generated
 --JiraSoapService.h
 --JiraSoapService.m
