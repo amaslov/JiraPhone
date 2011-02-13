@@ -136,6 +136,14 @@
 		4FEDF76512EA3DD700CA09A0 /* MutableIssueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */; };
 		4FEDF76912EA3EEF00CA09A0 /* CreateIssueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */; };
 		4FEDF79412EA40CE00CA09A0 /* MutableIssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */; };
+		A87D27CF130630C9002475F6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27CE130630C9002475F6 /* Filter.m */; };
+		A87D27D313063672002475F6 /* filterProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27D213063672002475F6 /* filterProperties.m */; };
+		A87D27D6130636BB002475F6 /* filterAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27D5130636BB002475F6 /* filterAttributes.m */; };
+		A87D27DC1306374A002475F6 /* filterWorkRatios.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27DB1306374A002475F6 /* filterWorkRatios.m */; };
+		A87D284013071401002475F6 /* filterDates.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D283F13071401002475F6 /* filterDates.m */; };
+		A87D284413071423002475F6 /* dateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D284313071423002475F6 /* dateSet.m */; };
+		A87D284B13071607002475F6 /* date.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D284A13071607002475F6 /* date.m */; };
+		A87D285613071789002475F6 /* range.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D285513071789002475F6 /* range.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -387,6 +395,22 @@
 		4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailCell.xib; sourceTree = "<group>"; };
 		4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateIssueDelegate.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JiraPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JiraPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A87D27CD130630C9002475F6 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		A87D27CE130630C9002475F6 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		A87D27D113063672002475F6 /* filterProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterProperties.h; sourceTree = "<group>"; };
+		A87D27D213063672002475F6 /* filterProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterProperties.m; sourceTree = "<group>"; };
+		A87D27D4130636BB002475F6 /* filterAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterAttributes.h; sourceTree = "<group>"; };
+		A87D27D5130636BB002475F6 /* filterAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterAttributes.m; sourceTree = "<group>"; };
+		A87D27DA1306374A002475F6 /* filterWorkRatios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterWorkRatios.h; sourceTree = "<group>"; };
+		A87D27DB1306374A002475F6 /* filterWorkRatios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterWorkRatios.m; sourceTree = "<group>"; };
+		A87D283E13071401002475F6 /* filterDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterDates.h; sourceTree = "<group>"; };
+		A87D283F13071401002475F6 /* filterDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterDates.m; sourceTree = "<group>"; };
+		A87D284213071423002475F6 /* dateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dateSet.h; sourceTree = "<group>"; };
+		A87D284313071423002475F6 /* dateSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dateSet.m; sourceTree = "<group>"; };
+		A87D284913071607002475F6 /* date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = date.h; sourceTree = "<group>"; };
+		A87D284A13071607002475F6 /* date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = date.m; sourceTree = "<group>"; };
+		A87D285413071789002475F6 /* range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = range.h; sourceTree = "<group>"; };
+		A87D285513071789002475F6 /* range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = range.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -786,6 +810,8 @@
 		4FBA94B012E197B80052C041 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A87D2848130715EF002475F6 /* Common */,
+				A87D27D0130635FD002475F6 /* Filter's_Privates */,
 				4FBA94B112E198560052C041 /* AbstractEntity.h */,
 				4FBA94B212E198560052C041 /* AbstractEntity.m */,
 				4F80F2BE12E19936001AFF06 /* AbstractNamedEntity.h */,
@@ -802,6 +828,8 @@
 				4F97EF1812ECC17000C0AAE1 /* IssueType.m */,
 				4F97EFC512ECCB5C00C0AAE1 /* Priority.h */,
 				4F97EFC612ECCB5C00C0AAE1 /* Priority.m */,
+				A87D27CD130630C9002475F6 /* Filter.h */,
+				A87D27CE130630C9002475F6 /* Filter.m */,
 			);
 			name = Model;
 			path = Classes;
@@ -826,6 +854,34 @@
 				4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */,
 			);
 			name = "Mutable Issue Detail Cell";
+			sourceTree = "<group>";
+		};
+		A87D27D0130635FD002475F6 /* Filter's_Privates */ = {
+			isa = PBXGroup;
+			children = (
+				A87D27D113063672002475F6 /* filterProperties.h */,
+				A87D27D213063672002475F6 /* filterProperties.m */,
+				A87D27D4130636BB002475F6 /* filterAttributes.h */,
+				A87D27D5130636BB002475F6 /* filterAttributes.m */,
+				A87D283E13071401002475F6 /* filterDates.h */,
+				A87D283F13071401002475F6 /* filterDates.m */,
+				A87D27DA1306374A002475F6 /* filterWorkRatios.h */,
+				A87D27DB1306374A002475F6 /* filterWorkRatios.m */,
+				A87D284213071423002475F6 /* dateSet.h */,
+				A87D284313071423002475F6 /* dateSet.m */,
+			);
+			name = "Filter's_Privates";
+			sourceTree = "<group>";
+		};
+		A87D2848130715EF002475F6 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				A87D284913071607002475F6 /* date.h */,
+				A87D284A13071607002475F6 /* date.m */,
+				A87D285413071789002475F6 /* range.h */,
+				A87D285513071789002475F6 /* range.m */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1014,6 +1070,14 @@
 				4F97EF1612ECC10E00C0AAE1 /* AbstractConstant.m in Sources */,
 				4F97EF1912ECC17000C0AAE1 /* IssueType.m in Sources */,
 				4F97EFC712ECCB5C00C0AAE1 /* Priority.m in Sources */,
+				A87D27CF130630C9002475F6 /* Filter.m in Sources */,
+				A87D27D313063672002475F6 /* filterProperties.m in Sources */,
+				A87D27D6130636BB002475F6 /* filterAttributes.m in Sources */,
+				A87D27DC1306374A002475F6 /* filterWorkRatios.m in Sources */,
+				A87D284013071401002475F6 /* filterDates.m in Sources */,
+				A87D284413071423002475F6 /* dateSet.m in Sources */,
+				A87D284B13071607002475F6 /* date.m in Sources */,
+				A87D285613071789002475F6 /* range.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
