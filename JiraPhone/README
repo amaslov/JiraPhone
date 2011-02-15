@@ -34,12 +34,12 @@ ____________________________________________________
 -SearchController.h - creates UITableView, populates it with search results
 -SearchController.m
 -SearchController.xib
-++SearchCell
+++SearchCell - class for text entry in the cell (UISearchBar)
 --SearchCell.h
 --SearchCell.m
 --SearchSell.xib
 
-+Login Screen:Login Controller, logs in, redirects to ProjectsController. TODO: Improve UI, change redirect to new MainMenuController.
++Login Screen:Login Controller, logs in, fills in user data, redirects to ProjectsController. TODO: Improve UI, change redirect to new MainMenuController. Make changes to enable offline mode.
 -LoginController.h
 -LoginController.m
 -LoginController.xib
@@ -59,11 +59,11 @@ ____________________________________________________
 -IssueDetailsController.m
 -IssueDetailsController.xib
 
-+Create Issue Screen. Creates issues. TODO: Add more classes to the model. Make "roller selection" to choose priority etc.
++Create Issue Screen. Creates issues. TODO: Add more classes to the model. Make "roller selection" to choose priority etc. Change interface.
 -CreateIssueDelegate.h
 -CreateIssueController.h
 -CreateIssueController.m
-++Mutable Issue Delegate
+++Mutable Issue Delegate - class that is repeated to populate the "createIssue" screen
 --MutableIssueDelegate.h
 --MutableIssueDelegate.m
 --MutableIssueDelegate.xib
@@ -72,6 +72,7 @@ ____________________________________________________
 ++Generated
 --JiraSoapService.h
 --JiraSoapService.m
+--Some other classes referenced by it.
 
 +fmdb:Connect to SQLite, Db Management.
 -FMDatabase.h
