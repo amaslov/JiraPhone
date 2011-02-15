@@ -39,7 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = project.name;
-
+	
 	// get list of cashed projects
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
@@ -68,6 +68,12 @@
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateIssueScreen)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
+	
+	[issues sortUsingSelector:@selector(compareCreationDate:)];
+	[self.tableView reloadData];
+	
+	// Sort
+	// [sortIssues:@"Creation Date"];
 }
 
 /*
@@ -111,6 +117,11 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return issues.count;
+}
+
+- (void)sortIssuesByDate {
+	[issues sortUsingSelector:@selector(compareCreationDate:)];
+	[self.tableView reloadData];
 }
 
 

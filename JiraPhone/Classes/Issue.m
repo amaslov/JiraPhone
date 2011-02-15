@@ -138,5 +138,11 @@
 	self.updated = [rs dateForColumn:@"updated"];
 }
 
-
+- (NSComparisonResult)compareCreationDate:(Issue*)_issue {
+	/* NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+	formatter.dateFormat = @"yyyyMMdd'T'HHmm";
+	NSDate *selfDate = [[formatter dateFromString:self.created] autorelease];
+	NSDate *inDate = [[formatter dateFromString:_issue.created] autorelease]; */
+	return [self.created compare:_issue.created];
+}
 @end
