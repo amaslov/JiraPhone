@@ -10,7 +10,7 @@
 #import "CreateIssueDelegate.h"
 
 @class Project;
-@interface IssuesController : UITableViewController<ConnectorDelegate, CreateIssueDelegate> {
+@interface IssuesController : UITableViewController<ConnectorDelegate, CreateIssueDelegate, UIActionSheetDelegate> {
 	Project *project;	
 	NSMutableArray *issues;
 	UIActivityIndicatorView *activityIndicator;
@@ -18,4 +18,5 @@
 @property (nonatomic, retain) Project *project;
 
 - (id)initForProject:(Project *)_project;
+- (IBAction)showActionSheet:(id)sender;
 @end

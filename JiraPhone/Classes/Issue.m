@@ -138,11 +138,16 @@
 	self.updated = [rs dateForColumn:@"updated"];
 }
 
-- (NSComparisonResult)compareCreationDate:(Issue*)_issue {
-	/* NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
-	formatter.dateFormat = @"yyyyMMdd'T'HHmm";
-	NSDate *selfDate = [[formatter dateFromString:self.created] autorelease];
-	NSDate *inDate = [[formatter dateFromString:_issue.created] autorelease]; */
-	return [self.created compare:_issue.created];
+- (NSComparisonResult)compareUpdatedDate:(Issue*)_issue {
+	//Compare reverse order to get Most recent items first
+	return [_issue.updated compare:self.updated];
+}
+- (NSComparisonResult)compareKey:(Issue*)_issue {
+	return [self.key compare:_issue.key];
+}
+- (NSComparisonResult)comparePriority:(Issue*)_issue {
+	NSNumber *selfPriority = [NSNumber numberWithInt:self.priority.number];
+	NSNumber *otherPriority = [NSNumber numberWithInt:_issue.priority.number];
+	return [selfPriority compare:otherPriority];
 }
 @end

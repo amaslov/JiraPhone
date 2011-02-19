@@ -65,15 +65,35 @@
 	[connector getIssuesOfProject:project];	
 	
 	// add + (create issue) button
-	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateIssueScreen)];
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
 	
-	[issues sortUsingSelector:@selector(compareCreationDate:)];
-	[self.tableView reloadData];
-	
-	// Sort
-	// [sortIssues:@"Creation Date"];
+	//[issues sortUsingSelector:@selector(compareCreationDate:)];
+	//[self.tableView reloadData];
+}
+
+- (IBAction)showActionSheet:(id)sender {
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+	[popupQuery release];
+}
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			[self sortIssuesByDate];
+			break;
+		case 1:
+			[self sortIssuesByKey];
+			break;
+		case 2:
+			[self sortIssuesByPriority];
+			break;
+		default:
+			break;
+	}
 }
 
 /*
@@ -120,10 +140,19 @@
 }
 
 - (void)sortIssuesByDate {
-	[issues sortUsingSelector:@selector(compareCreationDate:)];
+	[issues sortUsingSelector:@selector(compareUpdatedDate:)];
 	[self.tableView reloadData];
 }
 
+- (void)sortIssuesByKey {
+	[issues sortUsingSelector:@selector(compareKey:)];
+	[self.tableView reloadData];
+}
+
+- (void)sortIssuesByPriority {
+	[issues sortUsingSelector:@selector(comparePriority:)];
+	[self.tableView reloadData];
+}
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
