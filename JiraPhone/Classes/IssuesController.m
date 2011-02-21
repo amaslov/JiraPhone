@@ -83,13 +83,19 @@
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
 		case 0:
-			[self sortIssuesByDate];
+			// User wants to sort by updated date
+			[issues sortUsingSelector:@selector(compareUpdatedDate:)];
+			[self.tableView reloadData];
 			break;
 		case 1:
-			[self sortIssuesByKey];
+			// User wants to sort by issue key
+			[issues sortUsingSelector:@selector(compareKey:)];
+			[self.tableView reloadData];
 			break;
 		case 2:
-			[self sortIssuesByPriority];
+			// User wants to sort by priority
+			[issues sortUsingSelector:@selector(comparePriority:)];
+			[self.tableView reloadData];
 			break;
 		default:
 			break;
@@ -139,21 +145,6 @@
     return issues.count;
 }
 
-- (void)sortIssuesByDate {
-	[issues sortUsingSelector:@selector(compareUpdatedDate:)];
-	[self.tableView reloadData];
-}
-
-- (void)sortIssuesByKey {
-	[issues sortUsingSelector:@selector(compareKey:)];
-	[self.tableView reloadData];
-}
-
-- (void)sortIssuesByPriority {
-	[issues sortUsingSelector:@selector(comparePriority:)];
-	[self.tableView reloadData];
-}
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -161,13 +152,13 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
 	Issue *issue = [issues objectAtIndex:indexPath.row];
     cell.textLabel.text = issue.key;
-    return cell;
+	return cell;
 }
 
 
