@@ -15,7 +15,7 @@
 @implementation CreateIssueController
 @synthesize mutableCell;
 @synthesize project;
-@synthesize delegate; //Warning!
+@synthesize delegate; 
 
 #pragma mark -
 #pragma mark Initialization

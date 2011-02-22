@@ -74,7 +74,7 @@
 }
 
 - (IBAction)showActionSheet:(id)sender {
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", @"Create Issue", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	[popupQuery release];
@@ -96,6 +96,9 @@
 			// User wants to sort by priority
 			[issues sortUsingSelector:@selector(comparePriority:)];
 			[self.tableView reloadData];
+			break;
+		case 3:			
+			[self showCreateIssueScreen];
 			break;
 		default:
 			break;

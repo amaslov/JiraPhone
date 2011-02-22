@@ -9,10 +9,18 @@
 #import "AbstractNamedEntity.h"
 
 @interface User : AbstractNamedEntity {
-	NSString *server; // server name
+	NSString* _server; // server name
+	NSString* _name;
+	NSString* _fullName;
+	NSString* _email;
+	NSUInteger _hashcode;
+	
 }
-@property (nonatomic, retain) NSString *server;
-
+@property (nonatomic, retain) NSString* server;
+@property (nonatomic, retain) NSString* name;
+@property (nonatomic, retain) NSString* fullName;
+@property (nonatomic, retain) NSString* email;
+@property NSUInteger hashcode;
 // returns logged in User;
 + (User *)loggedInUser;
 

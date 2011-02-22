@@ -26,7 +26,7 @@
 @synthesize lead = _lead;
 @synthesize projectUrl = _projectUrl;
 @synthesize url = _url;
-
+@synthesize hashCode=_hashCode;
 - (void) dealloc
 {
 	if(self.description != nil) { [self.description release]; }
@@ -34,6 +34,8 @@
 	if(self.lead != nil) { [self.lead release]; }
 	if(self.projectUrl != nil) { [self.projectUrl release]; }
 	if(self.url != nil) { [self.url release]; }
+//	[self.hashCode release];
+	
 	[super dealloc];
 }
 

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
+		035B53661312102B00A07B6B /* CustomFieldValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 035B53651312102A00A07B6B /* CustomFieldValue.m */; };
+		03E9F28F130C685A00AB6363 /* MutableIssueRollerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E9F28E130C685A00AB6363 /* MutableIssueRollerCell.m */; };
+		03E9F291130C694400AB6363 /* MutableIssueRollerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E9F290130C694400AB6363 /* MutableIssueRollerCell.xib */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -147,7 +151,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0302C201130EF965003E95A6 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
+		0302C202130EF965003E95A6 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Field.m; sourceTree = "<group>"; };
 		030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = InternalClassesModel.xcclassmodel; sourceTree = "<group>"; };
+		035B53641312102A00A07B6B /* CustomFieldValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomFieldValue.h; sourceTree = "<group>"; };
+		035B53651312102A00A07B6B /* CustomFieldValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomFieldValue.m; sourceTree = "<group>"; };
+		03E9F28D130C685A00AB6363 /* MutableIssueRollerCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableIssueRollerCell.h; sourceTree = "<group>"; };
+		03E9F28E130C685A00AB6363 /* MutableIssueRollerCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableIssueRollerCell.m; sourceTree = "<group>"; };
+		03E9F290130C694400AB6363 /* MutableIssueRollerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueRollerCell.xib; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JiraPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JiraPhoneAppDelegate.h; path = Classes/JiraPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JiraPhoneAppDelegate.m; path = Classes/JiraPhoneAppDelegate.m; sourceTree = "<group>"; };
@@ -429,6 +440,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03E9F28C130C67FA00AB6363 /* Mutable Issue Roller Cell */ = {
+			isa = PBXGroup;
+			children = (
+				03E9F28D130C685A00AB6363 /* MutableIssueRollerCell.h */,
+				03E9F28E130C685A00AB6363 /* MutableIssueRollerCell.m */,
+				03E9F290130C694400AB6363 /* MutableIssueRollerCell.xib */,
+			);
+			name = "Mutable Issue Roller Cell";
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -814,7 +835,11 @@
 				A87D27D0130635FD002475F6 /* Filter's_Privates */,
 				4FBA94B112E198560052C041 /* AbstractEntity.h */,
 				4FBA94B212E198560052C041 /* AbstractEntity.m */,
+				035B53641312102A00A07B6B /* CustomFieldValue.h */,
+				035B53651312102A00A07B6B /* CustomFieldValue.m */,
 				4F80F2BE12E19936001AFF06 /* AbstractNamedEntity.h */,
+				0302C201130EF965003E95A6 /* Field.h */,
+				0302C202130EF965003E95A6 /* Field.m */,
 				4F80F2BF12E19936001AFF06 /* AbstractNamedEntity.m */,
 				4F80F2C112E19972001AFF06 /* Project.h */,
 				4F80F2C212E19972001AFF06 /* Project.m */,
@@ -838,6 +863,7 @@
 		4FEDF70512EA356800CA09A0 /* Create Issue Screen */ = {
 			isa = PBXGroup;
 			children = (
+				03E9F28C130C67FA00AB6363 /* Mutable Issue Roller Cell */,
 				4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */,
 				4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */,
 				4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */,
@@ -947,6 +973,7 @@
 				4F9FCD1F12EAAC970095AAAF /* jiraCache.sqlite in Resources */,
 				4F9FCD6F12EAB0930095AAAF /* red_square_button1.png in Resources */,
 				030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */,
+				03E9F291130C694400AB6363 /* MutableIssueRollerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1105,9 @@
 				A87D284413071423002475F6 /* dateSet.m in Sources */,
 				A87D284B13071607002475F6 /* date.m in Sources */,
 				A87D285613071789002475F6 /* range.m in Sources */,
+				03E9F28F130C685A00AB6363 /* MutableIssueRollerCell.m in Sources */,
+				0302C203130EF965003E95A6 /* Field.m in Sources */,
+				035B53661312102B00A07B6B /* CustomFieldValue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

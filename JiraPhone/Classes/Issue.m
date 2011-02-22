@@ -36,6 +36,9 @@
 @synthesize summary = _summary;
 @synthesize type = _type;
 @synthesize updated = _updated;
+@synthesize environment = _environment;
+@synthesize userId=_userId;
+@synthesize hashCode=_hashCode;
 
 - (void)dealloc {
 	if(self.assignee != nil) { [self.assignee release]; }
@@ -51,7 +54,8 @@
 	if(self.summary != nil) { [self.summary release]; }
 	if(self.type != nil) { [self.type release]; }
 	if(self.updated != nil) { [self.updated release]; }
-	
+	if(self.environment!=nil){[self.environment release];}
+//	[self.hashCode release];
 	[super dealloc];
 }
 
@@ -59,6 +63,7 @@
 #pragma mark Class methods
 + (void)cacheIssues:(NSArray *)_issues ofProject:(Project *)_proj {
 	
+	//TODO: change to support issue updating in the DB
 	NSString *updateString = [NSString stringWithFormat:@"delete from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];	
 	
 	// clear
@@ -81,6 +86,8 @@
 						issue.summary,
 						[NSString stringWithFormat: @"%i", issue.type.number],
 						issue.updated, [User loggedInUser].ID];
+		
+						
 		[db executeUpdate:updateString];		
 	}
 	
