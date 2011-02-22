@@ -20,6 +20,8 @@ FOREIGN KEY (project) REFERENCES projects(key) ON UPDATE CASCADE ON DELETE CASCA
 FOREIGN KEY (reporter) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL,
 FOREIGN KEY (user_id) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL);
 
+CREATE INDEX issueData on issues(updated);
+
 CREATE TABLE "projects" 
 ("key" TEXT PRIMARY KEY, 
 "description" TEXT, 
@@ -53,7 +55,7 @@ CREATE TABLE "projectrole"
 );
 
 CREATE TABLE "userroleactors"
-("ID" INTEGER PRIMARY KEY AUTO INCREMENT,
+("ID" INTEGER PRIMARY KEY AUTOINCREMENT,
 "projectrole_id" INTEGER,
 "roleactor_id" INTEGER,
 "user_name" TEXT,
