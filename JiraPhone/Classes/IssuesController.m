@@ -14,6 +14,8 @@
 
 @implementation IssuesController
 @synthesize project;
+@synthesize tableView;
+@synthesize imageView;
 
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
@@ -37,8 +39,31 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    //[super viewDidLoad];
 	self.title = project.name;
+	
+	//
+	// Change the properties of the imageView and tableView
+	//
+	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	tableView.rowHeight = 100;
+	tableView.backgroundColor = [UIColor clearColor];
+	imageView.image = [UIImage imageNamed:@"background.png"];
+	
+	//
+	// Create a header view. Wrap it in a container.
+	//
+	
+	UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,300,60)] autorelease];
+	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10,20,300,40)] autorelease];
+	headerLabel.text = NSLocalizedString(@"Header for the table", @"");
+	headerLabel.textColor = [UIColor whiteColor];
+	headerLabel.shadowColor = [UIColor blackColor];
+	headerLabel.shadowOffset = CGSizeMake(0,1);
+	headerLabel.font = [UIFont boldSystemFontOfSize:22];
+	headerLabel.backgroundColor = [UIColor clearColor];
+	[containerView addSubview:headerLabel];
+	self.tableView.tableHeaderView = containerView;
 	
 	// get list of cashed projects
 	if (!issues) {
@@ -146,18 +171,76 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+	const NSInteger TOP_LABEL_TAG = 1001;
+	const NSInteger BOTTOM_LABEL_TAG = 1002;
+	const CGFloat LABEL_HEIGHT = 20;
+	UILabel *topLabel;
+	UILabel *bottomLabel;
+	
     static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		//cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+		UIImage *image = [UIImage imageNamed:@"priority_major.gif"];
+		
+		//
+		// Create the label for the top row of text
+		//
+		topLabel = [[[UILabel alloc] initWithFrame:CGRectMake(image.size.width + 2.0 * cell.indentationWidth,
+															  0.5 * (aTableView.rowHeight - 2 * LABEL_HEIGHT),
+															  aTableView.bounds.size.width - image.size.width - 4.0*
+															  cell.indentationWidth - 16,
+															  LABEL_HEIGHT)] autorelease];
+		[cell.contentView addSubview:topLabel];
+		
+		//
+		// Configure the properties for the text that are the same on every row
+		//
+		topLabel.tag = TOP_LABEL_TAG;
+		topLabel.backgroundColor = [UIColor clearColor];
+		topLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
+		topLabel.highlightedTextColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
+		topLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
+		
+		//
+		// Create the label for the bottom row of text
+		//
+		bottomLabel = [[[UILabel alloc] initWithFrame:CGRectMake(image.size.width + 2.0*cell.indentationWidth,
+																 0.5 * (aTableView.rowHeight - 2 * LABEL_HEIGHT) + LABEL_HEIGHT,
+																 aTableView.bounds.size.width - image.size.width - 4.0*cell.indentationWidth
+																 - 16, LABEL_HEIGHT)] autorelease];
+		[cell.contentView addSubview:bottomLabel];
+		bottomLabel.tag = BOTTOM_LABEL_TAG;
+		bottomLabel.backgroundColor = [UIColor clearColor];
+		bottomLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
+		bottomLabel.highlightedTextColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
+		bottomLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize] - 2];
+		
+		//
+		// Create a background image view
+		//
+		cell.backgroundView = [[[UIImageView alloc] init] autorelease];
     }
-    
-    // Configure the cell...
+	else {
+		topLabel = (UILabel *)[cell viewWithTag:TOP_LABEL_TAG];
+		bottomLabel = (UILabel *)[cell viewWithTag:BOTTOM_LABEL_TAG];
+	}
+
+	
+	// Configure the cell...
 	Issue *issue = [issues objectAtIndex:indexPath.row];
-    cell.textLabel.text = issue.key;
+    //cell.textLabel.text = issue.key;
+	topLabel.text = [NSString stringWithFormat:@"Cell at row %ld", [indexPath row]];
+	bottomLabel.text = [NSString stringWithFormat:@"Some other stuff.", [indexPath row]];
+	
+	UIImage *rowBackground;
+	rowBackground = [UIImage imageNamed:@"rowBackground.png"];
+	((UIImageView *)cell.backgroundView).image = rowBackground;
+	//cell.text = issue.key;
+	cell.image = [UIImage imageNamed:@"priority_major.gif"];
 	return cell;
 }
 
@@ -232,6 +315,8 @@
 	[Connector sharedConnector].delegate = nil;
 	[project release];
 	[issues release];
+	[tableView release];
+	[imageView release];
     [super dealloc];
 }
 
