@@ -10,7 +10,7 @@
 
 #import "Connector.h"
 #import "JiraSoapServiceService.h"
-
+#import "RemoteIssue.h"
 #import "ArrayOf_tns1_RemoteProject.h"
 #import "RemoteProject.h"
 #import "Project.h"
@@ -60,6 +60,18 @@
 	[jira getIssuesFromTextSearchWithProject:self in0:token in1: nil in2:_word in3:10];
 }
 
+
+ //this should work with RemoteIssue!
+ /*
+- (void)getCustomFieldValues:(Issue *)_issue {
+	RemoteIssue *rIssue= //[[RemoteIssue alloc] init];
+	
+	j_issue=[jira getIssueById:self in0:token in1:_issue.key];;
+	j_issue.defaultHandler=self;
+	[j_issue getCustomFieldValues:self
+	//[issue getCustomFieldValues: self 
+} 
+*/
 - (void)getDetailsOfIssue:(Issue *)_issue {
 	[jira getIssue:self in0:token in1:_issue.key];
 }
@@ -92,6 +104,7 @@
 			proj.key = remProj.key;
 			proj.projectUrl = remProj.projectUrl;
 			proj.url = remProj.url;
+		//	proj.hashCode=[remProj hashCode];
 			[projs addObject:proj];
 			[proj release];
 		}
@@ -114,7 +127,8 @@
 			issue.created = remIssue.created;
 			issue.description = remIssue.description;
 			issue.duedate = remIssue.duedate;
-			
+			//hash code doesn't work properly now. Following string just crashes the app.
+//			issue.hashCode=[remIssue hashCode];
 			Priority *p = [[Priority alloc] init];
 			p.number = [remIssue.priority intValue];
 			issue.priority = p;
@@ -151,7 +165,8 @@
 		issue.created = remIssue.created;
 		issue.description = remIssue.description;
 		issue.duedate = remIssue.duedate;
-		
+//		issue.hashCode=[remIssue hashCode];
+
 		Priority *p = [[Priority alloc] init];
 		p.number = [remIssue.priority intValue];
 		issue.priority = p;

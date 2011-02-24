@@ -11,10 +11,17 @@
 #import "JiraPhoneAppDelegate.h"
 
 @implementation User
-@synthesize server;
+@synthesize server=_server;
+@synthesize name=_name;
+@synthesize fullName=_fullName;
+@synthesize email=_email;
+@synthesize hashcode=_hashcode;
 
 - (void)dealloc {
-	[server release];
+	if(self.server != nil) { [self.server release]; }
+	if(self.name != nil) { [self.name release]; }
+	if(self.fullName != nil) { [self.fullName release]; }
+	if(self.email != nil) { [self.email release]; }
 	[super dealloc];
 }
 
