@@ -14,9 +14,10 @@
 
 @implementation IssuesController
 @synthesize project;
-@synthesize tableView;
-@synthesize imageView;
-
+//
+//@synthesize tableView;
+//@synthesize imageView;
+//
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
 		self.project = _project;
@@ -41,7 +42,8 @@
 - (void)viewDidLoad {
     //[super viewDidLoad];
 	self.title = project.name;
-	
+
+	/*
 	//
 	// Change the properties of the imageView and tableView
 	//
@@ -64,6 +66,7 @@
 	headerLabel.backgroundColor = [UIColor clearColor];
 	[containerView addSubview:headerLabel];
 	self.tableView.tableHeaderView = containerView;
+	 */
 	
 	// get list of cashed projects
 	if (!issues) {
@@ -174,76 +177,63 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-	const NSInteger TOP_LABEL_TAG = 1001;
-	const NSInteger BOTTOM_LABEL_TAG = 1002;
-	const CGFloat LABEL_HEIGHT = 20;
-	UILabel *topLabel;
-	UILabel *bottomLabel;
+	const NSInteger KEY_LABEL_TAG = 1001;
+	const NSInteger SUMM_LABEL_TAG = 1002;
 	
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [aTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		//cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		UIImage *image = [UIImage imageNamed:@"priority_major.gif"];
+		CGRect frame;
+		frame.origin.x = 35;
+		frame.origin.y = 2;
+		frame.size.height = 20;
+		frame.size.width = 270;
 		
-		//
-		// Create the label for the top row of text
-		//
-		topLabel = [[[UILabel alloc] initWithFrame:CGRectMake(image.size.width + 2.0 * cell.indentationWidth,
-															  0.5 * (aTableView.rowHeight - 2 * LABEL_HEIGHT),
-															  aTableView.bounds.size.width - image.size.width - 4.0*
-															  cell.indentationWidth - 16,
-															  LABEL_HEIGHT)] autorelease];
-		[cell.contentView addSubview:topLabel];
+		UILabel *keyLabel = [[UILabel alloc] initWithFrame:frame];
+		keyLabel.tag = KEY_LABEL_TAG;
+		[cell.contentView addSubview:keyLabel];
+		[keyLabel release];
 		
-		//
-		// Configure the properties for the text that are the same on every row
-		//
-		topLabel.tag = TOP_LABEL_TAG;
-		topLabel.backgroundColor = [UIColor clearColor];
-		topLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
-		topLabel.highlightedTextColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
-		topLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize]];
-		
-		//
-		// Create the label for the bottom row of text
-		//
-		bottomLabel = [[[UILabel alloc] initWithFrame:CGRectMake(image.size.width + 2.0*cell.indentationWidth,
-																 0.5 * (aTableView.rowHeight - 2 * LABEL_HEIGHT) + LABEL_HEIGHT,
-																 aTableView.bounds.size.width - image.size.width - 4.0*cell.indentationWidth
-																 - 16, LABEL_HEIGHT)] autorelease];
-		[cell.contentView addSubview:bottomLabel];
-		bottomLabel.tag = BOTTOM_LABEL_TAG;
-		bottomLabel.backgroundColor = [UIColor clearColor];
-		bottomLabel.textColor = [UIColor colorWithRed:0.25 green:0.0 blue:0.0 alpha:1.0];
-		bottomLabel.highlightedTextColor = [UIColor colorWithRed:1.0 green:1.0 blue:0.9 alpha:1.0];
-		bottomLabel.font = [UIFont systemFontOfSize:[UIFont labelFontSize] - 2];
-		
-		//
-		// Create a background image view
-		//
-		cell.backgroundView = [[[UIImageView alloc] init] autorelease];
-    }
-	else {
-		topLabel = (UILabel *)[cell viewWithTag:TOP_LABEL_TAG];
-		bottomLabel = (UILabel *)[cell viewWithTag:BOTTOM_LABEL_TAG];
+		frame.origin.y += 18;
+		UILabel *summLabel = [[UILabel alloc] initWithFrame:frame];
+		summLabel.tag = SUMM_LABEL_TAG;
+		[cell.contentView addSubview:summLabel];
+		[summLabel release];
 	}
 
 	
 	// Configure the cell...
 	Issue *issue = [issues objectAtIndex:indexPath.row];
-    //cell.textLabel.text = issue.key;
-	topLabel.text = [NSString stringWithFormat:@"Cell at row %ld", [indexPath row]];
-	bottomLabel.text = [NSString stringWithFormat:@"Some other stuff.", [indexPath row]];
+    // cell.textLabel.text = issue.key;
+
+	switch (issue.priority.number) {
+		case 1:
+			cell.imageView.image = [UIImage imageNamed:@"priority_blocker.gif"];
+			break;
+		case 2:
+			cell.imageView.image = [UIImage imageNamed:@"priority_critical.gif"];
+			break;
+		case 3:
+			cell.imageView.image = [UIImage imageNamed:@"priority_major.gif"];
+			break;
+		case 4:
+			cell.imageView.image = [UIImage imageNamed:@"priority_minor.gif"];
+			break;
+		case 5:
+			cell.imageView.image = [UIImage imageNamed:@"priority_trivial.gif"];
+			break;
+	}
 	
-	UIImage *rowBackground;
-	rowBackground = [UIImage imageNamed:@"rowBackground.png"];
-	((UIImageView *)cell.backgroundView).image = rowBackground;
-	//cell.text = issue.key;
-	cell.image = [UIImage imageNamed:@"priority_major.gif"];
+	UILabel *keyLabel = (UILabel *)[cell.contentView viewWithTag:KEY_LABEL_TAG];
+	UILabel *summLabel = (UILabel *)[cell.contentView viewWithTag:SUMM_LABEL_TAG];
+	
+	keyLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+	summLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }
 
@@ -318,8 +308,8 @@
 	[Connector sharedConnector].delegate = nil;
 	[project release];
 	[issues release];
-	[tableView release];
-	[imageView release];
+	//[tableView release];
+	//[imageView release];
     [super dealloc];
 }
 
