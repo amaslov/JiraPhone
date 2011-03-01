@@ -96,6 +96,59 @@
 	}
 }
 
+/* + (void)cacheAllIssues:(NSArray *)_issues {
+	
+	//TODO: change to support issue updating in the DB
+	NSString *updateString = [NSString stringWithFormat:@"delete from issues where user_id = \"%@\"", [User loggedInUser].ID];	
+	
+	// clear
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	[db executeUpdate:updateString];
+	
+	// insert
+	for (Issue *issue in _issues) {
+		updateString = [NSString stringWithFormat:@"insert into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+						issue.assignee,
+						issue.created,
+						issue.description,
+						issue.duedate,
+						issue.key,
+						[NSString stringWithFormat: @"%i", issue.priority.number],
+						issue.project,
+						issue.reporter,
+						issue.resolution,
+						issue.status,
+						issue.summary,
+						[NSString stringWithFormat: @"%i", issue.type.number],
+						issue.updated, [User loggedInUser].ID];
+		
+		
+		[db executeUpdate:updateString];		
+	}
+	
+	if ([db hadError]) {
+		NSLog(@"db error: %@", [db lastErrorMessage]);
+	}
+}
+
++ (void)getCachedIssuesForUser:(NSMutableArray *)_issues {
+	NSString *queryString = [NSString stringWithFormat:@"select * from issues where assignee = \"%@\" order by priority asc limit 3",[User loggedInUser].name];
+	
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	FMResultSet *rs = [db executeQuery:queryString];
+	while ([rs next])
+	{
+		Issue *issue = [[Issue alloc] init];
+		[issue fillFromResultSet:rs];
+		[_issues addObject:issue];
+		[issue release];
+	}
+	[rs close];
+	if ([db hadError]) {
+		NSLog(@"db error: %@",[db lastErrorMessage]);
+	}
+ */
+
 + (void)getCachedIssues:(NSMutableArray *)_issues ofProject:(Project *)_proj {
 
 	NSString *queryString = [NSString stringWithFormat:@"select * from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];

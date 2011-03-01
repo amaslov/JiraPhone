@@ -15,6 +15,7 @@
 
 @class Project;
 @class Issue;
+@class User;
 @interface Connector : NSObject <SoapDelegate> {
 
 	// delegate, to which to tell results of connecting to jira server
@@ -39,6 +40,9 @@
 
 // request issues of _project
 - (void)getIssuesOfProject:(Project *)_project;
+
+//
+- (void)getIssuesForDashboard:(User *)_user;
 
 // search _project for _word
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word;

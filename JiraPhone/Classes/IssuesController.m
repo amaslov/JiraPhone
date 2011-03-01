@@ -14,10 +14,6 @@
 
 @implementation IssuesController
 @synthesize project;
-//
-//@synthesize tableView;
-//@synthesize imageView;
-//
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
 		self.project = _project;

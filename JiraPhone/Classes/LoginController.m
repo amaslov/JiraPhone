@@ -8,6 +8,7 @@
 #import "LoginController.h"
 #import "Connector.h"
 #import "ProjectsController.h"
+#import "DashboardController.h"
 #import "User.h"
 
 #define SETTINGS_SAVE_CREDENTIALS		@"settingsSaveKey"
@@ -107,6 +108,11 @@
 		ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
 		[self.navigationController pushViewController:projController animated:YES];
 		[projController release];
+		
+		// Show dashboard
+		//DashboardController *dashController = [[DashboardController alloc] initWithNibName:@"DashboardController" bundle:nil];
+		//[self.navigationController pushViewController:dashController animated:YES];
+		//[dashController release];
 	}
 	else {
 		// logout
