@@ -40,6 +40,22 @@ CREATE TABLE "users"
 "hashcode" INTEGER
 );
 
+CREATE TABLE "comments"
+("Id" TEXT PRIMARY KEY,
+"author" TEXT,
+"body" TEXT,
+"updated" DATETIME,
+"created" DATETIME,
+"issueId" TEXT,
+FOREIGN KEY (author) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL,
+FOREIGN KEY (issueId) REFERENCES issues(key) ON UPDATE CASCADE ON DELETE CASCADE);
+
+CREATE TABLE "versions"
+("id" TEXT PRIMARY KEY,
+"name" TEXT,
+"releaseDate" DATETIME,
+"sequence" INTEGER)
+
 CREATE TABLE "roleactor"
 ("id" INTEGER PRIMARY KEY,
 "description" TEXT,

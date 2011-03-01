@@ -1014,12 +1014,16 @@
 				4F9FCD1F12EAAC970095AAAF /* jiraCache.sqlite in Resources */,
 				4F9FCD6F12EAB0930095AAAF /* red_square_button1.png in Resources */,
 				030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */,
+<<<<<<< HEAD
 				345789FD131720E700617F21 /* priority_blocker.gif in Resources */,
 				345789FE131720E700617F21 /* priority_critical.gif in Resources */,
 				345789FF131720E700617F21 /* priority_major.gif in Resources */,
 				34578A00131720E700617F21 /* priority_minor.gif in Resources */,
 				34578A01131720E700617F21 /* priority_trivial.gif in Resources */,
 				34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */,
+=======
+				033AF1D51318044100246BB4 /* MutableIssueDetailLink.xib in Resources */,
+>>>>>>> d376dbe5b641e1593f62b37294b59f0439a5e6f0
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,7 +1156,14 @@
 				A87D284B13071607002475F6 /* date.m in Sources */,
 				A87D285613071789002475F6 /* range.m in Sources */,
 				0302C203130EF965003E95A6 /* Field.m in Sources */,
+<<<<<<< HEAD
 				347C85FA13196B5400986270 /* DashboardController.m in Sources */,
+=======
+				033AF1D2131803F600246BB4 /* MutableIssueDetailLink.m in Sources */,
+				032988CC131C4A3900C5FF23 /* Comment.m in Sources */,
+				032988D1131C4F6900C5FF23 /* Version.m in Sources */,
+				032988FE131C59D700C5FF23 /* Status.m in Sources */,
+>>>>>>> d376dbe5b641e1593f62b37294b59f0439a5e6f0
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

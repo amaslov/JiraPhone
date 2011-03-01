@@ -16,7 +16,7 @@
 #import "Project.h"
 #import "Issue.h"
 #import "IssueType.h"
-#import "User.h"
+#import "Comment.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -55,10 +55,6 @@
 
 - (void)getIssuesOfProject:(Project *)_project {
 	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"project = \"%@\"", _project.name] in2:10];
-}
-
-- (void)getIssuesForDashboard:(User *)_user {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" order by created, priority desc",_user.name]  in2:3];
 }
 
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word {	

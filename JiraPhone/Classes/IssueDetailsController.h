@@ -6,6 +6,7 @@
 //  Copyright 2010 AMaslov. All rights reserved.
 //
 #import <UIKit/UIKit.h>
+//TODO: Update sections!!!!
 
 // sections
 #define ISSUE_DATA_SECTION	0
@@ -19,10 +20,12 @@
 #define ISSUE_AFFECT_VERSIONS_ROW	3
 #define ISSUE_STATUS_ROW			4
 #define ISSUE_RESOLUTION_ROW		5
-
+//
+//users - to change to a more detailed stuff
 #define ISSUE_ASSIGNEE_ROW			0
 #define ISSUE_REPORTER_ROW			1
 
+//date rows
 #define ISSUE_CREATED_ROW			0
 #define ISSUE_UPDATED_ROW			1
 

@@ -16,7 +16,11 @@
 #import "Project.h"
 #import "Issue.h"
 #import "IssueType.h"
+<<<<<<< HEAD
 #import "User.h"
+=======
+#import "Comment.h"
+>>>>>>> d376dbe5b641e1593f62b37294b59f0439a5e6f0
 
 @implementation Connector
 @synthesize delegate;
