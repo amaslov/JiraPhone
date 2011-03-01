@@ -16,6 +16,7 @@
 #import "Project.h"
 #import "Issue.h"
 #import "IssueType.h"
+#import "Comment.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -195,7 +196,7 @@
 		NSMutableArray *comments = [NSMutableArray array];
 		for (RemoteComment *remComment in remComments) {
 			Comment *comment = [[Comment alloc] init];
-			comment.Id=remComment.id;
+			comment.Id=remComment._id;
 			comment.author=remComment.author;
 			comment.body=remComment.body;
 			comment.updated=remComment.updated;
@@ -211,7 +212,7 @@
 	{
 		RemoteComment *remComment = (RemoteComment *)value;
 		Comment *comment = [[Comment alloc] init];
-		comment.Id=remComment.id;
+		comment.Id=remComment._id;
 		comment.author=remComment.author;
 		comment.body=remComment.body;
 		comment.updated=remComment.updated;

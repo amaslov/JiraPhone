@@ -29,7 +29,10 @@
 		case 6:
 			output=@"Closed";
 			break;
-		
+		default:
+			output=@"Error!";
 	}
+	return output;
+	
 }
 @end

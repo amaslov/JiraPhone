@@ -7,18 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "AbstractNamedEntity.h"
 
 
 @interface Version : AbstractNamedEntity {
 	NSDate* _releaseDate;
 	NSInteger _sequence;
-	Boolean _archived;
-	Boolean _released;
+	//Boolean _archived;
+	//Boolean _released;
 }
 @property (retain,nonatomic) NSDate* releaseDate;
-@property (retain,nonatomic) NSInteger sequence;
-@property (retain,nonatomic) Boolean archived;
-@property (retain,nonatomic) Boolean released;
+@property (readwrite,assign)  NSInteger sequence;
+//@property (retain,nonatomic) Boolean archived;
+//@property (retain,nonatomic) Boolean released;
 
 
 @end

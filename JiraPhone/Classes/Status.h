@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "AbstractConstant.h"
 
 @interface Status : AbstractConstant {
 

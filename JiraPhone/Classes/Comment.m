@@ -18,12 +18,12 @@
 @synthesize issueId=_issueId;
 
 - (void)dealloc {
-	if (self.Id)!=nil){[self.Id release];}
-	if (self.author)!=nil){[self.author release];}
-	if (self.body)!=nil){[self.body release];}
-	if (self.updated)!=nil){[self.updated release];}
-	if (self.created)!=nil){[self.created release];}
-	if (self.issueId)!=nil){[self.issueId release];}
+	if (self.Id!=nil){[self.Id release];}
+	if (self.author!=nil){[self.author release];}
+	if (self.body!=nil){[self.body release];}
+	if (self.updated!=nil){[self.updated release];}
+	if (self.created!=nil){[self.created release];}
+	if (self.issueId!=nil){[self.issueId release];}
 	[super dealloc];
 }
 

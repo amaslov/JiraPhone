@@ -12,8 +12,8 @@
 @implementation Version
 @synthesize releaseDate = _releaseDate;
 @synthesize sequence=_sequence;
-@synthesize archived=_archived;
-@synthesize released=_released;
+//@synthesize archived=_archived;
+//@synthesize released=_released;
 
 
 
