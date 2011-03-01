@@ -91,6 +91,7 @@
 #pragma mark Soap Service delegate
 #pragma mark default handlers
 - (void) onload: (id) value {
+	//Array of Projects
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteProject class]]) {
 
 		//	ArrayOf_tns1_RemoteProject => array
@@ -113,7 +114,7 @@
 		}
 		return;
 	}
-	
+	//Array of issues
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteIssue class]]) {
 		
 		// ArrayOf_tns1_RemoteIssue => array
@@ -139,7 +140,8 @@
 			issue.resolution = remIssue.resolution;
 			issue.status = remIssue.status;
 			issue.summary = remIssue.summary;
-
+			issue.environment=remIssue.environment;
+			
 			IssueType *t = [[IssueType alloc] init];
 			t.number = [remIssue.type intValue];
 			issue.type = t;
@@ -154,7 +156,7 @@
 		}
 		return;
 	}
-	
+	//Issue
 	if ([value isKindOfClass:[RemoteIssue class]]) {
 		RemoteIssue *remIssue = (RemoteIssue *)value;
 		
@@ -165,32 +167,61 @@
 		issue.created = remIssue.created;
 		issue.description = remIssue.description;
 		issue.duedate = remIssue.duedate;
-//		issue.hashCode=[remIssue hashCode];
-
+		issue.environment=remIssue.environment;
 		Priority *p = [[Priority alloc] init];
 		p.number = [remIssue.priority intValue];
 		issue.priority = p;
 		[p release];
-
 		issue.reporter = remIssue.reporter;
 		issue.project = remIssue.project;
 		issue.resolution = remIssue.resolution;
 		issue.status = remIssue.status;
 		issue.summary = remIssue.summary;
-
 		IssueType *t = [[IssueType alloc] init];
 		t.number = [remIssue.type intValue];
 		issue.type = t;
 		[t release];
-		
 		issue.updated = remIssue.updated;
-		
 		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 			[delegate didReceiveData:issue];
 		}
 		return;		
 	}
-	
+		//Array of comments
+	//TODO: create comment fetching screen in Issue Details
+	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
+		ArrayOf_tns1_RemoteComment *remComments = (ArrayOf_tns1_RemoteComment *)value;
+		Comment *comment;
+		NSMutableArray *comments = [NSMutableArray array];
+		for (RemoteComment *remComment in remComments) {
+			Comment *comment = [[Comment alloc] init];
+			comment.Id=remComment.id;
+			comment.author=remComment.author;
+			comment.body=remComment.body;
+			comment.updated=remComment.updated;
+			comment.created=remComment.created;
+			if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+				[delegate didReceiveData:comment];
+			}
+			return;				
+		}
+	}
+	//Comment
+	if ([value isKindOfClass:[RemoteComment class]])
+	{
+		RemoteComment *remComment = (RemoteComment *)value;
+		Comment *comment = [[Comment alloc] init];
+		comment.Id=remComment.id;
+		comment.author=remComment.author;
+		comment.body=remComment.body;
+		comment.updated=remComment.updated;
+		comment.created=remComment.created;
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:comment];
+		}
+		return;	
+	}
+	//TODO implement versions parsing.
 	if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 		[delegate didReceiveData:value];
 	}

@@ -9,6 +9,8 @@
 
 #import <UIKit/UIKit.h>
 #import "MutableIssueDetailCell.h"
+#import "MutableIssueDetailLink.h"
+#import "MutableIssuePicker.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueDelegate.h"
 #import "ConnectorDelegate.h"
@@ -17,12 +19,14 @@
 
 @interface CreateIssueController : IssueDetailsController<ConnectorDelegate> {
 	IBOutlet MutableIssueDetailCell *mutableCell;
+	IBOutlet MutableIssueDetailLink *mutableLink;
 	Project *project;
 	id<CreateIssueDelegate> delegate;
 }
 @property (nonatomic, assign) id<CreateIssueDelegate> delegate;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) IBOutlet MutableIssueDetailCell *mutableCell;
+@property (nonatomic, retain) IBOutlet MutableIssueDetailLink *mutableLink;
 
 // _project - where create new issue
 - (id)initForIssueInProject:(Project *)_project;
