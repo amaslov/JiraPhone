@@ -477,8 +477,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				347C85F713196B1900986270 /* Dashboard Screen */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
+				347C85F713196B1900986270 /* Dashboard Screen */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
 				4FBA94B012E197B80052C041 /* Model */,
 				4F9466E112E90D0200C276D0 /* Search Screen */,

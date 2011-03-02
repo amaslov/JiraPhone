@@ -158,8 +158,8 @@
 						<reference key="object" ref="772297480"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="888046018"/>
 							<reference ref="700135221"/>
+							<reference ref="888046018"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -192,7 +192,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>MutableIssueDetailLink</string>
-					<string>{{568, 397}, {320, 44}}</string>
+					<string>{{671, 397}, {320, 44}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<object class="NSAffineTransform">
