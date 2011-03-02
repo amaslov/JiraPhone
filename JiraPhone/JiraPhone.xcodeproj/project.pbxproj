@@ -9,11 +9,6 @@
 /* Begin PBXBuildFile section */
 		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
-		032988CC131C4A3900C5FF23 /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 032988CB131C4A3900C5FF23 /* Comment.m */; };
-		032988D1131C4F6900C5FF23 /* Version.m in Sources */ = {isa = PBXBuildFile; fileRef = 032988D0131C4F6900C5FF23 /* Version.m */; };
-		032988FE131C59D700C5FF23 /* Status.m in Sources */ = {isa = PBXBuildFile; fileRef = 032988FD131C59D700C5FF23 /* Status.m */; };
-		033AF1D2131803F600246BB4 /* MutableIssueDetailLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 033AF1D1131803F600246BB4 /* MutableIssueDetailLink.m */; };
-		033AF1D51318044100246BB4 /* MutableIssueDetailLink.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033AF1D41318044100246BB4 /* MutableIssueDetailLink.xib */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -482,8 +477,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				347C85F713196B1900986270 /* Dashboard Screen */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
+				347C85F713196B1900986270 /* Dashboard Screen */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
 				4FBA94B012E197B80052C041 /* Model */,
 				4F9466E112E90D0200C276D0 /* Search Screen */,
