@@ -130,9 +130,9 @@
 		NSLog(@"db error: %@", [db lastErrorMessage]);
 	}
 }
-
+*/
 + (void)getCachedIssuesForUser:(NSMutableArray *)_issues {
-	NSString *queryString = [NSString stringWithFormat:@"select * from issues where assignee = \"%@\" order by priority asc limit 3",[User loggedInUser].name];
+	NSString *queryString = [NSString stringWithFormat:@"select * from issues where assignee = \"%@\" limit 3",[User loggedInUser].name];
 	
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
 	FMResultSet *rs = [db executeQuery:queryString];
@@ -147,7 +147,7 @@
 	if ([db hadError]) {
 		NSLog(@"db error: %@",[db lastErrorMessage]);
 	}
- */
+}
 
 + (void)getCachedIssues:(NSMutableArray *)_issues ofProject:(Project *)_proj {
 
@@ -208,10 +208,8 @@
 }
 - (NSComparisonResult)comparePriority:(Issue*)_issue {
 	// Sort keys by priority in ascending order (most critical issues first)
-	NSNumber *selfPriority = [NSNumber numberWithInt:self.priority.number];
-	NSNumber *otherPriority = [NSNumber numberWithInt:_issue.priority.number];
+	NSNumber *selfPriority = [NSNumber numberWithInteger:self.priority.number];
+	NSNumber *otherPriority = [NSNumber numberWithInteger:_issue.priority.number];
 	return [selfPriority compare:otherPriority];
-	[selfPriority release];
-	[otherPriority release];
 }
 @end

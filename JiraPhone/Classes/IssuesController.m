@@ -304,8 +304,6 @@
 	[Connector sharedConnector].delegate = nil;
 	[project release];
 	[issues release];
-	//[tableView release];
-	//[imageView release];
     [super dealloc];
 }
 
@@ -316,7 +314,6 @@
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
 		[Issue cacheIssues:result ofProject: project];
-		
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];

@@ -28,12 +28,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.title = [NSString stringWithFormat:@"Welcome %s",currentUser.name];
+	self.title = [NSString stringWithFormat:@"Welcome %@",[User loggedInUser].name];
 	
 	// get list of cashed projects
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
+	
+	//[Issue getCachedIssuesForUser:issues];
+	//[self.tableView reloadData];
 	
 	// sync with server for list of projects
 	Connector *connector = [Connector sharedConnector];
@@ -99,25 +102,34 @@
 	NSMutableString *str = [NSMutableString string];
 	[str appendString: [self titleForCellAtIndexPath:indexPath]];
 	
-	Issue *issue = [issues objectAtIndex:indexPath.row];
-	
-    if (indexPath.section == 0) {
-		[str appendFormat:@"%@",issue.key];
-	}
-	else if (indexPath.section == 1) {
-		switch (indexPath.row) {
-			case 0:
-				[str appendFormat:@"%@", issue.project];				
-				break;
-			case 1:
-				[str appendFormat:@"Issue List"];				
-				break;
-			case 2:
-				[str appendFormat:@"Create issue"];
-				break;
-			default:
-				break;
+	if (issues.count >= indexPath.row+1)
+	{
+		Issue *issue = [issues objectAtIndex:indexPath.row];
+		
+		if (indexPath.section == 0) {
+			cell.textLabel.text = issue.key;
 		}
+		else if (indexPath.section == 1) {
+			switch (indexPath.row) {
+				case 0:
+					cell.textLabel.text = [NSString stringWithFormat:@"Project: "];
+					break;
+				case 1:
+					cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
+					break;
+				case 2:
+					cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	else {
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Not enough issues: %d issues.",issues.count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
+		[str appendFormat:@"HELLO"];
 	}
 	
     return cell;
@@ -170,6 +182,9 @@
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
 		//[Project cacheProjects:(NSArray *)result];
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Got Data! Size: %d",[result count]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];

@@ -47,6 +47,7 @@ m1:
 	queryString = [NSString stringWithFormat: @"select * from users where name = \"%@\" and server = \"%@\"", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
 	rs = [[JiraPhoneAppDelegate sharedDB] executeQuery:queryString];
 	if ([rs next]) {
+		LOGGED_IN_USER.fullName = [rs stringForColumn:@"full_name"];
 		LOGGED_IN_USER.ID = [rs stringForColumn:@"id"];
 		[rs close];
 	}

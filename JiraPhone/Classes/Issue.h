@@ -54,4 +54,5 @@
 
 + (void)cacheIssues:(NSArray *)_issues ofProject:(Project *)_proj;
 + (void)getCachedIssues:(NSMutableArray *)_projects ofProject:(Project *)_proj;
++ (void)getCachedIssuesForUser:(NSMutableArray *)_issues;
 @end
