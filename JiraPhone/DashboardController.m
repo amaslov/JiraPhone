@@ -10,8 +10,10 @@
 #import "Project.h"
 #import "Issue.h"
 #import "IssuesController.h"
+#import "ProjectsController.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
+#import "LoginController.h"
 #import "Connector.h"
 #import "User.h"
 
@@ -28,12 +30,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.title = [NSString stringWithFormat:@"Welcome %s",currentUser.name];
+	self.title = [NSString stringWithFormat:@"Welcome"];
+	
+	// set custom back button
+	UIButton *backButtonInternal = [[UIButton alloc] initWithFrame:CGRectMake(0,0,54,30)];
+	[backButtonInternal setTitle:@"Logout" forState:UIControlStateNormal];
+	[backButtonInternal.titleLabel setFont : [UIFont boldSystemFontOfSize:12]];
+	[backButtonInternal setBackgroundImage:[UIImage imageNamed:@"red_square_button1.png"] forState:UIControlStateNormal];
+	[backButtonInternal addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonInternal];   
+	[backButtonInternal release];
+	[[self navigationItem] setLeftBarButtonItem:backBarButton];
+	[backBarButton release];
 	
 	// get list of cashed projects
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
+	
+	//[Issue getCachedIssuesForUser:issues];
+	//[self.tableView reloadData];
 	
 	// sync with server for list of projects
 	Connector *connector = [Connector sharedConnector];
@@ -59,7 +75,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    return 3;
+	if (section == 0) {
+		return [issues count];
+	}
+	else {
+		return 3;
+	}
+
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -99,39 +121,56 @@
 	NSMutableString *str = [NSMutableString string];
 	[str appendString: [self titleForCellAtIndexPath:indexPath]];
 	
-	Issue *issue = [issues objectAtIndex:indexPath.row];
-	
-    if (indexPath.section == 0) {
-		[str appendFormat:@"%@",issue.key];
-	}
-	else if (indexPath.section == 1) {
-		switch (indexPath.row) {
-			case 0:
-				[str appendFormat:@"%@", issue.project];				
-				break;
-			case 1:
-				[str appendFormat:@"Issue List"];				
-				break;
-			case 2:
-				[str appendFormat:@"Create issue"];
-				break;
-			default:
-				break;
+	if (issues.count >= indexPath.row+1)
+	{
+		Issue *issue = [issues objectAtIndex:indexPath.row];
+		
+		if (indexPath.section == 0) {
+			cell.textLabel.text = issue.key;
 		}
+		else if (indexPath.section == 1) {
+			switch (indexPath.row) {
+				case 0:
+					cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
+					break;
+				case 1:
+					cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
+					break;
+				case 2:
+					cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+					break;
+				default:
+					break;
+			}
+		}
+	}
+	else {
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Not enough issues: %d issues.",issues.count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
+		[str appendFormat:@"HELLO"];
 	}
 	
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-	 // ...
-	 // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	if (indexPath.section == 0)
+	{
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
+	}
+	else if (indexPath.section == 1)
+	{
+		if (indexPath.row == 0)
+		{
+			// show projects
+			ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+			[self.navigationController pushViewController:projController animated:YES];
+			[projController release];
+		}
+	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -169,7 +208,6 @@
 - (void)didReceiveData:(id)result {
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
-		//[Project cacheProjects:(NSArray *)result];
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];
@@ -181,5 +219,11 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+}
+
+- (IBAction)backButtonPressed {
+	LoginController *lc = [self.navigationController.viewControllers objectAtIndex:0];
+	[self.navigationController popViewControllerAnimated:YES];
+	[lc logoutAction];
 }
 @end

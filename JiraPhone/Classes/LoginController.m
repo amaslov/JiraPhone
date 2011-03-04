@@ -92,6 +92,10 @@
 		[User setLoggedInUser:user];
 		[user release];
 		
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Logged in user is %@",[User  loggedInUser].name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
+		
 		// save credentials for autocomplete
 		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
 		if (!switchControl.on) {
@@ -105,14 +109,14 @@
 		[ud synchronize];
 		
 		// show projects
-		ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
-		[self.navigationController pushViewController:projController animated:YES];
-		[projController release];
+		//ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+		//[self.navigationController pushViewController:projController animated:YES];
+		//[projController release];
 		
 		// Show dashboard
-		//DashboardController *dashController = [[DashboardController alloc] initWithNibName:@"DashboardController" bundle:nil];
-		//[self.navigationController pushViewController:dashController animated:YES];
-		//[dashController release];
+		DashboardController *dashController = [[DashboardController alloc] initWithNibName:@"DashboardController" bundle:nil];
+		[self.navigationController pushViewController:dashController animated:YES];
+		[dashController release];
 	}
 	else {
 		// logout

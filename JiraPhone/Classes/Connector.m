@@ -58,7 +58,7 @@
 }
 
 - (void)getIssuesForDashboard:(User *)_user {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" order by created, priority desc",_user.name]  in2:3];
+	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" and status = open order by updated, priority DESC", [User loggedInUser].name] in2:10];
 }
 
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word {	
@@ -194,7 +194,7 @@
 	}
 		//Array of comments
 	//TODO: create comment fetching screen in Issue Details
-	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
+/*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
 		ArrayOf_tns1_RemoteComment *remComments = (ArrayOf_tns1_RemoteComment *)value;
 		Comment *comment;
 		NSMutableArray *comments = [NSMutableArray array];
@@ -225,7 +225,7 @@
 			[delegate didReceiveData:comment];
 		}
 		return;	
-	}
+	} */
 	//TODO implement versions parsing.
 	if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 		[delegate didReceiveData:value];
