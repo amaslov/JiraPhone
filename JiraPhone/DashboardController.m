@@ -10,8 +10,10 @@
 #import "Project.h"
 #import "Issue.h"
 #import "IssuesController.h"
+#import "ProjectsController.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
+#import "LoginController.h"
 #import "Connector.h"
 #import "User.h"
 
@@ -29,6 +31,17 @@
     [super viewDidLoad];
 	
 	self.title = [NSString stringWithFormat:@"Welcome"];
+	
+	// set custom back button
+	UIButton *backButtonInternal = [[UIButton alloc] initWithFrame:CGRectMake(0,0,54,30)];
+	[backButtonInternal setTitle:@"Logout" forState:UIControlStateNormal];
+	[backButtonInternal.titleLabel setFont : [UIFont boldSystemFontOfSize:12]];
+	[backButtonInternal setBackgroundImage:[UIImage imageNamed:@"red_square_button1.png"] forState:UIControlStateNormal];
+	[backButtonInternal addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
+	UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonInternal];   
+	[backButtonInternal release];
+	[[self navigationItem] setLeftBarButtonItem:backBarButton];
+	[backBarButton release];
 	
 	// get list of cashed projects
 	if (!issues) {
@@ -62,7 +75,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    return 3;
+	if (section == 0) {
+		return [issues count];
+	}
+	else {
+		return 3;
+	}
+
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -112,7 +131,7 @@
 		else if (indexPath.section == 1) {
 			switch (indexPath.row) {
 				case 0:
-					cell.textLabel.text = [NSString stringWithFormat:@"Project: "];
+					cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
 					break;
 				case 1:
 					cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
@@ -141,6 +160,16 @@
 		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
 		[self.navigationController pushViewController:issueDetailsController animated:YES];
 		[issueDetailsController release];
+	}
+	else if (indexPath.section == 1)
+	{
+		if (indexPath.row == 0)
+		{
+			// show projects
+			ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+			[self.navigationController pushViewController:projController animated:YES];
+			[projController release];
+		}
 	}
 }
 
@@ -179,10 +208,6 @@
 - (void)didReceiveData:(id)result {
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
-		//[Project cacheProjects:(NSArray *)result];
-		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Got Data! Size: %d",[result count]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		//[alert show];
-		//[alert release];
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];
@@ -194,5 +219,11 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
+}
+
+- (IBAction)backButtonPressed {
+	LoginController *lc = [self.navigationController.viewControllers objectAtIndex:0];
+	[self.navigationController popViewControllerAnimated:YES];
+	[lc logoutAction];
 }
 @end

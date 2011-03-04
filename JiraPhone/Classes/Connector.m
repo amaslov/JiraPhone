@@ -58,7 +58,7 @@
 }
 
 - (void)getIssuesForDashboard:(User *)_user {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" order by updated, priority DESC", [User loggedInUser].name] in2:10];
+	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" and status = open order by updated, priority DESC", [User loggedInUser].name] in2:10];
 }
 
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word {	
