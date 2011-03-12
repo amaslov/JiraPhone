@@ -32,6 +32,8 @@
 
 
 - (void)dealloc {
+	[title release];
+	[text release];
     [super dealloc];
 }
 

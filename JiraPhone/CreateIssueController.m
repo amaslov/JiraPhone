@@ -8,6 +8,7 @@
 #import "CreateIssueController.h"
 #import "Issue.h"
 #import "MutableIssueDetailCell.h"
+#import "MutableIssueDetailLink.h"
 #import "Connector.h"
 #import "Project.h"
 #import "IssueType.h"
