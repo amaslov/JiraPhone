@@ -1532,39 +1532,16 @@
 		vrLen = 646;
 		vrLoc = 13124;
 	};
-	035B44611306F8F10011FAAF /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 035B44621306F8F10011FAAF /* Client.java */;
-		rLen = 0;
-		rLoc = 9223372036854775807;
-		rType = 0;
-	};
-	035B44621306F8F10011FAAF /* Client.java */ = {
+	035B44641306F8F10011FAAF /* Client.java */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.java;
 		name = Client.java;
 		path = /Users/alekseymaslov/Documents/Classes/Spring2011/IP/Programming1/Client.java;
 		sourceTree = "<absolute>";
-	};
-	035B44631306F8F10011FAAF /* PBXTextBookmark */ = {
-		isa = PBXTextBookmark;
-		fRef = 035B44641306F8F10011FAAF /* Client.java */;
-		name = "Client.java: 1";
-		rLen = 0;
-		rLoc = 0;
-		rType = 0;
-		vrLen = 871;
-		vrLoc = 0;
-	};
-	035B44641306F8F10011FAAF /* Client.java */ = {
-		isa = PBXFileReference;
-		name = Client.java;
-		path = /Users/alekseymaslov/Documents/Classes/Spring2011/IP/Programming1/Client.java;
-		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1020, 5395}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1020, 5460}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 871}";
+			sepNavVisRange = "{0, 791}";
 		};
 	};
 	03C240C612F2574000E624FB /* PBXTextBookmark */ = {
@@ -1627,7 +1604,17 @@
 		vrLen = 904;
 		vrLoc = 0;
 	};
-	03FD7E6B1303493200A2F479 /* PBXTextBookmark */ = {
+	03C47800132BF4C700D600BD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 035B44641306F8F10011FAAF /* Client.java */;
+		name = "Client.java: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 791;
+		vrLoc = 0;
+	};
+	03C47801132BF4C700D600BD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */;
 		name = "CreateIssueDelegate.h: 16";
@@ -1637,25 +1624,35 @@
 		vrLen = 269;
 		vrLoc = 0;
 	};
-	03FD7E6C1303493200A2F479 /* PBXTextBookmark */ = {
+	03C47802132BF4C700D600BD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
 		name = "CreateIssueController.h: 22";
 		rLen = 0;
 		rLoc = 624;
 		rType = 0;
-		vrLen = 930;
-		vrLoc = 0;
+		vrLen = 927;
+		vrLoc = 3;
 	};
-	03FD7E6D1303493200A2F479 /* PBXTextBookmark */ = {
+	03C47803132BF4C700D600BD /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 85";
 		rLen = 0;
-		rLoc = 2751;
+		rLoc = 3019;
 		rType = 0;
-		vrLen = 674;
-		vrLoc = 0;
+		vrLen = 670;
+		vrLoc = 3;
+	};
+	03C47804132BF4C700D600BD /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 64";
+		rLen = 0;
+		rLoc = 1976;
+		rType = 0;
+		vrLen = 1474;
+		vrLoc = 808;
 	};
 	1D3623240D0F684500981E51 /* JiraPhoneAppDelegate.h */ = {
 		uiCtxt = {
@@ -1680,7 +1677,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 4FA98D9812DF8B48009C33EA /* JiraPhone */;
-		activeSDKPreference = iphonesimulator4.2;
+		activeSDKPreference = iphoneos4.2;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* JiraPhone */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* JiraPhone */,
@@ -1806,8 +1803,8 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
-			PBXPerProjectTemplateStateSaveDate = 319153369;
-			PBXWorkspaceStateSaveDate = 319153369;
+			PBXPerProjectTemplateStateSaveDate = 321645893;
+			PBXWorkspaceStateSaveDate = 321645893;
 		};
 		perUserProjectItems = {
 			030DA1DC12FECE66009B8142 /* PBXTextBookmark */ = 030DA1DC12FECE66009B8142 /* PBXTextBookmark */;
@@ -1950,17 +1947,17 @@
 			035B445E1306F8F10011FAAF /* PBXTextBookmark */ = 035B445E1306F8F10011FAAF /* PBXTextBookmark */;
 			035B445F1306F8F10011FAAF /* PBXTextBookmark */ = 035B445F1306F8F10011FAAF /* PBXTextBookmark */;
 			035B44601306F8F10011FAAF /* PBXTextBookmark */ = 035B44601306F8F10011FAAF /* PBXTextBookmark */;
-			035B44611306F8F10011FAAF /* PBXTextBookmark */ = 035B44611306F8F10011FAAF /* PBXTextBookmark */;
-			035B44631306F8F10011FAAF /* PBXTextBookmark */ = 035B44631306F8F10011FAAF /* PBXTextBookmark */;
 			03C240C612F2574000E624FB /* PBXTextBookmark */ = 03C240C612F2574000E624FB /* PBXTextBookmark */;
 			03C240CA12F2574000E624FB /* PBXTextBookmark */ = 03C240CA12F2574000E624FB /* PBXTextBookmark */;
 			03C240CB12F2574000E624FB /* PBXTextBookmark */ = 03C240CB12F2574000E624FB /* PBXTextBookmark */;
 			03C240CC12F2574000E624FB /* PBXTextBookmark */ = 03C240CC12F2574000E624FB /* PBXTextBookmark */;
 			03C240CD12F2574000E624FB /* PBXTextBookmark */ = 03C240CD12F2574000E624FB /* PBXTextBookmark */;
 			03C240CE12F2574000E624FB /* PBXTextBookmark */ = 03C240CE12F2574000E624FB /* PBXTextBookmark */;
-			03FD7E6B1303493200A2F479 /* PBXTextBookmark */ = 03FD7E6B1303493200A2F479 /* PBXTextBookmark */;
-			03FD7E6C1303493200A2F479 /* PBXTextBookmark */ = 03FD7E6C1303493200A2F479 /* PBXTextBookmark */;
-			03FD7E6D1303493200A2F479 /* PBXTextBookmark */ = 03FD7E6D1303493200A2F479 /* PBXTextBookmark */;
+			03C47800132BF4C700D600BD /* PBXTextBookmark */ = 03C47800132BF4C700D600BD /* PBXTextBookmark */;
+			03C47801132BF4C700D600BD /* PBXTextBookmark */ = 03C47801132BF4C700D600BD /* PBXTextBookmark */;
+			03C47802132BF4C700D600BD /* PBXTextBookmark */ = 03C47802132BF4C700D600BD /* PBXTextBookmark */;
+			03C47803132BF4C700D600BD /* PBXTextBookmark */ = 03C47803132BF4C700D600BD /* PBXTextBookmark */;
+			03C47804132BF4C700D600BD /* PBXTextBookmark */ = 03C47804132BF4C700D600BD /* PBXTextBookmark */;
 			4F265DF412DFC2F000C864CF /* PBXTextBookmark */ = 4F265DF412DFC2F000C864CF /* PBXTextBookmark */;
 			4F265DF512DFC2F000C864CF /* PBXTextBookmark */ = 4F265DF512DFC2F000C864CF /* PBXTextBookmark */;
 			4F265DFE12DFC2F000C864CF /* PBXTextBookmark */ = 4F265DFE12DFC2F000C864CF /* PBXTextBookmark */;
@@ -3481,17 +3478,17 @@
 	};
 	4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1020, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1020, 416}}";
 			sepNavSelRange = "{624, 0}";
-			sepNavVisRange = "{0, 930}";
+			sepNavVisRange = "{3, 927}";
 		};
 	};
 	4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */ = {
 		uiCtxt = {
-			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6156, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6207, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6257, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7647}\";\n    s = 0;\n}";
-			sepNavIntBoundsRect = "{{0, 0}, {1104, 3250}}";
-			sepNavSelRange = "{2751, 0}";
-			sepNavVisRange = "{0, 674}";
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6424, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6475, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6525, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7915}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1104, 3276}}";
+			sepNavSelRange = "{1976, 0}";
+			sepNavVisRange = "{808, 1474}";
 		};
 	};
 	4FEDF89212EA634E00CA09A0 /* PBXTextBookmark */ = {
@@ -3516,7 +3513,7 @@
 	};
 	4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1020, 428}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1020, 400}}";
 			sepNavSelRange = "{269, 0}";
 			sepNavVisRange = "{0, 269}";
 		};

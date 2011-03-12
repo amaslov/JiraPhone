@@ -57,6 +57,11 @@
 	p.number = [cell.textField.text intValue];
 	newIssue.priority = p;
 	[p release];
+	
+	//Issue status row
+	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_STATUS_ROW inSection: ISSUE_DATA_SECTION]];
+	newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
+	
 
 	// get issue assignee value
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
