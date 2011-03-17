@@ -15,9 +15,10 @@
 #import "CreateIssueDelegate.h"
 #import "ConnectorDelegate.h"
 
+
 @class Project;
 
-@interface CreateIssueController : IssueDetailsController<ConnectorDelegate> {
+@interface CreateIssueController : IssueDetailsController<ConnectorDelegate,UIPickerViewDelegate> {
 	IBOutlet MutableIssueDetailCell *mutableCell;
 	IBOutlet MutableIssueDetailLink *mutableLink;
 	UIPickerView *picker;

@@ -43,6 +43,7 @@ static User *LOGGED_IN_USER = nil;
 	// save (or get id of) user data to (in) local db
 	NSString *queryString, *updateString;
 	FMResultSet *rs;
+
 m1:
 	queryString = [NSString stringWithFormat: @"select * from users where name = \"%@\" and server = \"%@\"", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
 	rs = [[JiraPhoneAppDelegate sharedDB] executeQuery:queryString];
@@ -59,5 +60,14 @@ m1:
 		goto m1;
 	}
 }
+
+- (void)fillFromResultSet:(FMResultSet *)rs
+{
+	self.name = [rs stringForColumn: @"name"];
+	self.fullName = [rs stringForColumn:@"full_name"];
+	self.email = [rs stringForColumn:@"email"];
+	self.server = [rs stringForColumn:@"server"];
+}
+
 
 @end

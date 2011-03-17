@@ -13,6 +13,7 @@
 #import "Project.h"
 #import "IssueType.h"
 
+
 @implementation CreateIssueController
 @synthesize mutableCell;
 @synthesize project;

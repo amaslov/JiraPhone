@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
+		03F1E84F13306CF100BBDEE9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1E84E13306CF100BBDEE9 /* Group.m */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -159,6 +160,8 @@
 		033AF1D0131803F600246BB4 /* MutableIssueDetailLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableIssueDetailLink.h; sourceTree = "<group>"; };
 		033AF1D1131803F600246BB4 /* MutableIssueDetailLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableIssueDetailLink.m; sourceTree = "<group>"; };
 		033AF1D41318044100246BB4 /* MutableIssueDetailLink.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailLink.xib; sourceTree = "<group>"; };
+		03F1E84D13306CF100BBDEE9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		03F1E84E13306CF100BBDEE9 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JiraPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JiraPhoneAppDelegate.h; path = Classes/JiraPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JiraPhoneAppDelegate.m; path = Classes/JiraPhoneAppDelegate.m; sourceTree = "<group>"; };
@@ -863,6 +866,8 @@
 				032988FD131C59D700C5FF23 /* Status.m */,
 				032988CF131C4F6900C5FF23 /* Version.h */,
 				032988D0131C4F6900C5FF23 /* Version.m */,
+				03F1E84D13306CF100BBDEE9 /* Group.h */,
+				03F1E84E13306CF100BBDEE9 /* Group.m */,
 			);
 			name = Model;
 			path = Classes;
@@ -1084,6 +1089,7 @@
 				4F97EFC712ECCB5C00C0AAE1 /* Priority.m in Sources */,
 				0302C203130EF965003E95A6 /* Field.m in Sources */,
 				347C85FA13196B5400986270 /* DashboardController.m in Sources */,
+				03F1E84F13306CF100BBDEE9 /* Group.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@
 #import "Issue.h"
 #import "IssueType.h"
 #import "User.h"
+#import "Group.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -192,6 +193,23 @@
 		}
 		return;		
 	}
+	
+	//group
+	if ([value isKindOfClass:[RemoteGroup class]]) {
+
+		RemoteGroup *remGroup = (RemoteGroup *)value;
+		Group *group = [[Group alloc] init];
+		NSMutableArray *users = remGroup.users;
+		
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:group];
+		}
+		return;
+	}
+		
+		
+		
+		
 		//Array of comments
 	//TODO: create comment fetching screen in Issue Details
 /*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
