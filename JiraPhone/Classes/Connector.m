@@ -65,6 +65,13 @@
 	[jira getIssuesFromTextSearchWithProject:self in0:token in1: nil in2:_word in3:10];
 }
 
+- (void)getIssuesFromFilter:(NSString *)_id {
+	[jira getIssuesFromFilter:self in0:token in1:_id];
+}
+
+- (void)getFavouriteFilters {
+	[jira getFavouriteFilters:self];
+}
 
  //this should work with RemoteIssue!
  /*
