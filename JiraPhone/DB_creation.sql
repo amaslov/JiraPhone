@@ -15,7 +15,7 @@ CREATE TABLE "issues"
 "type" TEXT check(typeof("type") = 'text') , 
 "updated" DATETIME, 
 "user_id" TEXT, 
-"hashcode" INTEGER,
+"server" TEXT,
 FOREIGN KEY (project) REFERENCES projects(key) ON UPDATE CASCADE ON DELETE CASCADE,
 FOREIGN KEY (reporter) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL,
 FOREIGN KEY (user_id) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL);
@@ -30,6 +30,7 @@ CREATE TABLE "projects"
 "url" TEXT, 
 "name" TEXT, 
 "user_id" TEXT, 
+"server" TEXT,
 "hashcode" INTEGER);
 
 CREATE TABLE "users" 
@@ -47,6 +48,7 @@ CREATE TABLE "comments"
 "updated" DATETIME,
 "created" DATETIME,
 "issueId" TEXT,
+"server" TEXT,
 FOREIGN KEY (author) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL,
 FOREIGN KEY (issueId) REFERENCES issues(key) ON UPDATE CASCADE ON DELETE CASCADE);
 
@@ -54,12 +56,14 @@ CREATE TABLE "versions"
 ("id" TEXT PRIMARY KEY,
 "name" TEXT,
 "releaseDate" DATETIME,
-"sequence" INTEGER)
+"server" TEXT,
+"sequence" INTEGER);
 
 CREATE TABLE "roleactor"
 ("id" INTEGER PRIMARY KEY,
 "description" TEXT,
 "name" TEXT,
+"server" TEXT,
 "hashcode" INTEGER
 );
 
@@ -67,8 +71,17 @@ CREATE TABLE "projectrole"
 ("id" INTEGER PRIMARY KEY,
 "name" TEXT,
 "description" TEXT,
+"server" TEXT,
 "hashcode" INTEGER
 );
+
+CREATE TABLE "groups"
+("name" TEXT NOT NULL,
+"server" TEXT NOT NULL,
+"user_name" TEXT,
+FOREIGN KEY (user_name) REFERENCES users(name) ON DELETE CASCADE
+);
+
 
 CREATE TABLE "userroleactors"
 ("ID" INTEGER PRIMARY KEY AUTOINCREMENT,
