@@ -158,7 +158,7 @@ static UIFont *summaryFont;
 	while ([theScanner isAtEnd] == NO) {
 		[theScanner scanUpToString:@"<" intoString:nil];
 		[theScanner scanUpToString:@">" intoString:&text];
-		html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@" "];
+		html = [html stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@>", text] withString:@""];
 	}
 	return html;
 }
@@ -260,7 +260,7 @@ static UIFont *summaryFont;
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	NSString *titleText = [self flattenHTML:[[entries objectAtIndex:indexPath.row] objectForKey:@"title"]];
 	NSString *summaryText = [self flattenHTML:[[entries objectAtIndex:indexPath.row] objectForKey:@"summary"]];
-	int height = 10 + [self heightOfCellWithTitle:titleText andSummary:summaryText];
+	int height = [self heightOfCellWithTitle:titleText andSummary:summaryText];
 	return (height < 44 ? 44.0f : height);
 }
 #pragma mark -

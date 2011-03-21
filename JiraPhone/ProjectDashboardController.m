@@ -210,6 +210,8 @@
 			return [NSString stringWithFormat:@"Issues: Due"];
 		case 1:
 			return [NSString stringWithFormat:@"Issues: Updated recently"];
+		case 2:
+			return [NSString stringWithFormat:@"Unresolved: By Assignee"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
 	}
