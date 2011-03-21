@@ -38,31 +38,6 @@
 - (void)viewDidLoad {
     //[super viewDidLoad];
 	self.title = project.name;
-
-	/*
-	//
-	// Change the properties of the imageView and tableView
-	//
-	tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-	tableView.rowHeight = 100;
-	tableView.backgroundColor = [UIColor clearColor];
-	imageView.image = [UIImage imageNamed:@"background.png"];
-	
-	//
-	// Create a header view. Wrap it in a container.
-	//
-	
-	UIView *containerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,300,60)] autorelease];
-	UILabel *headerLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10,20,300,40)] autorelease];
-	headerLabel.text = NSLocalizedString(@"Header for the table", @"");
-	headerLabel.textColor = [UIColor whiteColor];
-	headerLabel.shadowColor = [UIColor blackColor];
-	headerLabel.shadowOffset = CGSizeMake(0,1);
-	headerLabel.font = [UIFont boldSystemFontOfSize:22];
-	headerLabel.backgroundColor = [UIColor clearColor];
-	[containerView addSubview:headerLabel];
-	self.tableView.tableHeaderView = containerView;
-	 */
 	
 	// get list of cashed projects
 	if (!issues) {
@@ -174,37 +149,16 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-	const NSInteger KEY_LABEL_TAG = 1001;
-	const NSInteger SUMM_LABEL_TAG = 1002;
 	
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-		//cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-		CGRect frame;
-		frame.origin.x = 35;
-		frame.origin.y = 2;
-		frame.size.height = 20;
-		frame.size.width = 270;
-		
-		UILabel *keyLabel = [[UILabel alloc] initWithFrame:frame];
-		keyLabel.tag = KEY_LABEL_TAG;
-		[cell.contentView addSubview:keyLabel];
-		[keyLabel release];
-		
-		frame.origin.y += 18;
-		UILabel *summLabel = [[UILabel alloc] initWithFrame:frame];
-		summLabel.tag = SUMM_LABEL_TAG;
-		[cell.contentView addSubview:summLabel];
-		[summLabel release];
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 	}
 
 	
 	// Configure the cell...
 	Issue *issue = [issues objectAtIndex:indexPath.row];
-    // cell.textLabel.text = issue.key;
 
 	switch (issue.priority.number) {
 		case 1:
@@ -224,11 +178,8 @@
 			break;
 	}
 	
-	UILabel *keyLabel = (UILabel *)[cell.contentView viewWithTag:KEY_LABEL_TAG];
-	UILabel *summLabel = (UILabel *)[cell.contentView viewWithTag:SUMM_LABEL_TAG];
-	
-	keyLabel.text = [NSString stringWithFormat:@"%@", issue.key];
-	summLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }

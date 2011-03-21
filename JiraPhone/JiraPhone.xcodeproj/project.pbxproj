@@ -16,12 +16,16 @@
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		344CAAEC133532F700544690 /* ProjectDashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */; };
+		344CABEE13354B2000544690 /* ProjectDashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344CABED13354B2000544690 /* ProjectDashboardController.xib */; };
 		345789FD131720E700617F21 /* priority_blocker.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789F8131720E700617F21 /* priority_blocker.gif */; };
 		345789FE131720E700617F21 /* priority_critical.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789F9131720E700617F21 /* priority_critical.gif */; };
 		345789FF131720E700617F21 /* priority_major.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FA131720E700617F21 /* priority_major.gif */; };
 		34578A00131720E700617F21 /* priority_minor.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FB131720E700617F21 /* priority_minor.gif */; };
 		34578A01131720E700617F21 /* priority_trivial.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FC131720E700617F21 /* priority_trivial.gif */; };
 		347C85FA13196B5400986270 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C85F913196B5400986270 /* DashboardController.m */; };
+		347F1675133585C9000BC1A7 /* ProjectActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347F1673133585C9000BC1A7 /* ProjectActivityController.m */; };
+		347F1676133585C9000BC1A7 /* ProjectActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F1674133585C9000BC1A7 /* ProjectActivityController.xib */; };
 		34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34835F1E13197262005DC6C9 /* DashboardController.xib */; };
 		4F36096512DFB95D00C60A50 /* JiraSoapServiceServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */; };
 		4F36096612DFB95D00C60A50 /* AbstractNamedRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AE12DFB95D00C60A50 /* AbstractNamedRemoteEntity.m */; };
@@ -171,6 +175,9 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* JiraPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiraPhone_Prefix.pch; sourceTree = "<group>"; };
+		344CAAEA133532F700544690 /* ProjectDashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDashboardController.h; sourceTree = "<group>"; };
+		344CAAEB133532F700544690 /* ProjectDashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDashboardController.m; sourceTree = "<group>"; };
+		344CABED13354B2000544690 /* ProjectDashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDashboardController.xib; sourceTree = "<group>"; };
 		345789F8131720E700617F21 /* priority_blocker.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_blocker.gif; sourceTree = "<group>"; };
 		345789F9131720E700617F21 /* priority_critical.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_critical.gif; sourceTree = "<group>"; };
 		345789FA131720E700617F21 /* priority_major.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_major.gif; sourceTree = "<group>"; };
@@ -178,6 +185,9 @@
 		345789FC131720E700617F21 /* priority_trivial.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_trivial.gif; sourceTree = "<group>"; };
 		347C85F813196B5400986270 /* DashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardController.h; sourceTree = "<group>"; };
 		347C85F913196B5400986270 /* DashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardController.m; sourceTree = "<group>"; };
+		347F1672133585C9000BC1A7 /* ProjectActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectActivityController.h; sourceTree = "<group>"; };
+		347F1673133585C9000BC1A7 /* ProjectActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectActivityController.m; sourceTree = "<group>"; };
+		347F1674133585C9000BC1A7 /* ProjectActivityController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectActivityController.xib; sourceTree = "<group>"; };
 		34835F1E13197262005DC6C9 /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
 		4F3608AA12DFB95D00C60A50 /* JiraSoapServiceServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiraSoapServiceServiceExample.h; sourceTree = "<group>"; };
 		4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiraSoapServiceServiceExample.m; sourceTree = "<group>"; };
@@ -456,6 +466,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				347F166B133583D1000BC1A7 /* Project Activity Screen */,
+				344CAAE9133532C800544690 /* Project Dashboard Screen */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
 				347C85F713196B1900986270 /* Dashboard Screen */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
@@ -516,6 +528,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		344CAAE9133532C800544690 /* Project Dashboard Screen */ = {
+			isa = PBXGroup;
+			children = (
+				344CAAEA133532F700544690 /* ProjectDashboardController.h */,
+				344CAAEB133532F700544690 /* ProjectDashboardController.m */,
+				344CABED13354B2000544690 /* ProjectDashboardController.xib */,
+			);
+			name = "Project Dashboard Screen";
+			sourceTree = "<group>";
+		};
 		347C85F713196B1900986270 /* Dashboard Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -524,6 +546,16 @@
 				34835F1E13197262005DC6C9 /* DashboardController.xib */,
 			);
 			name = "Dashboard Screen";
+			sourceTree = "<group>";
+		};
+		347F166B133583D1000BC1A7 /* Project Activity Screen */ = {
+			isa = PBXGroup;
+			children = (
+				347F1672133585C9000BC1A7 /* ProjectActivityController.h */,
+				347F1673133585C9000BC1A7 /* ProjectActivityController.m */,
+				347F1674133585C9000BC1A7 /* ProjectActivityController.xib */,
+			);
+			name = "Project Activity Screen";
 			sourceTree = "<group>";
 		};
 		4F087EA912E02990009FE766 /* Issues Screen */ = {
@@ -964,6 +996,8 @@
 				34578A00131720E700617F21 /* priority_minor.gif in Resources */,
 				34578A01131720E700617F21 /* priority_trivial.gif in Resources */,
 				34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */,
+				344CABEE13354B2000544690 /* ProjectDashboardController.xib in Resources */,
+				347F1676133585C9000BC1A7 /* ProjectActivityController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1090,6 +1124,8 @@
 				0302C203130EF965003E95A6 /* Field.m in Sources */,
 				347C85FA13196B5400986270 /* DashboardController.m in Sources */,
 				03F1E84F13306CF100BBDEE9 /* Group.m in Sources */,
+				344CAAEC133532F700544690 /* ProjectDashboardController.m in Sources */,
+				347F1675133585C9000BC1A7 /* ProjectActivityController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

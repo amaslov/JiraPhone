@@ -70,7 +70,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -102,6 +102,10 @@
 			default:
 				break;
 		}
+	}
+	else if (indexPath.section == 2)
+	{
+		ret = @"Filters";
 	}
 	return ret;
 }
@@ -143,12 +147,17 @@
 					break;
 			}
 		}
+		else if (indexPath.section == 2)
+		{
+			cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		}
 	}
 	else {
 		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Not enough issues: %d issues.",issues.count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 		//[alert show];
 		//[alert release];
 		[str appendFormat:@"HELLO"];
+		//cell.textLabel.text = str;
 	}
 	
     return cell;
@@ -179,6 +188,8 @@
 			return [NSString stringWithFormat:@"Recent Issues:"];
 		case 1:
 			return [NSString stringWithFormat:@"Project:"];
+		case 2:
+			return [NSString stringWithFormat:@"Filters:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
 	}

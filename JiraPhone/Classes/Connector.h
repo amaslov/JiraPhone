@@ -41,8 +41,14 @@
 // request issues of _project
 - (void)getIssuesOfProject:(Project *)_project;
 
-//
+// get issues to be displayed on dashboard
 - (void)getIssuesForDashboard:(User *)_user;
+
+// get unresolved, due issues for project
+- (void)getDueIssuesForProject:(Project *)_project;
+
+//
+-(void)getRecentIssuesForProject:(Project *)_project;
 
 // search _project for _word
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word;
@@ -52,6 +58,12 @@
 
 // create new issue
 - (void)createIssue:(Issue *)_issue;
+
+// get favorite filters
+- (void)getFavouriteFilters;
+
+// get issues from filter
+- (void)getIssuesFromFilter:(NSString *)_id;
 
 // returns singleton Connector object
 + (Connector *)sharedConnector;

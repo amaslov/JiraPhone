@@ -13,6 +13,7 @@
 	NSString* _name;
 	NSString* _fullName;
 	NSString* _email;
+	NSString *_password;
 	NSUInteger _hashcode;
 	
 }
@@ -20,6 +21,7 @@
 @property (nonatomic, retain) NSString* name;
 @property (nonatomic, retain) NSString* fullName;
 @property (nonatomic, retain) NSString* email;
+@property (nonatomic, retain) NSString* password;
 @property NSUInteger hashcode;
 // returns logged in User;
 + (User *)loggedInUser;

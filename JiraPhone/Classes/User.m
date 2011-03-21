@@ -16,12 +16,14 @@
 @synthesize fullName=_fullName;
 @synthesize email=_email;
 @synthesize hashcode=_hashcode;
+@synthesize password=_password;
 
 - (void)dealloc {
 	if(self.server != nil) { [self.server release]; }
 	if(self.name != nil) { [self.name release]; }
 	if(self.fullName != nil) { [self.fullName release]; }
 	if(self.email != nil) { [self.email release]; }
+	if(self.password != nil) { [self.password release];}
 	[super dealloc];
 }
 

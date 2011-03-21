@@ -88,6 +88,7 @@
 		
 		User *user = [[User alloc] init];
 		user.name = nameField.text;
+		user.password = passwordField.text;
 		user.server = serverField.text;
 		[User setLoggedInUser:user];
 		[user release];
