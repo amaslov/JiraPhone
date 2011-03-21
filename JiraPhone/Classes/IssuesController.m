@@ -179,7 +179,7 @@
 	}
 	
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
-	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	return cell;
 }

@@ -12,6 +12,11 @@
 #import "Issue.h"
 #import "IssueDetailsController.h"
 #import "ProjectActivityController.h"
+#import <sqlite3.h>
+#import "FMDatabase.h"
+#import "FMResultSet.h"
+#import "FMDatabaseAdditions.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation ProjectDashboardController
 @synthesize project;
@@ -29,6 +34,38 @@
 	[projectActivityController release];
 }
 
+- (void)getUnresolvedIssuesByUser:(NSMutableArray *)_unresolvedIssues ofProject:(Project *)_proj {
+	
+	NSString *queryString = [NSString stringWithFormat:@"select u.name AS userName, count(*) AS numIssues from issues i, users u where i.project = \"%@\" and u.name = i.assignee GROUP BY u.name", _proj.key];
+	
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	FMResultSet *rs = [db executeQuery:queryString];
+	while ([rs next])
+	{
+		NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
+		NSString *userName = [rs stringForColumn:@"userName"];
+		NSInteger numIssues = [[rs stringForColumn:@"numIssues"] intValue];
+		NSLog(@"%@ : %d", userName, numIssues);
+		[item setObject:userName forKey:@"userName"];
+		[item setObject:[NSNumber numberWithInt:numIssues] forKey:@"numIssues"];
+		[unresolvedIssues addObject:item];
+		[item release];
+	}
+	[rs close];
+	
+	queryString = [NSString stringWithFormat:@"select key, assignee from issues where project = \"%@\"", project.key];
+	rs = [db executeQuery:queryString];
+	while ([rs next]) {
+		NSLog(@"Issue: %@ Assignee: %@", [rs stringForColumn:@"key"], [rs stringForColumn:@"assignee"] );
+	}
+	[rs close];
+	if ([db hadError]) {
+		NSLog(@"db error: %@", [db lastErrorMessage]);
+	}
+	[self.tableView reloadData];
+	
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
@@ -42,6 +79,11 @@
 	// Initialize list of recent issues
 	if (!recentIssues) {
 		recentIssues = [[NSMutableArray alloc] init];
+	}
+	
+	// Initialize the count of unresolved issues
+	if (!unresolvedIssues) {
+		unresolvedIssues = [[NSMutableArray alloc] init];
 	}
 	
 	// sync with server for list of projects
@@ -71,6 +113,7 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	[self getUnresolvedIssuesByUser:unresolvedIssues ofProject:project];
 	// Add a + button to view activity stream
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showProjectActivityScreen)];
 	self.navigationItem.rightBarButtonItem = btn;
@@ -79,7 +122,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -87,9 +130,13 @@
 	if (section == 0) {
 		return [dueIssues count];
 	}
-	else {
+	else if (section == 1) {
 		return [recentIssues count];
 	}
+	else {
+		return [unresolvedIssues count];
+	}
+
 	
 }
 
@@ -118,7 +165,7 @@
 		}
 
 	}
-	else {
+	else if (indexPath.section == 1) {
 		if (recentIssues.count >= indexPath.row+1) {
 			Issue *issue = [recentIssues objectAtIndex:indexPath.row];
 			NSString *updatedDate = [dateFormat stringFromDate:issue.updated];
@@ -129,6 +176,12 @@
 		}
 
 	}
+	else {
+		NSString *name = [[unresolvedIssues objectAtIndex:indexPath.row] objectForKey:@"userName"];
+		NSInteger numIssues = [[[unresolvedIssues objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
+		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d",name, numIssues];
+	}
+
 	[dateFormat release];
 
 	return cell;
