@@ -19,6 +19,9 @@
 @synthesize project;
 @synthesize delegate; 
 @synthesize mutableLink;
+@synthesize pickerView;
+@synthesize doneButton;
+@synthesize dataArray;
 
 #pragma mark -
 #pragma mark Initialization
@@ -337,6 +340,11 @@
 		[alert release];
 	}
 }
+
+-(void)textFieldReturn:(id)sender {
+	
+}
+
 
 @end
 

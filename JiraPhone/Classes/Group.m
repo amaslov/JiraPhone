@@ -38,7 +38,7 @@
 
 + (void)getCachedGroup:(NSMutableArray *)_users {					   
 					
-NSString *updateString;
+//  NSString *updateString;
 
 	NSString *queryString = [NSString stringWithFormat: @"select users.name, users.full_name, users.email, users.server from USERS INNER JOIN groups ON users.name=groups.user_name where groups.name = \"jira-users\" and groups.server = \"%@\" and groups.server=users.server", [User loggedInUser].ID];
 	
