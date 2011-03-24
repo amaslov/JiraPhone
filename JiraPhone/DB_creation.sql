@@ -86,6 +86,7 @@ CREATE TABLE "filters"
 ("id" TEXT PRIMARY KEY,
 "name" TEXT,
 "author" TEXT,
+"server" TEXT,
 "description" TEXT,
 FOREIGN KEY (author) REFERENCES users(name) ON DELETE CASCADE
 );

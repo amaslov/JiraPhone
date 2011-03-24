@@ -11,4 +11,7 @@
 
 @implementation Filter
 
+@synthesize author=_author;
+@synthesize description=_description;
+@synthesize server=_server;
 @end

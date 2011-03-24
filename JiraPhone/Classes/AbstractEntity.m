@@ -10,9 +10,11 @@
 
 @implementation AbstractEntity
 @synthesize ID;
+@synthesize server;
 
 - (void)dealloc {
 	[ID release];
+	[server release];
 	[super dealloc];
 }
 @end

@@ -12,10 +12,11 @@
 
 @interface Filter : AbstractNamedEntity{
 	NSString* _author;
-	NSDate* _created;
-	
+	NSString* _description;
+	NSString* _server;
 }
-@property (retain, nonatomic) NSString* assignee;
-@property (retain, nonatomic) NSDate* created;
+@property (retain, nonatomic) NSString* author;
+@property (retain, nonatomic) NSString* description;
+@property (retain, nonatomic) NSString* server;
 
 @end

@@ -11,7 +11,7 @@
 #import "JiraPhoneAppDelegate.h"
 
 @implementation User
-@synthesize server=_server;
+//@synthesize server=_server;
 @synthesize name=_name;
 @synthesize fullName=_fullName;
 @synthesize email=_email;

@@ -10,7 +10,9 @@
 
 @interface AbstractEntity : NSObject {
 	NSString *ID;
+	NSString *server;
 }
 @property(nonatomic, retain) NSString *ID;
+@property(nonatomic, retain) NSString *server;
 
 @end
