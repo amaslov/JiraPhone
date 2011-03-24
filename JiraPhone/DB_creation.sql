@@ -82,6 +82,13 @@ CREATE TABLE "groups"
 FOREIGN KEY (user_name) REFERENCES users(name) ON DELETE CASCADE
 );
 
+CREATE TABLE "filters"
+("id" TEXT PRIMARY KEY,
+"name" TEXT,
+"author" TEXT,
+"description" TEXT,
+FOREIGN KEY (author) REFERENCES users(name) ON DELETE CASCADE
+);
 
 CREATE TABLE "userroleactors"
 ("ID" INTEGER PRIMARY KEY AUTOINCREMENT,
