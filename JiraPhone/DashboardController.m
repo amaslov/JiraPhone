@@ -116,7 +116,7 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.textLabel.numberOfLines = 0;
     }
@@ -131,6 +131,26 @@
 		
 		if (indexPath.section == 0) {
 			cell.textLabel.text = issue.key;
+			cell.detailTextLabel.text = issue.summary;
+			switch (issue.priority.number) {
+				case 1:
+					cell.imageView.image = [UIImage imageNamed:@"priority_blocker.gif"];
+					break;
+				case 2:
+					cell.imageView.image = [UIImage imageNamed:@"priority_critical.gif"];
+					break;
+				case 3:
+					cell.imageView.image = [UIImage imageNamed:@"priority_major.gif"];
+					break;
+				case 4:
+					cell.imageView.image = [UIImage imageNamed:@"priority_minor.gif"];
+					break;
+				case 5:
+					cell.imageView.image = [UIImage imageNamed:@"priority_trivial.gif"];
+					break;
+			}
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			
 		}
 		else if (indexPath.section == 1) {
 			switch (indexPath.row) {
@@ -185,7 +205,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case 0:
-			return [NSString stringWithFormat:@"Recent Issues:"];
+			return [NSString stringWithFormat:@"Assigned To Me:"];
 		case 1:
 			return [NSString stringWithFormat:@"Project:"];
 		case 2:

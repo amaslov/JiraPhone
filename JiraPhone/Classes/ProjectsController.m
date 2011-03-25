@@ -163,16 +163,15 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Uncomment this section to get old issue list back
-	/*  
+	/*
 	IssuesController *issuesController = [[IssuesController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:issuesController animated:YES];
 	[issuesController release];
 	*/
-	
+
 	ProjectDashboardController *projectDashboardController = [[ProjectDashboardController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:projectDashboardController animated:YES];
 	[projectDashboardController release];
-	
 }
 
 
@@ -216,14 +215,6 @@
 	[alert show];
 	[alert release];
 }
-
-#pragma mark -
-#pragma mark Actions
-/* - (IBAction)backButtonPressed {
-	LoginController *lc = [self.navigationController.viewControllers objectAtIndex:0];
-	[self.navigationController popViewControllerAnimated:YES];
-	[lc logoutAction];
-} */
 
 - (void)showSearchController {
 	SearchController *searchController = [[SearchController alloc] initForProject: nil];
