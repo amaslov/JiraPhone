@@ -19,4 +19,8 @@
 @property (retain, nonatomic) NSString* description;
 @property (retain, nonatomic) NSString* server;
 
+
++ (void)cacheFilters:(NSArray *)_filters;
++ (void)getCachedFilters:(NSMutableArray *)_filters;
+
 @end

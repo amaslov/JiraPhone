@@ -2,14 +2,14 @@
 {
 	0302C201130EF965003E95A6 /* Field.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 333}}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
 			sepNavSelRange = "{142, 0}";
 			sepNavVisRange = "{0, 202}";
 		};
 	};
 	0302C202130EF965003E95A6 /* Field.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 333}}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
 			sepNavSelRange = "{69, 0}";
 			sepNavVisRange = "{0, 175}";
 		};
@@ -405,7 +405,7 @@
 		ignoreCount = 0;
 		lineNumber = 159;
 		location = JiraPhone;
-		modificationTime = 322698365.066018;
+		modificationTime = 322701202.994114;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -423,7 +423,7 @@
 		ignoreCount = 0;
 		lineNumber = 157;
 		location = JiraPhone;
-		modificationTime = 322698365.0660461;
+		modificationTime = 322701202.994125;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -441,7 +441,7 @@
 		ignoreCount = 0;
 		lineNumber = 46;
 		location = JiraPhone;
-		modificationTime = 322698365.066055;
+		modificationTime = 322701202.994168;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -459,7 +459,7 @@
 		ignoreCount = 0;
 		lineNumber = 79;
 		location = JiraPhone;
-		modificationTime = 322698365.066079;
+		modificationTime = 322701202.99418;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -660,8 +660,8 @@
 		isa = PBXTextBookmark;
 		fRef = 4FBA94B112E198560052C041 /* AbstractEntity.h */;
 		name = "AbstractEntity.h: 14";
-		rLen = 43;
-		rLoc = 228;
+		rLen = 90;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 277;
 		vrLoc = 0;
@@ -754,16 +754,16 @@
 	03B97806133BF5F400DDB3C6 /* Filter.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
-			sepNavSelRange = "{174, 0}";
-			sepNavVisRange = "{0, 459}";
+			sepNavSelRange = "{502, 0}";
+			sepNavVisRange = "{0, 556}";
 			sepNavWindowFrame = "{{15, 162}, {1013, 611}}";
 		};
 	};
 	03B97807133BF5F400DDB3C6 /* Filter.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 178}";
+			sepNavIntBoundsRect = "{{0, 0}, {1146, 988}}";
+			sepNavSelRange = "{1836, 0}";
+			sepNavVisRange = "{1056, 789}";
 		};
 	};
 	03B97812133BFC4B00DDB3C6 /* PBXTextBookmark */ = {
@@ -813,8 +813,8 @@
 		isa = PBXTextBookmark;
 		fRef = 4FBA94B112E198560052C041 /* AbstractEntity.h */;
 		name = "AbstractEntity.h: 14";
-		rLen = 43;
-		rLoc = 228;
+		rLen = 90;
+		rLoc = 247;
 		rType = 0;
 		vrLen = 277;
 		vrLoc = 0;
@@ -939,9 +939,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 17;
-		modificationTime = 322698775.410685;
+		modificationTime = 322701202.994225;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 	03D674F61326BFEA00DF632C /* MutableIssueDetailLink.m:18 */ = {
 		isa = PBXFileBreakpoint;
@@ -956,9 +956,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 18;
-		modificationTime = 322698775.410702;
+		modificationTime = 322701202.994237;
 		originalNumberOfMultipleMatches = 1;
-		state = 1;
+		state = 0;
 	};
 	03D675281326C59200DF632C /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1002,7 +1002,7 @@
 	};
 	03F1E84D13306CF100BBDEE9 /* Group.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 341}}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
 			sepNavSelRange = "{267, 0}";
 			sepNavVisRange = "{0, 338}";
 		};
@@ -1170,7 +1170,7 @@
 		fRef = 4F80F2D712E1A05C001AFF06 /* User.m */;
 		name = "User.m: 63";
 		rLen = 0;
-		rLoc = 1635;
+		rLoc = 1637;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 823;
@@ -2420,14 +2420,14 @@
 	};
 	4F80F2BE12E19936001AFF06 /* AbstractNamedEntity.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 430}}";
-			sepNavSelRange = "{175, 26}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
+			sepNavSelRange = "{269, 0}";
 			sepNavVisRange = "{0, 324}";
 		};
 	};
 	4F80F2BF12E19936001AFF06 /* AbstractNamedEntity.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 430}}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
 			sepNavSelRange = "{28, 0}";
 			sepNavVisRange = "{0, 290}";
 		};
@@ -2449,33 +2449,33 @@
 	};
 	4F80F2C412E199A3001AFF06 /* Issue.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 819}}";
-			sepNavSelRange = "{870, 97}";
-			sepNavVisRange = "{280, 1130}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 767}}";
+			sepNavSelRange = "{1637, 205}";
+			sepNavVisRange = "{546, 1301}";
 			sepNavWindowFrame = "{{61, 120}, {1013, 611}}";
 		};
 	};
 	4F80F2C512E199A3001AFF06 /* Issue.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {2273, 2860}}";
-			sepNavSelRange = "{2231, 7}";
-			sepNavVisRange = "{4471, 909}";
+			sepNavIntBoundsRect = "{{0, 0}, {2273, 2938}}";
+			sepNavSelRange = "{5425, 853}";
+			sepNavVisRange = "{5814, 1092}";
 			sepNavWindowFrame = "{{38, 194}, {750, 558}}";
 		};
 	};
 	4F80F2D612E1A05C001AFF06 /* User.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 430}}";
-			sepNavSelRange = "{182, 0}";
-			sepNavVisRange = "{0, 796}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
+			sepNavSelRange = "{651, 0}";
+			sepNavVisRange = "{0, 800}";
 			sepNavWindowFrame = "{{38, 141}, {1013, 611}}";
 		};
 	};
 	4F80F2D712E1A05C001AFF06 /* User.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1104, 962}}";
-			sepNavSelRange = "{1635, 0}";
-			sepNavVisRange = "{823, 859}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 1066}}";
+			sepNavSelRange = "{143, 47}";
+			sepNavVisRange = "{0, 795}";
 		};
 	};
 	4F8E58BF12E6EC600034BE0E /* FMDatabase.h */ = {
@@ -2676,7 +2676,7 @@
 		ignoreCount = 0;
 		lineNumber = 33;
 		location = JiraPhone;
-		modificationTime = 322698365.0660051;
+		modificationTime = 322701202.994084;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -2765,23 +2765,23 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 13;
-		modificationTime = 322698775.410656;
+		modificationTime = 322701202.993957;
 		originalNumberOfMultipleMatches = 1;
 		state = 0;
 	};
 	4FBA94B112E198560052C041 /* AbstractEntity.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 430}}";
-			sepNavSelRange = "{228, 43}";
-			sepNavVisRange = "{0, 277}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
+			sepNavSelRange = "{99, 0}";
+			sepNavVisRange = "{0, 343}";
 			sepNavWindowFrame = "{{15, 215}, {750, 558}}";
 		};
 	};
 	4FBA94B212E198560052C041 /* AbstractEntity.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 333}}";
-			sepNavSelRange = "{165, 31}";
-			sepNavVisRange = "{0, 271}";
+			sepNavIntBoundsRect = "{{0, 0}, {924, 423}}";
+			sepNavSelRange = "{284, 0}";
+			sepNavVisRange = "{0, 310}";
 			sepNavWindowFrame = "{{15, 220}, {750, 558}}";
 		};
 	};
