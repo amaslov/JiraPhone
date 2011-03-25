@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ConnectorDelegate.h"
-
+#import "Filter.h"
 
 @interface FiltersController : UITableViewController<ConnectorDelegate, UIActionSheetDelegate>  {
 	NSMutableArray *filters;

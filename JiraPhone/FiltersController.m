@@ -75,13 +75,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	// get list of cashed projects
 	if (!filters) {
 		filters = [[NSMutableArray alloc] init];
 	}
 	[Filter getCachedFilters:filters];
 	
-	// if there's no cashed issues show wait spinner
 	if (!filters.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -94,7 +92,6 @@
 	
 	[self.tableView reloadData];
 	
-	// sync with server for list of issues for given project
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	[connector getFavouriteFilters];	
