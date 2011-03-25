@@ -12,6 +12,7 @@
 #import "Issue.h"
 #import "IssueDetailsController.h"
 #import "ProjectActivityController.h"
+#import "Priority.h"
 #import <sqlite3.h>
 #import "FMDatabase.h"
 #import "FMResultSet.h"
@@ -140,15 +141,30 @@
 	
 }
 
+- (UIImage *)getImageByPriority:(Priority *)priority {
+	switch (priority.number) {
+		case 1:
+			return [UIImage imageNamed:@"priority_blocker.gif"];
+		case 2:
+			return [UIImage imageNamed:@"priority_critical.gif"];
+		case 3:
+			return [UIImage imageNamed:@"priority_major.gif"];
+		case 4:
+			return [UIImage imageNamed:@"priority_minor.gif"];
+		case 5:
+			return [UIImage imageNamed:@"priority_trivial.gif"];
+		default:
+			return nil;
+	}
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-		cell.textLabel.numberOfLines = 0;
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
@@ -158,7 +174,12 @@
 		if (dueIssues.count >= indexPath.row+1) {
 			Issue *issue = [dueIssues objectAtIndex:indexPath.row];
 			NSString *dueDate = [dateFormat stringFromDate:issue.duedate];
-			cell.textLabel.text = [NSString stringWithFormat:@"%@ Due: %@", issue.key, dueDate];
+			cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+			if (dueDate != nil) {
+				cell.detailTextLabel.text = [NSString stringWithFormat:@"Due %@", dueDate];
+			}
+			cell.imageView.image = [self getImageByPriority:issue.priority];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
 			cell.textLabel.text = [NSString stringWithFormat:@"Loading..."];
@@ -169,7 +190,12 @@
 		if (recentIssues.count >= indexPath.row+1) {
 			Issue *issue = [recentIssues objectAtIndex:indexPath.row];
 			NSString *updatedDate = [dateFormat stringFromDate:issue.updated];
-			cell.textLabel.text = [NSString stringWithFormat:@"%@ Updated: %@", issue.key, updatedDate];
+			cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+			if (updatedDate != nil) {
+				cell.detailTextLabel.text = [NSString stringWithFormat:@"Updated: %@", updatedDate];
+			}
+			cell.imageView.image = [self getImageByPriority:issue.priority];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
 			cell.textLabel.text = [NSString stringWithFormat:@"Loading..."];
@@ -178,8 +204,15 @@
 	}
 	else {
 		NSString *name = [[unresolvedIssues objectAtIndex:indexPath.row] objectForKey:@"userName"];
+		if (name == nil)
+		{
+			name = [NSString stringWithFormat:@"Unassigned"];
+		}
 		NSInteger numIssues = [[[unresolvedIssues objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
 		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d",name, numIssues];
+		cell.imageView.image = nil;
+		cell.detailTextLabel.text = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 
 	[dateFormat release];
@@ -188,20 +221,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	IssueDetailsController *issueDetailsController = [IssueDetailsController alloc];
-	switch (indexPath.section) {
-		case 0:
-			[issueDetailsController initForIssue:[dueIssues objectAtIndex:indexPath.row]];
-			break;
-		case 1:
-			[issueDetailsController initForIssue:[recentIssues objectAtIndex:indexPath.row]];
-			break;
-		default:
-			break;
+	if (indexPath.section == 0) {
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[dueIssues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
 	}
-	[self.navigationController pushViewController:issueDetailsController animated:YES];
-	[issueDetailsController release];
-
+	else if (indexPath.section == 1) {
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[recentIssues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
+	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -236,6 +265,7 @@
 - (void)dealloc {
 	if(dueIssues){[dueIssues release]; dueIssues = nil;}
 	if(recentIssues){[recentIssues release]; recentIssues = nil;}
+	if(unresolvedIssues){[unresolvedIssues release]; unresolvedIssues = nil;}
     [super dealloc];
 }
 

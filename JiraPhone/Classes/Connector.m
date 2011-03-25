@@ -64,11 +64,11 @@
 }
 
 - (void)getDueIssuesForProject:(Project *)_project {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"project = \"%@\" and resolution = Unresolved order by due ASC, priority DESC, created ASC",_project.key] in2:3];
+	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"project = \"%@\" and resolution = Unresolved and due != null order by due ASC, priority DESC, created ASC",_project.key] in2:4];
 }
 
 -(void)getRecentIssuesForProject:(Project *)_project {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"project = \"%@\" order by updated DESC, priority DESC, created ASC",_project.key]  in2:3];
+	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"project = \"%@\" order by updated DESC, priority DESC, created ASC",_project.key]  in2:4];
 }
 - (void)getIssuesOfProject:(Project *)_project fromTextSearch:(NSString *)_word {	
 	[jira getIssuesFromTextSearchWithProject:self in0:token in1: nil in2:_word in3:10];

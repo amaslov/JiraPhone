@@ -9,6 +9,7 @@
 #import "DashboardController.h"
 #import "Project.h"
 #import "Issue.h"
+#import "Priority.h"
 #import "IssuesController.h"
 #import "ProjectsController.h"
 #import "IssueDetailsController.h"
@@ -110,13 +111,30 @@
 	return ret;
 }
 
+- (UIImage *)getImageByPriority:(Priority *)priority {
+	switch (priority.number) {
+		case 1:
+			return [UIImage imageNamed:@"priority_blocker.gif"];
+		case 2:
+			return [UIImage imageNamed:@"priority_critical.gif"];
+		case 3:
+			return [UIImage imageNamed:@"priority_major.gif"];
+		case 4:
+			return [UIImage imageNamed:@"priority_minor.gif"];
+		case 5:
+			return [UIImage imageNamed:@"priority_trivial.gif"];
+		default:
+			return nil;
+	}
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.textLabel.numberOfLines = 0;
     }
@@ -125,39 +143,43 @@
 	NSMutableString *str = [NSMutableString string];
 	[str appendString: [self titleForCellAtIndexPath:indexPath]];
 	
-	if (issues.count >= indexPath.row+1)
+	//if (issues.count >= indexPath.row+1)
+	if (indexPath.section == 0)
 	{
-		Issue *issue = [issues objectAtIndex:indexPath.row];
-		
-		if (indexPath.section == 0) {
-			cell.textLabel.text = issue.key;
-		}
-		else if (indexPath.section == 1) {
-			switch (indexPath.row) {
-				case 0:
-					cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
-					break;
-				case 1:
-					cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
-					break;
-				case 2:
-					cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
-					break;
-				default:
-					break;
+		if (issues.count >= indexPath.row + 1) {
+			Issue *issue = [issues objectAtIndex:indexPath.row];
+			if (indexPath.section == 0) {
+				cell.textLabel.text = issue.key;
+				cell.detailTextLabel.text = issue.summary;
+				cell.imageView.image = [self getImageByPriority:issue.priority];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			}
 		}
-		else if (indexPath.section == 2)
-		{
-			cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		else {
+			cell.textLabel.text = @"This shouldn't happen.";
 		}
 	}
-	else {
-		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Not enough issues: %d issues.",issues.count] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-		//[alert show];
-		//[alert release];
-		[str appendFormat:@"HELLO"];
-		//cell.textLabel.text = str;
+	else if (indexPath.section == 1) {
+		switch (indexPath.row) {
+			case 0:
+				cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
+				break;
+			case 1:
+				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
+				break;
+			case 2:
+				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+				break;
+			default:
+				break;
+		}
+	}
+	else if (indexPath.section == 2)
+	{
+		cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		cell.imageView.image = nil;
+		cell.detailTextLabel.text = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
     return cell;
@@ -185,7 +207,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
 		case 0:
-			return [NSString stringWithFormat:@"Recent Issues:"];
+			return [NSString stringWithFormat:@"Assigned To Me:"];
 		case 1:
 			return [NSString stringWithFormat:@"Project:"];
 		case 2:
