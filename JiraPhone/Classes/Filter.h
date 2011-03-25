@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractNamedEntity.h"
+#import "FMDatabase.h"
+#import "FMResultSet.h"
 
 
 @interface Filter : AbstractNamedEntity{
@@ -21,6 +23,7 @@
 
 
 + (void)cacheFilters:(NSArray *)_filters;
-+ (void)getCachedFilters:(NSMutableArray *)_filters;
++ (void)getCachedFilters:(NSMutableArray *)filters;
+- (void)fillFromResultSet:(FMResultSet *)rs;
 
 @end

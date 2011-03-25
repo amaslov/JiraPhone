@@ -79,7 +79,7 @@
 }
 
 - (void)getFavouriteFilters {
-	[jira getFavouriteFilters:self];
+	[jira getFavouriteFilters:self in0:token];
 }
 
  //this should work with RemoteIssue!

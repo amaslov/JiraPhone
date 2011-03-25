@@ -8,8 +8,6 @@
 
 #import "Filter.h"
 #import "User.h"
-#import "FMDatabase.h"
-#import "FMResultSet.h"
 #import "JiraPhoneAppDelegate.h"
 
 @implementation Filter
@@ -46,7 +44,7 @@
 	}
 }
 
-+ (void)getCachedFilters:(NSMutableArray *)_filters {
++ (void)getCachedFilters:(NSMutableArray *)filters {
 	NSString *queryString = [NSString stringWithFormat:@"select * from filters where author = \"%@\" limit 10",[User loggedInUser].name];
 	
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -55,7 +53,7 @@
 	{
 		Filter *filter = [[Filter alloc] init];
 		[filter fillFromResultSet:rs];
-		[_filters addObject:filter];
+		[filters addObject:filter];
 		[filter release];
 	}
 	[rs close];
@@ -69,7 +67,8 @@
 	self.ID=[rs stringForColumn:@"ID"];
 	self.author = [rs stringForColumn:@"author"];
 	self.name=[rs stringForColumn:@"name"];
-	
+	self.server=[rs stringForColumn:@"server"];
+	self.description=[rs stringForColumn:@"description"];
 }
 
 @end

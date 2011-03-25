@@ -11,7 +11,7 @@
 
 
 @interface FiltersController : UITableViewController<ConnectorDelegate, UIActionSheetDelegate>  {
-	NSMutableArray *results;
+	NSMutableArray *filters;
 	UIActivityIndicatorView *activityIndicator;
 
 }

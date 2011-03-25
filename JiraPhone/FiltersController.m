@@ -24,6 +24,17 @@
 }
 */
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // Return the number of sections.
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    // Return the number of rows in the section.
+    return filters.count + 1; // +1 for search cell
+}
+
+
 /*
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
@@ -46,16 +57,62 @@
     // Release any cached data, images, etc. that aren't in use.
 }
 
+
+- (void)didReceiveData:(id)result {
+		if ([result isKindOfClass:[NSArray class]]) {		
+		[filters release];
+		filters = [result retain];
+		[self.tableView reloadData];
+	}
+}
+
+- (void)didFailWithError:(NSError *)error {
+	[activityIndicator stopAnimating];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+	// get list of cashed projects
+	if (!filters) {
+		filters = [[NSMutableArray alloc] init];
+	}
+	[Filter getCachedFilters:filters];
+	
+	// if there's no cashed issues show wait spinner
+	if (!filters.count) {
+		if (!activityIndicator) {
+			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+			[self.view addSubview:activityIndicator];
+			[activityIndicator release];
+		}
+		[activityIndicator startAnimating];		
+	}
+	
+	[self.tableView reloadData];
+	
+	// sync with server for list of issues for given project
+	Connector *connector = [Connector sharedConnector];
+	connector.delegate = self;
+	[connector getFavouriteFilters];	
+	[self.tableView reloadData];
+}
+
+
+
 - (void)viewDidUnload {
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+	Connector *conn = [Connector sharedConnector];
+	conn.delegate = nil;
+	[super viewDidUnload];
 }
 
 
 - (void)dealloc {
+	[Connector sharedConnector].delegate = nil;
     [super dealloc];
 }
-
 
 @end
