@@ -16,6 +16,7 @@
 @class Project;
 @class Issue;
 @class User;
+@class Filter;
 @interface Connector : NSObject <SoapDelegate> {
 
 	// delegate, to which to tell results of connecting to jira server

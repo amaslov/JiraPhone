@@ -18,6 +18,7 @@
 #import "IssueType.h"
 #import "User.h"
 #import "Group.h"
+#import "Filter.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -107,6 +108,7 @@
 	[jira createIssue:self in0:token in1:rIssue];
 	[rIssue release];
 }
+//TODO consider dynamic class initialization (didreceivedata)
 #pragma mark -
 #pragma mark Soap Service delegate
 #pragma mark default handlers
@@ -220,10 +222,25 @@
 		}
 		return;
 	}
-		
-		
-		
-		
+	if ([value isKindOfClass:[ArrayOf_tns1_RemoteFilter class]]){
+		ArrayOf_tns1_RemoteFilter *remFilters = (ArrayOf_tns1_RemoteFilter *)value;
+		Filter *filter;
+		NSMutableArray *filters = [NSMutableArray array];
+		for (RemoteFilter *remFilter in remFilters) {
+			filter = [[Filter alloc]init];
+			filter.ID=remFilter._id;
+			filter.name=remFilter.name;
+			filter.description=remFilter.description;
+			filter.author=remFilter.author;
+			filter.server=[[User loggedInUser] server];
+			[filters addObject:filter];
+			[filter release];
+		}
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:filters];
+		}
+		return;
+	}	
 		//Array of comments
 	//TODO: create comment fetching screen in Issue Details
 /*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
