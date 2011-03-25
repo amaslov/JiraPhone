@@ -168,10 +168,11 @@
 	[self.navigationController pushViewController:issuesController animated:YES];
 	[issuesController release];
 	*/
-
+	
 	ProjectDashboardController *projectDashboardController = [[ProjectDashboardController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:projectDashboardController animated:YES];
 	[projectDashboardController release];
+	 
 }
 
 

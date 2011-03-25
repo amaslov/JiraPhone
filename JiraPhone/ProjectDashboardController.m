@@ -210,6 +210,9 @@
 		}
 		NSInteger numIssues = [[[unresolvedIssues objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
 		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d",name, numIssues];
+		cell.imageView.image = nil;
+		cell.detailTextLabel.text = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 
 	[dateFormat release];
@@ -218,20 +221,16 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	IssueDetailsController *issueDetailsController = [IssueDetailsController alloc];
-	switch (indexPath.section) {
-		case 0:
-			[issueDetailsController initForIssue:[dueIssues objectAtIndex:indexPath.row]];
-			[self.navigationController pushViewController:issueDetailsController animated:YES];
-			break;
-		case 1:
-			[issueDetailsController initForIssue:[recentIssues objectAtIndex:indexPath.row]];
-			[self.navigationController pushViewController:issueDetailsController animated:YES];
-			break;
-		default:
-			break;
+	if (indexPath.section == 0) {
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[dueIssues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
 	}
-	[issueDetailsController release];
+	else if (indexPath.section == 1) {
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[recentIssues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
+	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
