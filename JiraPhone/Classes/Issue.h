@@ -32,7 +32,7 @@
 	NSString* _userId;
 	NSString* _environment;//long description of the environment
 	//NSInteger _votes;
-	NSUInteger _hashCode; //use it for comparison! Yo!
+	//NSUInteger _hashCode; //use it for comparison! Yo!
 }
 
 @property (retain, nonatomic) NSString* assignee;
@@ -50,7 +50,7 @@
 @property (retain, nonatomic) NSDate* updated;
 @property (retain, nonatomic) NSString* environment;
 @property (retain, nonatomic) NSString* userId;
-@property NSUInteger hashCode;
+//@property NSUInteger hashCode;
 
 + (void)cacheIssues:(NSArray *)_issues ofProject:(Project *)_proj;
 + (void)getCachedIssues:(NSMutableArray *)_projects ofProject:(Project *)_proj;

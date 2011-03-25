@@ -11,12 +11,13 @@
 #import "JiraPhoneAppDelegate.h"
 
 @implementation User
-//@synthesize server=_server;
+@synthesize server=_server;
 @synthesize name=_name;
 @synthesize fullName=_fullName;
 @synthesize email=_email;
-@synthesize hashcode=_hashcode;
+//@synthesize hashcode=_hashcode;
 @synthesize password=_password;
+@synthesize lastLoginDate=_lastLoginDate;
 
 - (void)dealloc {
 	if(self.server != nil) { [self.server release]; }
@@ -24,6 +25,7 @@
 	if(self.fullName != nil) { [self.fullName release]; }
 	if(self.email != nil) { [self.email release]; }
 	if(self.password != nil) { [self.password release];}
+	if(self.lastLoginDate != nil) { [self.lastLoginDate release];}
 	[super dealloc];
 }
 

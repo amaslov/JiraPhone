@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
+		034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E3305133CDC6A0034C1CB /* FiltersController.m */; };
+		034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034E3306133CDC6A0034C1CB /* FiltersController.xib */; };
 		03B97808133BF5F400DDB3C6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B97807133BF5F400DDB3C6 /* Filter.m */; };
 		03F1E84F13306CF100BBDEE9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1E84E13306CF100BBDEE9 /* Group.m */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
@@ -165,6 +167,9 @@
 		033AF1D0131803F600246BB4 /* MutableIssueDetailLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableIssueDetailLink.h; sourceTree = "<group>"; };
 		033AF1D1131803F600246BB4 /* MutableIssueDetailLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableIssueDetailLink.m; sourceTree = "<group>"; };
 		033AF1D41318044100246BB4 /* MutableIssueDetailLink.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailLink.xib; sourceTree = "<group>"; };
+		034E3304133CDC6A0034C1CB /* FiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersController.h; sourceTree = "<group>"; };
+		034E3305133CDC6A0034C1CB /* FiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersController.m; sourceTree = "<group>"; };
+		034E3306133CDC6A0034C1CB /* FiltersController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersController.xib; sourceTree = "<group>"; };
 		03B97806133BF5F400DDB3C6 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		03B97807133BF5F400DDB3C6 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
 		03F1E84D13306CF100BBDEE9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
@@ -458,6 +463,16 @@
 			name = "Mutable Issue Detail Link";
 			sourceTree = "<group>";
 		};
+		034E3302133CDC180034C1CB /* Filter Screen */ = {
+			isa = PBXGroup;
+			children = (
+				034E3304133CDC6A0034C1CB /* FiltersController.h */,
+				034E3305133CDC6A0034C1CB /* FiltersController.m */,
+				034E3306133CDC6A0034C1CB /* FiltersController.xib */,
+			);
+			name = "Filter Screen";
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -469,6 +484,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				034E3302133CDC180034C1CB /* Filter Screen */,
 				347F166B133583D1000BC1A7 /* Project Activity Screen */,
 				344CAAE9133532C800544690 /* Project Dashboard Screen */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
@@ -1003,6 +1019,7 @@
 				34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */,
 				344CABEE13354B2000544690 /* ProjectDashboardController.xib in Resources */,
 				347F1676133585C9000BC1A7 /* ProjectActivityController.xib in Resources */,
+				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,6 +1149,7 @@
 				344CAAEC133532F700544690 /* ProjectDashboardController.m in Sources */,
 				347F1675133585C9000BC1A7 /* ProjectActivityController.m in Sources */,
 				03B97808133BF5F400DDB3C6 /* Filter.m in Sources */,
+				034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

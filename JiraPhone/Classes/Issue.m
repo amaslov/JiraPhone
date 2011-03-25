@@ -38,7 +38,7 @@
 @synthesize updated = _updated;
 @synthesize environment = _environment;
 @synthesize userId=_userId;
-@synthesize hashCode=_hashCode;
+//@synthesize hashCode=_hashCode;
 
 - (void)dealloc {
 	if(self.assignee != nil) { [self.assignee release]; }
@@ -55,7 +55,6 @@
 	if(self.type != nil) { [self.type release]; }
 	if(self.updated != nil) { [self.updated release]; }
 	if(self.environment!=nil){[self.environment release];}
-//	[self.hashCode release];
 	[super dealloc];
 }
 

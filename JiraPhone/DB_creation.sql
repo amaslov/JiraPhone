@@ -38,11 +38,11 @@ CREATE TABLE "users"
 "full_name" TEXT, 
 "email" TEXT,
 "server" TEXT, 
-"hashcode" INTEGER
+"lastlogin" DATE
 );
 
 CREATE TABLE "comments"
-("Id" TEXT PRIMARY KEY,
+("ID" TEXT PRIMARY KEY,
 "author" TEXT,
 "body" TEXT,
 "updated" DATETIME,
