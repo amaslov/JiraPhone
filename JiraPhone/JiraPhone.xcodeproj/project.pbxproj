@@ -7,13 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
+		034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E3305133CDC6A0034C1CB /* FiltersController.m */; };
+		034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034E3306133CDC6A0034C1CB /* FiltersController.xib */; };
+		034E33AB133E54790034C1CB /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E33A9133E54790034C1CB /* TabBarView.m */; };
+		034E33AC133E54790034C1CB /* TabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034E33AA133E54790034C1CB /* TabBarView.xib */; };
+		03B97808133BF5F400DDB3C6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B97807133BF5F400DDB3C6 /* Filter.m */; };
+		03F1E84F13306CF100BBDEE9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1E84E13306CF100BBDEE9 /* Group.m */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		344CAAEC133532F700544690 /* ProjectDashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */; };
+		344CABEE13354B2000544690 /* ProjectDashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344CABED13354B2000544690 /* ProjectDashboardController.xib */; };
+		345789FD131720E700617F21 /* priority_blocker.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789F8131720E700617F21 /* priority_blocker.gif */; };
+		345789FE131720E700617F21 /* priority_critical.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789F9131720E700617F21 /* priority_critical.gif */; };
+		345789FF131720E700617F21 /* priority_major.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FA131720E700617F21 /* priority_major.gif */; };
+		34578A00131720E700617F21 /* priority_minor.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FB131720E700617F21 /* priority_minor.gif */; };
+		34578A01131720E700617F21 /* priority_trivial.gif in Resources */ = {isa = PBXBuildFile; fileRef = 345789FC131720E700617F21 /* priority_trivial.gif */; };
+		347C85FA13196B5400986270 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C85F913196B5400986270 /* DashboardController.m */; };
+		347F1675133585C9000BC1A7 /* ProjectActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347F1673133585C9000BC1A7 /* ProjectActivityController.m */; };
+		347F1676133585C9000BC1A7 /* ProjectActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F1674133585C9000BC1A7 /* ProjectActivityController.xib */; };
+		34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34835F1E13197262005DC6C9 /* DashboardController.xib */; };
 		4F36096512DFB95D00C60A50 /* JiraSoapServiceServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */; };
 		4F36096612DFB95D00C60A50 /* AbstractNamedRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AE12DFB95D00C60A50 /* AbstractNamedRemoteEntity.m */; };
 		4F36096712DFB95D00C60A50 /* AbstractRemoteConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608B012DFB95D00C60A50 /* AbstractRemoteConstant.m */; };
@@ -136,18 +154,31 @@
 		4FEDF76512EA3DD700CA09A0 /* MutableIssueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */; };
 		4FEDF76912EA3EEF00CA09A0 /* CreateIssueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */; };
 		4FEDF79412EA40CE00CA09A0 /* MutableIssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */; };
-		A87D27CF130630C9002475F6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27CE130630C9002475F6 /* Filter.m */; };
-		A87D27D313063672002475F6 /* filterProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27D213063672002475F6 /* filterProperties.m */; };
-		A87D27D6130636BB002475F6 /* filterAttributes.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27D5130636BB002475F6 /* filterAttributes.m */; };
-		A87D27DC1306374A002475F6 /* filterWorkRatios.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D27DB1306374A002475F6 /* filterWorkRatios.m */; };
-		A87D284013071401002475F6 /* filterDates.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D283F13071401002475F6 /* filterDates.m */; };
-		A87D284413071423002475F6 /* dateSet.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D284313071423002475F6 /* dateSet.m */; };
-		A87D284B13071607002475F6 /* date.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D284A13071607002475F6 /* date.m */; };
-		A87D285613071789002475F6 /* range.m in Sources */ = {isa = PBXBuildFile; fileRef = A87D285513071789002475F6 /* range.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0302C201130EF965003E95A6 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
+		0302C202130EF965003E95A6 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Field.m; sourceTree = "<group>"; };
 		030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = InternalClassesModel.xcclassmodel; sourceTree = "<group>"; };
+		032988CA131C4A3900C5FF23 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		032988CB131C4A3900C5FF23 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		032988CF131C4F6900C5FF23 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
+		032988D0131C4F6900C5FF23 /* Version.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Version.m; sourceTree = "<group>"; };
+		032988FC131C59D700C5FF23 /* Status.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Status.h; sourceTree = "<group>"; };
+		032988FD131C59D700C5FF23 /* Status.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Status.m; sourceTree = "<group>"; };
+		033AF1D0131803F600246BB4 /* MutableIssueDetailLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MutableIssueDetailLink.h; sourceTree = "<group>"; };
+		033AF1D1131803F600246BB4 /* MutableIssueDetailLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MutableIssueDetailLink.m; sourceTree = "<group>"; };
+		033AF1D41318044100246BB4 /* MutableIssueDetailLink.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailLink.xib; sourceTree = "<group>"; };
+		034E3304133CDC6A0034C1CB /* FiltersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltersController.h; sourceTree = "<group>"; };
+		034E3305133CDC6A0034C1CB /* FiltersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FiltersController.m; sourceTree = "<group>"; };
+		034E3306133CDC6A0034C1CB /* FiltersController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FiltersController.xib; sourceTree = "<group>"; };
+		034E33A8133E54790034C1CB /* TabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarView.h; sourceTree = "<group>"; };
+		034E33A9133E54790034C1CB /* TabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarView.m; sourceTree = "<group>"; };
+		034E33AA133E54790034C1CB /* TabBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabBarView.xib; sourceTree = "<group>"; };
+		03B97806133BF5F400DDB3C6 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
+		03B97807133BF5F400DDB3C6 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		03F1E84D13306CF100BBDEE9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
+		03F1E84E13306CF100BBDEE9 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* JiraPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JiraPhoneAppDelegate.h; path = Classes/JiraPhoneAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JiraPhoneAppDelegate.m; path = Classes/JiraPhoneAppDelegate.m; sourceTree = "<group>"; };
@@ -157,6 +188,20 @@
 		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* JiraPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiraPhone_Prefix.pch; sourceTree = "<group>"; };
+		344CAAEA133532F700544690 /* ProjectDashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectDashboardController.h; sourceTree = "<group>"; };
+		344CAAEB133532F700544690 /* ProjectDashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectDashboardController.m; sourceTree = "<group>"; };
+		344CABED13354B2000544690 /* ProjectDashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectDashboardController.xib; sourceTree = "<group>"; };
+		345789F8131720E700617F21 /* priority_blocker.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_blocker.gif; sourceTree = "<group>"; };
+		345789F9131720E700617F21 /* priority_critical.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_critical.gif; sourceTree = "<group>"; };
+		345789FA131720E700617F21 /* priority_major.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_major.gif; sourceTree = "<group>"; };
+		345789FB131720E700617F21 /* priority_minor.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_minor.gif; sourceTree = "<group>"; };
+		345789FC131720E700617F21 /* priority_trivial.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = priority_trivial.gif; sourceTree = "<group>"; };
+		347C85F813196B5400986270 /* DashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardController.h; sourceTree = "<group>"; };
+		347C85F913196B5400986270 /* DashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardController.m; sourceTree = "<group>"; };
+		347F1672133585C9000BC1A7 /* ProjectActivityController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectActivityController.h; sourceTree = "<group>"; };
+		347F1673133585C9000BC1A7 /* ProjectActivityController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectActivityController.m; sourceTree = "<group>"; };
+		347F1674133585C9000BC1A7 /* ProjectActivityController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProjectActivityController.xib; sourceTree = "<group>"; };
+		34835F1E13197262005DC6C9 /* DashboardController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DashboardController.xib; sourceTree = "<group>"; };
 		4F3608AA12DFB95D00C60A50 /* JiraSoapServiceServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiraSoapServiceServiceExample.h; sourceTree = "<group>"; };
 		4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiraSoapServiceServiceExample.m; sourceTree = "<group>"; };
 		4F3608AD12DFB95D00C60A50 /* AbstractNamedRemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractNamedRemoteEntity.h; sourceTree = "<group>"; };
@@ -395,22 +440,6 @@
 		4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailCell.xib; sourceTree = "<group>"; };
 		4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateIssueDelegate.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JiraPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JiraPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
-		A87D27CD130630C9002475F6 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
-		A87D27CE130630C9002475F6 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
-		A87D27D113063672002475F6 /* filterProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterProperties.h; sourceTree = "<group>"; };
-		A87D27D213063672002475F6 /* filterProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterProperties.m; sourceTree = "<group>"; };
-		A87D27D4130636BB002475F6 /* filterAttributes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterAttributes.h; sourceTree = "<group>"; };
-		A87D27D5130636BB002475F6 /* filterAttributes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterAttributes.m; sourceTree = "<group>"; };
-		A87D27DA1306374A002475F6 /* filterWorkRatios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterWorkRatios.h; sourceTree = "<group>"; };
-		A87D27DB1306374A002475F6 /* filterWorkRatios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterWorkRatios.m; sourceTree = "<group>"; };
-		A87D283E13071401002475F6 /* filterDates.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterDates.h; sourceTree = "<group>"; };
-		A87D283F13071401002475F6 /* filterDates.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterDates.m; sourceTree = "<group>"; };
-		A87D284213071423002475F6 /* dateSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dateSet.h; sourceTree = "<group>"; };
-		A87D284313071423002475F6 /* dateSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = dateSet.m; sourceTree = "<group>"; };
-		A87D284913071607002475F6 /* date.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = date.h; sourceTree = "<group>"; };
-		A87D284A13071607002475F6 /* date.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = date.m; sourceTree = "<group>"; };
-		A87D285413071789002475F6 /* range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = range.h; sourceTree = "<group>"; };
-		A87D285513071789002475F6 /* range.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = range.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +458,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		033AF1D3131803FF00246BB4 /* Mutable Issue Detail Link */ = {
+			isa = PBXGroup;
+			children = (
+				033AF1D0131803F600246BB4 /* MutableIssueDetailLink.h */,
+				033AF1D1131803F600246BB4 /* MutableIssueDetailLink.m */,
+				033AF1D41318044100246BB4 /* MutableIssueDetailLink.xib */,
+			);
+			name = "Mutable Issue Detail Link";
+			sourceTree = "<group>";
+		};
+		034E3302133CDC180034C1CB /* Filter Screen */ = {
+			isa = PBXGroup;
+			children = (
+				034E3304133CDC6A0034C1CB /* FiltersController.h */,
+				034E3305133CDC6A0034C1CB /* FiltersController.m */,
+				034E3306133CDC6A0034C1CB /* FiltersController.xib */,
+			);
+			name = "Filter Screen";
+			sourceTree = "<group>";
+		};
+		034E33A1133E535E0034C1CB /* TabBar Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				034E33A8133E54790034C1CB /* TabBarView.h */,
+				034E33A9133E54790034C1CB /* TabBarView.m */,
+				034E33AA133E54790034C1CB /* TabBarView.xib */,
+			);
+			name = "TabBar Navigation";
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,8 +499,13 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				034E33A1133E535E0034C1CB /* TabBar Navigation */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
+				034E3302133CDC180034C1CB /* Filter Screen */,
+				347F166B133583D1000BC1A7 /* Project Activity Screen */,
+				344CAAE9133532C800544690 /* Project Dashboard Screen */,
+				347C85F713196B1900986270 /* Dashboard Screen */,
 				4FBA94B012E197B80052C041 /* Model */,
 				4F9466E112E90D0200C276D0 /* Search Screen */,
 				4FA98DC912DF8D56009C33EA /* Login Screen */,
@@ -474,6 +538,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				345789F8131720E700617F21 /* priority_blocker.gif */,
+				345789F9131720E700617F21 /* priority_critical.gif */,
+				345789FA131720E700617F21 /* priority_major.gif */,
+				345789FB131720E700617F21 /* priority_minor.gif */,
+				345789FC131720E700617F21 /* priority_trivial.gif */,
 				4F9FCD6E12EAB0930095AAAF /* red_square_button1.png */,
 				4F9FCD1E12EAAC970095AAAF /* jiraCache.sqlite */,
 				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
@@ -492,6 +561,36 @@
 				4F8E58BC12E6EC430034BE0E /* libsqlite3.dylib */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		344CAAE9133532C800544690 /* Project Dashboard Screen */ = {
+			isa = PBXGroup;
+			children = (
+				344CAAEA133532F700544690 /* ProjectDashboardController.h */,
+				344CAAEB133532F700544690 /* ProjectDashboardController.m */,
+				344CABED13354B2000544690 /* ProjectDashboardController.xib */,
+			);
+			name = "Project Dashboard Screen";
+			sourceTree = "<group>";
+		};
+		347C85F713196B1900986270 /* Dashboard Screen */ = {
+			isa = PBXGroup;
+			children = (
+				347C85F813196B5400986270 /* DashboardController.h */,
+				347C85F913196B5400986270 /* DashboardController.m */,
+				34835F1E13197262005DC6C9 /* DashboardController.xib */,
+			);
+			name = "Dashboard Screen";
+			sourceTree = "<group>";
+		};
+		347F166B133583D1000BC1A7 /* Project Activity Screen */ = {
+			isa = PBXGroup;
+			children = (
+				347F1672133585C9000BC1A7 /* ProjectActivityController.h */,
+				347F1673133585C9000BC1A7 /* ProjectActivityController.m */,
+				347F1674133585C9000BC1A7 /* ProjectActivityController.xib */,
+			);
+			name = "Project Activity Screen";
 			sourceTree = "<group>";
 		};
 		4F087EA912E02990009FE766 /* Issues Screen */ = {
@@ -810,26 +909,34 @@
 		4FBA94B012E197B80052C041 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				A87D2848130715EF002475F6 /* Common */,
-				A87D27D0130635FD002475F6 /* Filter's_Privates */,
+				4F97EF1412ECC10E00C0AAE1 /* AbstractConstant.h */,
+				4F97EF1512ECC10E00C0AAE1 /* AbstractConstant.m */,
 				4FBA94B112E198560052C041 /* AbstractEntity.h */,
 				4FBA94B212E198560052C041 /* AbstractEntity.m */,
 				4F80F2BE12E19936001AFF06 /* AbstractNamedEntity.h */,
 				4F80F2BF12E19936001AFF06 /* AbstractNamedEntity.m */,
-				4F80F2C112E19972001AFF06 /* Project.h */,
-				4F80F2C212E19972001AFF06 /* Project.m */,
+				032988CA131C4A3900C5FF23 /* Comment.h */,
+				032988CB131C4A3900C5FF23 /* Comment.m */,
+				0302C201130EF965003E95A6 /* Field.h */,
+				0302C202130EF965003E95A6 /* Field.m */,
 				4F80F2C412E199A3001AFF06 /* Issue.h */,
 				4F80F2C512E199A3001AFF06 /* Issue.m */,
 				4F80F2D612E1A05C001AFF06 /* User.h */,
 				4F80F2D712E1A05C001AFF06 /* User.m */,
-				4F97EF1412ECC10E00C0AAE1 /* AbstractConstant.h */,
-				4F97EF1512ECC10E00C0AAE1 /* AbstractConstant.m */,
 				4F97EF1712ECC17000C0AAE1 /* IssueType.h */,
 				4F97EF1812ECC17000C0AAE1 /* IssueType.m */,
 				4F97EFC512ECCB5C00C0AAE1 /* Priority.h */,
 				4F97EFC612ECCB5C00C0AAE1 /* Priority.m */,
-				A87D27CD130630C9002475F6 /* Filter.h */,
-				A87D27CE130630C9002475F6 /* Filter.m */,
+				4F80F2C112E19972001AFF06 /* Project.h */,
+				4F80F2C212E19972001AFF06 /* Project.m */,
+				032988FC131C59D700C5FF23 /* Status.h */,
+				032988FD131C59D700C5FF23 /* Status.m */,
+				032988CF131C4F6900C5FF23 /* Version.h */,
+				032988D0131C4F6900C5FF23 /* Version.m */,
+				03F1E84D13306CF100BBDEE9 /* Group.h */,
+				03F1E84E13306CF100BBDEE9 /* Group.m */,
+				03B97806133BF5F400DDB3C6 /* Filter.h */,
+				03B97807133BF5F400DDB3C6 /* Filter.m */,
 			);
 			name = Model;
 			path = Classes;
@@ -838,6 +945,7 @@
 		4FEDF70512EA356800CA09A0 /* Create Issue Screen */ = {
 			isa = PBXGroup;
 			children = (
+				033AF1D3131803FF00246BB4 /* Mutable Issue Detail Link */,
 				4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */,
 				4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */,
 				4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */,
@@ -854,34 +962,6 @@
 				4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */,
 			);
 			name = "Mutable Issue Detail Cell";
-			sourceTree = "<group>";
-		};
-		A87D27D0130635FD002475F6 /* Filter's_Privates */ = {
-			isa = PBXGroup;
-			children = (
-				A87D27D113063672002475F6 /* filterProperties.h */,
-				A87D27D213063672002475F6 /* filterProperties.m */,
-				A87D27D4130636BB002475F6 /* filterAttributes.h */,
-				A87D27D5130636BB002475F6 /* filterAttributes.m */,
-				A87D283E13071401002475F6 /* filterDates.h */,
-				A87D283F13071401002475F6 /* filterDates.m */,
-				A87D27DA1306374A002475F6 /* filterWorkRatios.h */,
-				A87D27DB1306374A002475F6 /* filterWorkRatios.m */,
-				A87D284213071423002475F6 /* dateSet.h */,
-				A87D284313071423002475F6 /* dateSet.m */,
-			);
-			name = "Filter's_Privates";
-			sourceTree = "<group>";
-		};
-		A87D2848130715EF002475F6 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				A87D284913071607002475F6 /* date.h */,
-				A87D284A13071607002475F6 /* date.m */,
-				A87D285413071789002475F6 /* range.h */,
-				A87D285513071789002475F6 /* range.m */,
-			);
-			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -947,6 +1027,16 @@
 				4F9FCD1F12EAAC970095AAAF /* jiraCache.sqlite in Resources */,
 				4F9FCD6F12EAB0930095AAAF /* red_square_button1.png in Resources */,
 				030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */,
+				345789FD131720E700617F21 /* priority_blocker.gif in Resources */,
+				345789FE131720E700617F21 /* priority_critical.gif in Resources */,
+				345789FF131720E700617F21 /* priority_major.gif in Resources */,
+				34578A00131720E700617F21 /* priority_minor.gif in Resources */,
+				34578A01131720E700617F21 /* priority_trivial.gif in Resources */,
+				34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */,
+				344CABEE13354B2000544690 /* ProjectDashboardController.xib in Resources */,
+				347F1676133585C9000BC1A7 /* ProjectActivityController.xib in Resources */,
+				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
+				034E33AC133E54790034C1CB /* TabBarView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1070,14 +1160,14 @@
 				4F97EF1612ECC10E00C0AAE1 /* AbstractConstant.m in Sources */,
 				4F97EF1912ECC17000C0AAE1 /* IssueType.m in Sources */,
 				4F97EFC712ECCB5C00C0AAE1 /* Priority.m in Sources */,
-				A87D27CF130630C9002475F6 /* Filter.m in Sources */,
-				A87D27D313063672002475F6 /* filterProperties.m in Sources */,
-				A87D27D6130636BB002475F6 /* filterAttributes.m in Sources */,
-				A87D27DC1306374A002475F6 /* filterWorkRatios.m in Sources */,
-				A87D284013071401002475F6 /* filterDates.m in Sources */,
-				A87D284413071423002475F6 /* dateSet.m in Sources */,
-				A87D284B13071607002475F6 /* date.m in Sources */,
-				A87D285613071789002475F6 /* range.m in Sources */,
+				0302C203130EF965003E95A6 /* Field.m in Sources */,
+				347C85FA13196B5400986270 /* DashboardController.m in Sources */,
+				03F1E84F13306CF100BBDEE9 /* Group.m in Sources */,
+				344CAAEC133532F700544690 /* ProjectDashboardController.m in Sources */,
+				347F1675133585C9000BC1A7 /* ProjectActivityController.m in Sources */,
+				03B97808133BF5F400DDB3C6 /* Filter.m in Sources */,
+				034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */,
+				034E33AB133E54790034C1CB /* TabBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

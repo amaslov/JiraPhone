@@ -36,6 +36,9 @@
 @synthesize summary = _summary;
 @synthesize type = _type;
 @synthesize updated = _updated;
+@synthesize environment = _environment;
+@synthesize userId=_userId;
+//@synthesize hashCode=_hashCode;
 
 - (void)dealloc {
 	if(self.assignee != nil) { [self.assignee release]; }
@@ -51,7 +54,7 @@
 	if(self.summary != nil) { [self.summary release]; }
 	if(self.type != nil) { [self.type release]; }
 	if(self.updated != nil) { [self.updated release]; }
-	
+	if(self.environment!=nil){[self.environment release];}
 	[super dealloc];
 }
 
@@ -59,6 +62,7 @@
 #pragma mark Class methods
 + (void)cacheIssues:(NSArray *)_issues ofProject:(Project *)_proj {
 	
+	//TODO: change to support issue updating in the DB
 	NSString *updateString = [NSString stringWithFormat:@"delete from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];	
 	
 	// clear
@@ -81,11 +85,66 @@
 						issue.summary,
 						[NSString stringWithFormat: @"%i", issue.type.number],
 						issue.updated, [User loggedInUser].ID];
+		
+						
 		[db executeUpdate:updateString];		
 	}
 	
 	if ([db hadError]) {
 		NSLog(@"db error: %@", [db lastErrorMessage]);
+	}
+}
+
+/* + (void)cacheAllIssues:(NSArray *)_issues {
+	
+	//TODO: change to support issue updating in the DB
+	NSString *updateString = [NSString stringWithFormat:@"delete from issues where user_id = \"%@\"", [User loggedInUser].ID];	
+	
+	// clear
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	[db executeUpdate:updateString];
+	
+	// insert
+	for (Issue *issue in _issues) {
+		updateString = [NSString stringWithFormat:@"insert into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+						issue.assignee,
+						issue.created,
+						issue.description,
+						issue.duedate,
+						issue.key,
+						[NSString stringWithFormat: @"%i", issue.priority.number],
+						issue.project,
+						issue.reporter,
+						issue.resolution,
+						issue.status,
+						issue.summary,
+						[NSString stringWithFormat: @"%i", issue.type.number],
+						issue.updated, [User loggedInUser].ID];
+		
+		
+		[db executeUpdate:updateString];		
+	}
+	
+	if ([db hadError]) {
+		NSLog(@"db error: %@", [db lastErrorMessage]);
+	}
+}
+*/
++ (void)getCachedIssuesForUser:(NSMutableArray *)_issues {
+	NSString *queryString = [NSString stringWithFormat:@"select * from issues where assignee = \"%@\" limit 3",[User loggedInUser].name];
+	
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	FMResultSet *rs = [db executeQuery:queryString];
+	while ([rs next])
+	{
+		Issue *issue = [[Issue alloc] init];
+		[issue fillFromResultSet:rs];
+		[_issues addObject:issue];
+		[issue release];
+	}
+	[rs close];
+	if ([db hadError]) {
+		NSLog(@"db error: %@",[db lastErrorMessage]);
 	}
 }
 
@@ -138,5 +197,18 @@
 	self.updated = [rs dateForColumn:@"updated"];
 }
 
-
+- (NSComparisonResult)compareUpdatedDate:(Issue*)_issue {
+	//Compare reverse comparison to get Most recent items first
+	return [_issue.updated compare:self.updated];
+}
+- (NSComparisonResult)compareKey:(Issue*)_issue {
+	// Sort keys alphabetically
+	return [self.key compare:_issue.key];
+}
+- (NSComparisonResult)comparePriority:(Issue*)_issue {
+	// Sort keys by priority in ascending order (most critical issues first)
+	NSNumber *selfPriority = [NSNumber numberWithInteger:self.priority.number];
+	NSNumber *otherPriority = [NSNumber numberWithInteger:_issue.priority.number];
+	return [selfPriority compare:otherPriority];
+}
 @end

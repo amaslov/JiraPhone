@@ -14,6 +14,7 @@
 	NSString* _lead;
 	NSString* _projectUrl;
 	NSString* _url;
+	NSUInteger _hashCode;
 }
 
 @property (retain, nonatomic) NSString* description;
@@ -21,6 +22,7 @@
 @property (retain, nonatomic) NSString* lead;
 @property (retain, nonatomic) NSString* projectUrl;
 @property (retain, nonatomic) NSString* url;
+@property NSUInteger hashCode;
 
 // fill _projects with projects from local db
 + (void)getCachedProjects:(NSMutableArray *)_projects;

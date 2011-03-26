@@ -8,7 +8,9 @@
 #import "LoginController.h"
 #import "Connector.h"
 #import "ProjectsController.h"
+#import "DashboardController.h"
 #import "User.h"
+#import "TabBarView.h"
 
 #define SETTINGS_SAVE_CREDENTIALS		@"settingsSaveKey"
 #define SETTINGS_LOGIN					@"loginKey"
@@ -87,9 +89,14 @@
 		
 		User *user = [[User alloc] init];
 		user.name = nameField.text;
+		user.password = passwordField.text;
 		user.server = serverField.text;
 		[User setLoggedInUser:user];
 		[user release];
+		
+		//UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [NSString stringWithFormat:@"Logged in user is %@",[User  loggedInUser].name] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+		//[alert show];
+		//[alert release];
 		
 		// save credentials for autocomplete
 		NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
@@ -104,9 +111,20 @@
 		[ud synchronize];
 		
 		// show projects
-		ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
-		[self.navigationController pushViewController:projController animated:YES];
-		[projController release];
+		//ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+		//[self.navigationController pushViewController:projController animated:YES];
+		//[projController release];
+		
+		// Show dashboard
+		DashboardController *dashController = [[DashboardController alloc] initWithNibName:@"DashboardController" bundle:nil];
+		[self.navigationController pushViewController:dashController animated:YES];
+		[dashController release];
+		
+		//Show tab bar stuff
+//		TabBarView *tabController = [[TabBarView alloc] initWithNibName:@"TabBarView" bundle:nil];
+//		[self.navigationController pushViewController:tabController animated:YES];
+//		[tabController release];
+		
 	}
 	else {
 		// logout

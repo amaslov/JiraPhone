@@ -8,14 +8,20 @@
 #import "CreateIssueController.h"
 #import "Issue.h"
 #import "MutableIssueDetailCell.h"
+#import "MutableIssueDetailLink.h"
 #import "Connector.h"
 #import "Project.h"
 #import "IssueType.h"
 
+
 @implementation CreateIssueController
 @synthesize mutableCell;
 @synthesize project;
-@synthesize delegate; //Warning!
+@synthesize delegate; 
+@synthesize mutableLink;
+@synthesize pickerView;
+@synthesize doneButton;
+@synthesize dataArray;
 
 #pragma mark -
 #pragma mark Initialization
@@ -36,9 +42,15 @@
 }
 
 - (IBAction)doneAction {
+	//TODO: think about creating this stuff in a cycle.
 	MutableIssueDetailCell *cell;
+	MutableIssueDetailLink *link;
 	Issue *newIssue = [[Issue alloc] init];
 	newIssue.project = project.key;
+	
+	// get issue summary value
+	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_SUMMARY_ROW inSection: ISSUE_DATA_SECTION]];
+	newIssue.summary = cell.textField.text;
 	
 	// get issue type value
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_TYPE_ROW inSection: ISSUE_DATA_SECTION]];
@@ -47,10 +59,6 @@
 	newIssue.type = t;
 	[t release];
 	
-	// get issue summary value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_SUMMARY_ROW inSection: ISSUE_DATA_SECTION]];
-	newIssue.summary = cell.textField.text;
-
 	// get issue priority value
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_PRIORITY_ROW inSection: ISSUE_DATA_SECTION]];
 	Priority *p = [[Priority alloc] init];
@@ -58,18 +66,34 @@
 	newIssue.priority = p;
 	[p release];
 	
+<<<<<<< HEAD
 	//Issue status row
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_STATUS_ROW inSection: ISSUE_DATA_SECTION]];
 	newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 	
+=======
+	//get issue affect versions value 
+	//TODO implement versions support
+	cell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_AFFECT_VERSIONS_ROW inSection:ISSUE_DATA_SECTION]];
+	
+	//get issue status value
+	//TODO implement status support
+	cell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_STATUS_ROW inSection:ISSUE_DATA_SECTION]];
+	
+	//get issue resolution value
+	//TODO implement resolution support
+	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_RESOLUTION_ROW inSection:ISSUE_DATA_SECTION]];
+>>>>>>> dev
 
 	// get issue assignee value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
-	newIssue.assignee = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
-
+	link = (MutableIssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
+	//cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
+	//newIssue.assignee = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
+	//newIssue.assignee = 
 	// get issue reporter value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
-	newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
+	//cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
+	link = (MutableIssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
+	//newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 	
 	[Connector sharedConnector].delegate = self;
 	
@@ -138,18 +162,84 @@
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"MutableCell";
-    
-    MutableIssueDetailCell *mCell = (MutableIssueDetailCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (mCell == nil) {
-		[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
-		mCell = mutableCell;
-    }
-	
-    // Configure the cell...
-	mCell.title.text = [self titleForCellAtIndexPath:indexPath];
-    return mCell;
-}
+ 	switch (indexPath.section) {
+			static NSString *LinkIdentifier=@"MutableLink";
+			static NSString *CellIdentifier=@"MutableCell";
+		case (ISSUE_MAN_SECTION):
+		{
+				MutableIssueDetailLink *mLink = (MutableIssueDetailLink *)[tableView dequeueReusableCellWithIdentifier:LinkIdentifier];
+			if (mLink==nil) 
+			{
+				[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailLink" owner:self options:nil];
+				mLink=mutableLink;
+			}
+			mLink.title.text=[self titleForCellAtIndexPath:indexPath];
+			return mLink;
+		}
+			break;
+
+		//case (ISSUE_DATE_SECTION):
+		//{
+			
+		//}
+		//	break;
+		default:
+		{
+				MutableIssueDetailCell *mCell = (MutableIssueDetailCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+			if (mCell == nil) 
+			{
+				[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
+				mCell = mutableCell;
+			}
+			
+			// Configure the cell...
+			mCell.title.text = [self titleForCellAtIndexPath:indexPath];
+			return mCell;
+		}
+			break;
+	}
+}	
+
+/*	
+	if (indexPath==[NSIndexPath indexPathForRow:ISSUE_ASSIGNEE_ROW inSection:ISSUE_MAN_SECTION])
+	{
+		MutableIssueDetailLink *mCell = (MutableIssueDetailLink *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (mCell==nil) 
+		{
+			[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailLink" owner:self options:nil];
+			mCell=mutableLink;
+		}
+		mCell.title.text=[self titleForCellAtIndexPath:indexPath];
+		return mCell;
+	}	
+	else if (indexPath==[NSIndexPath indexPathForRow:ISSUE_REPORTER_ROW inSection:ISSUE_MAN_SECTION])
+	{
+		
+		MutableIssueDetailLink *mCell = (MutableIssueDetailLink *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (mCell==nil) 
+		{
+			[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailLink" owner:self options:nil];
+			mCell=mutableLink;
+		}
+		mCell.title.text=[self titleForCellAtIndexPath:indexPath];
+		return mCell;
+	}
+	else	
+	{
+		MutableIssueDetailCell *mCell = (MutableIssueDetailCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+		if (mCell == nil) 
+		{
+			[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
+			mCell = mutableCell;
+		}
+		
+		// Configure the cell...
+		mCell.title.text = [self titleForCellAtIndexPath:indexPath];
+		return mCell;
+	}
+ */
+
+
 
 
 /*
@@ -227,6 +317,7 @@
 	[project release];
 	[mutableCell release];
     [super dealloc];
+	[mutableLink release];
 }
 
 #pragma mark -
@@ -256,6 +347,11 @@
 		[alert release];
 	}
 }
+
+-(void)textFieldReturn:(id)sender {
+	
+}
+
 
 @end
 

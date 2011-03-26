@@ -14,7 +14,6 @@
 
 @implementation IssuesController
 @synthesize project;
-
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
 		self.project = _project;
@@ -37,9 +36,9 @@
 }
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    //[super viewDidLoad];
 	self.title = project.name;
-
+	
 	// get list of cashed projects
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
@@ -65,9 +64,44 @@
 	[connector getIssuesOfProject:project];	
 	
 	// add + (create issue) button
-	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateIssueScreen)];
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
+	
+	//[issues sortUsingSelector:@selector(compareCreationDate:)];
+	//[self.tableView reloadData];
+}
+
+- (IBAction)showActionSheet:(id)sender {
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", @"Create Issue", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+	[popupQuery release];
+}
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			// User wants to sort by updated date
+			[issues sortUsingSelector:@selector(compareUpdatedDate:)];
+			[self.tableView reloadData];
+			break;
+		case 1:
+			// User wants to sort by issue key
+			[issues sortUsingSelector:@selector(compareKey:)];
+			[self.tableView reloadData];
+			break;
+		case 2:
+			// User wants to sort by priority
+			[issues sortUsingSelector:@selector(comparePriority:)];
+			[self.tableView reloadData];
+			break;
+		case 3:			
+			[self showCreateIssueScreen];
+			break;
+		default:
+			break;
+	}
 }
 
 /*
@@ -113,21 +147,41 @@
     return issues.count;
 }
 
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+	
     static NSString *CellIdentifier = @"Cell";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    // Configure the cell...
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+	}
+
+	
+	// Configure the cell...
 	Issue *issue = [issues objectAtIndex:indexPath.row];
-    cell.textLabel.text = issue.key;
-    return cell;
+
+	switch (issue.priority.number) {
+		case 1:
+			cell.imageView.image = [UIImage imageNamed:@"priority_blocker.gif"];
+			break;
+		case 2:
+			cell.imageView.image = [UIImage imageNamed:@"priority_critical.gif"];
+			break;
+		case 3:
+			cell.imageView.image = [UIImage imageNamed:@"priority_major.gif"];
+			break;
+		case 4:
+			cell.imageView.image = [UIImage imageNamed:@"priority_minor.gif"];
+			break;
+		case 5:
+			cell.imageView.image = [UIImage imageNamed:@"priority_trivial.gif"];
+			break;
+	}
+	
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	return cell;
 }
 
 
@@ -211,7 +265,6 @@
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
 		[Issue cacheIssues:result ofProject: project];
-		
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];

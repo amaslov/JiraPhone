@@ -2,31 +2,73 @@
 //  Filter.m
 //  JiraPhone
 //
-//  Created by Paul Dejardin on 2/11/11.
+//  Created by Aleksey Maslov on 3/24/11.
 //  Copyright 2011 AMaslov. All rights reserved.
 //
 
 #import "Filter.h"
-
+#import "User.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation Filter
-@synthesize search_properties, search_attributes, search_dates, search_ratios;
 
--(id)initAllNil
-{
-	if (self = [super init])
-	{ 
-		search_properties = [[filterProperties alloc] init];
-		search_attributes = [[filterAttributes alloc] init];
-		search_dates =      [[filterDates alloc] init];
-		search_ratios =     [[filterWorkRatios alloc] init];
+@synthesize author=_author;
+@synthesize description=_description;
+@synthesize server=_server;
+
+
++ (void)cacheFilters:(NSArray *)_filters{
+	
+	//TODO: change to support issue updating in the DB
+	NSString *updateString = [NSString stringWithFormat:@"delete from filters where user_id = \"%@\"", [User loggedInUser].ID];	
+	
+	// clear
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	[db executeUpdate:updateString];
+	
+	// insert
+	for (Filter *filter in _filters) {
+		updateString = [NSString stringWithFormat:@"insert into filters (id, name, author, description, server) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+						filter.ID,
+						filter.name,
+						filter.author,
+						filter.description,
+						[User loggedInUser].server];
+		
+		
+		[db executeUpdate:updateString];		
 	}
-	return self;
+	
+	if ([db hadError]) {
+		NSLog(@"db error: %@", [db lastErrorMessage]);
+	}
 }
 
--(id)init
++ (void)getCachedFilters:(NSMutableArray *)filters {
+	NSString *queryString = [NSString stringWithFormat:@"select * from filters where author = \"%@\" limit 10",[User loggedInUser].name];
+	
+	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	FMResultSet *rs = [db executeQuery:queryString];
+	while ([rs next])
+	{
+		Filter *filter = [[Filter alloc] init];
+		[filter fillFromResultSet:rs];
+		[filters addObject:filter];
+		[filter release];
+	}
+	[rs close];
+	if ([db hadError]) {
+		NSLog(@"db error: %@",[db lastErrorMessage]);
+	}
+}
+
+- (void)fillFromResultSet:(FMResultSet *)rs
 {
-	return [self initAllNil];
+	self.ID=[rs stringForColumn:@"ID"];
+	self.author = [rs stringForColumn:@"author"];
+	self.name=[rs stringForColumn:@"name"];
+	self.server=[rs stringForColumn:@"server"];
+	self.description=[rs stringForColumn:@"description"];
 }
 
 @end

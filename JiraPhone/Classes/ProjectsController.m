@@ -8,9 +8,11 @@
 #import "ProjectsController.h"
 #import "Project.h"
 #import "Connector.h"
+#import "ProjectActivityController.h"
 #import "IssuesController.h"
 #import "SearchController.h"
 #import "LoginController.h"
+#import "ProjectDashboardController.h"
 
 
 @implementation ProjectsController
@@ -21,17 +23,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = @"Projects";
-	
-	// set custom back button
-	UIButton *backButtonInternal = [[UIButton alloc] initWithFrame:CGRectMake(0,0,54,30)];
-	[backButtonInternal setTitle:@"Logout" forState:UIControlStateNormal];
-	[backButtonInternal.titleLabel setFont : [UIFont boldSystemFontOfSize:12]];
-	[backButtonInternal setBackgroundImage:[UIImage imageNamed:@"red_square_button1.png"] forState:UIControlStateNormal];
-	[backButtonInternal addTarget:self action:@selector(backButtonPressed) forControlEvents:UIControlEventTouchUpInside];
-	UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithCustomView:backButtonInternal];   
-	[backButtonInternal release];
-	[[self navigationItem] setLeftBarButtonItem:backBarButton];
-	[backBarButton release];
 	
 	// get list of cashed projects
 	if (!projects) {
@@ -171,9 +162,17 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// Uncomment this section to get old issue list back
+	/*
 	IssuesController *issuesController = [[IssuesController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:issuesController animated:YES];
 	[issuesController release];
+	*/
+	
+	ProjectDashboardController *projectDashboardController = [[ProjectDashboardController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
+	[self.navigationController pushViewController:projectDashboardController animated:YES];
+	[projectDashboardController release];
+	 
 }
 
 
@@ -216,14 +215,6 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
-}
-
-#pragma mark -
-#pragma mark Actions
-- (IBAction)backButtonPressed {
-	LoginController *lc = [self.navigationController.viewControllers objectAtIndex:0];
-	[self.navigationController popViewControllerAnimated:YES];
-	[lc logoutAction];
 }
 
 - (void)showSearchController {
