@@ -10,6 +10,7 @@
 #import "ProjectsController.h"
 #import "DashboardController.h"
 #import "User.h"
+#import "TabBarView.h"
 
 #define SETTINGS_SAVE_CREDENTIALS		@"settingsSaveKey"
 #define SETTINGS_LOGIN					@"loginKey"
@@ -118,6 +119,12 @@
 		DashboardController *dashController = [[DashboardController alloc] initWithNibName:@"DashboardController" bundle:nil];
 		[self.navigationController pushViewController:dashController animated:YES];
 		[dashController release];
+		
+		//Show tab bar stuff
+//		TabBarView *tabController = [[TabBarView alloc] initWithNibName:@"TabBarView" bundle:nil];
+//		[self.navigationController pushViewController:tabController animated:YES];
+//		[tabController release];
+		
 	}
 	else {
 		// logout
