@@ -28,7 +28,7 @@
 	
 	// insert
 	for (Filter *filter in _filters) {
-		updateString = [NSString stringWithFormat:@"insert into filters (id, name, author, description, server) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+		updateString = [NSString stringWithFormat:@"insert into filters (filters_id, name, author, description, server) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
 						filter.ID,
 						filter.name,
 						filter.author,
@@ -64,7 +64,7 @@
 
 - (void)fillFromResultSet:(FMResultSet *)rs
 {
-	self.ID=[rs stringForColumn:@"ID"];
+	self.ID=[rs stringForColumn:@"filters_id"];
 	self.author = [rs stringForColumn:@"author"];
 	self.name=[rs stringForColumn:@"name"];
 	self.server=[rs stringForColumn:@"server"];
