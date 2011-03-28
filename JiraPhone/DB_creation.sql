@@ -42,7 +42,7 @@ CREATE TABLE "users"
 );
 
 CREATE TABLE "comments"
-("ID" TEXT PRIMARY KEY,
+("comments_ID" TEXT PRIMARY KEY,
 "author" TEXT,
 "body" TEXT,
 "updated" DATETIME,
@@ -53,14 +53,14 @@ FOREIGN KEY (author) REFERENCES users(name) ON UPDATE CASCADE ON DELETE SET NULL
 FOREIGN KEY (issueId) REFERENCES issues(key) ON UPDATE CASCADE ON DELETE CASCADE);
 
 CREATE TABLE "versions"
-("id" TEXT PRIMARY KEY,
+("version_id" TEXT PRIMARY KEY,
 "name" TEXT,
 "releaseDate" DATETIME,
 "server" TEXT,
 "sequence" INTEGER);
 
 CREATE TABLE "roleactor"
-("id" INTEGER PRIMARY KEY,
+("role_id" INTEGER PRIMARY KEY,
 "description" TEXT,
 "name" TEXT,
 "server" TEXT,
@@ -68,7 +68,7 @@ CREATE TABLE "roleactor"
 );
 
 CREATE TABLE "projectrole"
-("id" INTEGER PRIMARY KEY,
+("project_id" INTEGER PRIMARY KEY,
 "name" TEXT,
 "description" TEXT,
 "server" TEXT,
@@ -83,7 +83,7 @@ FOREIGN KEY (user_name) REFERENCES users(name) ON DELETE CASCADE
 );
 
 CREATE TABLE "filters"
-("id" TEXT PRIMARY KEY,
+("filters_id" TEXT PRIMARY KEY,
 "name" TEXT,
 "author" TEXT,
 "server" TEXT,
