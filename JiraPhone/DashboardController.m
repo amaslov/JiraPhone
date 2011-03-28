@@ -10,6 +10,7 @@
 #import "Project.h"
 #import "Issue.h"
 #import "Priority.h"
+#import "Filter.h"
 #import "IssuesController.h"
 #import "ProjectsController.h"
 #import "IssueDetailsController.h"
@@ -49,6 +50,10 @@
 		issues = [[NSMutableArray alloc] init];
 	}
 	
+	if (!filters) {
+		filters = [[NSMutableArray alloc] init];
+	}
+	
 	//[Issue getCachedIssuesForUser:issues];
 	//[self.tableView reloadData];
 	
@@ -59,6 +64,17 @@
 	
 	// if there are no cashed projects show wait spinner
 	if (!issues.count) {
+		if (!activityIndicator) {
+			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+			[self.view addSubview:activityIndicator];
+			[activityIndicator release];
+		}
+		[activityIndicator startAnimating];		
+	}
+	
+	[connector getFavouriteFilters];
+	if (!filters.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
@@ -135,8 +151,8 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-		cell.textLabel.numberOfLines = 0;
+		//cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+		//cell.textLabel.numberOfLines = 0;
     }
     
     // Configure the cell...
@@ -176,7 +192,15 @@
 	}
 	else if (indexPath.section == 2)
 	{
-		cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		if (filters.count >= indexPath.row + 1)
+		{
+			Filter *filter = [filters objectAtIndex:indexPath.row];
+			cell.textLabel.text = [NSString stringWithFormat:@"%@",filter.description];
+		}
+		else {
+			cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		}
+
 		cell.imageView.image = nil;
 		cell.detailTextLabel.text = nil;
 		cell.accessoryType = UITableViewCellAccessoryNone;
@@ -202,6 +226,12 @@
 			[projController release];
 		}
 	}
+	else {
+		IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issuesController animated:YES];
+		[issuesController release];
+	}
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -241,9 +271,21 @@
 - (void)didReceiveData:(id)result {
 	[activityIndicator stopAnimating];
 	if ([result isKindOfClass:[NSArray class]]) {
+		if ([[result objectAtIndex:0] isKindOfClass:[Filter class]]) {
+			NSLog(@"FOUND FILTERS.");
+			[filters release];
+			result = [result subarrayWithRange:NSMakeRange(1, [result count]-1)];
+			for (int i = 0; i < [result count]; i++) {
+				NSLog(@"Filter ID:%@",[[result objectAtIndex:i] ID]);
+			}
+			filters = [result retain];
+			[self.tableView reloadData];
+		}
+		else {
 		[issues release];
 		issues = [result retain];
 		[self.tableView reloadData];
+		}
 	}
 }
 

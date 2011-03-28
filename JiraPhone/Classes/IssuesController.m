@@ -9,14 +9,23 @@
 #import "Project.h"
 #import "Connector.h"
 #import "Issue.h"
+#import "Filter.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
 
 @implementation IssuesController
 @synthesize project;
+@synthesize filter;
+
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
 		self.project = _project;
+	}
+	return self;
+}
+- (id)initForFilter:(Filter *)_filter {
+	if (self = [super init]) {
+		self.filter = _filter;
 	}
 	return self;
 }
@@ -37,13 +46,21 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-	self.title = project.name;
+	if (project) {
+		self.title = project.name;
+	}
+	else {
+		self.title = filter.description;
+	}
 	
 	// get list of cashed projects
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
-	[Issue getCachedIssues:issues ofProject: project];
+	
+	if (project) {
+		[Issue getCachedIssues:issues ofProject: project];
+	}
 	
 	// if there's no cashed issues show wait spinner
 	if (!issues.count) {
@@ -61,7 +78,15 @@
 	// sync with server for list of issues for given project
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
-	[connector getIssuesOfProject:project];	
+	
+	if (project) {
+		[connector getIssuesOfProject:project];
+	}
+	else {
+		[connector getIssuesFromFilter:filter.ID];
+		NSLog(@"Getting filters for ID: %@",filter.ID);
+	}
+
 	
 	// add + (create issue) button
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
