@@ -15,7 +15,7 @@
 	NSString* _body;
 	NSDate* _updated;
 	NSDate* _created;
-	//this one add manually!
+	//this one add manually! Not from the database, but from the current user.
 	NSString* _issueId;
 }
 @property (nonatomic, retain) NSString* Id;
