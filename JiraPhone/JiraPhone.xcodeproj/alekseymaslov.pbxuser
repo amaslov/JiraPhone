@@ -16,6 +16,7 @@
 		dataTipSortType = 0;
 		debuggerPlugin = GDBDebugging;
 		disassemblyDisplayState = 0;
+		dylibVariantSuffix = "";
 		enableDebugStr = 1;
 		environmentEntries = (
 		);
@@ -23,6 +24,8 @@
 		executableUserSymbolLevel = 0;
 		libgmallocEnabled = 0;
 		name = JiraPhone;
+		savedGlobals = {
+		};
 		showTypeColumn = 0;
 		sourceDirectories = (
 		);
@@ -41,6 +44,220 @@
 		isa = PBXCodeSenseManager;
 		indexTemplatePath = "";
 	};
+	0387C9B3134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
+		name = "ProjectDashboardController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 463;
+		vrLoc = 145;
+	};
+	0387C9B4134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 739;
+		vrLoc = 4099;
+	};
+	0387C9B5134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 347C85F913196B5400986270 /* DashboardController.m */;
+		name = "DashboardController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 975;
+		vrLoc = 5294;
+	};
+	0387C9B6134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F8FEBFB12E1C2FA00B24BB8 /* ProjectsController.m */;
+		name = "ProjectsController.m: 175";
+		rLen = 0;
+		rLoc = 5308;
+		rType = 0;
+		vrLen = 981;
+		vrLoc = 4593;
+	};
+	0387C9B7134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
+		name = "CreateIssueController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 882;
+		vrLoc = 48;
+	};
+	0387C9B8134A3B4B00826BAA /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+	};
+	0387C9B9134A3B4B00826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 1218;
+		vrLoc = 674;
+	};
+	0387C9D1134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */;
+		name = "CreateIssueDelegate.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 269;
+		vrLoc = 0;
+	};
+	0387C9D2134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76312EA3DD700CA09A0 /* MutableIssueDetailCell.h */;
+		name = "MutableIssueDetailCell.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 409;
+		vrLoc = 0;
+	};
+	0387C9D3134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F97D4F912E419CB005153F4 /* IssuesController.h */;
+		name = "IssuesController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 586;
+		vrLoc = 0;
+	};
+	0387C9D4134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F97D4FA12E419CB005153F4 /* IssuesController.m */;
+		name = "IssuesController.m: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 548;
+		vrLoc = 7891;
+	};
+	0387C9D5134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
+		name = "CreateIssueController.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 922;
+		vrLoc = 3;
+	};
+	0387C9D6134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F97EF1812ECC17000C0AAE1 /* IssueType.m */;
+		name = "IssueType.m: 11";
+		rLen = 26;
+		rLoc = 155;
+		rType = 0;
+		vrLen = 329;
+		vrLoc = 131;
+	};
+	0387C9D7134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F80F2C512E199A3001AFF06 /* Issue.m */;
+		name = "Issue.m: 25";
+		rLen = 22;
+		rLoc = 418;
+		rType = 0;
+		vrLen = 1007;
+		vrLoc = 5873;
+	};
+	0387C9D8134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */;
+		name = "MutableIssueDetailCell.m: 11";
+		rLen = 39;
+		rLoc = 180;
+		rType = 0;
+		vrLen = 535;
+		vrLoc = 238;
+	};
+	0387C9D9134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F80F2C212E19972001AFF06 /* Project.m */;
+		name = "Project.m: 23";
+		rLen = 24;
+		rLoc = 382;
+		rType = 0;
+		vrLen = 590;
+		vrLoc = 0;
+	};
+	0387C9DA134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F933BE212E5E0EF0052CA5F /* IssueDetailsController.h */;
+		name = "IssueDetailsController.h: 32";
+		rLen = 0;
+		rLoc = 732;
+		rType = 0;
+		vrLen = 687;
+		vrLoc = 46;
+	};
+	0387C9DB134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F933BE312E5E0EF0052CA5F /* IssueDetailsController.m */;
+		name = "IssueDetailsController.m: 70";
+		rLen = 106;
+		rLoc = 1523;
+		rType = 0;
+		vrLen = 554;
+		vrLoc = 2250;
+	};
+	0387C9DC134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 50";
+		rLen = 0;
+		rLoc = 1199;
+		rType = 0;
+		vrLen = 1242;
+		vrLoc = 701;
+	};
+	0387C9DD134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 14";
+		rLen = 0;
+		rLoc = 309;
+		rType = 0;
+		vrLen = 648;
+		vrLoc = 3;
+	};
+	0387C9E0134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 69";
+		rLen = 0;
+		rLoc = 2237;
+		rType = 0;
+		vrLen = 1792;
+		vrLoc = 701;
+	};
+	0387C9E1134A64E200826BAA /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 71";
+		rLen = 0;
+		rLoc = 2237;
+		rType = 0;
+		vrLen = 1324;
+		vrLoc = 636;
+	};
 	1D6058900D05DD3D006BFB54 /* JiraPhone */ = {
 		activeExec = 0;
 		executables = (
@@ -50,6 +267,7 @@
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Debug;
 		activeExecutable = 0387C994134A2E7800826BAA /* JiraPhone */;
+		activeSDKPreference = iphonesimulator4.3;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* JiraPhone */;
 		codeSenseManager = 0387C9A6134A2E7F00826BAA /* Code sense */;
 		executables = (
@@ -61,9 +279,9 @@
 				PBXFileTableDataSourceColumnSortingKey = PBXFileDataSource_Filename_ColumnID;
 				PBXFileTableDataSourceColumnWidthsKey = (
 					20,
-					341,
+					833,
 					20,
-					48.16259765625,
+					48,
 					43,
 					43,
 					20,
@@ -78,11 +296,163 @@
 					PBXFileDataSource_Target_ColumnID,
 				);
 			};
+			PBXConfiguration.PBXFileTableDataSource3.PBXFindDataSource = {
+				PBXFileTableDataSourceColumnSortingDirectionKey = "-1";
+				PBXFileTableDataSourceColumnSortingKey = PBXFindDataSource_LocationID;
+				PBXFileTableDataSourceColumnWidthsKey = (
+					200,
+					847,
+				);
+				PBXFileTableDataSourceColumnsKey = (
+					PBXFindDataSource_MessageID,
+					PBXFindDataSource_LocationID,
+				);
+			};
 			PBXPerProjectTemplateStateSaveDate = 323628664;
 			PBXWorkspaceStateSaveDate = 323628664;
 		};
+		perUserProjectItems = {
+			0387C9B3134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B3134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9B4134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B4134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9B5134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B5134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9B6134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B6134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9B7134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B7134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9B8134A3B4B00826BAA /* PBXBookmark */ = 0387C9B8134A3B4B00826BAA /* PBXBookmark */;
+			0387C9B9134A3B4B00826BAA /* PBXTextBookmark */ = 0387C9B9134A3B4B00826BAA /* PBXTextBookmark */;
+			0387C9D1134A64E200826BAA /* PBXTextBookmark */ = 0387C9D1134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D2134A64E200826BAA /* PBXTextBookmark */ = 0387C9D2134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D3134A64E200826BAA /* PBXTextBookmark */ = 0387C9D3134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D4134A64E200826BAA /* PBXTextBookmark */ = 0387C9D4134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D5134A64E200826BAA /* PBXTextBookmark */ = 0387C9D5134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D6134A64E200826BAA /* PBXTextBookmark */ = 0387C9D6134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D7134A64E200826BAA /* PBXTextBookmark */ = 0387C9D7134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D8134A64E200826BAA /* PBXTextBookmark */ = 0387C9D8134A64E200826BAA /* PBXTextBookmark */;
+			0387C9D9134A64E200826BAA /* PBXTextBookmark */ = 0387C9D9134A64E200826BAA /* PBXTextBookmark */;
+			0387C9DA134A64E200826BAA /* PBXTextBookmark */ = 0387C9DA134A64E200826BAA /* PBXTextBookmark */;
+			0387C9DB134A64E200826BAA /* PBXTextBookmark */ = 0387C9DB134A64E200826BAA /* PBXTextBookmark */;
+			0387C9DC134A64E200826BAA /* PBXTextBookmark */ = 0387C9DC134A64E200826BAA /* PBXTextBookmark */;
+			0387C9DD134A64E200826BAA /* PBXTextBookmark */ = 0387C9DD134A64E200826BAA /* PBXTextBookmark */;
+			0387C9E0134A64E200826BAA /* PBXTextBookmark */ = 0387C9E0134A64E200826BAA /* PBXTextBookmark */;
+			0387C9E1134A64E200826BAA /* PBXTextBookmark */ = 0387C9E1134A64E200826BAA /* PBXTextBookmark */;
+		};
 		sourceControlManager = 0387C9A5134A2E7F00826BAA /* Source Control */;
 		userBuildSettings = {
+		};
+	};
+	344CAAEA133532F700544690 /* ProjectDashboardController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {593, 338}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{145, 463}";
+		};
+	};
+	344CAAEB133532F700544690 /* ProjectDashboardController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1461, 3939}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{4099, 739}";
+		};
+	};
+	347C85F913196B5400986270 /* DashboardController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {992, 3406}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{5294, 975}";
+		};
+	};
+	4F80F2C212E19972001AFF06 /* Project.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1391, 1144}}";
+			sepNavSelRange = "{382, 24}";
+			sepNavVisRange = "{0, 590}";
+		};
+	};
+	4F80F2C512E199A3001AFF06 /* Issue.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {2273, 2795}}";
+			sepNavSelRange = "{418, 22}";
+			sepNavVisRange = "{5873, 1007}";
+		};
+	};
+	4F8FEBFB12E1C2FA00B24BB8 /* ProjectsController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1076, 2925}}";
+			sepNavSelRange = "{5308, 0}";
+			sepNavVisRange = "{4593, 981}";
+		};
+	};
+	4F933BE212E5E0EF0052CA5F /* IssueDetailsController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 546}}";
+			sepNavSelRange = "{732, 0}";
+			sepNavVisRange = "{46, 687}";
+			sepNavWindowFrame = "{{38, 141}, {1013, 611}}";
+		};
+	};
+	4F933BE312E5E0EF0052CA5F /* IssueDetailsController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{6536, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{6587, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{6637, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 7779}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 4147}}";
+			sepNavSelRange = "{1523, 106}";
+			sepNavVisRange = "{2250, 554}";
+			sepNavWindowFrame = "{{181, 130}, {1013, 611}}";
+		};
+	};
+	4F97D4F912E419CB005153F4 /* IssuesController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 375}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 586}";
+		};
+	};
+	4F97D4FA12E419CB005153F4 /* IssuesController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1825, 3731}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{7891, 548}";
+		};
+	};
+	4F97EF1812ECC17000C0AAE1 /* IssueType.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 468}}";
+			sepNavSelRange = "{155, 26}";
+			sepNavVisRange = "{131, 329}";
+		};
+	};
+	4FEDF76312EA3DD700CA09A0 /* MutableIssueDetailCell.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 400}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 409}";
+		};
+	};
+	4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 533}}";
+			sepNavSelRange = "{180, 39}";
+			sepNavVisRange = "{238, 535}";
+		};
+	};
+	4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 416}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{3, 922}";
+		};
+	};
+	4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */ = {
+		uiCtxt = {
+			sepNavFolds = "{\n    c =     (\n                {\n            l = DetailViewController;\n            r = \"{7219, 24}\";\n            s = 1;\n        },\n                {\n            l = DetailViewController;\n            r = \"{7270, 24}\";\n            s = 1;\n        },\n                {\n            l = \"Nib name\";\n            r = \"{7320, 12}\";\n            s = 1;\n        }\n    );\n    r = \"{0, 8710}\";\n    s = 0;\n}";
+			sepNavIntBoundsRect = "{{0, 0}, {1125, 3731}}";
+			sepNavSelRange = "{2237, 0}";
+			sepNavVisRange = "{636, 1324}";
+		};
+	};
+	4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1011, 400}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 269}";
 		};
 	};
 }

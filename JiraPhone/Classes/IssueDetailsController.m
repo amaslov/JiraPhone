@@ -67,7 +67,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    return section == ISSUE_DATA_SECTION ? 6 : 2;
+    if (section == ISSUE_DATA_SECTION) return 7;
+	if (section == ISSUE_DATE_SECTION) return 3;
+	return 2;
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -92,6 +94,10 @@
 			case ISSUE_SUMMARY_ROW:
 				ret = @"Summary: ";
 				break;
+			case ISSUE_DESCRIPTION_ROW:
+				ret = @"Description: ";
+				break;
+
 			default:
 				break;
 		}
@@ -116,6 +122,8 @@
 			case ISSUE_UPDATED_ROW:
 				ret = @"Updated: ";
 				break;
+			case ISSUE_DUE_ROW:
+				ret = @"Due Date:";
 			default:
 				break;
 		}
@@ -160,6 +168,9 @@
 			case ISSUE_SUMMARY_ROW:
 				[str appendFormat:@"%@", issue.summary];
 				break;
+			case ISSUE_DESCRIPTION_ROW:
+				[str appendFormat:@"%@", issue.description];
+				break;
 	
 			default:
 				break;
@@ -185,6 +196,8 @@
 			case ISSUE_UPDATED_ROW:
 				[str appendFormat:@"%@", issue.updated];				
 				break;	
+			case ISSUE_DUE_ROW:
+				[str appendFormat:@"%@", issue.duedate];
 			default:
 				break;
 		}

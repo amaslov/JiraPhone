@@ -11,6 +11,7 @@
 #import "Connector.h"
 #import "Project.h"
 #import "IssueType.h"
+#import "User.h"
 
 @implementation CreateIssueController
 @synthesize mutableCell;
@@ -47,6 +48,7 @@
 	newIssue.type = t;
 	[t release];
 	
+	
 	// get issue summary value
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_SUMMARY_ROW inSection: ISSUE_DATA_SECTION]];
 	newIssue.summary = cell.textField.text;
@@ -57,15 +59,34 @@
 	p.number = [cell.textField.text intValue];
 	newIssue.priority = p;
 	[p release];
+	
+	// get issue description value
+	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_DESCRIPTION_ROW inSection: ISSUE_DATA_SECTION]];
+	newIssue.summary = cell.textField.text;
+	
 
 	// get issue assignee value
 	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
 	newIssue.assignee = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 
 	// get issue reporter value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
-	newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
+	//cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
+	//newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 	
+	//get issue due date
+	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_DUE_ROW inSection: ISSUE_DATE_SECTION]];
+	NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+	[dateFormatter setDateFormat:@"dd MMM yyyy"];
+	NSDate *dateFromString = [[NSDate alloc] init];
+	dateFormatter.locale = [[[NSLocale alloc] initWithLocaleIdentifier:@"en_US"]
+							autorelease];
+    dateFromString = [dateFormatter dateFromString:cell.textField.text];
+	newIssue.duedate=dateFromString;
+
+	newIssue.reporter=[User loggedInUser].name;
+	newIssue.server = [User loggedInUser].server;
+	newIssue.created = [NSDate date];
+	newIssue.updated = [NSDate date];
 	[Connector sharedConnector].delegate = self;
 	
 	[[Connector sharedConnector] createIssue: newIssue];
@@ -123,12 +144,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 2;
+    return 3;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 5 items, the last two's has 2 items in each
-    return section == ISSUE_DATA_SECTION ? 3 : 2;
+	if (section == ISSUE_DATA_SECTION) return 4;
+	//if (section == ISSUE_DATE_SECTION) return 1;
+	return 1;
+	//return section == ISSUE_DATA_SECTION ? 4 : 2;
 }
 
 // Customize the appearance of table view cells.

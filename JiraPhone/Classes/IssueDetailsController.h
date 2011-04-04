@@ -20,6 +20,7 @@
 #define ISSUE_AFFECT_VERSIONS_ROW	3
 #define ISSUE_STATUS_ROW			4
 #define ISSUE_RESOLUTION_ROW		5
+#define ISSUE_DESCRIPTION_ROW		6
 //
 //users - to change to a more detailed stuff
 #define ISSUE_ASSIGNEE_ROW			0
@@ -28,6 +29,7 @@
 //date rows
 #define ISSUE_CREATED_ROW			0
 #define ISSUE_UPDATED_ROW			1
+#define ISSUE_DUE_ROW				2
 
 @class Issue;
 @interface IssueDetailsController : UITableViewController {
