@@ -163,16 +163,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Uncomment this section to get old issue list back
-	/*
+	
 	IssuesController *issuesController = [[IssuesController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:issuesController animated:YES];
 	[issuesController release];
-	*/
 	
+	/*
 	ProjectDashboardController *projectDashboardController = [[ProjectDashboardController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:projectDashboardController animated:YES];
 	[projectDashboardController release];
-	 
+	 */
 }
 
 
