@@ -163,6 +163,7 @@
 		4FEDF76512EA3DD700CA09A0 /* MutableIssueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */; };
 		4FEDF76912EA3EEF00CA09A0 /* CreateIssueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */; };
 		4FEDF79412EA40CE00CA09A0 /* MutableIssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */; };
+		A889FB54134FB81700E02C1C /* jira_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A889FB53134FB81700E02C1C /* jira_login.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -466,6 +467,7 @@
 		4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailCell.xib; sourceTree = "<group>"; };
 		4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateIssueDelegate.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JiraPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JiraPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A889FB53134FB81700E02C1C /* jira_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jira_login.png; path = ../jira_login.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -593,6 +595,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A889FB53134FB81700E02C1C /* jira_login.png */,
 				345789F8131720E700617F21 /* priority_blocker.gif */,
 				345789F9131720E700617F21 /* priority_critical.gif */,
 				345789FA131720E700617F21 /* priority_major.gif */,
@@ -1097,6 +1100,7 @@
 				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
 				034E33AC133E54790034C1CB /* TabBarView.xib in Resources */,
 				03200C6613480DD100F321EA /* IssueDetailsViewController.xib in Resources */,
+				A889FB54134FB81700E02C1C /* jira_login.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
