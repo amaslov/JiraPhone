@@ -14,13 +14,16 @@
 @interface IssuesController : UITableViewController<ConnectorDelegate, CreateIssueDelegate, UIActionSheetDelegate> {
 	Project *project;
 	Filter *filter;
+	NSString *jql;
 	NSMutableArray *issues;
 	UIActivityIndicatorView *activityIndicator;
 }
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) Filter *filter;
+@property (nonatomic, retain) NSString *jql;
 
 - (id)initForProject:(Project *)_project;
 - (id)initForFilter:(Filter *)_filter;
+- (id)initForJql:(NSString *)_jql;
 - (IBAction)showActionSheet:(id)sender;
 @end

@@ -16,6 +16,7 @@
 @implementation IssuesController
 @synthesize project;
 @synthesize filter;
+@synthesize jql;
 
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
@@ -26,6 +27,12 @@
 - (id)initForFilter:(Filter *)_filter {
 	if (self = [super init]) {
 		self.filter = _filter;
+	}
+	return self;
+}
+- (id)initForJql:(NSString *)_jql {
+	if (self = [super init]) {
+		self.jql = _jql;
 	}
 	return self;
 }
@@ -46,23 +53,31 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
+	
+	// Set the title of the view
 	if (project) {
 		self.title = project.name;
 	}
-	else {
+	else if (filter) {
 		self.title = filter.description;
 	}
+	else {
+		self.title = @"Issues";
+	}
+
 	
-	// get list of cashed projects
+	// If there are no issues, initialize the array
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
 	
+	// If we are loading the issue list for a project,
+	// get cached issues
 	if (project) {
 		[Issue getCachedIssues:issues ofProject: project];
 	}
 	
-	// if there's no cashed issues show wait spinner
+	// if there's no cached issues show wait spinner
 	if (!issues.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -75,26 +90,30 @@
 	
 	[self.tableView reloadData];
 	
-	// sync with server for list of issues for given project
+	// Sync with server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	
 	if (project) {
+		// Get the issues for the current project
 		[connector getIssuesOfProject:project];
 	}
-	else {
+	else if (filter) {
+		// Get the issues returned by the current filter
 		[connector getIssuesFromFilter:filter.ID];
 		NSLog(@"Getting filters for ID: %@",filter.ID);
 	}
+	else {
+		[connector getIssuesFromJql:jql];
+	}
+
 
 	
 	// add + (create issue) button
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
-	
-	//[issues sortUsingSelector:@selector(compareCreationDate:)];
-	//[self.tableView reloadData];
+
 }
 
 - (IBAction)showActionSheet:(id)sender {
@@ -172,6 +191,24 @@
     return issues.count;
 }
 
+- (UIImage *)getImageByPriority:(Priority *)priority {
+	// Given the priority of an issue, return the appropriate priority image
+	switch (priority.number) {
+		case 1:
+			return [UIImage imageNamed:@"priority_blocker.gif"];
+		case 2:
+			return [UIImage imageNamed:@"priority_critical.gif"];
+		case 3:
+			return [UIImage imageNamed:@"priority_major.gif"];
+		case 4:
+			return [UIImage imageNamed:@"priority_minor.gif"];
+		case 5:
+			return [UIImage imageNamed:@"priority_trivial.gif"];
+		default:
+			return nil;
+	}
+}
+
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -183,26 +220,12 @@
 
 	
 	// Configure the cell...
-	Issue *issue = [issues objectAtIndex:indexPath.row];
-
-	switch (issue.priority.number) {
-		case 1:
-			cell.imageView.image = [UIImage imageNamed:@"priority_blocker.gif"];
-			break;
-		case 2:
-			cell.imageView.image = [UIImage imageNamed:@"priority_critical.gif"];
-			break;
-		case 3:
-			cell.imageView.image = [UIImage imageNamed:@"priority_major.gif"];
-			break;
-		case 4:
-			cell.imageView.image = [UIImage imageNamed:@"priority_minor.gif"];
-			break;
-		case 5:
-			cell.imageView.image = [UIImage imageNamed:@"priority_trivial.gif"];
-			break;
-	}
 	
+	// Get the issue that will be displayed
+	Issue *issue = [issues objectAtIndex:indexPath.row];
+	
+	// Fill in the cell with details from the issue
+	cell.imageView.image = [self getImageByPriority:issue.priority];
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -254,6 +277,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// If the user selects an issue, display the issue details
 	IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:issueDetailsController animated:YES];
 	[issueDetailsController release];

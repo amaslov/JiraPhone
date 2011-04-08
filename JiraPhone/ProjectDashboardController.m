@@ -7,11 +7,12 @@
 //
 
 #import "ProjectDashboardController.h"
+#import "ProjectsController.h"
 #import "Connector.h"
 #import "Project.h"
 #import "Issue.h"
 #import "IssueDetailsController.h"
-#import "ProjectActivityController.h"
+#import "ActivityController.h"
 #import "Priority.h"
 #import <sqlite3.h>
 #import "FMDatabase.h"
@@ -30,9 +31,17 @@
 }
 
 - (void)showProjectActivityScreen {
-	ProjectActivityController *projectActivityController = [[ProjectActivityController alloc] initForProject:project];
-	[self.navigationController pushViewController:projectActivityController animated:YES];
-	[projectActivityController release];
+	// Show the rss activity stream for the project
+	ActivityController *activityController = [[ActivityController alloc] initForProject:project];
+	[self.navigationController pushViewController:activityController animated:YES];
+	[activityController release];
+}
+
+- (void)showProjectsList {
+	[self.navigationController popViewControllerAnimated:YES];
+	//ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+	//[self.navigationController pushViewController:projController animated:YES];
+	//[projController release];
 }
 
 - (void)getUnresolvedIssuesByUser:(NSMutableArray *)_unresolvedIssues ofProject:(Project *)_proj {
@@ -54,12 +63,14 @@
 	}
 	[rs close];
 	
+	// This section is for debugging
+	/*
 	queryString = [NSString stringWithFormat:@"select key, assignee from issues where project = \"%@\"", project.key];
 	rs = [db executeQuery:queryString];
 	while ([rs next]) {
 		NSLog(@"Issue: %@ Assignee: %@", [rs stringForColumn:@"key"], [rs stringForColumn:@"assignee"] );
 	}
-	[rs close];
+	[rs close]; */
 	if ([db hadError]) {
 		NSLog(@"db error: %@", [db lastErrorMessage]);
 	}
@@ -70,6 +81,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	// Set the title of the screen to the project name
 	self.title = project.name;
 
 	// Initialize list of due issues
@@ -87,12 +99,14 @@
 		unresolvedIssues = [[NSMutableArray alloc] init];
 	}
 	
-	// sync with server for list of projects
+	// Sync with server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
+	
+	// Get issues from the server that are due
 	[connector getDueIssuesForProject:project];
 	
-	// if there are no cashed projects show wait spinner
+	// If there are no cached due issues, show wait spinner
 	if (!dueIssues.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -103,7 +117,10 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	// Get issues from the server that have been updated recently
 	[connector getRecentIssuesForProject:project];
+	
+	// If there are no cached recent issues, show wait spinner
 	if (!recentIssues.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -114,9 +131,11 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	// Get the number of unresolved issues for each user
 	[self getUnresolvedIssuesByUser:unresolvedIssues ofProject:project];
-	// Add a + button to view activity stream
-	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showProjectActivityScreen)];
+	
+	// Add an action button to view activity stream
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionSheet:)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
 }
@@ -127,7 +146,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	// only first category has 6 items, the last two have 2 items in each
+	// Depending on the section, return the appropriate size
+	// based on the number of issues in that section. 
 	if (section == 0) {
 		return [dueIssues count];
 	}
@@ -142,6 +162,8 @@
 }
 
 - (UIImage *)getImageByPriority:(Priority *)priority {
+	// Depending on the issue priority, return the 
+	// appropriate image.
 	switch (priority.number) {
 		case 1:
 			return [UIImage imageNamed:@"priority_blocker.gif"];
@@ -167,13 +189,19 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	
+	// Create a date formatter for important issue dates
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	[dateFormat setDateFormat:@"MM/dd/yyyy"];
 	
+	// If this is the due issues section...
 	if (indexPath.section == 0) {
+		// Make sure there are enough issues to populate the cell
 		if (dueIssues.count >= indexPath.row+1) {
+			// Get the issue at the current row
 			Issue *issue = [dueIssues objectAtIndex:indexPath.row];
+			// Format the issue date to a more readable format
 			NSString *dueDate = [dateFormat stringFromDate:issue.duedate];
+			// Display issue details
 			cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 			if (dueDate != nil) {
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"Due %@", dueDate];
@@ -187,9 +215,13 @@
 
 	}
 	else if (indexPath.section == 1) {
+		// Check if there is an issue here
 		if (recentIssues.count >= indexPath.row+1) {
+			// Get the issue that the cell will display
 			Issue *issue = [recentIssues objectAtIndex:indexPath.row];
+			// Format the updated date of the issue
 			NSString *updatedDate = [dateFormat stringFromDate:issue.updated];
+			// Display issue details
 			cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 			if (updatedDate != nil) {
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"Updated: %@", updatedDate];
@@ -203,6 +235,7 @@
 
 	}
 	else {
+		// Display a user and the number of unresolved issues assigned to them.
 		NSString *name = [[unresolvedIssues objectAtIndex:indexPath.row] objectForKey:@"userName"];
 		if (name == nil)
 		{
@@ -222,11 +255,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == 0) {
+		// If the user selects an issue, display the issue details
 		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[dueIssues objectAtIndex:indexPath.row]];
 		[self.navigationController pushViewController:issueDetailsController animated:YES];
 		[issueDetailsController release];
 	}
 	else if (indexPath.section == 1) {
+		// If the user selects an issue, display the issue details
 		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[recentIssues objectAtIndex:indexPath.row]];
 		[self.navigationController pushViewController:issueDetailsController animated:YES];
 		[issueDetailsController release];
@@ -272,6 +307,8 @@
 - (void)didReceiveData:(id)result {
 	[activityIndicator stopAnimating];
 	if (!dueIssues.count) {
+		// If we have no due issues, store the issues
+		// that are due
 		if ([result isKindOfClass:[NSArray class]]) {
 			[dueIssues release];
 			dueIssues = [result retain];
@@ -279,6 +316,7 @@
 		}
 	}
 	else {
+		// Store recent issues
 		if ([result isKindOfClass:[NSArray class]]) {
 			[recentIssues release];
 			recentIssues = [result retain];
@@ -294,4 +332,24 @@
 	[alert release];
 }
 
+- (IBAction)showActionSheet:(id)sender {
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Change Project", nil];
+	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+	[popupQuery showInView:self.view];
+	[popupQuery release];
+}
+
+- (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	switch (buttonIndex) {
+		case 0:
+			// User wants to view activity stream
+			[self showProjectActivityScreen];
+			break;
+		case 1:
+			[self showProjectsList];
+			break;
+		default:
+			break;
+	}
+}
 @end

@@ -12,7 +12,7 @@
 
 @class Project;
 @class Issue;
-@interface ProjectDashboardController : UITableViewController <ConnectorDelegate> {
+@interface ProjectDashboardController : UITableViewController <ConnectorDelegate, UIActionSheetDelegate> {
 	Project *project;
 	NSMutableArray *dueIssues;
 	NSMutableArray *recentIssues;
@@ -22,4 +22,5 @@
 
 @property (nonatomic, retain) Project *project;
 - (id)initForProject:(Project *)_project;
+- (IBAction)showActionSheet:(id)sender;
 @end
