@@ -345,14 +345,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {638, 206}}</string>
+								<string>{{0, 0}, {638, 180}}</string>
 								<key>RubberWindowFrame</key>
 								<string>120 147 870 575 0 0 1024 746 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>206pt</string>
+							<string>180pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -365,14 +365,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 211}, {638, 323}}</string>
+								<string>{{0, 185}, {638, 349}}</string>
 								<key>RubberWindowFrame</key>
 								<string>120 147 870 575 0 0 1024 746 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>323pt</string>
+							<string>349pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -391,9 +391,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A889FB7B134FBA6100E02C1C</string>
+				<string>A889FB9F134FBDEB00E02C1C</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>A889FB7C134FBA6100E02C1C</string>
+				<string>A889FBA0134FBDEB00E02C1C</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -614,7 +614,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>A87D27EF13070A9B002475F6</string>
-				<string>A889FB7D134FBA6100E02C1C</string>
+				<string>A889FBA1134FBDEB00E02C1C</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
@@ -736,13 +736,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>A889FB7E134FBA6100E02C1C</string>
+				<string>A889FBA2134FBDEB00E02C1C</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A889FB7F134FBA6100E02C1C</string>
-				<string>A889FB80134FBA6100E02C1C</string>
-				<string>A889FB81134FBA6100E02C1C</string>
-				<string>A889FB82134FBA6100E02C1C</string>
-				<string>A889FB83134FBA6100E02C1C</string>
+				<string>A889FBA3134FBDEB00E02C1C</string>
+				<string>A889FBA4134FBDEB00E02C1C</string>
+				<string>A889FBA5134FBDEB00E02C1C</string>
+				<string>A889FBA6134FBDEB00E02C1C</string>
+				<string>A889FBA7134FBDEB00E02C1C</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -904,7 +904,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>A889FB84134FBA6100E02C1C</string>
+				<string>A889FBA8134FBDEB00E02C1C</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>
