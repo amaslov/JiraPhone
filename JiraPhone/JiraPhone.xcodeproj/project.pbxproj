@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		0302C203130EF965003E95A6 /* Field.m in Sources */ = {isa = PBXBuildFile; fileRef = 0302C202130EF965003E95A6 /* Field.m */; };
 		030DA27512FEF6CD009B8142 /* InternalClassesModel.xcclassmodel in Resources */ = {isa = PBXBuildFile; fileRef = 030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */; };
+		03200B8C1347C9BE00F321EA /* IssueDetailLink.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200B8B1347C9BE00F321EA /* IssueDetailLink.m */; };
+		03200C1D1347F6A800F321EA /* IssueCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C1C1347F6A800F321EA /* IssueCell.m */; };
+		03200C201347FC7600F321EA /* IssueCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C1F1347FC7600F321EA /* IssueCellBackground.m */; };
+		03200C28134801E900F321EA /* RoundRect.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C27134801E900F321EA /* RoundRect.m */; };
+		03200C52134803B200F321EA /* LabelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C51134803B200F321EA /* LabelCell.m */; };
+		03200C551348044F00F321EA /* TextFieldCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C541348044F00F321EA /* TextFieldCell.m */; };
+		03200C5B1348091200F321EA /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C5A1348091200F321EA /* DetailViewController.m */; };
+		03200C6513480DD100F321EA /* IssueDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03200C6313480DD100F321EA /* IssueDetailsViewController.m */; };
+		03200C6613480DD100F321EA /* IssueDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03200C6413480DD100F321EA /* IssueDetailsViewController.xib */; };
 		034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E3305133CDC6A0034C1CB /* FiltersController.m */; };
 		034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 034E3306133CDC6A0034C1CB /* FiltersController.xib */; };
 		034E33AB133E54790034C1CB /* TabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034E33A9133E54790034C1CB /* TabBarView.m */; };
@@ -156,12 +165,30 @@
 		4FEDF76512EA3DD700CA09A0 /* MutableIssueDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76412EA3DD700CA09A0 /* MutableIssueDetailCell.m */; };
 		4FEDF76912EA3EEF00CA09A0 /* CreateIssueController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */; };
 		4FEDF79412EA40CE00CA09A0 /* MutableIssueDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */; };
+		A889FB54134FB81700E02C1C /* jira_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A889FB53134FB81700E02C1C /* jira_login.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0302C201130EF965003E95A6 /* Field.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Field.h; sourceTree = "<group>"; };
 		0302C202130EF965003E95A6 /* Field.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Field.m; sourceTree = "<group>"; };
 		030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcclassmodel; path = InternalClassesModel.xcclassmodel; sourceTree = "<group>"; };
+		03200B8A1347C9BE00F321EA /* IssueDetailLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueDetailLink.h; sourceTree = "<group>"; };
+		03200B8B1347C9BE00F321EA /* IssueDetailLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueDetailLink.m; sourceTree = "<group>"; };
+		03200C1B1347F6A800F321EA /* IssueCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCell.h; sourceTree = "<group>"; };
+		03200C1C1347F6A800F321EA /* IssueCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCell.m; sourceTree = "<group>"; };
+		03200C1E1347FC7600F321EA /* IssueCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueCellBackground.h; sourceTree = "<group>"; };
+		03200C1F1347FC7600F321EA /* IssueCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueCellBackground.m; sourceTree = "<group>"; };
+		03200C26134801E900F321EA /* RoundRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundRect.h; sourceTree = "<group>"; };
+		03200C27134801E900F321EA /* RoundRect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoundRect.m; sourceTree = "<group>"; };
+		03200C50134803B200F321EA /* LabelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LabelCell.h; sourceTree = "<group>"; };
+		03200C51134803B200F321EA /* LabelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LabelCell.m; sourceTree = "<group>"; };
+		03200C531348044F00F321EA /* TextFieldCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TextFieldCell.h; sourceTree = "<group>"; };
+		03200C541348044F00F321EA /* TextFieldCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TextFieldCell.m; sourceTree = "<group>"; };
+		03200C591348091200F321EA /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		03200C5A1348091200F321EA /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		03200C6213480DD100F321EA /* IssueDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IssueDetailsViewController.h; sourceTree = "<group>"; };
+		03200C6313480DD100F321EA /* IssueDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IssueDetailsViewController.m; sourceTree = "<group>"; };
+		03200C6413480DD100F321EA /* IssueDetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IssueDetailsViewController.xib; sourceTree = "<group>"; };
 		032988CA131C4A3900C5FF23 /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
 		032988CB131C4A3900C5FF23 /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
 		032988CF131C4F6900C5FF23 /* Version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Version.h; sourceTree = "<group>"; };
@@ -445,6 +472,7 @@
 		4FEDF79312EA40CE00CA09A0 /* MutableIssueDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MutableIssueDetailCell.xib; sourceTree = "<group>"; };
 		4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateIssueDelegate.h; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* JiraPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "JiraPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A889FB53134FB81700E02C1C /* jira_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = jira_login.png; path = ../jira_login.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -463,6 +491,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03200B8E1347C9C500F321EA /* Issue Detail Link */ = {
+			isa = PBXGroup;
+			children = (
+				03200B8A1347C9BE00F321EA /* IssueDetailLink.h */,
+				03200B8B1347C9BE00F321EA /* IssueDetailLink.m */,
+			);
+			name = "Issue Detail Link";
+			sourceTree = "<group>";
+		};
+		03200C1A1347F67300F321EA /* Issue Details Cells */ = {
+			isa = PBXGroup;
+			children = (
+				03200C26134801E900F321EA /* RoundRect.h */,
+				03200C27134801E900F321EA /* RoundRect.m */,
+				03200C1B1347F6A800F321EA /* IssueCell.h */,
+				03200C1C1347F6A800F321EA /* IssueCell.m */,
+				03200C1E1347FC7600F321EA /* IssueCellBackground.h */,
+				03200C1F1347FC7600F321EA /* IssueCellBackground.m */,
+				03200C50134803B200F321EA /* LabelCell.h */,
+				03200C51134803B200F321EA /* LabelCell.m */,
+				03200C531348044F00F321EA /* TextFieldCell.h */,
+				03200C541348044F00F321EA /* TextFieldCell.m */,
+				03200C591348091200F321EA /* DetailViewController.h */,
+				03200C5A1348091200F321EA /* DetailViewController.m */,
+			);
+			name = "Issue Details Cells";
+			sourceTree = "<group>";
+		};
 		033AF1D3131803FF00246BB4 /* Mutable Issue Detail Link */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,7 +560,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
 				347F2FCA134FB8C3001D94A5 /* User Details Screen */,
+=======
+				03200C1A1347F67300F321EA /* Issue Details Cells */,
+>>>>>>> 079485ac5607e1f4692824d0f5aff8eb7c17135f
 				034E33A1133E535E0034C1CB /* TabBar Navigation */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
@@ -544,6 +604,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A889FB53134FB81700E02C1C /* jira_login.png */,
 				345789F8131720E700617F21 /* priority_blocker.gif */,
 				345789F9131720E700617F21 /* priority_critical.gif */,
 				345789FA131720E700617F21 /* priority_major.gif */,
@@ -626,6 +687,9 @@
 				4F933BE212E5E0EF0052CA5F /* IssueDetailsController.h */,
 				4F933BE312E5E0EF0052CA5F /* IssueDetailsController.m */,
 				4F933BE412E5E0EF0052CA5F /* IssueDetailsController.xib */,
+				03200C6213480DD100F321EA /* IssueDetailsViewController.h */,
+				03200C6313480DD100F321EA /* IssueDetailsViewController.m */,
+				03200C6413480DD100F321EA /* IssueDetailsViewController.xib */,
 			);
 			name = "Issue Details Screen";
 			path = Classes;
@@ -961,6 +1025,7 @@
 		4FEDF70512EA356800CA09A0 /* Create Issue Screen */ = {
 			isa = PBXGroup;
 			children = (
+				03200B8E1347C9C500F321EA /* Issue Detail Link */,
 				033AF1D3131803FF00246BB4 /* Mutable Issue Detail Link */,
 				4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */,
 				4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */,
@@ -1053,7 +1118,12 @@
 				347F1676133585C9000BC1A7 /* ActivityController.xib in Resources */,
 				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
 				034E33AC133E54790034C1CB /* TabBarView.xib in Resources */,
+<<<<<<< HEAD
 				347F2FCF134FB8DB001D94A5 /* UserController.xib in Resources */,
+=======
+				03200C6613480DD100F321EA /* IssueDetailsViewController.xib in Resources */,
+				A889FB54134FB81700E02C1C /* jira_login.png in Resources */,
+>>>>>>> 079485ac5607e1f4692824d0f5aff8eb7c17135f
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,7 +1255,18 @@
 				03B97808133BF5F400DDB3C6 /* Filter.m in Sources */,
 				034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */,
 				034E33AB133E54790034C1CB /* TabBarView.m in Sources */,
+<<<<<<< HEAD
 				347F2FCE134FB8DB001D94A5 /* UserController.m in Sources */,
+=======
+				03200B8C1347C9BE00F321EA /* IssueDetailLink.m in Sources */,
+				03200C1D1347F6A800F321EA /* IssueCell.m in Sources */,
+				03200C201347FC7600F321EA /* IssueCellBackground.m in Sources */,
+				03200C28134801E900F321EA /* RoundRect.m in Sources */,
+				03200C52134803B200F321EA /* LabelCell.m in Sources */,
+				03200C551348044F00F321EA /* TextFieldCell.m in Sources */,
+				03200C5B1348091200F321EA /* DetailViewController.m in Sources */,
+				03200C6513480DD100F321EA /* IssueDetailsViewController.m in Sources */,
+>>>>>>> 079485ac5607e1f4692824d0f5aff8eb7c17135f
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -30,7 +30,8 @@
 #define ISSUE_UPDATED_ROW			1
 
 @class Issue;
-@interface IssueDetailsController : UITableViewController {
+@interface IssueDetailsController : UITableViewController 
+{
 	Issue *issue;
 }
 

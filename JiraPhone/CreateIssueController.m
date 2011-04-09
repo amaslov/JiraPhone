@@ -8,11 +8,11 @@
 #import "CreateIssueController.h"
 #import "Issue.h"
 #import "MutableIssueDetailCell.h"
-#import "MutableIssueDetailLink.h"
+//#import "MutableIssueDetailLink.h"
 #import "Connector.h"
 #import "Project.h"
 #import "IssueType.h"
-
+#import "IssueDetailLink.h"
 
 @implementation CreateIssueController
 @synthesize mutableCell;
@@ -43,49 +43,52 @@
 
 - (IBAction)doneAction {
 	//TODO: think about creating this stuff in a cycle.
-	MutableIssueDetailCell *cell;
-	MutableIssueDetailLink *link;
+	UITableViewCell *cell;
+	MutableIssueDetailCell *mCell;
+	//MutableIssueDetailLink *link;
+	IssueDetailLink *iLink;
 	Issue *newIssue = [[Issue alloc] init];
 	newIssue.project = project.key;
 	
 	// get issue summary value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_SUMMARY_ROW inSection: ISSUE_DATA_SECTION]];
-	newIssue.summary = cell.textField.text;
+	mCell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_SUMMARY_ROW inSection: ISSUE_DATA_SECTION]];
+	//newIssue.summary = cell.textField.text;
 	
 	// get issue type value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_TYPE_ROW inSection: ISSUE_DATA_SECTION]];
+	mCell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_TYPE_ROW inSection: ISSUE_DATA_SECTION]];
 	IssueType *t = [[IssueType alloc] init];
-	t.number = [cell.textField.text intValue];
+	//t.number = [cell.textField.text intValue];
 	newIssue.type = t;
 	[t release];
 	
 	// get issue priority value
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_PRIORITY_ROW inSection: ISSUE_DATA_SECTION]];
+	mCell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_PRIORITY_ROW inSection: ISSUE_DATA_SECTION]];
 	Priority *p = [[Priority alloc] init];
-	p.number = [cell.textField.text intValue];
-	newIssue.priority = p;
+	//p.number = [cell.textField.text intValue];
+	//newIssue.priority = p;
 	[p release];
 	
 	//get issue affect versions value 
 	//TODO implement versions support
-	cell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_AFFECT_VERSIONS_ROW inSection:ISSUE_DATA_SECTION]];
+	mCell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_AFFECT_VERSIONS_ROW inSection:ISSUE_DATA_SECTION]];
 	
 	//get issue status value
 	//TODO implement status support
-	cell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_STATUS_ROW inSection:ISSUE_DATA_SECTION]];
+	mCell=(MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_STATUS_ROW inSection:ISSUE_DATA_SECTION]];
 	
 	//get issue resolution value
 	//TODO implement resolution support
-	cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_RESOLUTION_ROW inSection:ISSUE_DATA_SECTION]];
+	mCell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_RESOLUTION_ROW inSection:ISSUE_DATA_SECTION]];
 
 	// get issue assignee value
-	link = (MutableIssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
+	iLink = (IssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
+	
 	//cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_ASSIGNEE_ROW inSection: ISSUE_MAN_SECTION]];
 	//newIssue.assignee = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 	//newIssue.assignee = 
 	// get issue reporter value
 	//cell = (MutableIssueDetailCell *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow: ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
-	link = (MutableIssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
+	iLink = (IssueDetailLink *)[self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:ISSUE_REPORTER_ROW inSection: ISSUE_MAN_SECTION]];
 	//newIssue.reporter = [cell.textField.text isEqualToString:@""] ? nil : cell.textField.text;
 	
 	[Connector sharedConnector].delegate = self;
@@ -156,18 +159,19 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
  	switch (indexPath.section) {
-			static NSString *LinkIdentifier=@"MutableLink";
+			static NSString *LinkIdentifier=@"IssueDetailLink";
 			static NSString *CellIdentifier=@"MutableCell";
 		case (ISSUE_MAN_SECTION):
 		{
-				MutableIssueDetailLink *mLink = (MutableIssueDetailLink *)[tableView dequeueReusableCellWithIdentifier:LinkIdentifier];
-			if (mLink==nil) 
+			IssueDetailLink *iLink = (IssueDetailLink *)[tableView dequeueReusableCellWithIdentifier:LinkIdentifier];
+			if (iLink==nil) 
 			{
-				[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailLink" owner:self options:nil];
-				mLink=mutableLink;
+				iLink = [[[IssueDetailLink alloc] initWithFrame:CGRectZero reuseIdentifier:LinkIdentifier]autorelease];
 			}
-			mLink.title.text=[self titleForCellAtIndexPath:indexPath];
-			return mLink;
+	//		NSDictionary *itemAtIndex = (NSDictionary *)[self.jsonArray objectAtIndex:indexPath.row];
+		//	[iLink setData:itemAtIndex];
+//			mLink.title.text=[self titleForCellAtIndexPath:indexPath];
+			return iLink;
 		}
 			break;
 

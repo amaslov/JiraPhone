@@ -19,6 +19,7 @@
 #import "User.h"
 #import "Group.h"
 #import "Filter.h"
+#import "Comment.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -234,8 +235,19 @@
 
 		RemoteGroup *remGroup = (RemoteGroup *)value;
 		Group *group = [[Group alloc] init];
-		NSMutableArray *users = remGroup.users;
-		
+		ArrayOf_tns1_RemoteUser *remUsers = remGroup.users;
+		for (RemoteUser *remUser in remUsers)
+		{
+			User *userTemp = [[User alloc]init];
+			userTemp.name=remUser.name;
+			userTemp.fullName=remUser.fullname;
+			userTemp.email=remUser.email;
+			userTemp.server=[User loggedInUser].server;
+			[group.users addObject:userTemp];
+			[userTemp release];
+		}
+		group.name=remGroup.name;
+		group.server=[User loggedInUser].server;
 		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 			[delegate didReceiveData:group];
 		}
@@ -243,10 +255,9 @@
 	}
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteFilter class]]){
 		ArrayOf_tns1_RemoteFilter *remFilters = (ArrayOf_tns1_RemoteFilter *)value;
-		Filter *filter;
-		NSMutableArray *filters = [NSMutableArray array];
+			NSMutableArray *filters = [NSMutableArray array];
 		for (RemoteFilter *remFilter in remFilters) {
-			filter = [[Filter alloc]init];
+			Filter *filter = [[Filter alloc] init];
 			filter.ID=remFilter._id;
 			filter.name=remFilter.name;
 			filter.description=remFilter.description;
@@ -264,7 +275,6 @@
 	//TODO: create comment fetching screen in Issue Details
 /*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
 		ArrayOf_tns1_RemoteComment *remComments = (ArrayOf_tns1_RemoteComment *)value;
-		Comment *comment;
 		NSMutableArray *comments = [NSMutableArray array];
 		for (RemoteComment *remComment in remComments) {
 			Comment *comment = [[Comment alloc] init];
@@ -273,14 +283,16 @@
 			comment.body=remComment.body;
 			comment.updated=remComment.updated;
 			comment.created=remComment.created;
-			if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
-				[delegate didReceiveData:comment];
-			}
-			return;				
+			[comment release];
 		}
-	}
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:comments];
+		}
+		return;				
+	}*/
 	//Comment
-	if ([value isKindOfClass:[RemoteComment class]])
+	//apparently doesn't work - some problem with comment class (or remote comment). 
+	/*	if ([value isKindOfClass:[RemoteComment class]])
 	{
 		RemoteComment *remComment = (RemoteComment *)value;
 		Comment *comment = [[Comment alloc] init];
@@ -294,10 +306,12 @@
 		}
 		return;	
 	} */
+	 
 	//TODO implement versions parsing.
 	if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 		[delegate didReceiveData:value];
 	}
+
 }
 
 - (void) onerror: (NSError*) error {

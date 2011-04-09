@@ -6,8 +6,6 @@
 //  Copyright 2010 AMaslov. All rights reserved.
 //
 #import "User.h"
-#import "FMDatabase.h"
-#import "FMResultSet.h"
 #import "JiraPhoneAppDelegate.h"
 
 @implementation User
