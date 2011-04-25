@@ -16,7 +16,9 @@
 	Project *project;
 	NSMutableArray *dueIssues;
 	NSMutableArray *recentIssues;
-	NSMutableArray *unresolvedIssues;
+	NSMutableArray *unresolvedAssignee;
+	NSMutableArray *unresolvedPriority;
+	NSMutableArray *statusList;
 	UIActivityIndicatorView *activityIndicator;
 }
 

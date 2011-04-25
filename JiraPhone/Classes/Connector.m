@@ -259,6 +259,7 @@
 		for (RemoteFilter *remFilter in remFilters) {
 			Filter *filter = [[Filter alloc] init];
 			filter.ID=remFilter._id;
+			NSLog(@"Filter: %@", remFilter._id);
 			filter.name=remFilter.name;
 			filter.description=remFilter.description;
 			filter.author=remFilter.author;

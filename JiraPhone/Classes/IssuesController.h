@@ -16,11 +16,13 @@
 	Filter *filter;
 	NSString *jql;
 	NSMutableArray *issues;
+	NSMutableDictionary *priorityImages;
 	UIActivityIndicatorView *activityIndicator;
 }
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) Filter *filter;
 @property (nonatomic, retain) NSString *jql;
+@property (nonatomic, retain) NSMutableDictionary *priorityImages;
 
 - (id)initForProject:(Project *)_project;
 - (id)initForFilter:(Filter *)_filter;
