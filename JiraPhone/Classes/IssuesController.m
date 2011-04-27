@@ -12,12 +12,12 @@
 #import "Filter.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation IssuesController
 @synthesize project;
 @synthesize filter;
 @synthesize jql;
-@synthesize priorityImages;
 
 - (id)initForProject:(Project *)_project {
 	if (self = [super init]) {
@@ -54,15 +54,6 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-	
-	if (!priorityImages) {
-		priorityImages = [[NSMutableDictionary alloc] init];
-	}
-	[priorityImages setObject:[UIImage imageNamed:@"priority_blocker.gif"] forKey:[NSNumber numberWithInt:1]];
-	[priorityImages setObject:[UIImage imageNamed:@"priority_critical.gif"] forKey:[NSNumber numberWithInt:2]];
-	[priorityImages setObject:[UIImage imageNamed:@"priority_major.gif"] forKey:[NSNumber numberWithInt:3]];
-	[priorityImages setObject:[UIImage imageNamed:@"priority_minor.gif"] forKey:[NSNumber numberWithInt:4]];
-	[priorityImages setObject:[UIImage imageNamed:@"priority_trivial.gif"] forKey:[NSNumber numberWithInt:5]];
 	
 	// Set the title of the view
 	if (project) {
@@ -201,24 +192,6 @@
     return issues.count;
 }
 
-- (UIImage *)getImageByPriority:(Priority *)priority {
-	// Given the priority of an issue, return the appropriate priority image
-	switch (priority.number) {
-		case 1:
-			return [UIImage imageNamed:@"priority_blocker.gif"];
-		case 2:
-			return [UIImage imageNamed:@"priority_critical.gif"];
-		case 3:
-			return [UIImage imageNamed:@"priority_major.gif"];
-		case 4:
-			return [UIImage imageNamed:@"priority_minor.gif"];
-		case 5:
-			return [UIImage imageNamed:@"priority_trivial.gif"];
-		default:
-			return nil;
-	}
-}
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
@@ -235,8 +208,7 @@
 	Issue *issue = [issues objectAtIndex:indexPath.row];
 	
 	// Fill in the cell with details from the issue
-	cell.imageView.image = [self getImageByPriority:issue.priority];
-	//cell.imageView.image = [priorityImages objectForKey:issue.priority.number];
+	cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;

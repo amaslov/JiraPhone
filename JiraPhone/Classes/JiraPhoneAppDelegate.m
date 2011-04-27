@@ -32,6 +32,73 @@ static FMDatabase *SHARED_DB = nil;
 	return SHARED_DB;
 }
 
+static NSMutableDictionary *priorityImageMap = nil;
++(UIImage *)getImageByPriority:(NSNumber *)_num {
+	if (!priorityImageMap) {
+		[JiraPhoneAppDelegate initializePriorityImageMap];
+	}
+	return [priorityImageMap objectForKey:_num];
+}
+
++(void)initializePriorityImageMap {
+	priorityImageMap = [[NSMutableDictionary alloc] initWithCapacity:5];
+	[priorityImageMap setObject:[UIImage imageNamed:@"priority_blocker.gif"] forKey:[NSNumber numberWithInt:1]];
+	[priorityImageMap setObject:[UIImage imageNamed:@"priority_critical.gif"] forKey:[NSNumber numberWithInt:2]];
+	[priorityImageMap setObject:[UIImage imageNamed:@"priority_major.gif"] forKey:[NSNumber numberWithInt:3]];
+	[priorityImageMap setObject:[UIImage imageNamed:@"priority_minor.gif"] forKey:[NSNumber numberWithInt:4]];
+	[priorityImageMap setObject:[UIImage imageNamed:@"priority_trivial.gif"] forKey:[NSNumber numberWithInt:5]];
+}
+
+static NSMutableDictionary *priorityStringMap = nil;
++(NSString *)getStringByPriority:(NSNumber *)_num {
+	if (!priorityStringMap) {
+		[JiraPhoneAppDelegate initializePriorityStringMap];
+	}
+	return [priorityStringMap objectForKey:_num];
+}
+
++(void)initializePriorityStringMap {
+	priorityStringMap = [[NSMutableDictionary alloc] initWithCapacity:5];
+	[priorityStringMap setObject:[NSString stringWithFormat:@"Blocker"] forKey:[NSNumber numberWithInt:1]];
+	[priorityStringMap setObject:[NSString stringWithFormat:@"Critical"] forKey:[NSNumber numberWithInt:2]];
+	[priorityStringMap setObject:[NSString stringWithFormat:@"Major"] forKey:[NSNumber numberWithInt:3]];
+	[priorityStringMap setObject:[NSString stringWithFormat:@"Minor"] forKey:[NSNumber numberWithInt:4]];
+	[priorityStringMap setObject:[NSString stringWithFormat:@"Trivial"] forKey:[NSNumber numberWithInt:5]];
+}
+
+static NSMutableDictionary *statusStringMap = nil;
++(NSString *)getStringByStatus:(NSNumber *)_num {
+	if (!statusStringMap) {
+		[JiraPhoneAppDelegate initializeStatusStringMap];
+	}
+	return [statusStringMap objectForKey:_num];
+}
+
++(void)initializeStatusStringMap {
+	statusStringMap = [[NSMutableDictionary alloc] initWithCapacity:6];
+	[statusStringMap setObject:[NSString stringWithFormat:@"Open"] forKey:[NSNumber numberWithInt:1]];
+	[statusStringMap setObject:[NSString stringWithFormat:@"In Progress"] forKey:[NSNumber numberWithInt:3]];
+	[statusStringMap setObject:[NSString stringWithFormat:@"Reopened"] forKey:[NSNumber numberWithInt:4]];
+	[statusStringMap setObject:[NSString stringWithFormat:@"Resolved"] forKey:[NSNumber numberWithInt:5]];
+	[statusStringMap setObject:[NSString stringWithFormat:@"Closed"] forKey:[NSNumber numberWithInt:6]];
+}
+
+static NSMutableDictionary *statusImageMap = nil;
++(UIImage *)getImageByStatus:(NSNumber *)_num {
+	if (!statusImageMap)
+	{
+		[JiraPhoneAppDelegate initializeStatusImageMap];
+	}
+	return [statusImageMap objectForKey:_num];
+}
+
++(void) initializeStatusImageMap {
+	statusImageMap = [[NSMutableDictionary alloc] initWithCapacity:6];
+	[statusImageMap setObject:[UIImage imageNamed:@"status_open.gif"] forKey:[NSNumber numberWithInt:1]];
+	[statusImageMap setObject:[UIImage imageNamed:@"status_inprogress.gif"] forKey:[NSNumber numberWithInt:3]];
+	[statusImageMap setObject:[UIImage imageNamed:@"status_resolved.gif"] forKey:[NSNumber numberWithInt:5]];
+	[statusImageMap setObject:[UIImage imageNamed:@"status_closed.gif"] forKey:[NSNumber numberWithInt:6]];
+}
 #pragma mark -
 #pragma mark Application lifecycle
 

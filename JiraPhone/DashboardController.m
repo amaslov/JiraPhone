@@ -19,6 +19,7 @@
 #import "LoginController.h"
 #import "Connector.h"
 #import "User.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation DashboardController
 @synthesize currentUser;
@@ -113,24 +114,6 @@
 
 }
 
-- (UIImage *)getImageByPriority:(Priority *)priority {
-	// Given the priority of an issue, return the appropriate priority image
-	switch (priority.number) {
-		case 1:
-			return [UIImage imageNamed:@"priority_blocker.gif"];
-		case 2:
-			return [UIImage imageNamed:@"priority_critical.gif"];
-		case 3:
-			return [UIImage imageNamed:@"priority_major.gif"];
-		case 4:
-			return [UIImage imageNamed:@"priority_minor.gif"];
-		case 5:
-			return [UIImage imageNamed:@"priority_trivial.gif"];
-		default:
-			return nil;
-	}
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -151,7 +134,7 @@
 			// Set the cell details according to the issue
 			cell.textLabel.text = issue.key;
 			cell.detailTextLabel.text = issue.summary;
-			cell.imageView.image = [self getImageByPriority:issue.priority];
+			cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {

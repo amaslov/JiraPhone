@@ -181,6 +181,8 @@
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	
+	//cachedIssues = FALSE;
+	
 	// Get issues from the server that are due
 	[connector getDueIssuesForProject:project];
 	
@@ -209,6 +211,26 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	cachedIssues = FALSE;
+	// Get the issues for the current project
+	[connector getIssuesOfProject:project];
+	if (!cachedIssues) {
+		if (!activityIndicator) {
+			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+			[self.view addSubview:activityIndicator];
+			[activityIndicator release];
+		}
+		[activityIndicator startAnimating];		
+	}
+	
+	// Add an action button to view activity stream
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionSheet:)];
+	self.navigationItem.rightBarButtonItem = btn;
+	[btn release];
+}
+
+- (void)getStatisticsFromDB {
 	// Get the number of unresolved issues for each user
 	[self getUnresolvedByAssignee:unresolvedAssignee ofProject:project];
 	
@@ -217,11 +239,6 @@
 	
 	// Get the status summary
 	[self getStatusSummary];
-	
-	// Add an action button to view activity stream
-	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showActionSheet:)];
-	self.navigationItem.rightBarButtonItem = btn;
-	[btn release];
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -250,57 +267,6 @@
 
 }
 
-- (UIImage *)getImageByPriority:(Priority *)priority {
-	// Depending on the issue priority, return the 
-	// appropriate image.
-	switch (priority.number) {
-		case 1:
-			return [UIImage imageNamed:@"priority_blocker.gif"];
-		case 2:
-			return [UIImage imageNamed:@"priority_critical.gif"];
-		case 3:
-			return [UIImage imageNamed:@"priority_major.gif"];
-		case 4:
-			return [UIImage imageNamed:@"priority_minor.gif"];
-		case 5:
-			return [UIImage imageNamed:@"priority_trivial.gif"];
-		default:
-			return nil;
-	}
-}
-
-- (NSString *)getPriorityByInteger:(NSInteger)_number {
-	switch (_number) {
-		case 1:
-			return @"Blocker";
-		case 2:
-			return @"Critical";
-		case 3:
-			return @"Major";
-		case 4:
-			return @"Minor";
-		case 5:
-			return @"Trivial";
-		default:
-			return nil;
-	}
-}
-
-- (NSString *)getStatusByInteger:(NSInteger)_number {
-	switch (_number) {
-		case 1:
-			return @"Open";
-		case 3:
-			return @"In Progress";
-		case 5:
-			return @"Resolved";
-		case 6:
-			return @"Closed";
-		default:
-			return nil;
-	}
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
@@ -327,7 +293,7 @@
 			if (dueDate != nil) {
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"Due %@", dueDate];
 			}
-			cell.imageView.image = [self getImageByPriority:issue.priority];
+			cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
@@ -347,7 +313,7 @@
 			if (updatedDate != nil) {
 				cell.detailTextLabel.text = [NSString stringWithFormat:@"Updated: %@", updatedDate];
 			}
-			cell.imageView.image = [self getImageByPriority:issue.priority];
+			cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
@@ -369,18 +335,18 @@
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	else if (indexPath.section == 3){
-		NSInteger priority = [[[unresolvedPriority objectAtIndex:indexPath.row] objectForKey:@"issuePriority"] integerValue];
+		NSNumber *priority = [NSNumber numberWithInteger:[[[unresolvedPriority objectAtIndex:indexPath.row] objectForKey:@"issuePriority"] integerValue]];
 		NSInteger numIssues = [[[unresolvedPriority objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
-		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", [self getPriorityByInteger:priority], numIssues];
-		cell.imageView.image = nil;
+		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", [JiraPhoneAppDelegate getStringByPriority:priority], numIssues];
+		cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:priority];
 		cell.detailTextLabel.text = nil;
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	else {
-		NSInteger status = [[[statusList objectAtIndex:indexPath.row] objectForKey:@"issueStatus"] integerValue];
+		NSNumber *status = [NSNumber numberWithInteger:[[[statusList objectAtIndex:indexPath.row] objectForKey:@"issueStatus"] integerValue]];
 		NSInteger numIssues = [[[statusList objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
-		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", [self getStatusByInteger:status], numIssues];
-		cell.imageView.image = nil;
+		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d", [JiraPhoneAppDelegate getStringByStatus:status], numIssues];
+		cell.imageView.image = [JiraPhoneAppDelegate getImageByStatus:status];;
 		cell.detailTextLabel.text = nil;
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
@@ -391,9 +357,15 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 0 || indexPath.section == 1) {
+	if (indexPath.section == 0) {
 		// If the user selects an issue, display the issue details
 		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[dueIssues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
+	}
+	else if (indexPath.section == 1) {
+		// If the user selects an issue, display the issue details
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[recentIssues objectAtIndex:indexPath.row]];
 		[self.navigationController pushViewController:issueDetailsController animated:YES];
 		[issueDetailsController release];
 	}
@@ -452,7 +424,7 @@
 			[self.tableView reloadData];
 		}
 	}
-	else {
+	else if (!recentIssues.count){
 		// Store recent issues
 		if ([result isKindOfClass:[NSArray class]]) {
 			[recentIssues release];
@@ -460,6 +432,15 @@
 			[self.tableView reloadData];
 		}
 	}
+	else {
+		if ([result isKindOfClass:[NSArray class]]) {
+			[Issue cacheIssues:result ofProject:project];
+			[self.tableView reloadData];
+			cachedIssues = TRUE;
+			[self getStatisticsFromDB];
+		}
+	}
+
 }
 
 - (void)didFailWithError:(NSError *)error {

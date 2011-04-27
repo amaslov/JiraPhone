@@ -14,6 +14,7 @@
 @class Issue;
 @interface ProjectDashboardController : UITableViewController <ConnectorDelegate, UIActionSheetDelegate> {
 	Project *project;
+	bool cachedIssues;
 	NSMutableArray *dueIssues;
 	NSMutableArray *recentIssues;
 	NSMutableArray *unresolvedAssignee;
