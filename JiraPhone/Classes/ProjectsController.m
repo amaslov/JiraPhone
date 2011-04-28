@@ -115,12 +115,13 @@
 	// Make a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue2 reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
 	Project *proj = [projects objectAtIndex:indexPath.row];
     cell.textLabel.text = proj.name;
+	cell.detailTextLabel.text=proj.key;
     return cell;
 }
 

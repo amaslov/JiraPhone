@@ -19,6 +19,7 @@
 #import "FMResultSet.h"
 #import "FMDatabaseAdditions.h"
 #import "JiraPhoneAppDelegate.h"
+#import "CreateIssueController.h"
 
 #define DUE_ISSUES_SECTION 0
 #define RECENT_ISSUES_SECTION 1
@@ -27,7 +28,8 @@
 #define STATUS_SUMMARY_SECTION 4
 
 #define PROJECT_ACTIVITY_BUTTON 0
-#define PROJECT_SELECT_BUTTON 1
+#define PROJECT_CREATE_ISSUE 1
+#define PROJECT_SELECT_BUTTON 2
 
 @implementation ProjectDashboardController
 @synthesize project;
@@ -268,6 +270,8 @@
 		case STATUS_SUMMARY_SECTION:
 			return [statusList count];
 			break;
+		default: return 0;
+			break;
 	}
 }
 
@@ -471,11 +475,18 @@
 
 - (IBAction)showActionSheet:(id)sender {
 	// Show an action sheet with buttons for the user
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Change Project", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Create Issue", @"Change Project", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	[popupQuery release];
 }
+
+
+
+- (void)didCreateNewIssue:(Issue *)_issue {
+	//TODO reload data
+}
+
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
@@ -483,9 +494,22 @@
 			// User wants to view activity stream
 			[self showProjectActivityScreen];
 			break;
+			
+		case PROJECT_CREATE_ISSUE:
+		{   
+			CreateIssueController *createIssueController = [[CreateIssueController alloc] initForIssueInProject: project];
+			createIssueController.delegate = self;
+			UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createIssueController];
+			navController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+			[self.navigationController presentModalViewController:navController animated:YES];
+			[navController release];
+			[createIssueController release];
+		}
+			break;
 		case PROJECT_SELECT_BUTTON:
 			[self showProjectsList];
 			break;
+		
 		default:
 			break;
 	}

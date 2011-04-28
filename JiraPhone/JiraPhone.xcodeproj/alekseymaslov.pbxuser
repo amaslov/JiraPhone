@@ -189,7 +189,7 @@
 		ignoreCount = 0;
 		lineNumber = 229;
 		location = JiraPhone;
-		modificationTime = 325718273.593783;
+		modificationTime = 325719867.107611;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -262,7 +262,7 @@
 		ignoreCount = 0;
 		lineNumber = 74;
 		location = JiraPhone;
-		modificationTime = 325718272.341943;
+		modificationTime = 325719866.608453;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -279,7 +279,7 @@
 		ignoreCount = 0;
 		lineNumber = 76;
 		location = JiraPhone;
-		modificationTime = 325718272.341968;
+		modificationTime = 325719866.608475;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -410,7 +410,7 @@
 		fRef = 4F8FEBFB12E1C2FA00B24BB8 /* ProjectsController.m */;
 		name = "ProjectsController.m: 214";
 		rLen = 0;
-		rLoc = 6163;
+		rLoc = 6199;
 		rType = 0;
 		vrLen = 1317;
 		vrLoc = 5493;
@@ -465,42 +465,6 @@
 		isa = PBXBookmark;
 		fRef = 4F9FCD6E12EAB0930095AAAF /* red_square_button1.png */;
 	};
-	033AF2E3131B389700246BB4 /* CreateIssueController.m:170 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
-		functionName = "-tableView:cellForRowAtIndexPath:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 170;
-		location = JiraPhone;
-		modificationTime = 325718273.482575;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
-	};
-	033AF2E5131B389B00246BB4 /* CreateIssueController.m:137 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
-		functionName = "-tableView:cellForRowAtIndexPath:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 137;
-		location = JiraPhone;
-		modificationTime = 325718273.502397;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
-	};
 	033AF2E7131B38A800246BB4 /* CreateIssueController.m:49 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
@@ -515,7 +479,7 @@
 		ignoreCount = 0;
 		lineNumber = 49;
 		location = JiraPhone;
-		modificationTime = 325718273.536969;
+		modificationTime = 325719867.009594;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -533,7 +497,7 @@
 		ignoreCount = 0;
 		lineNumber = 49;
 		location = JiraPhone;
-		modificationTime = 325718273.556587;
+		modificationTime = 325719867.06139;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -551,7 +515,7 @@
 		ignoreCount = 0;
 		lineNumber = 77;
 		location = JiraPhone;
-		modificationTime = 325718272.342001;
+		modificationTime = 325719866.608489;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -590,7 +554,7 @@
 		vrLen = 858;
 		vrLoc = 0;
 	};
-	034E3388133D2DFB0034C1CB /* ProjectDashboardController.m:29 */ = {
+	034E3388133D2DFB0034C1CB /* ProjectDashboardController.m:31 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -602,9 +566,9 @@
 		functionName = "-initForProject:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 29;
+		lineNumber = 31;
 		location = JiraPhone;
-		modificationTime = 325718272.341903;
+		modificationTime = 325719866.608423;
 		originalNumberOfMultipleMatches = 1;
 		state = 2;
 	};
@@ -794,24 +758,6 @@
 			sepNavSelRange = "{153, 0}";
 			sepNavVisRange = "{41, 673}";
 		};
-	};
-	035F863413699B6B006C5E15 /* CreateIssueController.m:294 */ = {
-		isa = PBXFileBreakpoint;
-		actions = (
-		);
-		breakpointStyle = 0;
-		continueAfterActions = 0;
-		countType = 0;
-		delayBeforeContinue = 0;
-		fileReference = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
-		functionName = "-tableView:didSelectRowAtIndexPath:";
-		hitCount = 0;
-		ignoreCount = 0;
-		lineNumber = 294;
-		location = JiraPhone;
-		modificationTime = 325718273.621796;
-		originalNumberOfMultipleMatches = 1;
-		state = 1;
 	};
 	035F864F1369A145006C5E15 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1535,7 +1481,7 @@
 		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
 		name = "ProjectDashboardController.m: 30";
 		rLen = 0;
-		rLoc = 688;
+		rLoc = 722;
 		rType = 0;
 		vrLen = 1348;
 		vrLoc = 8411;
@@ -1545,7 +1491,7 @@
 		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
 		name = "ProjectDashboardController.h: 24";
 		rLen = 14;
-		rLoc = 567;
+		rLoc = 620;
 		rType = 0;
 		vrLen = 608;
 		vrLoc = 0;
@@ -1612,9 +1558,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 17;
-		modificationTime = 325718272.341869;
+		modificationTime = 325719945.393349;
 		originalNumberOfMultipleMatches = 1;
-		state = 0;
+		state = 1;
 	};
 	03D674F61326BFEA00DF632C /* MutableIssueDetailLink.m:18 */ = {
 		isa = PBXFileBreakpoint;
@@ -1629,9 +1575,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 18;
-		modificationTime = 325718272.341881;
+		modificationTime = 325719945.393332;
 		originalNumberOfMultipleMatches = 1;
-		state = 0;
+		state = 1;
 	};
 	03D91AB41358E14B000342E2 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1898,7 +1844,7 @@
 		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
 		name = "ProjectDashboardController.m: 272";
 		rLen = 0;
-		rLoc = 8590;
+		rLoc = 8686;
 		rType = 0;
 		vrLen = 1237;
 		vrLoc = 8388;
@@ -1932,6 +1878,212 @@
 		rType = 0;
 		vrLen = 696;
 		vrLoc = 32;
+	};
+	03E1E153136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F933BE312E5E0EF0052CA5F /* IssueDetailsController.m */;
+		name = "IssueDetailsController.m: 12";
+		rLen = 0;
+		rLoc = 236;
+		rType = 0;
+		vrLen = 696;
+		vrLoc = 32;
+	};
+	03E1E154136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F8FEBFA12E1C2FA00B24BB8 /* ProjectsController.h */;
+		name = "ProjectsController.h: 2";
+		rLen = 0;
+		rLoc = 15;
+		rType = 0;
+		vrLen = 380;
+		vrLoc = 0;
+	};
+	03E1E155136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
+		name = "ProjectDashboardController.h: 22";
+		rLen = 14;
+		rLoc = 620;
+		rType = 0;
+		vrLen = 759;
+		vrLoc = 0;
+	};
+	03E1E156136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 234";
+		rLen = 0;
+		rLoc = 7154;
+		rType = 0;
+		vrLen = 748;
+		vrLoc = 0;
+	};
+	03E1E157136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
+		name = "CreateIssueController.h: 23";
+		rLen = 0;
+		rLoc = 639;
+		rType = 0;
+		vrLen = 1127;
+		vrLoc = 527;
+	};
+	03E1E158136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4F8FEBFB12E1C2FA00B24BB8 /* ProjectsController.m */;
+		name = "ProjectsController.m: 124";
+		rLen = 0;
+		rLoc = 3404;
+		rType = 0;
+		vrLen = 743;
+		vrLoc = 45;
+	};
+	03E1E159136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 274";
+		rLen = 0;
+		rLoc = 8687;
+		rType = 0;
+		vrLen = 1108;
+		vrLoc = 16251;
+	};
+	03E1E15A136A152C0037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 491";
+		rLen = 0;
+		rLoc = 17962;
+		rType = 0;
+		vrLen = 1126;
+		vrLoc = 16329;
+	};
+	03E1E15F136A15C10037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 492";
+		rLen = 0;
+		rLoc = 17460;
+		rType = 0;
+		vrLen = 875;
+		vrLoc = 16626;
+	};
+	03E1E162136A16640037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
+		name = "CreateIssueController.h: 23";
+		rLen = 0;
+		rLoc = 639;
+		rType = 0;
+		vrLen = 1175;
+		vrLoc = 479;
+	};
+	03E1E163136A16640037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */;
+		name = "CreateIssueDelegate.h: 13";
+		rLen = 43;
+		rLoc = 220;
+		rType = 0;
+		vrLen = 269;
+		vrLoc = 0;
+	};
+	03E1E164136A16640037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
+		name = "ProjectDashboardController.h: 29";
+		rLen = 0;
+		rLoc = 849;
+		rType = 0;
+		vrLen = 823;
+		vrLoc = 0;
+	};
+	03E1E165136A16640037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 500";
+		rLen = 0;
+		rLoc = 17962;
+		rType = 0;
+		vrLen = 837;
+		vrLoc = 0;
+	};
+	03E1E166136A16640037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 500";
+		rLen = 0;
+		rLoc = 17962;
+		rType = 0;
+		vrLen = 742;
+		vrLoc = 4801;
+	};
+	03E1E169136A16B90037E10A /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Cannot find protocol declaration for 'CreateIssueDelegate'";
+		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 15;
+		rType = 1;
+	};
+	03E1E16B136A16C20037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 490";
+		rLen = 0;
+		rLoc = 17178;
+		rType = 0;
+		vrLen = 1287;
+		vrLoc = 16754;
+	};
+	03E1E16D136A16C20037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEA133532F700544690 /* ProjectDashboardController.h */;
+		name = "ProjectDashboardController.h: 15";
+		rLen = 0;
+		rLoc = 424;
+		rType = 0;
+		vrLen = 802;
+		vrLoc = 0;
+	};
+	03E1E170136A17100037E10A /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 344CAAEB133532F700544690 /* ProjectDashboardController.m */;
+		name = "ProjectDashboardController.m: 490";
+		rLen = 0;
+		rLoc = 17178;
+		rType = 0;
+		vrLen = 1277;
+		vrLoc = 16754;
+	};
+	03E1E178136A17A00037E10A /* JiraPhone */ = {
+		isa = PBXExecutable;
+		activeArgIndices = (
+		);
+		argumentStrings = (
+		);
+		autoAttachOnCrash = 1;
+		breakpointsEnabled = 0;
+		configStateDict = {
+		};
+		customDataFormattersEnabled = 1;
+		dataTipCustomDataFormattersEnabled = 1;
+		dataTipShowTypeColumn = 1;
+		dataTipSortType = 0;
+		debuggerPlugin = GDBDebugging;
+		disassemblyDisplayState = 0;
+		enableDebugStr = 1;
+		environmentEntries = (
+		);
+		executableSystemSymbolLevel = 0;
+		executableUserSymbolLevel = 0;
+		libgmallocEnabled = 0;
+		name = JiraPhone;
+		showTypeColumn = 0;
+		sourceDirectories = (
+		);
 	};
 	03F1E84D13306CF100BBDEE9 /* Group.h */ = {
 		uiCtxt = {
@@ -2005,12 +2157,12 @@
 	1D6058900D05DD3D006BFB54 /* JiraPhone */ = {
 		activeExec = 0;
 		executables = (
-			4FA98D9812DF8B48009C33EA /* JiraPhone */,
+			03E1E178136A17A00037E10A /* JiraPhone */,
 		);
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
 		activeBuildConfigurationName = Release;
-		activeExecutable = 4FA98D9812DF8B48009C33EA /* JiraPhone */;
+		activeExecutable = 03E1E178136A17A00037E10A /* JiraPhone */;
 		activeSDKPreference = iphoneos4.3;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* JiraPhone */;
 		addToTargets = (
@@ -2019,22 +2171,19 @@
 		breakpoints = (
 			4FB305C112E38EF500CD218D /* ArrayOf_tns1_RemoteProject.h:13 */,
 			4F986A2512E9994500FB6F67 /* ArrayOf_xsd_string.m:33 */,
-			033AF2E3131B389700246BB4 /* CreateIssueController.m:170 */,
-			033AF2E5131B389B00246BB4 /* CreateIssueController.m:137 */,
 			033AF2E7131B38A800246BB4 /* CreateIssueController.m:49 */,
 			033AF2E9131B38AF00246BB4 /* CreateIssueController.m:49 */,
 			03D674F41326BFE300DF632C /* MutableIssueDetailLink.h:17 */,
 			03D674F61326BFEA00DF632C /* MutableIssueDetailLink.m:18 */,
-			034E3388133D2DFB0034C1CB /* ProjectDashboardController.m:29 */,
+			034E3388133D2DFB0034C1CB /* ProjectDashboardController.m:31 */,
 			03200B1913478E0000F321EA /* Connector.m:229 */,
 			03200CB31348284600F321EA /* Project.m:74 */,
 			03200CB51348284B00F321EA /* Project.m:76 */,
 			03418766134A7E1B0093868C /* Project.m:77 */,
-			035F863413699B6B006C5E15 /* CreateIssueController.m:294 */,
 		);
 		codeSenseManager = 4FA98DA212DF8B4B009C33EA /* Code sense */;
 		executables = (
-			4FA98D9812DF8B48009C33EA /* JiraPhone */,
+			03E1E178136A17A00037E10A /* JiraPhone */,
 		);
 		perUserDictionary = {
 			"PBXConfiguration.PBXBreakpointsDataSource.v1:1CA1AED706398EBD00589147" = {
@@ -2315,6 +2464,24 @@
 			03E1E132136A10BC0037E10A /* PBXTextBookmark */ = 03E1E132136A10BC0037E10A /* PBXTextBookmark */;
 			03E1E133136A10BC0037E10A /* PBXTextBookmark */ = 03E1E133136A10BC0037E10A /* PBXTextBookmark */;
 			03E1E134136A10BC0037E10A /* PBXTextBookmark */ = 03E1E134136A10BC0037E10A /* PBXTextBookmark */;
+			03E1E153136A152C0037E10A /* PBXTextBookmark */ = 03E1E153136A152C0037E10A /* PBXTextBookmark */;
+			03E1E154136A152C0037E10A /* PBXTextBookmark */ = 03E1E154136A152C0037E10A /* PBXTextBookmark */;
+			03E1E155136A152C0037E10A /* PBXTextBookmark */ = 03E1E155136A152C0037E10A /* PBXTextBookmark */;
+			03E1E156136A152C0037E10A /* PBXTextBookmark */ = 03E1E156136A152C0037E10A /* PBXTextBookmark */;
+			03E1E157136A152C0037E10A /* PBXTextBookmark */ = 03E1E157136A152C0037E10A /* PBXTextBookmark */;
+			03E1E158136A152C0037E10A /* PBXTextBookmark */ = 03E1E158136A152C0037E10A /* PBXTextBookmark */;
+			03E1E159136A152C0037E10A /* PBXTextBookmark */ = 03E1E159136A152C0037E10A /* PBXTextBookmark */;
+			03E1E15A136A152C0037E10A /* PBXTextBookmark */ = 03E1E15A136A152C0037E10A /* PBXTextBookmark */;
+			03E1E15F136A15C10037E10A /* PBXTextBookmark */ = 03E1E15F136A15C10037E10A /* PBXTextBookmark */;
+			03E1E162136A16640037E10A /* PBXTextBookmark */ = 03E1E162136A16640037E10A /* PBXTextBookmark */;
+			03E1E163136A16640037E10A /* PBXTextBookmark */ = 03E1E163136A16640037E10A /* PBXTextBookmark */;
+			03E1E164136A16640037E10A /* PBXTextBookmark */ = 03E1E164136A16640037E10A /* PBXTextBookmark */;
+			03E1E165136A16640037E10A /* PBXTextBookmark */ = 03E1E165136A16640037E10A /* PBXTextBookmark */;
+			03E1E166136A16640037E10A /* PBXTextBookmark */ = 03E1E166136A16640037E10A /* PBXTextBookmark */;
+			03E1E169136A16B90037E10A /* XCBuildMessageTextBookmark */ = 03E1E169136A16B90037E10A /* XCBuildMessageTextBookmark */;
+			03E1E16B136A16C20037E10A /* PBXTextBookmark */ = 03E1E16B136A16C20037E10A /* PBXTextBookmark */;
+			03E1E16D136A16C20037E10A /* PBXTextBookmark */ = 03E1E16D136A16C20037E10A /* PBXTextBookmark */;
+			03E1E170136A17100037E10A /* PBXTextBookmark */ = 03E1E170136A17100037E10A /* PBXTextBookmark */;
 			03F1E86213310DB300BBDEE9 = 03F1E86213310DB300BBDEE9 /* PBXTextBookmark */;
 			03F1E86613310DB300BBDEE9 = 03F1E86613310DB300BBDEE9 /* PBXTextBookmark */;
 			03F87035131DAAA300D68970 = 03F87035131DAAA300D68970 /* PBXTextBookmark */;
@@ -2340,16 +2507,17 @@
 	};
 	344CAAEA133532F700544690 /* ProjectDashboardController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {878, 645}}";
-			sepNavSelRange = "{567, 14}";
-			sepNavVisRange = "{0, 608}";
+			sepNavIntBoundsRect = "{{0, 0}, {901, 416}}";
+			sepNavSelRange = "{300, 0}";
+			sepNavVisRange = "{148, 378}";
+			sepNavWindowFrame = "{{63, 56}, {1013, 716}}";
 		};
 	};
 	344CAAEB133532F700544690 /* ProjectDashboardController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1104, 6578}}";
-			sepNavSelRange = "{8590, 0}";
-			sepNavVisRange = "{7981, 445}";
+			sepNavIntBoundsRect = "{{0, 0}, {1643, 6903}}";
+			sepNavSelRange = "{17178, 0}";
+			sepNavVisRange = "{16319, 1138}";
 		};
 	};
 	347C85F813196B5400986270 /* DashboardController.h */ = {
@@ -3366,16 +3534,16 @@
 	};
 	4F8FEBFA12E1C2FA00B24BB8 /* ProjectsController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {924, 581}}";
+			sepNavIntBoundsRect = "{{0, 0}, {873, 430}}";
 			sepNavSelRange = "{15, 0}";
 			sepNavVisRange = "{0, 380}";
 		};
 	};
 	4F8FEBFB12E1C2FA00B24BB8 /* ProjectsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1181, 2990}}";
-			sepNavSelRange = "{6163, 0}";
-			sepNavVisRange = "{5493, 1317}";
+			sepNavIntBoundsRect = "{{0, 0}, {1195, 3289}}";
+			sepNavSelRange = "{3404, 0}";
+			sepNavVisRange = "{45, 743}";
 			sepNavWindowFrame = "{{15, 162}, {1013, 611}}";
 		};
 	};
@@ -3412,9 +3580,9 @@
 	};
 	4F933BE312E5E0EF0052CA5F /* IssueDetailsController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {873, 4199}}";
-			sepNavSelRange = "{236, 0}";
-			sepNavVisRange = "{32, 696}";
+			sepNavIntBoundsRect = "{{0, 0}, {936, 3926}}";
+			sepNavSelRange = "{6640, 0}";
+			sepNavVisRange = "{6362, 718}";
 			sepNavWindowFrame = "{{267, 138}, {1013, 611}}";
 		};
 	};
@@ -3520,7 +3688,7 @@
 		ignoreCount = 0;
 		lineNumber = 33;
 		location = JiraPhone;
-		modificationTime = 325718273.446176;
+		modificationTime = 325719866.901222;
 		originalNumberOfMultipleMatches = 1;
 		state = 1;
 	};
@@ -3530,43 +3698,6 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 5120}";
 			sepNavVisRect = "{{0, 0}, {1025, 310}}";
-		};
-	};
-	4FA98D9812DF8B48009C33EA /* JiraPhone */ = {
-		isa = PBXExecutable;
-		activeArgIndices = (
-		);
-		argumentStrings = (
-		);
-		autoAttachOnCrash = 1;
-		breakpointsEnabled = 1;
-		configStateDict = {
-		};
-		customDataFormattersEnabled = 1;
-		dataTipCustomDataFormattersEnabled = 1;
-		dataTipShowTypeColumn = 1;
-		dataTipSortType = 0;
-		debuggerPlugin = GDBDebugging;
-		disassemblyDisplayState = 0;
-		dylibVariantSuffix = "";
-		enableDebugStr = 1;
-		environmentEntries = (
-			{
-				active = NO;
-				name = NSZombieEnabled;
-				value = YES;
-			},
-		);
-		executableSystemSymbolLevel = 0;
-		executableUserSymbolLevel = 0;
-		libgmallocEnabled = 0;
-		name = JiraPhone;
-		savedGlobals = {
-		};
-		showTypeColumn = 0;
-		sourceDirectories = (
-		);
-		variableFormatDictionary = {
 		};
 	};
 	4FA98DA112DF8B4B009C33EA /* Source Control */ = {
@@ -3609,9 +3740,9 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 13;
-		modificationTime = 325718272.341699;
+		modificationTime = 325719945.393297;
 		originalNumberOfMultipleMatches = 1;
-		state = 0;
+		state = 1;
 	};
 	4FBA94B112E198560052C041 /* AbstractEntity.h */ = {
 		uiCtxt = {
@@ -3655,16 +3786,16 @@
 	};
 	4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1076, 4836}}";
-			sepNavSelRange = "{7154, 0}";
-			sepNavVisRange = "{6163, 1079}";
+			sepNavIntBoundsRect = "{{0, 0}, {1272, 4693}}";
+			sepNavSelRange = "{3910, 0}";
+			sepNavVisRange = "{8473, 1307}";
 			sepNavWindowFrame = "{{267, 138}, {1013, 611}}";
 		};
 	};
 	4FEDF8D712EA6A1800CA09A0 /* CreateIssueDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {873, 442}}";
-			sepNavSelRange = "{269, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {873, 430}}";
+			sepNavSelRange = "{220, 43}";
 			sepNavVisRange = "{0, 269}";
 			sepNavWindowFrame = "{{61, 120}, {1013, 611}}";
 		};
