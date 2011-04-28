@@ -16,6 +16,7 @@
 #pragma mark View lifecycle
 
 - (id)initForIssue:(Issue *)_issue {
+	// Initialize this screen for the given issue
 	if (self = [super initWithNibName:@"IssueDetailsController" bundle:nil]) {
 		issue = [_issue retain];
 	}
@@ -25,6 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	// Set the title
 	self.title = issue.key;
 }
 
@@ -72,6 +74,7 @@
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
+	// Given an index path, return the title for that cell
 	NSString *ret = nil;
     if (indexPath.section == ISSUE_DATA_SECTION) {
 		switch (indexPath.row) {
@@ -129,6 +132,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -240,6 +244,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	if (indexPath.section == ISSUE_MAN_SECTION) {
+		// If the user selects a user related to the issue (assignee or reporter), display
+		// the user profile
 		if (indexPath.row == 0)
 		{
 			UserController *userController = [[UserController alloc] initForUsername:issue.assignee];
@@ -258,11 +264,11 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0:
+		case ISSUE_DATA_SECTION:
 			return [NSString stringWithFormat:@"Issue Data:"];
-		case 1:
+		case ISSUE_MAN_SECTION:
 			return [NSString stringWithFormat:@"Issue Manager:"];
-		case 2:
+		case ISSUE_DATE_SECTION:
 			return [NSString stringWithFormat:@"Issue Dates:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
@@ -286,6 +292,7 @@
 
 
 - (void)dealloc {
+	// Free up memory
 	if(issue){[issue release]; issue = nil;}
     [super dealloc];
 }

@@ -21,6 +21,11 @@
 #import "User.h"
 #import "JiraPhoneAppDelegate.h"
 
+#define ISSUES_SECTION 0
+#define MISC_SECTION 1
+#define FILTERS_SECTION 2
+#define ACTIVITY_SECTION 3
+
 @implementation DashboardController
 @synthesize currentUser;
 
@@ -100,13 +105,13 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// Only first category has 6 items, the last two have 2 items in each
 	switch (section) {
-		case 0:
+		case ISSUES_SECTION:
 			return [issues count];
-		case 1:
+		case MISC_SECTION:
 			return 3;
-		case 2:
+		case FILTERS_SECTION:
 			return [filters count];
-		case 3:
+		case ACTIVITY_SECTION:
 			return 1;
 		default:
 			return 3;
@@ -118,13 +123,14 @@
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
     }
 	
 	// If we are in the issues section of the dashboard...
-	if (indexPath.section == 0)
+	if (indexPath.section == ISSUES_SECTION)
 	{
 		// Make sure there are issues before trying to populate cells
 		if (issues.count >= indexPath.row + 1) {
@@ -141,7 +147,7 @@
 			cell.textLabel.text = @"Issue";
 		}
 	}
-	else if (indexPath.section == 1) {
+	else if (indexPath.section == MISC_SECTION) {
 		switch (indexPath.row) {
 			case 0:
 				cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
@@ -157,7 +163,7 @@
 		}
 	}
 	// If we are in the filters section...
-	else if (indexPath.section == 2)
+	else if (indexPath.section == FILTERS_SECTION)
 	{
 		// Make sure there are enough filters to populate the cell
 		if (filters.count >= indexPath.row + 1)
@@ -179,7 +185,7 @@
 		// Don't display any extra details
 		cell.imageView.image = nil;
 	}
-	else if (indexPath.section == 3)
+	else if (indexPath.section == ACTIVITY_SECTION)
 	{
 		// Create a cell for users to go to the activity stream
 		cell.textLabel.text = [NSString stringWithFormat:@"View Activity Stream"];
@@ -201,14 +207,14 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// If the user selects an issue, push the issue details screen
 	switch (indexPath.section) {
-		case 0:
+		case ISSUES_SECTION:
 			if ([issues count] >= indexPath.row + 1) {
 			IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
 			[self.navigationController pushViewController:issueDetailsController animated:YES];
 			[issueDetailsController release];
 			}
 			break;
-		case 1:
+		case MISC_SECTION:
 			if (indexPath.row == 0) {
 				// show projects
 				ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
@@ -216,7 +222,7 @@
 				[projController release];
 			}
 			break;
-		case 2:
+		case FILTERS_SECTION:
 			// If the user selects a filter,
 			// display issues returned by filter
 			if ([filters count] >= indexPath.row + 1) {
@@ -225,7 +231,7 @@
 				[issuesController release];
 			}
 			break;
-		case 3:
+		case ACTIVITY_SECTION:
 			// Show the activity stream
 			[self showActivityScreen];
 			break;
@@ -236,13 +242,13 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0:
+		case ISSUES_SECTION:
 			return [NSString stringWithFormat:@"Assigned To Me:"];
-		case 1:
+		case MISC_SECTION:
 			return [NSString stringWithFormat:@"Project:"];
-		case 2:
+		case FILTERS_SECTION:
 			return [NSString stringWithFormat:@"Filters:"];
-		case 3:
+		case ACTIVITY_SECTION:
 			return [NSString stringWithFormat:@"Activity Stream:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
@@ -266,7 +272,9 @@
 
 
 - (void)dealloc {
+	//free up the memory
 	if(issues){[issues release]; issues = nil;}
+	if(filters){[filters release]; filters = nil;}
     [super dealloc];
 }
 

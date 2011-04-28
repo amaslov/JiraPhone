@@ -14,24 +14,32 @@
 #import "CreateIssueController.h"
 #import "JiraPhoneAppDelegate.h"
 
+#define SORT_UPDATED_BUTTON 0
+#define SORT_KEY_BUTTON 1
+#define SORT_PRIORITY_BUTTON 2
+#define CREATE_ISSUE_BUTTON 3
+
 @implementation IssuesController
 @synthesize project;
 @synthesize filter;
 @synthesize jql;
 
 - (id)initForProject:(Project *)_project {
+	// Initialize screen for a project
 	if (self = [super init]) {
 		self.project = _project;
 	}
 	return self;
 }
 - (id)initForFilter:(Filter *)_filter {
+	// Initialize screen for a filter
 	if (self = [super init]) {
 		self.filter = _filter;
 	}
 	return self;
 }
 - (id)initForJql:(NSString *)_jql {
+	// Initialize screen for a jql search
 	if (self = [super init]) {
 		self.jql = _jql;
 	}
@@ -43,6 +51,7 @@
 #pragma mark View lifecycle
 
 - (void)showCreateIssueScreen {
+	// Present the create issues screen to the user
 	CreateIssueController *createIssueController = [[CreateIssueController alloc] initForIssueInProject: project];
 	createIssueController.delegate = self;
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createIssueController];
@@ -89,6 +98,7 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	// Reload data in the table
 	[self.tableView reloadData];
 	
 	// Sync with server
@@ -102,13 +112,10 @@
 	else if (filter) {
 		// Get the issues returned by the current filter
 		[connector getIssuesFromFilter:filter.ID];
-		NSLog(@"Getting filters for ID: %@",filter.ID);
 	}
 	else {
 		[connector getIssuesFromJql:jql];
 	}
-
-
 	
 	// add + (create issue) button
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
@@ -118,6 +125,7 @@
 }
 
 - (IBAction)showActionSheet:(id)sender {
+	// Present sorting options to the user
 	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", @"Create Issue", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
@@ -126,22 +134,23 @@
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
-		case 0:
+		case SORT_UPDATED_BUTTON:
 			// User wants to sort by updated date
 			[issues sortUsingSelector:@selector(compareUpdatedDate:)];
 			[self.tableView reloadData];
 			break;
-		case 1:
+		case SORT_KEY_BUTTON:
 			// User wants to sort by issue key
 			[issues sortUsingSelector:@selector(compareKey:)];
 			[self.tableView reloadData];
 			break;
-		case 2:
+		case SORT_PRIORITY_BUTTON:
 			// User wants to sort by priority
 			[issues sortUsingSelector:@selector(comparePriority:)];
 			[self.tableView reloadData];
 			break;
-		case 3:			
+		case CREATE_ISSUE_BUTTON:
+			// User wants to create an issue
 			[self showCreateIssueScreen];
 			break;
 		default:
@@ -196,6 +205,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     static NSString *CellIdentifier = @"Cell";
+	
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
@@ -284,6 +295,7 @@
 
 
 - (void)dealloc {
+	// Free up memory
 	[Connector sharedConnector].delegate = nil;
 	[project release];
 	[issues release];
@@ -294,7 +306,10 @@
 #pragma mark Connector delegate
 
 - (void)didReceiveData:(id)result {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	
+	// Store issues returned from connector
 	if ([result isKindOfClass:[NSArray class]]) {
 		if (!filter)
 		{
@@ -302,18 +317,26 @@
 		}
 		[issues release];
 		issues = [result retain];
+		// Reload data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	
+	// Display an error to the user
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 #pragma mark -
 #pragma mark Create Issue delegate
 
 - (void)didCreateNewIssue:(Issue *)_issue {
+	// If the user created an issue, add it to the list
 	[issues addObject:_issue];
 	[self.tableView reloadData];
 }

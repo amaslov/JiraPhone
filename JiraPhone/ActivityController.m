@@ -21,6 +21,7 @@ static UIFont *summaryFont;
 @synthesize project;
 
 - (id)initForProject:(Project *)_project {
+	// Initialize the screen for the given project
 	if (self = [super initWithStyle:UITableViewStylePlain]) {
 		self.project = _project;
 	}
@@ -220,7 +221,6 @@ static UIFont *summaryFont;
 		// Set the details of the cell
 		cell.textLabel.numberOfLines = 0;
 		cell.textLabel.font = [self TitleFont];
-		
 		cell.detailTextLabel.numberOfLines = 0;
 		cell.detailTextLabel.font = [self SummaryFont];
     }
@@ -229,6 +229,7 @@ static UIFont *summaryFont;
 	NSString *titleText = [[entries objectAtIndex:indexPath.row] objectForKey:@"title"];
 	NSString *summaryText = [[entries objectAtIndex:indexPath.row] objectForKey:@"summary"];
 	
+	// If the title and summary are different
 	if (![titleText isEqualToString:summaryText])
 	{
 		// Remove html from the text
@@ -248,6 +249,7 @@ static UIFont *summaryFont;
 		return cell;
 	}
 	
+	// Tidy up the title string
 	titleText = [self flattenHTML:titleText];
 	titleText = [self replaceEscapes:titleText];
 	

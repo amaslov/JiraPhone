@@ -10,6 +10,16 @@
 #import "Connector.h"
 #import "IssuesController.h"
 
+#define USER_DATA_SECTION 0
+#define USER_ISSUES_SECTION 1
+
+#define USER_FULLNAME_ROW 0
+#define USER_USERNAME_ROW 1
+#define USER_EMAIL_ROW 2
+
+#define USER_ASSIGNED_ISSUES 0
+#define USER_REPORTED_ISSUES 1
+
 @implementation UserController
 @synthesize user;
 @synthesize username;
@@ -18,6 +28,7 @@
 #pragma mark View lifecycle
 
 - (id)initForUsername:(NSString *)_username {
+	// Initialize this screen for the given username
 	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
 		self.username = _username;
 	}
@@ -27,8 +38,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	// Set the title of the screen
 	self.title = @"User Profile";
 	
+	// Initialize the user
 	if (!user) {
 		user = [[User alloc] init];
 	}
@@ -37,9 +50,10 @@
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	
-	NSLog(@"Attempting to get user with username: %@", self.username);
+	// Get user information from the server
 	[connector getUser:self.username];
 	
+	// Display activity indicator until user data is downloaded
 	if (!activityIndicator) {
 		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 		activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
@@ -91,10 +105,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     switch (section) {
-		case 0:
+		case USER_DATA_SECTION:
 			return 3;
 			break;
-		case 1:
+		case USER_ISSUES_SECTION:
 			return 2;
 			break;
 		default:
@@ -109,6 +123,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -116,31 +131,33 @@
     
     // Configure the cell...
     switch (indexPath.section) {
-		case 0:
+		case USER_DATA_SECTION:
+			// Display user information
 			cell.accessoryType = UITableViewCellAccessoryNone;
 			switch (indexPath.row)
 			{
-				case 0:
+				case USER_FULLNAME_ROW:
 					cell.textLabel.text = [NSString stringWithFormat:@"Full Name: %@", user.fullName];
 					break;
-				case 1:
+				case USER_USERNAME_ROW:
 					cell.textLabel.text = [NSString stringWithFormat:@"Username: %@", user.name];
 					break;
-				case 2:
+				case USER_EMAIL_ROW:
 					cell.textLabel.text = [NSString stringWithFormat:@"Email: %@", user.email];
 					break;
 				default:
 					break;
 			}
 			break;
-		case 1:
+		case USER_ISSUES_SECTION:
+			// Display cells for viewing issues related to user
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			switch (indexPath.row)
 			{
-				case 0:
+				case USER_ASSIGNED_ISSUES:
 					cell.textLabel.text = [NSString stringWithFormat:@"View issues assigned to %@", username];
 					break;
-				case 1:
+				case USER_REPORTED_ISSUES:
 					cell.textLabel.text = [NSString stringWithFormat:@"View issues reported by %@", username];
 					break;
 			}
@@ -194,16 +211,18 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 1) {
+	if (indexPath.section == USER_ISSUES_SECTION) {
 		switch (indexPath.row) {
-			case 0:
+			// Display issues assigned to the user
+			case USER_ASSIGNED_ISSUES:
 			{
 				IssuesController *issuesController = [[IssuesController alloc] initForJql:[NSString stringWithFormat:@"assignee = %@",username]];
 				[self.navigationController pushViewController:issuesController animated:YES];
 				[issuesController release];
 				break;
 			}
-			case 1:
+			// Display issues reported by the user
+			case USER_REPORTED_ISSUES:
 			{
 				IssuesController *issuesController = [[IssuesController alloc] initForJql:[NSString stringWithFormat:@"reporter = %@", username]];
 				[self.navigationController pushViewController:issuesController animated:YES];
@@ -234,6 +253,8 @@
 
 
 - (void)dealloc {
+	// Release memory
+	if (user) {[user release]; user = nil;}
     [super dealloc];
 }
 
@@ -241,18 +262,25 @@
 #pragma mark Connector delegate
 
 - (void)didReceiveData:(id)result {
+	// Get data from the connector
 	[activityIndicator stopAnimating];
+	// Store the user that is returned from the connector
 	if ([result isKindOfClass:[User class]]) {
 		[user release];
 		user = [result retain];
+		// Reload the data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Stop showing the activity indicator
 	[activityIndicator stopAnimating];
+	// Display the error to the user
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
-
 
 @end
 

@@ -22,6 +22,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	// Set the title
 	self.title = @"Projects";
 	
 	// get list of cashed projects
@@ -29,6 +31,7 @@
 		projects = [[NSMutableArray alloc] init];
 	}
 
+	// Get cached projects from the local database
 	[Project getCachedProjects:projects];
 	
 	// if there are no cashed projects show wait spinner
@@ -42,11 +45,14 @@
 		[activityIndicator startAnimating];		
 	}
 
+	// Reload data in the table
 	[self.tableView reloadData];
 
 	// sync with server for list of projects
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
+	
+	// Get projects from the server
 	[connector getProjects];
 	
 	// add search navigation button
@@ -106,6 +112,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Make a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -193,7 +200,8 @@
 
 
 - (void)dealloc {
-	[projects release];
+	// Free up memory
+	if (projects){[projects release]; projects = nil;}
     [super dealloc];
 }
 
@@ -201,23 +209,30 @@
 #pragma mark Connector delegate
 
 - (void)didReceiveData:(id)result {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	// Store the list of projects
 	if ([result isKindOfClass:[NSArray class]]) {
 		[Project cacheProjects:(NSArray *)result];
 		[projects release];
 		projects = [result retain];
+		// Reload the data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	
+	// Display an error to the user
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 }
 
 - (void)showSearchController {
+	// Present the Search screen to the user
 	SearchController *searchController = [[SearchController alloc] initForProject: nil];
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchController];
 	navController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
