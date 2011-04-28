@@ -41,7 +41,6 @@
 //@synthesize hashCode=_hashCode;
 
 - (void)dealloc {
-	// Free up memory
 	if(self.assignee != nil) { [self.assignee release]; }
 	if(self.created != nil) { [self.created release]; }
 	if(self.description != nil) { [self.description release]; }
@@ -69,22 +68,15 @@
 	// clear
 	//FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
 	//[db executeUpdate:updateString];
-	
-	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
 		
 	// insert
 	for (Issue *issue in _issues) {
-		// Build a query that attempts to get the given issue from the db
-		NSString *updateString = [NSString stringWithFormat:@"select * from issues where project = \"%@\" and user_id = \"%@\" and key = \"%@\" and server = \"%@\"", _proj.key, [User loggedInUser].ID, issue.key, [User loggedInUser].server];
+		/*NSString *updateString = [NSString stringWithFormat:@"select * from issues where project = \"%@\" and user_id = \"%@\" and key = \"%@\" and server = \"%@\"", _proj.key, [User loggedInUser].ID, issue.key, [User loggedInUser].server];
 		
-		// Get the results of the query
 		FMResultSet *rs = [db executeQuery:updateString];
-		
-		// If the issue was found in the database
 		if ([rs next])
 		{
-			// Update the issues
 			updateString = [NSString stringWithFormat:@"update issues set assignee = \"%@\", created = \"%@\", description = \"%@\", due_date = \"%@\", priority = \"%@\", project = \"%@\", reporter = \"%@\", resolution = \"%@\", status = \"%@\", summary = \"%@\", type = \"%@\", updated = \"%@\", user_id = \"%@\" where project = \"%@\" and user_id = \"%@\" and key = \"%@\" and server = \"%@\"", 
 							issue.assignee,
 							issue.created,
@@ -101,11 +93,9 @@
 							[User loggedInUser].ID,
 							_proj.key, [User loggedInUser].ID, issue.key, [User loggedInUser].server];
 			
+			
 			[db executeUpdate:updateString];
-		}
-		// If the issue wasn't found...
-		else {
-			// Insert it into the database
+		}else{
 			updateString = [NSString stringWithFormat:@"insert into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
 							issue.assignee,
 							issue.created,
@@ -123,10 +113,26 @@
 			
 							
 			[db executeUpdate:updateString];	
-		}
+		 }*/
+		NSString *updateString = [NSString stringWithFormat:@"replace into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+						issue.assignee,
+						issue.created,
+						issue.description,
+						issue.duedate,
+						issue.key,
+						[NSString stringWithFormat: @"%i", issue.priority.number],
+						issue.project,
+						issue.reporter,
+						issue.resolution,
+						issue.status,
+						issue.summary,
+						[NSString stringWithFormat: @"%i", issue.type.number],
+						issue.updated, [User loggedInUser].ID];
+		
+		
+		[db executeUpdate:updateString];
 	}
 	
-	// Output any errors the database had
 	if ([db hadError]) {
 		NSLog(@"db error: %@", [db lastErrorMessage]);
 	}
@@ -168,52 +174,37 @@
 }
 */
 + (void)getCachedIssuesForUser:(NSMutableArray *)_issues {
-	// Build the query string
 	NSString *queryString = [NSString stringWithFormat:@"select * from issues where assignee = \"%@\" limit 3",[User loggedInUser].name];
 	
-	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
-	
-	// Get the results of the query
 	FMResultSet *rs = [db executeQuery:queryString];
 	while ([rs next])
 	{
-		// Make a new issue, and store it
 		Issue *issue = [[Issue alloc] init];
 		[issue fillFromResultSet:rs];
 		[_issues addObject:issue];
 		[issue release];
 	}
-	// Close the result set
 	[rs close];
-	
-	// Output any database errors
 	if ([db hadError]) {
 		NSLog(@"db error: %@",[db lastErrorMessage]);
 	}
 }
 
 + (void)getCachedIssues:(NSMutableArray *)_issues ofProject:(Project *)_proj {
-	// Build the query
+
 	NSString *queryString = [NSString stringWithFormat:@"select * from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];
 	
-	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
-	
-	// Get the results of the query
 	FMResultSet *rs = [db executeQuery:queryString];
 	while ([rs next])
 	{
-		// Create a new issue and store it
 		Issue *issue = [[Issue alloc]init];
 		[issue fillFromResultSet:rs];
 		[_issues addObject: issue];
 		[issue release];
 	}
-	// Close the result set
 	[rs close];
-	
-	// Output any database errors
 	if ([db hadError]) {
 		NSLog(@"db error: %@", [db lastErrorMessage]);
 	}
@@ -224,7 +215,6 @@
 #pragma mark Private Methods
 - (void)fillFromResultSet:(FMResultSet *)rs
 {
-	// Create an issue given a record from the database
 	self.assignee = [rs stringForColumn:@"assignee"];
 	self.created = [rs dateForColumn:@"created"];
 	self.description = [rs stringForColumn:@"description"];
@@ -255,11 +245,11 @@
 	return [_issue.updated compare:self.updated];
 }
 - (NSComparisonResult)compareKey:(Issue*)_issue {
-	// Compare keys to sort alphabetically
+	// Sort keys alphabetically
 	return [self.key compare:_issue.key];
 }
 - (NSComparisonResult)comparePriority:(Issue*)_issue {
-	// Compare priority to sort keys by priority in ascending order (most critical issues first)
+	// Sort keys by priority in ascending order (most critical issues first)
 	NSNumber *selfPriority = [NSNumber numberWithInteger:self.priority.number];
 	NSNumber *otherPriority = [NSNumber numberWithInteger:_issue.priority.number];
 	return [selfPriority compare:otherPriority];
