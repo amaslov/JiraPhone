@@ -127,6 +127,8 @@
 	return ret;
 }
 
+
+//keybase lookup
 - (UIImage *)getImageByPriority:(Priority *)priority {
 	switch (priority.number) {
 		case 1:
@@ -183,9 +185,9 @@
 			case 1:
 				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
 				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
-				break;
+			//case 2:
+			//	cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+			//	break;
 			default:
 				break;
 		}
@@ -224,6 +226,10 @@
 			ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
 			[self.navigationController pushViewController:projController animated:YES];
 			[projController release];
+		}
+		if (indexPath.row==3)
+		{
+			
 		}
 	}
 	else {

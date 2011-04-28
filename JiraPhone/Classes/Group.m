@@ -4,7 +4,7 @@
 //
 //  Created by Aleksey Maslov on 3/15/11.
 //  Copyright 2011 AMaslov. All rights reserved.
-// SATISFIES ALL OBJECT CALISTHENICS!
+//
 
 #import "Group.h"
 #import "FMDatabase.h"
@@ -38,9 +38,10 @@
 	}
 }
 
+//gets users from jira-users group on current server
 + (void)getCachedGroup:(NSMutableArray *)_users {					   
 
-	NSString *queryString = [NSString stringWithFormat: @"select users.name, users.full_name, users.email, users.server from USERS INNER JOIN groups ON users.name=groups.user_name where groups.name = \"jira-users\" and groups.server = \"%@\" and groups.server=users.server", [User loggedInUser].ID];
+	NSString *queryString = [NSString stringWithFormat: @"select users.name, users.full_name, users.email, users.server from USERS INNER JOIN groups ON users.name=groups.user_name where groups.name = \"jira-users\" and groups.server = \"%@\" and groups.server=users.server", [User loggedInUser].server];
 	
 	FMDatabase *database = [JiraPhoneAppDelegate sharedDB];
 	FMResultSet *resultSet = [database executeQuery:queryString];

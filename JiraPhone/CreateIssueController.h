@@ -9,38 +9,41 @@
 
 #import <UIKit/UIKit.h>
 #import "MutableIssueDetailCell.h"
-#import "MutableIssueDetailLink.h"
-#import "MutableIssuePicker.h"
+#import "LinkCell.h"
+//#import "MutableIssuePicker.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueDelegate.h"
 #import "ConnectorDelegate.h"
-
+#import "Issue.h"
+#import "ActionSheetPicker.h"
+#import "User.h"
 
 @class Project;
 
-@interface CreateIssueController : IssueDetailsController<ConnectorDelegate,UIPickerViewDelegate> {
+@interface CreateIssueController : IssueDetailsController<ConnectorDelegate, UITextFieldDelegate> {
 	IBOutlet MutableIssueDetailCell *mutableCell;
-	IBOutlet MutableIssueDetailLink *mutableLink;
-	UIPickerView *picker;
-	UIBarButtonItem *doneButton;	// this button appears only when the picker is open
+	IBOutlet LinkCell *mutableLink;
 	Project *project;
+	Issue *newIssue;
+	NSMutableArray * _pickerViewArray;
+	NSInteger selectedIndex;
+	NSMutableArray * _groupArray;
 	id<CreateIssueDelegate> delegate;
-	NSArray *dataArray;
-
 }
 @property (nonatomic, assign) id<CreateIssueDelegate> delegate;
 @property (nonatomic, retain) Project *project;
 @property (nonatomic, retain) IBOutlet MutableIssueDetailCell *mutableCell;
-@property (nonatomic, retain) IBOutlet MutableIssueDetailLink *mutableLink;
-@property (nonatomic, retain) IBOutlet UIPickerView *pickerView; 
-@property (nonatomic, retain) IBOutlet UIBarButtonItem *doneButton;
-@property (nonatomic, retain) NSArray *dataArray; 
+@property (nonatomic, retain) IBOutlet LinkCell *mutableLink;
+@property (nonatomic, retain) NSMutableArray *pickerViewArray;
+@property (nonatomic, retain) NSMutableArray *groupArray;
+@property (nonatomic, assign) NSInteger selectedIndex;
 
+@property (nonatomic,retain) Issue *newIssue;
 // _project - where create new issue
 - (id)initForIssueInProject:(Project *)_project;
 
 - (IBAction)doneAction;
 //- (IBAction)doneAction:(id)sender;	// when the done button is clicked
-- (IBAction)textFieldReturn:(id)sender;	// when the user has selected pickerview
+//- (IBAction)textFieldReturn:(id)sender;	// when the user has selected pickerview
 
 @end

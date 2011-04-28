@@ -14,5 +14,6 @@
 	NSMutableArray *_users;
 }
 @property (retain, nonatomic) NSMutableArray *users;
-
+//gets users for jira-users group
++ (void)getCachedGroup:(NSMutableArray *)_users;
 @end

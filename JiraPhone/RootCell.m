@@ -1,16 +1,19 @@
 //
-//  MutableIssueDetailCell.m
+//  RootCell.m
 //  JiraPhone
 //
-//  Created by Aleksey Maslov on 1/10/11.
+//  Created by Aleksey Maslov on 4/27/11.
 //  Copyright 2011 AMaslov. All rights reserved.
 //
-#import "MutableIssueDetailCell.h"
+
+#import "RootCell.h"
 
 
-@implementation MutableIssueDetailCell
-@synthesize title;
-@synthesize textField;
+@implementation RootCell
+
+@synthesize valueField;
+//@synthesize textField;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
@@ -31,13 +34,18 @@
 
 
 - (void)dealloc {
-	[title release];
-	[textField release];
+	[valueField release];
+	//[textField release];
     [super dealloc];
 }
-
-//-(void)textFieldDidEndEditing:(UITextField *)textField {
-//	valueField=textField.text;
-//}
+/*
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+	valueField=textField.text;
+}
+-(BOOL)textFieldShouldEndEditing:(UITextField *)textField {
+//	check for input correctness
+	return YES;
+}
+*/
 
 @end

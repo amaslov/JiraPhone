@@ -8,6 +8,8 @@
 // http://docs.atlassian.com/software/jira/docs/api/rpc-jira-plugin/latest/com/atlassian/jira/rpc/soap/JiraSoapService.html
 // jql - jira query language
 
+//TODO create static initializer
+
 #import "Connector.h"
 #import "JiraSoapServiceService.h"
 #import "RemoteIssue.h"
@@ -24,6 +26,7 @@
 @implementation Connector
 @synthesize delegate;
 
+//vl singleton.h
 - (id)init {
 	if (self = [super init]) {
 		jira = [[JiraSoapServiceService alloc] init];
@@ -110,10 +113,12 @@
 	[rIssue release];
 }
 //TODO consider dynamic class initialization (didreceivedata)
+//keys - dictionary, blocks - embedded functions
 #pragma mark -
 #pragma mark Soap Service delegate
 #pragma mark default handlers
 - (void) onload: (id) value {
+	//[here goes value populate]
 	//Array of Projects
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteProject class]]) {
 
@@ -270,7 +275,7 @@
 			[delegate didReceiveData:comments];
 		}
 		return;				
-	}*/
+	} */
 	//Comment
 	//apparently doesn't work - some problem with comment class (or remote comment). 
 	/*	if ([value isKindOfClass:[RemoteComment class]])

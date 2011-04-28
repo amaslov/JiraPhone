@@ -1,16 +1,17 @@
 //
-//  MutableIssueDetailCell.m
+//  LinkCell.m
 //  JiraPhone
 //
-//  Created by Aleksey Maslov on 1/10/11.
+//  Created by Aleksey Maslov on 4/27/11.
 //  Copyright 2011 AMaslov. All rights reserved.
 //
-#import "MutableIssueDetailCell.h"
+
+#import "LinkCell.h"
 
 
-@implementation MutableIssueDetailCell
-@synthesize title;
-@synthesize textField;
+@implementation LinkCell
+
+@synthesize details;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
@@ -31,13 +32,9 @@
 
 
 - (void)dealloc {
-	[title release];
-	[textField release];
+	[details release];
     [super dealloc];
 }
 
-//-(void)textFieldDidEndEditing:(UITextField *)textField {
-//	valueField=textField.text;
-//}
 
 @end
