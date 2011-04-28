@@ -344,7 +344,7 @@
 		cell.detailTextLabel.text = nil;
 		cell.accessoryType = UITableViewCellAccessoryNone;
 	}
-	else if (indexPath.section == ISSUES_ASSIGNEE_SECTION){
+	else if (indexPath.section == ISSUES_PRIORITY_SECTION){
 		// Get a priority and the number of issues with that priority
 		NSNumber *priority = [NSNumber numberWithInteger:[[[unresolvedPriority objectAtIndex:indexPath.row] objectForKey:@"issuePriority"] integerValue]];
 		NSInteger numIssues = [[[unresolvedPriority objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
