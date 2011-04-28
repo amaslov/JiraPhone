@@ -17,6 +17,8 @@
 		035F861B13694DC1006C5E15 /* ActionSheetPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 035F861A13694DC1006C5E15 /* ActionSheetPicker.m */; };
 		03A485E51368747E00B330E1 /* RootCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A485E41368747D00B330E1 /* RootCell.m */; };
 		03B97808133BF5F400DDB3C6 /* Filter.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B97807133BF5F400DDB3C6 /* Filter.m */; };
+		03E1E141136A10D60037E10A /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03E1E13F136A10D60037E10A /* UserController.m */; };
+		03E1E142136A10D60037E10A /* UserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03E1E140136A10D60037E10A /* UserController.xib */; };
 		03F1E84F13306CF100BBDEE9 /* Group.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F1E84E13306CF100BBDEE9 /* Group.m */; };
 		1D3623260D0F684500981E51 /* JiraPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* JiraPhoneAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
@@ -34,7 +36,6 @@
 		347C85FA13196B5400986270 /* DashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347C85F913196B5400986270 /* DashboardController.m */; };
 		347F1675133585C9000BC1A7 /* ActivityController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347F1673133585C9000BC1A7 /* ActivityController.m */; };
 		347F1676133585C9000BC1A7 /* ActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F1674133585C9000BC1A7 /* ActivityController.xib */; };
-		347F2FCE134FB8DB001D94A5 /* UserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 347F2FCC134FB8DB001D94A5 /* UserController.m */; };
 		347F2FCF134FB8DB001D94A5 /* UserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F2FCD134FB8DB001D94A5 /* UserController.xib */; };
 		34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34835F1E13197262005DC6C9 /* DashboardController.xib */; };
 		34864C9113685AD0009650C5 /* status_open.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9013685AD0009650C5 /* status_open.gif */; };
@@ -190,6 +191,9 @@
 		03A485E41368747D00B330E1 /* RootCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootCell.m; sourceTree = "<group>"; };
 		03B97806133BF5F400DDB3C6 /* Filter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filter.h; sourceTree = "<group>"; };
 		03B97807133BF5F400DDB3C6 /* Filter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Filter.m; sourceTree = "<group>"; };
+		03E1E13E136A10D60037E10A /* UserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserController.h; sourceTree = "<group>"; };
+		03E1E13F136A10D60037E10A /* UserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserController.m; sourceTree = "<group>"; };
+		03E1E140136A10D60037E10A /* UserController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserController.xib; sourceTree = "<group>"; };
 		03F1E84D13306CF100BBDEE9 /* Group.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Group.h; sourceTree = "<group>"; };
 		03F1E84E13306CF100BBDEE9 /* Group.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Group.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -499,6 +503,16 @@
 			name = "TabBar Navigation";
 			sourceTree = "<group>";
 		};
+		03E1E12F136A10B40037E10A /* User Controller */ = {
+			isa = PBXGroup;
+			children = (
+				03E1E13E136A10D60037E10A /* UserController.h */,
+				03E1E13F136A10D60037E10A /* UserController.m */,
+				03E1E140136A10D60037E10A /* UserController.xib */,
+			);
+			name = "User Controller";
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -510,8 +524,8 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				03E1E12F136A10B40037E10A /* User Controller */,
 				347F2FCA134FB8C3001D94A5 /* User Details Screen */,
-				03200C1A1347F67300F321EA /* Issue Details Cells */,
 				034E33A1133E535E0034C1CB /* TabBar Navigation */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
@@ -1071,12 +1085,12 @@
 				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
 				034E33AC133E54790034C1CB /* TabBarView.xib in Resources */,
 				347F2FCF134FB8DB001D94A5 /* UserController.xib in Resources */,
-				03200C6613480DD100F321EA /* IssueDetailsViewController.xib in Resources */,
 				A889FB54134FB81700E02C1C /* jira_login.png in Resources */,
 				34864C9113685AD0009650C5 /* status_open.gif in Resources */,
 				34864C9713685B0A009650C5 /* status_closed.gif in Resources */,
 				34864C9813685B0A009650C5 /* status_inprogress.gif in Resources */,
 				34864C9913685B0A009650C5 /* status_resolved.gif in Resources */,
+				03E1E142136A10D60037E10A /* UserController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1211,6 +1225,7 @@
 				03A485E51368747E00B330E1 /* RootCell.m in Sources */,
 				035F85CF13689FB5006C5E15 /* LinkCell.m in Sources */,
 				035F861B13694DC1006C5E15 /* ActionSheetPicker.m in Sources */,
+				03E1E141136A10D60037E10A /* UserController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
