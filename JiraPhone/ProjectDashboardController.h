@@ -12,14 +12,18 @@
 
 @class Project;
 @class Issue;
-@interface ProjectDashboardController : UITableViewController <ConnectorDelegate> {
+@interface ProjectDashboardController : UITableViewController <ConnectorDelegate, UIActionSheetDelegate> {
 	Project *project;
+	bool cachedIssues;
 	NSMutableArray *dueIssues;
 	NSMutableArray *recentIssues;
-	NSMutableArray *unresolvedIssues;
+	NSMutableArray *unresolvedAssignee;
+	NSMutableArray *unresolvedPriority;
+	NSMutableArray *statusList;
 	UIActivityIndicatorView *activityIndicator;
 }
 
 @property (nonatomic, retain) Project *project;
 - (id)initForProject:(Project *)_project;
+- (IBAction)showActionSheet:(id)sender;
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Project.h"
 
-@interface ProjectActivityController : UITableViewController <NSXMLParserDelegate>{
+@interface ActivityController : UITableViewController <NSXMLParserDelegate>{
 	Project *project;
 	UIActivityIndicatorView *activityIndicator;
 	NSXMLParser *rssParser;

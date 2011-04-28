@@ -8,8 +8,11 @@
 #import "IssueDetailsController.h"
 #import "Issue.h"
 #import "IssueType.h"
+<<<<<<< HEAD
 #import "User.h"
+=======
 #import "UserController.h"
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 
 @implementation IssueDetailsController
 
@@ -71,7 +74,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    return section == ISSUE_DATA_SECTION ? 6 : 2;
+    return section == ISSUE_DATA_SECTION ? 7 : 2;
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -270,12 +273,21 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
+<<<<<<< HEAD
+		case 0:
+			return [NSString stringWithFormat:@"Details:"];
+		case 1:
+			return [NSString stringWithFormat:@"Stakeholders:"];
+		case 2:
+			return [NSString stringWithFormat:@"Dates:"];
+=======
 		case ISSUE_DATA_SECTION:
 			return [NSString stringWithFormat:@"Issue Data:"];
 		case ISSUE_MAN_SECTION:
 			return [NSString stringWithFormat:@"Issue Manager:"];
 		case ISSUE_DATE_SECTION:
 			return [NSString stringWithFormat:@"Issue Dates:"];
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
 	}

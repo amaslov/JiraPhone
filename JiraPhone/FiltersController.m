@@ -59,15 +59,20 @@
 
 
 - (void)didReceiveData:(id)result {
-		if ([result isKindOfClass:[NSArray class]]) {		
+	[activityIndicator stopAnimating];
+	// Store the filters retrieved from the server
+	if ([result isKindOfClass:[NSArray class]]) {		
 		[filters release];
 		filters = [result retain];
+		// Reload the data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	// Display an error to the user
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
@@ -75,11 +80,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	// Initialize the filter list
 	if (!filters) {
 		filters = [[NSMutableArray alloc] init];
 	}
+	
+	// Get filters from the database
 	[Filter getCachedFilters:filters];
 	
+	// If there are no cached filters, show the activity indicator
 	if (!filters.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -90,14 +100,19 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	// Reload data in the table
 	[self.tableView reloadData];
 	
+	// Sync with the server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
-	[connector getFavouriteFilters];	
+	
+	// Get filters from the server
+	[connector getFavouriteFilters];
+	
+	// Reload data in the table
 	[self.tableView reloadData];
 }
-
 
 
 - (void)viewDidUnload {

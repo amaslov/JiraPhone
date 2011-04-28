@@ -37,6 +37,10 @@
 			self.description = [Soap getNodeValue: node withName: @"description"];
 			self.project = [Soap getNodeValue: node withName: @"project"];
 			self.xml = [Soap getNodeValue: node withName: @"xml"];
+			// Get the node that holds the real filter ID
+			CXMLNode *_idNode = [node childAtIndex:2];
+			// Set the ID of the filter
+			self._id = [_idNode stringValue];
 		}
 		return self;
 	}

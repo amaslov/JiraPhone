@@ -60,11 +60,17 @@
 // create new issue
 - (void)createIssue:(Issue *)_issue;
 
+// get issues from filter
+- (void)getIssuesFromFilter:(NSString *)_id;
+
 // get favorite filters
 - (void)getFavouriteFilters;
 
-// get issues from filter
-- (void)getIssuesFromFilter:(NSString *)_id;
+// get issues from jql
+- (void)getIssuesFromJql:(NSString *)_jql;
+
+// get the user from JIRA
+- (void)getUser:(NSString *)_username;
 
 // returns singleton Connector object
 + (Connector *)sharedConnector;

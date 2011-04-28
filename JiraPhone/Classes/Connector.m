@@ -86,6 +86,13 @@
 	[jira getFavouriteFilters:self in0:token];
 }
 
+- (void)getIssuesFromJql:(NSString *)_jql {
+	[jira getIssuesFromJqlSearch:self in0:token in1:_jql in2:10];
+}
+
+- (void)getUser:(NSString *)_username {
+	[jira getUser:self in0:token in1:_username];
+}
  //this should work with RemoteIssue!
  /*
 - (void)getCustomFieldValues:(Issue *)_issue {
@@ -216,6 +223,18 @@
 		return;		
 	}
 	
+	if ([value isKindOfClass:[RemoteUser class]]) {
+		RemoteUser *remUser = (RemoteUser *)value;
+		User *user = [[User alloc] init];
+		user.name = remUser.name;
+		user.email = remUser.email;
+		user.fullName = remUser.fullname;
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:user];
+		}
+		return;
+	}
+	
 	//group
 	if ([value isKindOfClass:[RemoteGroup class]]) {
 
@@ -245,6 +264,7 @@
 		for (RemoteFilter *remFilter in remFilters) {
 			Filter *filter = [[Filter alloc] init];
 			filter.ID=remFilter._id;
+			NSLog(@"Filter: %@", remFilter._id);
 			filter.name=remFilter.name;
 			filter.description=remFilter.description;
 			filter.author=remFilter.author;

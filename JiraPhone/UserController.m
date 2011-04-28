@@ -1,70 +1,71 @@
 //
-//  ProjectsController.m
+//  UserController.m
 //  JiraPhone
 //
-//  Created by Aleksey Maslov on 12/15/10.
-//  Copyright 2010 AMaslov. All rights reserved.
+//  Created by Matthew Gerrior on 4/8/11.
+//  Copyright 2011 AMaslov. All rights reserved.
 //
-#import "ProjectsController.h"
-#import "Project.h"
+
+#import "UserController.h"
 #import "Connector.h"
-#import "ActivityController.h"
 #import "IssuesController.h"
-#import "SearchController.h"
-#import "LoginController.h"
-#import "ProjectDashboardController.h"
 
+#define USER_DATA_SECTION 0
+#define USER_ISSUES_SECTION 1
 
-@implementation ProjectsController
+#define USER_FULLNAME_ROW 0
+#define USER_USERNAME_ROW 1
+#define USER_EMAIL_ROW 2
+
+#define USER_ASSIGNED_ISSUES 0
+#define USER_REPORTED_ISSUES 1
+
+@implementation UserController
+@synthesize user;
+@synthesize username;
 
 #pragma mark -
 #pragma mark View lifecycle
 
+- (id)initForUsername:(NSString *)_username {
+	// Initialize this screen for the given username
+	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
+		self.username = _username;
+	}
+	return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	// Set the title
-	self.title = @"Projects";
+	// Set the title of the screen
+	self.title = @"User Profile";
 	
-	// get list of cashed projects
-	if (!projects) {
-		projects = [[NSMutableArray alloc] init];
+	// Initialize the user
+	if (!user) {
+		user = [[User alloc] init];
 	}
-
-	// Get cached projects from the local database
-	[Project getCachedProjects:projects];
 	
-	// if there are no cashed projects show wait spinner
-	if (!projects.count) {
-		if (!activityIndicator) {
-			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
-			[self.view addSubview:activityIndicator];
-			[activityIndicator release];
-		}
-		[activityIndicator startAnimating];		
-	}
-
-	// Reload data in the table
-	[self.tableView reloadData];
-
-	// sync with server for list of projects
+	// Sync with server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	
-	// Get projects from the server
-	[connector getProjects];
+	// Get user information from the server
+	[connector getUser:self.username];
 	
-	// add search navigation button
-	UIBarButtonItem *searchButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(showSearchController)];
-	self.navigationItem.rightBarButtonItem = searchButton;
-	[searchButton release];	
+	// Display activity indicator until user data is downloaded
+	if (!activityIndicator) {
+		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+		[self.view addSubview:activityIndicator];
+		[activityIndicator release];
+	}
+	[activityIndicator startAnimating];
+
 }
 
-
 /*
-//do something with all these methods?
- - (void)viewWillAppear:(BOOL)animated {
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 }
 */
@@ -97,13 +98,23 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return projects.count;
+    switch (section) {
+		case USER_DATA_SECTION:
+			return 3;
+			break;
+		case USER_ISSUES_SECTION:
+			return 2;
+			break;
+		default:
+			return 3;
+			break;
+	}
 }
 
 
@@ -112,15 +123,46 @@
     
     static NSString *CellIdentifier = @"Cell";
     
-	// Make a cell
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
     // Configure the cell...
-	Project *proj = [projects objectAtIndex:indexPath.row];
-    cell.textLabel.text = proj.name;
+    switch (indexPath.section) {
+		case USER_DATA_SECTION:
+			// Display user information
+			cell.accessoryType = UITableViewCellAccessoryNone;
+			switch (indexPath.row)
+			{
+				case USER_FULLNAME_ROW:
+					cell.textLabel.text = [NSString stringWithFormat:@"Full Name: %@", user.fullName];
+					break;
+				case USER_USERNAME_ROW:
+					cell.textLabel.text = [NSString stringWithFormat:@"Username: %@", user.name];
+					break;
+				case USER_EMAIL_ROW:
+					cell.textLabel.text = [NSString stringWithFormat:@"Email: %@", user.email];
+					break;
+				default:
+					break;
+			}
+			break;
+		case USER_ISSUES_SECTION:
+			// Display cells for viewing issues related to user
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			switch (indexPath.row)
+			{
+				case USER_ASSIGNED_ISSUES:
+					cell.textLabel.text = [NSString stringWithFormat:@"View issues assigned to %@", username];
+					break;
+				case USER_REPORTED_ISSUES:
+					cell.textLabel.text = [NSString stringWithFormat:@"View issues reported by %@", username];
+					break;
+			}
+			break;
+	}
     return cell;
 }
 
@@ -169,17 +211,28 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Uncomment this section to get old issue list back
-	
-	/* IssuesController *issuesController = [[IssuesController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
-	[self.navigationController pushViewController:issuesController animated:YES];
-	[issuesController release]; */
-	
-	
-	ProjectDashboardController *projectDashboardController = [[ProjectDashboardController alloc] initForProject:[projects objectAtIndex:indexPath.row]];
-	[self.navigationController pushViewController:projectDashboardController animated:YES];
-	[projectDashboardController release];
-	 
+	if (indexPath.section == USER_ISSUES_SECTION) {
+		switch (indexPath.row) {
+			// Display issues assigned to the user
+			case USER_ASSIGNED_ISSUES:
+			{
+				IssuesController *issuesController = [[IssuesController alloc] initForJql:[NSString stringWithFormat:@"assignee = %@",username]];
+				[self.navigationController pushViewController:issuesController animated:YES];
+				[issuesController release];
+				break;
+			}
+			// Display issues reported by the user
+			case USER_REPORTED_ISSUES:
+			{
+				IssuesController *issuesController = [[IssuesController alloc] initForJql:[NSString stringWithFormat:@"reporter = %@", username]];
+				[self.navigationController pushViewController:issuesController animated:YES];
+				[issuesController release];
+				break;
+			}
+			default:
+				break;
+		}
+	}
 }
 
 
@@ -200,8 +253,8 @@
 
 
 - (void)dealloc {
-	// Free up memory
-	if (projects){[projects release]; projects = nil;}
+	// Release memory
+	if (user) {[user release]; user = nil;}
     [super dealloc];
 }
 
@@ -209,36 +262,24 @@
 #pragma mark Connector delegate
 
 - (void)didReceiveData:(id)result {
-	// Stop the activity indicator
+	// Get data from the connector
 	[activityIndicator stopAnimating];
-	// Store the list of projects
-	if ([result isKindOfClass:[NSArray class]]) {
-		[Project cacheProjects:(NSArray *)result];
-		[projects release];
-		projects = [result retain];
+	// Store the user that is returned from the connector
+	if ([result isKindOfClass:[User class]]) {
+		[user release];
+		user = [result retain];
 		// Reload the data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
-	// Stop the activity indicator
+	// Stop showing the activity indicator
 	[activityIndicator stopAnimating];
-	
-	// Display an error to the user
+	// Display the error to the user
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
 	[alert release];
-}
-
-- (void)showSearchController {
-	// Present the Search screen to the user
-	SearchController *searchController = [[SearchController alloc] initForProject: nil];
-	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:searchController];
-	navController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
-	[self presentModalViewController:navController animated:YES];
-	[navController release];
-	[searchController release];
 }
 
 @end

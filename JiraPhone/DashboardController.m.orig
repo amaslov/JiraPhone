@@ -103,6 +103,58 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+<<<<<<< HEAD
+	// only first category has 6 items, the last two have 2 items in each
+	if (section == 0) {
+		return [issues count];
+	}
+	else {
+		return 3;
+	}
+
+}
+
+- (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
+	NSString *ret = nil;
+    if (indexPath.section == 0) {
+		ret = @"Issue:";
+	}
+	else if (indexPath.section == 1) {
+		switch (indexPath.row) {
+			case 0:
+				ret = @"Project: ";
+				break;
+			case 1:
+				ret = @"Issue List";
+				break;
+			case 2:
+				ret = @"Create Issue";
+			default:
+				break;
+		}
+	}
+	else if (indexPath.section == 2)
+	{
+		ret = @"Filters";
+	}
+	return ret;
+}
+
+
+//keybase lookup
+- (UIImage *)getImageByPriority:(Priority *)priority {
+	switch (priority.number) {
+		case 1:
+			return [UIImage imageNamed:@"priority_blocker.gif"];
+		case 2:
+			return [UIImage imageNamed:@"priority_critical.gif"];
+		case 3:
+			return [UIImage imageNamed:@"priority_major.gif"];
+		case 4:
+			return [UIImage imageNamed:@"priority_minor.gif"];
+		case 5:
+			return [UIImage imageNamed:@"priority_trivial.gif"];
+=======
 	// Only first category has 6 items, the last two have 2 items in each
 	switch (section) {
 		case ISSUES_SECTION:
@@ -113,6 +165,7 @@
 			return [filters count];
 		case ACTIVITY_SECTION:
 			return 1;
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 		default:
 			return 3;
 	}
@@ -155,9 +208,9 @@
 			case 1:
 				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
 				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
-				break;
+			//case 2:
+			//	cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+			//	break;
 			default:
 				break;
 		}
@@ -205,6 +258,32 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+<<<<<<< HEAD
+	if (indexPath.section == 0)
+	{
+		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issueDetailsController animated:YES];
+		[issueDetailsController release];
+	}
+	else if (indexPath.section == 1)
+	{
+		if (indexPath.row == 0)
+		{
+			// show projects
+			ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+			[self.navigationController pushViewController:projController animated:YES];
+			[projController release];
+		}
+		if (indexPath.row==3)
+		{
+			
+		}
+	}
+	else {
+		IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issuesController animated:YES];
+		[issuesController release];
+=======
 	// If the user selects an issue, push the issue details screen
 	switch (indexPath.section) {
 		case ISSUES_SECTION:
@@ -237,6 +316,7 @@
 			break;
 		default:
 			break;
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 	}
 }
 

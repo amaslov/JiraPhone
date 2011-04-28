@@ -18,6 +18,7 @@
 @synthesize issueId=_issueId;
 
 - (void)dealloc {
+	// free up memory
 	if (self.Id!=nil){[self.Id release];}
 	if (self.author!=nil){[self.author release];}
 	if (self.body!=nil){[self.body release];}

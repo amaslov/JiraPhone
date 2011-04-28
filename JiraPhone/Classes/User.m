@@ -18,6 +18,7 @@
 @synthesize lastLoginDate=_lastLoginDate;
 
 - (void)dealloc {
+	// Free up some memory
 	if(self.server != nil) { [self.server release]; }
 	if(self.name != nil) { [self.name release]; }
 	if(self.fullName != nil) { [self.fullName release]; }
@@ -33,6 +34,7 @@
 static User *LOGGED_IN_USER = nil;
 
 + (User *)loggedInUser {
+	// return the user that is currently logged in
 	return LOGGED_IN_USER;
 }
 
@@ -47,13 +49,17 @@ static User *LOGGED_IN_USER = nil;
 	FMResultSet *rs;
 
 m1:
+	// Build the query
 	queryString = [NSString stringWithFormat: @"select * from users where name = \"%@\" and server = \"%@\"", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
+	// Get results of the query
 	rs = [[JiraPhoneAppDelegate sharedDB] executeQuery:queryString];
+	// If a record was found, populate logged in user
 	if ([rs next]) {
 		LOGGED_IN_USER.fullName = [rs stringForColumn:@"full_name"];
 		LOGGED_IN_USER.ID = [rs stringForColumn:@"id"];
 		[rs close];
 	}
+	// If a record was not found, add one
 	else {
 		// insert
 		updateString = [NSString  stringWithFormat:@"insert into users (name, server) values (\"%@\", \"%@\")", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
@@ -65,6 +71,7 @@ m1:
 
 - (void)fillFromResultSet:(FMResultSet *)rs
 {
+	// Create a User from a database record
 	self.name = [rs stringForColumn: @"name"];
 	self.fullName = [rs stringForColumn:@"full_name"];
 	self.email = [rs stringForColumn:@"email"];

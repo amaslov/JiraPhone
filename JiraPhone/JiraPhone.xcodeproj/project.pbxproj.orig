@@ -510,8 +510,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+=======
 				347F2FCA134FB8C3001D94A5 /* User Details Screen */,
 				03200C1A1347F67300F321EA /* Issue Details Cells */,
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 				034E33A1133E535E0034C1CB /* TabBar Navigation */,
 				030DA27412FEF6CD009B8142 /* InternalClassesModel.xcclassmodel */,
 				4F8FEC0C12E1CAE700B24BB8 /* Connector */,
@@ -1070,6 +1073,8 @@
 				347F1676133585C9000BC1A7 /* ActivityController.xib in Resources */,
 				034E3308133CDC6A0034C1CB /* FiltersController.xib in Resources */,
 				034E33AC133E54790034C1CB /* TabBarView.xib in Resources */,
+<<<<<<< HEAD
+=======
 				347F2FCF134FB8DB001D94A5 /* UserController.xib in Resources */,
 				03200C6613480DD100F321EA /* IssueDetailsViewController.xib in Resources */,
 				A889FB54134FB81700E02C1C /* jira_login.png in Resources */,
@@ -1077,6 +1082,7 @@
 				34864C9713685B0A009650C5 /* status_closed.gif in Resources */,
 				34864C9813685B0A009650C5 /* status_inprogress.gif in Resources */,
 				34864C9913685B0A009650C5 /* status_resolved.gif in Resources */,
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1208,9 +1214,21 @@
 				03B97808133BF5F400DDB3C6 /* Filter.m in Sources */,
 				034E3307133CDC6A0034C1CB /* FiltersController.m in Sources */,
 				034E33AB133E54790034C1CB /* TabBarView.m in Sources */,
+<<<<<<< HEAD
 				03A485E51368747E00B330E1 /* RootCell.m in Sources */,
 				035F85CF13689FB5006C5E15 /* LinkCell.m in Sources */,
 				035F861B13694DC1006C5E15 /* ActionSheetPicker.m in Sources */,
+=======
+				347F2FCE134FB8DB001D94A5 /* UserController.m in Sources */,
+				03200B8C1347C9BE00F321EA /* IssueDetailLink.m in Sources */,
+				03200C1D1347F6A800F321EA /* IssueCell.m in Sources */,
+				03200C201347FC7600F321EA /* IssueCellBackground.m in Sources */,
+				03200C28134801E900F321EA /* RoundRect.m in Sources */,
+				03200C52134803B200F321EA /* LabelCell.m in Sources */,
+				03200C551348044F00F321EA /* TextFieldCell.m in Sources */,
+				03200C5B1348091200F321EA /* DetailViewController.m in Sources */,
+				03200C6513480DD100F321EA /* IssueDetailsViewController.m in Sources */,
+>>>>>>> aa0125c376e4ce92bfc0c544ee3c5c3dbb8af5f5
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
