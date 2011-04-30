@@ -87,7 +87,7 @@
 
 - (void)getUnresolvedByAssignee:(Project *)_proj {
 	// Build the query to be executed
-	NSString *queryString = [NSString stringWithFormat:@"select u.name AS userName, count(*) AS numIssues from issues i, users u where i.project = \"%@\" and u.name = i.assignee GROUP BY u.name", _proj.key];
+	NSString *queryString = [NSString stringWithFormat:@"select i.assignee AS issueAssignee, count(*) AS numIssues from issues i GROUP BY i.assignee"];
 	
 	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -95,13 +95,17 @@
 	// Get the results of the query
 	FMResultSet *rs = [db executeQuery:queryString];
 	while ([rs next])
-	{
+	{	
 		// Store each user and the number of issues assigned to them that are unresolved
 		NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
-		NSString *userName = [rs stringForColumn:@"userName"];
+		NSString *issueAssignee = [rs stringForColumn:@"issueAssignee"];
 		NSInteger numIssues = [[rs stringForColumn:@"numIssues"] intValue];
-		NSLog(@"%@ : %d", userName, numIssues);
-		[item setObject:userName forKey:@"userName"];
+		if ([issueAssignee compare:[NSString stringWithFormat:@"(null)"]] == NSOrderedSame)
+		{
+			issueAssignee = [NSString stringWithFormat:@"unassigned"];
+		}
+		NSLog(@"%@ : %d", issueAssignee, numIssues);
+		[item setObject:issueAssignee forKey:@"issueAssignee"];
 		[item setObject:[NSNumber numberWithInt:numIssues] forKey:@"numIssues"];
 		[unresolvedAssignee addObject:item];
 		[item release];
@@ -270,7 +274,8 @@
 		case STATUS_SUMMARY_SECTION:
 			return [statusList count];
 			break;
-		default: return 0;
+		default: 
+			return 0;
 			break;
 	}
 }
@@ -332,11 +337,7 @@
 	}
 	else if (indexPath.section == ISSUES_ASSIGNEE_SECTION){
 		// Get a username and the number of unresolved issues assigned to them
-		NSString *name = [[unresolvedAssignee objectAtIndex:indexPath.row] objectForKey:@"userName"];
-		if (name == nil)
-		{
-			name = [NSString stringWithFormat:@"Unassigned"];
-		}
+		NSString *name = [[unresolvedAssignee objectAtIndex:indexPath.row] objectForKey:@"issueAssignee"];
 		NSInteger numIssues = [[[unresolvedAssignee objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
 		// Fill in the cell details
 		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d",name, numIssues];
@@ -494,7 +495,6 @@
 			// User wants to view activity stream
 			[self showProjectActivityScreen];
 			break;
-			
 		case PROJECT_CREATE_ISSUE:
 		{   
 			CreateIssueController *createIssueController = [[CreateIssueController alloc] initForIssueInProject: project];
@@ -509,7 +509,6 @@
 		case PROJECT_SELECT_BUTTON:
 			[self showProjectsList];
 			break;
-		
 		default:
 			break;
 	}

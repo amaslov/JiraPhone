@@ -148,9 +148,13 @@
 		}
 	}
 	else if (indexPath.section == MISC_SECTION) {
+		cell.detailTextLabel.text = nil;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 		switch (indexPath.row) {
 			case 0:
 				cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
 			case 1:
 				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
