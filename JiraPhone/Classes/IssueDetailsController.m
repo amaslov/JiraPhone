@@ -10,6 +10,7 @@
 #import "IssueType.h"
 #import "User.h"
 #import "UserController.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation IssueDetailsController
 
@@ -161,7 +162,7 @@
 				[str appendFormat:@"%@", @"todo"];
 				break;
 			case ISSUE_STATUS_ROW:
-				[str appendFormat:@"%@", issue.status];
+				[str appendFormat:@"%@", [JiraPhoneAppDelegate getStringByStatus:[NSNumber numberWithInteger:[issue.status integerValue]]]];
 				break;
 			case ISSUE_RESOLUTION_ROW:
 				[str appendFormat:@"%@", issue.resolution? issue.resolution : @""];
@@ -254,9 +255,12 @@
 		// the user profile
 		if (indexPath.row == 0)
 		{
-			UserController *userController = [[UserController alloc] initForUsername:issue.assignee];
-			[self.navigationController pushViewController:userController animated:YES];
-			[userController release];
+			if ([issue.assignee compare:[NSString stringWithFormat:@"(null)"]] != NSOrderedSame)
+			{
+				UserController *userController = [[UserController alloc] initForUsername:issue.assignee];
+				[self.navigationController pushViewController:userController animated:YES];
+				[userController release];
+			}
 		}
 		else if(indexPath.row == 1)
 		{
