@@ -110,7 +110,7 @@
 		case MISC_SECTION:
 			return 3;
 		case FILTERS_SECTION:
-			return [filters count];
+			return [filters count] ? [filters count] : 1;
 		case ACTIVITY_SECTION:
 			return 1;
 		default:
@@ -181,7 +181,7 @@
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
-			cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+			cell.textLabel.text = [NSString stringWithFormat:@"No filters available."];
 			cell.detailTextLabel.text = nil;
 			cell.accessoryType = UITableViewCellAccessoryNone;
 		}

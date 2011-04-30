@@ -53,9 +53,9 @@
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)getUnresolvedByPriority:(Project *)_proj {
+- (void)getUnresolvedByPriority {
 	// Build the query to be execture
-	NSString *queryString = [NSString stringWithFormat:@"select i.priority AS issuePriority, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.priority", _proj.key];
+	NSString *queryString = [NSString stringWithFormat:@"select i.priority AS issuePriority, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.priority", project.key];
 	
 	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -85,9 +85,9 @@
 	
 }
 
-- (void)getUnresolvedByAssignee:(Project *)_proj {
+- (void)getUnresolvedByAssignee{
 	// Build the query to be executed
-	NSString *queryString = [NSString stringWithFormat:@"select i.assignee AS issueAssignee, count(*) AS numIssues from issues i GROUP BY i.assignee"];
+	NSString *queryString = [NSString stringWithFormat:@"select i.assignee AS issueAssignee, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.assignee", project.key];
 	
 	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -241,10 +241,10 @@
 
 - (void)getStatisticsFromDB {
 	// Get the number of unresolved issues for each user
-	[self getUnresolvedByAssignee:project];
+	[self getUnresolvedByAssignee];
 	
 	// Get the number of unresolved issues for each user
-	[self getUnresolvedByPriority:project];
+	[self getUnresolvedByPriority];
 	
 	// Get the status summary
 	[self getStatusSummary];
