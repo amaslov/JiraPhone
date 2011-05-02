@@ -11,6 +11,7 @@
 #import "Connector.h"
 #import "Project.h"
 #import "Issue.h"
+#import "IssuesController.h"
 #import "IssueDetailsController.h"
 #import "ActivityController.h"
 #import "Priority.h"
@@ -29,7 +30,7 @@
 
 #define PROJECT_ACTIVITY_BUTTON 0
 #define PROJECT_CREATE_ISSUE 1
-#define PROJECT_SELECT_BUTTON 2
+#define PROJECT_ISSUES_BUTTON 2
 
 @implementation ProjectDashboardController
 @synthesize project;
@@ -47,6 +48,12 @@
 	ActivityController *activityController = [[ActivityController alloc] initForProject:project];
 	[self.navigationController pushViewController:activityController animated:YES];
 	[activityController release];
+}
+
+- (void)showIssuesList {
+	IssuesController *issuesController = [[IssuesController alloc] initForProject:project];
+	[self.navigationController pushViewController:issuesController animated:YES];
+	[issuesController release];
 }
 
 - (void)showProjectsList {
@@ -476,7 +483,7 @@
 
 - (IBAction)showActionSheet:(id)sender {
 	// Show an action sheet with buttons for the user
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Create Issue", @"Change Project", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Create Issue", @"View Issues List", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	[popupQuery release];
@@ -506,8 +513,8 @@
 			[createIssueController release];
 		}
 			break;
-		case PROJECT_SELECT_BUTTON:
-			[self showProjectsList];
+		case PROJECT_ISSUES_BUTTON:
+			[self showIssuesList];
 			break;
 		default:
 			break;

@@ -108,7 +108,7 @@
 		case ISSUES_SECTION:
 			return [issues count];
 		case MISC_SECTION:
-			return 3;
+			return 2;
 		case FILTERS_SECTION:
 			return [filters count] ? [filters count] : 1;
 		case ACTIVITY_SECTION:
@@ -157,10 +157,7 @@
 				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
 			case 1:
-				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
-				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+				cell.textLabel.text = [NSString stringWithFormat:@"Create Issue"];				
 				break;
 			default:
 				break;
