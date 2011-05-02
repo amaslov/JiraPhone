@@ -300,6 +300,7 @@
 			// Store the issues that were returned
 			[issues release];
 			issues = [result retain];
+			[issues sortUsingSelector:@selector(comparePriority:)];
 			[self.tableView reloadData];
 		}
 	}

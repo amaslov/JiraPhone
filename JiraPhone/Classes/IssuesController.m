@@ -69,7 +69,7 @@
 		self.title = project.name;
 	}
 	else if (filter) {
-		self.title = filter.description;
+		self.title = filter.name;
 	}
 	else {
 		self.title = @"Issues";
