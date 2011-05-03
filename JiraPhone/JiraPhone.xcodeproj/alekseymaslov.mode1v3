@@ -274,7 +274,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>25</integer>
+									<integer>24</integer>
 									<integer>22</integer>
 									<integer>0</integer>
 								</array>
@@ -299,7 +299,7 @@
 							<real>272</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>56 51 1228 723 0 0 1280 778 </string>
+						<string>52 55 1228 723 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>03AECD5F1370974B005C12CB</string>
+										<string>03AECD7913709BEE005C12CB</string>
 										<key>history</key>
 										<array>
 											<string>0302C215130F322A003E95A6</string>
@@ -466,10 +466,10 @@
 											<string>03E1E1CA136A30950037E10A</string>
 											<string>03E1E1E0136A32C50037E10A</string>
 											<string>03AECD521370964B005C12CB</string>
-											<string>03AECD531370964B005C12CB</string>
 											<string>03AECD541370964B005C12CB</string>
 											<string>03AECD551370964B005C12CB</string>
-											<string>03AECD561370964B005C12CB</string>
+											<string>03AECD7713709BEE005C12CB</string>
+											<string>03AECD7813709BEE005C12CB</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -483,7 +483,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {934, 448}}</string>
 								<key>RubberWindowFrame</key>
-								<string>56 51 1228 723 0 0 1280 778 </string>
+								<string>52 55 1228 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -503,7 +503,7 @@
 								<key>Frame</key>
 								<string>{{0, 453}, {934, 229}}</string>
 								<key>RubberWindowFrame</key>
-								<string>56 51 1228 723 0 0 1280 778 </string>
+								<string>52 55 1228 723 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -658,7 +658,7 @@
 	<key>PerspectivesBarVisible</key>
 	<false/>
 	<key>PinnedNavigatorIdentifier</key>
-	<string>03E1E1C2136A2F950037E10A</string>
+	<string>03AECD7213709BDD005C12CB</string>
 	<key>ShelfIsVisible</key>
 	<false/>
 	<key>SourceDescription</key>
@@ -683,15 +683,16 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>03AECD7A13709BEE005C12CB</string>
 		<string>03AECD611370974B005C12CB</string>
 		<string>03AECD621370974B005C12CB</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>03FDD5D3130B287A00817C5B</string>
-		<string>03E1E1C2136A2F950037E10A</string>
 		<string>1CD10A99069EF8BA00B06720</string>
+		<string>/Users/alekseymaslov/Documents/Development/JiraPhone/JiraPhone/JiraPhone.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>56 51 1228 723 0 0 1280 778 </string>
+	<string>52 55 1228 723 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -712,7 +713,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>CreateIssueController.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -729,6 +730,8 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -905,7 +908,7 @@
 			<key>WindowToolGUID</key>
 			<string>1CD10A99069EF8BA00B06720</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
