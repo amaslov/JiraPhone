@@ -11,6 +11,7 @@
 #import "Connector.h"
 #import "Project.h"
 #import "Issue.h"
+#import "IssuesController.h"
 #import "IssueDetailsController.h"
 #import "ActivityController.h"
 #import "Priority.h"
@@ -21,15 +22,20 @@
 #import "JiraPhoneAppDelegate.h"
 #import "CreateIssueController.h"
 
-#define DUE_ISSUES_SECTION 0
-#define RECENT_ISSUES_SECTION 1
-#define ISSUES_ASSIGNEE_SECTION 2
-#define ISSUES_PRIORITY_SECTION 3
-#define STATUS_SUMMARY_SECTION 4
+#define PROJECT_DETAILS_SECTION 0
+#define DUE_ISSUES_SECTION 1
+#define RECENT_ISSUES_SECTION 2
+#define ISSUES_ASSIGNEE_SECTION 3
+#define ISSUES_PRIORITY_SECTION 4
+#define STATUS_SUMMARY_SECTION 5
 
 #define PROJECT_ACTIVITY_BUTTON 0
 #define PROJECT_CREATE_ISSUE 1
-#define PROJECT_SELECT_BUTTON 2
+#define PROJECT_ISSUES_BUTTON 2
+
+#define PROJECT_DESCRIPTION_CELL 0
+#define PROJECT_LEAD_CELL 1
+#define PROJECT_KEY_CELL 2
 
 @implementation ProjectDashboardController
 @synthesize project;
@@ -49,13 +55,19 @@
 	[activityController release];
 }
 
+- (void)showIssuesList {
+	IssuesController *issuesController = [[IssuesController alloc] initForProject:project];
+	[self.navigationController pushViewController:issuesController animated:YES];
+	[issuesController release];
+}
+
 - (void)showProjectsList {
 	[self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)getUnresolvedByPriority:(Project *)_proj {
+- (void)getUnresolvedByPriority {
 	// Build the query to be execture
-	NSString *queryString = [NSString stringWithFormat:@"select i.priority AS issuePriority, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.priority", _proj.key];
+	NSString *queryString = [NSString stringWithFormat:@"select i.priority AS issuePriority, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.priority", project.key];
 	
 	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -85,9 +97,9 @@
 	
 }
 
-- (void)getUnresolvedByAssignee:(Project *)_proj {
+- (void)getUnresolvedByAssignee{
 	// Build the query to be executed
-	NSString *queryString = [NSString stringWithFormat:@"select u.name AS userName, count(*) AS numIssues from issues i, users u where i.project = \"%@\" and u.name = i.assignee GROUP BY u.name", _proj.key];
+	NSString *queryString = [NSString stringWithFormat:@"select i.assignee AS issueAssignee, count(*) AS numIssues from issues i where i.project = \"%@\" GROUP BY i.assignee", project.key];
 	
 	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
@@ -95,13 +107,17 @@
 	// Get the results of the query
 	FMResultSet *rs = [db executeQuery:queryString];
 	while ([rs next])
-	{
+	{	
 		// Store each user and the number of issues assigned to them that are unresolved
 		NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
-		NSString *userName = [rs stringForColumn:@"userName"];
+		NSString *issueAssignee = [rs stringForColumn:@"issueAssignee"];
 		NSInteger numIssues = [[rs stringForColumn:@"numIssues"] intValue];
-		NSLog(@"%@ : %d", userName, numIssues);
-		[item setObject:userName forKey:@"userName"];
+		if ([issueAssignee compare:[NSString stringWithFormat:@"(null)"]] == NSOrderedSame)
+		{
+			issueAssignee = [NSString stringWithFormat:@"unassigned"];
+		}
+		NSLog(@"%@ : %d", issueAssignee, numIssues);
+		[item setObject:issueAssignee forKey:@"issueAssignee"];
 		[item setObject:[NSNumber numberWithInt:numIssues] forKey:@"numIssues"];
 		[unresolvedAssignee addObject:item];
 		[item release];
@@ -237,10 +253,10 @@
 
 - (void)getStatisticsFromDB {
 	// Get the number of unresolved issues for each user
-	[self getUnresolvedByAssignee:project];
+	[self getUnresolvedByAssignee];
 	
 	// Get the number of unresolved issues for each user
-	[self getUnresolvedByPriority:project];
+	[self getUnresolvedByPriority];
 	
 	// Get the status summary
 	[self getStatusSummary];
@@ -248,13 +264,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// Depending on the section, return the appropriate size
 	// based on the number of issues in that section.
 	switch (section) {
+		case PROJECT_DETAILS_SECTION:
+			return 3;
 		case DUE_ISSUES_SECTION:
 			return [dueIssues count];
 			break;
@@ -270,7 +288,8 @@
 		case STATUS_SUMMARY_SECTION:
 			return [statusList count];
 			break;
-		default: return 0;
+		default: 
+			return 0;
 			break;
 	}
 }
@@ -289,8 +308,31 @@
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	[dateFormat setDateFormat:@"MM/dd/yyyy"];
 	
+	if (indexPath.section == PROJECT_DETAILS_SECTION) {
+		switch (indexPath.row) {
+			case PROJECT_DESCRIPTION_CELL:
+				if ([project.description compare:@"(null)"] != NSOrderedSame) {
+					cell.textLabel.text = [NSString stringWithFormat:@"Description: %@", project.description];
+				}
+				else {
+					cell.textLabel.text = [NSString stringWithFormat:@"Description: No description available."];
+				}
+				break;
+			case PROJECT_LEAD_CELL:
+				cell.textLabel.text = [NSString stringWithFormat:@"Lead: %@", project.lead];
+				break;
+			case PROJECT_KEY_CELL:
+				cell.textLabel.text = [NSString stringWithFormat:@"Key: %@", project.key];
+				break;
+			default:
+				break;
+		}
+		cell.detailTextLabel.text = nil;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	}
 	// If this is the due issues section...
-	if (indexPath.section == DUE_ISSUES_SECTION) {
+	else if (indexPath.section == DUE_ISSUES_SECTION) {
 		// Make sure there are enough issues to populate the cell
 		if (dueIssues.count >= indexPath.row+1) {
 			// Get the issue at the current row
@@ -332,11 +374,7 @@
 	}
 	else if (indexPath.section == ISSUES_ASSIGNEE_SECTION){
 		// Get a username and the number of unresolved issues assigned to them
-		NSString *name = [[unresolvedAssignee objectAtIndex:indexPath.row] objectForKey:@"userName"];
-		if (name == nil)
-		{
-			name = [NSString stringWithFormat:@"Unassigned"];
-		}
+		NSString *name = [[unresolvedAssignee objectAtIndex:indexPath.row] objectForKey:@"issueAssignee"];
 		NSInteger numIssues = [[[unresolvedAssignee objectAtIndex:indexPath.row] valueForKey:@"numIssues"] integerValue];
 		// Fill in the cell details
 		cell.textLabel.text = [NSString stringWithFormat:@"%@: %d",name, numIssues];
@@ -389,6 +427,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	// Return the header for the given section
 	switch (section) {
+		case PROJECT_DETAILS_SECTION:
+			return [NSString stringWithFormat:@"Summary"];
 		case DUE_ISSUES_SECTION:
 			return [NSString stringWithFormat:@"Issues: Due"];
 		case RECENT_ISSUES_SECTION:
@@ -475,7 +515,7 @@
 
 - (IBAction)showActionSheet:(id)sender {
 	// Show an action sheet with buttons for the user
-	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Create Issue", @"Change Project", nil];
+	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Activity Stream", @"Create Issue", @"View Issues List", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
 	[popupQuery release];
@@ -494,7 +534,6 @@
 			// User wants to view activity stream
 			[self showProjectActivityScreen];
 			break;
-			
 		case PROJECT_CREATE_ISSUE:
 		{   
 			CreateIssueController *createIssueController = [[CreateIssueController alloc] initForIssueInProject: project];
@@ -506,10 +545,9 @@
 			[createIssueController release];
 		}
 			break;
-		case PROJECT_SELECT_BUTTON:
-			[self showProjectsList];
+		case PROJECT_ISSUES_BUTTON:
+			[self showIssuesList];
 			break;
-		
 		default:
 			break;
 	}

@@ -108,9 +108,9 @@
 		case ISSUES_SECTION:
 			return [issues count];
 		case MISC_SECTION:
-			return 3;
+			return 2;
 		case FILTERS_SECTION:
-			return [filters count];
+			return [filters count] ? [filters count] : 1;
 		case ACTIVITY_SECTION:
 			return 1;
 		default:
@@ -148,15 +148,16 @@
 		}
 	}
 	else if (indexPath.section == MISC_SECTION) {
+		cell.detailTextLabel.text = nil;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 		switch (indexPath.row) {
 			case 0:
 				cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
 			case 1:
-				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
-				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+				cell.textLabel.text = [NSString stringWithFormat:@"Create Issue"];				
 				break;
 			default:
 				break;
@@ -177,7 +178,7 @@
 			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
-			cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+			cell.textLabel.text = [NSString stringWithFormat:@"No filters available."];
 			cell.detailTextLabel.text = nil;
 			cell.accessoryType = UITableViewCellAccessoryNone;
 		}
@@ -296,6 +297,7 @@
 			// Store the issues that were returned
 			[issues release];
 			issues = [result retain];
+			[issues sortUsingSelector:@selector(comparePriority:)];
 			[self.tableView reloadData];
 		}
 	}
