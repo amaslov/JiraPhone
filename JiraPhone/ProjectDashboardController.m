@@ -22,15 +22,20 @@
 #import "JiraPhoneAppDelegate.h"
 #import "CreateIssueController.h"
 
-#define DUE_ISSUES_SECTION 0
-#define RECENT_ISSUES_SECTION 1
-#define ISSUES_ASSIGNEE_SECTION 2
-#define ISSUES_PRIORITY_SECTION 3
-#define STATUS_SUMMARY_SECTION 4
+#define PROJECT_DETAILS_SECTION 0
+#define DUE_ISSUES_SECTION 1
+#define RECENT_ISSUES_SECTION 2
+#define ISSUES_ASSIGNEE_SECTION 3
+#define ISSUES_PRIORITY_SECTION 4
+#define STATUS_SUMMARY_SECTION 5
 
 #define PROJECT_ACTIVITY_BUTTON 0
 #define PROJECT_CREATE_ISSUE 1
 #define PROJECT_ISSUES_BUTTON 2
+
+#define PROJECT_DESCRIPTION_CELL 0
+#define PROJECT_LEAD_CELL 1
+#define PROJECT_KEY_CELL 2
 
 @implementation ProjectDashboardController
 @synthesize project;
@@ -259,13 +264,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 5;
+    return 6;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// Depending on the section, return the appropriate size
 	// based on the number of issues in that section.
 	switch (section) {
+		case PROJECT_DETAILS_SECTION:
+			return 3;
 		case DUE_ISSUES_SECTION:
 			return [dueIssues count];
 			break;
@@ -301,8 +308,31 @@
 	NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
 	[dateFormat setDateFormat:@"MM/dd/yyyy"];
 	
+	if (indexPath.section == PROJECT_DETAILS_SECTION) {
+		switch (indexPath.row) {
+			case PROJECT_DESCRIPTION_CELL:
+				if ([project.description compare:@"(null)"] != NSOrderedSame) {
+					cell.textLabel.text = [NSString stringWithFormat:@"Description: %@", project.description];
+				}
+				else {
+					cell.textLabel.text = [NSString stringWithFormat:@"Description: No description available."];
+				}
+				break;
+			case PROJECT_LEAD_CELL:
+				cell.textLabel.text = [NSString stringWithFormat:@"Lead: %@", project.lead];
+				break;
+			case PROJECT_KEY_CELL:
+				cell.textLabel.text = [NSString stringWithFormat:@"Key: %@", project.key];
+				break;
+			default:
+				break;
+		}
+		cell.detailTextLabel.text = nil;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
+	}
 	// If this is the due issues section...
-	if (indexPath.section == DUE_ISSUES_SECTION) {
+	else if (indexPath.section == DUE_ISSUES_SECTION) {
 		// Make sure there are enough issues to populate the cell
 		if (dueIssues.count >= indexPath.row+1) {
 			// Get the issue at the current row
@@ -397,6 +427,8 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	// Return the header for the given section
 	switch (section) {
+		case PROJECT_DETAILS_SECTION:
+			return [NSString stringWithFormat:@"Summary"];
 		case DUE_ISSUES_SECTION:
 			return [NSString stringWithFormat:@"Issues: Due"];
 		case RECENT_ISSUES_SECTION:
