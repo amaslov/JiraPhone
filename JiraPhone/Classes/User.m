@@ -47,8 +47,8 @@ static User *LOGGED_IN_USER = nil;
 	// save (or get id of) user data to (in) local db
 	NSString *queryString, *updateString;
 	FMResultSet *rs;
-
-m1:
+	BOOL populatedUser = NO;
+	while (!populatedUser) {
 	// Build the query
 	queryString = [NSString stringWithFormat: @"select * from users where name = \"%@\" and server = \"%@\"", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
 	// Get results of the query
@@ -58,6 +58,7 @@ m1:
 		LOGGED_IN_USER.fullName = [rs stringForColumn:@"full_name"];
 		LOGGED_IN_USER.ID = [rs stringForColumn:@"id"];
 		[rs close];
+		break;
 	}
 	// If a record was not found, add one
 	else {
@@ -65,7 +66,8 @@ m1:
 		updateString = [NSString  stringWithFormat:@"insert into users (name, server) values (\"%@\", \"%@\")", LOGGED_IN_USER.name, LOGGED_IN_USER.server];
 		[[JiraPhoneAppDelegate sharedDB] executeUpdate: updateString];
 		[rs close];
-		goto m1;
+		populatedUser=YES;
+	}
 	}
 }
 
