@@ -504,7 +504,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 315";
 		rLen = 0;
-		rLoc = 10006;
+		rLoc = 10005;
 		rType = 0;
 		vrLen = 957;
 		vrLoc = 1010;
@@ -514,7 +514,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 302";
 		rLen = 0;
-		rLoc = 9323;
+		rLoc = 9322;
 		rType = 0;
 		vrLen = 869;
 		vrLoc = 142;
@@ -524,7 +524,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 55";
 		rLen = 22;
-		rLoc = 1280;
+		rLoc = 1279;
 		rType = 0;
 		vrLen = 1030;
 		vrLoc = 680;
@@ -534,7 +534,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 302";
 		rLen = 0;
-		rLoc = 9323;
+		rLoc = 9322;
 		rType = 0;
 		vrLen = 869;
 		vrLoc = 142;
@@ -1496,7 +1496,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 36";
 		rLen = 0;
-		rLoc = 917;
+		rLoc = 916;
 		rType = 0;
 		vrLen = 757;
 		vrLoc = 139;
@@ -1506,7 +1506,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 36";
 		rLen = 0;
-		rLoc = 917;
+		rLoc = 916;
 		rType = 0;
 		vrLen = 796;
 		vrLoc = 139;
@@ -1516,7 +1516,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 303";
 		rLen = 0;
-		rLoc = 9323;
+		rLoc = 9322;
 		rType = 0;
 		vrLen = 908;
 		vrLoc = 142;
@@ -1526,7 +1526,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 46";
 		rLen = 0;
-		rLoc = 1052;
+		rLoc = 1051;
 		rType = 0;
 		vrLen = 978;
 		vrLoc = 828;
@@ -1547,6 +1547,54 @@
 		modificationTime = 326146184.052692;
 		originalNumberOfMultipleMatches = 0;
 		state = 1;
+	};
+	03AECD7513709BEC005C12CB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Stray '\\217' in program";
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 35;
+		rType = 1;
+	};
+	03AECD7613709BEC005C12CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 36";
+		rLen = 51;
+		rLoc = 866;
+		rType = 0;
+		vrLen = 365;
+		vrLoc = 588;
+	};
+	03AECD7713709BEE005C12CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */;
+		name = "CreateIssueController.h: 37";
+		rLen = 0;
+		rLoc = 1159;
+		rType = 0;
+		vrLen = 1127;
+		vrLoc = 527;
+	};
+	03AECD7813709BEE005C12CB /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "Stray '\\342' in program";
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 35;
+		rType = 1;
+	};
+	03AECD7913709BEE005C12CB /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
+		name = "CreateIssueController.m: 36";
+		rLen = 0;
+		rLoc = 866;
+		rType = 0;
+		vrLen = 734;
+		vrLoc = 409;
 	};
 	03B97806133BF5F400DDB3C6 /* Filter.h */ = {
 		uiCtxt = {
@@ -1941,7 +1989,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 251";
 		rLen = 0;
-		rLoc = 7616;
+		rLoc = 7615;
 		rType = 0;
 		vrLen = 1038;
 		vrLoc = 7349;
@@ -2019,7 +2067,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 315";
 		rLen = 0;
-		rLoc = 10006;
+		rLoc = 10005;
 		rType = 0;
 		vrLen = 956;
 		vrLoc = 1011;
@@ -2029,7 +2077,7 @@
 		fRef = 4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */;
 		name = "CreateIssueController.m: 302";
 		rLen = 0;
-		rLoc = 9323;
+		rLoc = 9322;
 		rType = 0;
 		vrLen = 834;
 		vrLoc = 176;
@@ -2385,6 +2433,11 @@
 			03AECD571370964B005C12CB /* PBXTextBookmark */ = 03AECD571370964B005C12CB /* PBXTextBookmark */;
 			03AECD5A1370964B005C12CB /* PBXTextBookmark */ = 03AECD5A1370964B005C12CB /* PBXTextBookmark */;
 			03AECD5F1370974B005C12CB /* PBXTextBookmark */ = 03AECD5F1370974B005C12CB /* PBXTextBookmark */;
+			03AECD7513709BEC005C12CB /* XCBuildMessageTextBookmark */ = 03AECD7513709BEC005C12CB /* XCBuildMessageTextBookmark */;
+			03AECD7613709BEC005C12CB /* PBXTextBookmark */ = 03AECD7613709BEC005C12CB /* PBXTextBookmark */;
+			03AECD7713709BEE005C12CB /* PBXTextBookmark */ = 03AECD7713709BEE005C12CB /* PBXTextBookmark */;
+			03AECD7813709BEE005C12CB /* XCBuildMessageTextBookmark */ = 03AECD7813709BEE005C12CB /* XCBuildMessageTextBookmark */;
+			03AECD7913709BEE005C12CB /* PBXTextBookmark */ = 03AECD7913709BEE005C12CB /* PBXTextBookmark */;
 			03B9D96013662138007AC5D9 = 03B9D96013662138007AC5D9 /* PBXTextBookmark */;
 			03B9D96113662138007AC5D9 = 03B9D96113662138007AC5D9 /* PBXTextBookmark */;
 			03B9D96213662138007AC5D9 = 03B9D96213662138007AC5D9 /* PBXTextBookmark */;
@@ -3721,16 +3774,16 @@
 	4FEDF76712EA3EEF00CA09A0 /* CreateIssueController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {887, 650}}";
-			sepNavSelRange = "{1105, 0}";
+			sepNavSelRange = "{1159, 0}";
 			sepNavVisRange = "{527, 1127}";
 			sepNavWindowFrame = "{{38, 141}, {1013, 611}}";
 		};
 	};
 	4FEDF76812EA3EEF00CA09A0 /* CreateIssueController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1076, 4953}}";
-			sepNavSelRange = "{1554, 0}";
-			sepNavVisRange = "{976, 989}";
+			sepNavIntBoundsRect = "{{0, 0}, {873, 5200}}";
+			sepNavSelRange = "{866, 0}";
+			sepNavVisRange = "{409, 734}";
 			sepNavWindowFrame = "{{267, 138}, {1013, 611}}";
 		};
 	};

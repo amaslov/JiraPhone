@@ -33,7 +33,7 @@
 		self.project = _project;
 		self.newIssue=[[Issue alloc] init];
 		self.newIssue.project=_project.key;
-		self.newIssue.reporter=[User loggedInUser].name;∏
+		self.newIssue.reporter=[User loggedInUser].name;
 	}
 	return self;	
 }
