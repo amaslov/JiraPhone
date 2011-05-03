@@ -70,7 +70,23 @@
 			newIssue.assignee=cell.textField.text;
 		}
 	}
-}	
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)raneg replacementString:(NSString *)string
+{
+	if ([string isEqualToString:@"\n"])
+	{
+		[textField resignFirstResponder];
+		return NO;
+	}
+	return YES;
+}
+
+- (BOOL)textFieldShouldEndEditing:(UITextField *)textField
+{
+	[textField resignFirstResponder];
+	return YES;
+}
 
 
 #pragma mark -
