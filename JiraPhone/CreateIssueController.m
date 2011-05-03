@@ -28,11 +28,12 @@
 
 - (id)initForIssueInProject:(Project *)_project {
 	// send nil, because we do not need it. 
+	self.clearsSelectionOnViewWillAppear=NO;
 	if (self = [super initForIssue: nil]) {
 		self.project = _project;
 		self.newIssue=[[Issue alloc] init];
 		self.newIssue.project=_project.key;
-		self.newIssue.reporter=[User loggedInUser].name;
+		self.newIssue.reporter=[User loggedInUser].name;∏
 	}
 	return self;	
 }
@@ -201,6 +202,8 @@
 					cell=[[[LinkCell alloc]initWithStyle:styleLink reuseIdentifier:idLinkCell]autorelease];
 				}
 				cell.textLabel.text=[self titleForCellAtIndexPath:indexPath];
+				if (newIssue.type!=nil)
+					cell.detailTextLabel.text=newIssue.type.stringRepresentation;
 				return cell;
 			}
 				break;
@@ -212,6 +215,8 @@
 					cell=[[[LinkCell alloc]initWithStyle:styleLink reuseIdentifier:idLinkCell]autorelease];
 				}
 				cell.textLabel.text=[self titleForCellAtIndexPath:indexPath];
+				if (newIssue.priority!=nil)
+					cell.detailTextLabel.text=newIssue.type.stringRepresentation;
 				return cell;
 			}
 				break;
@@ -238,6 +243,10 @@
 	}
 }
 
+- (void)itemWasSelected:(NSNumber *)selectedIndexNumber {
+	//Selection was made
+	self.selectedIndex = [selectedIndexNumber intValue];
+}
 
 
 
@@ -292,7 +301,7 @@
 		switch (indexPath.row) {
 			case ISSUE_TYPE_ROW: {
 				[self.pickerViewArray removeAllObjects];
-				self.pickerViewArray = [NSArray arrayWithObjects:@"Bug", @"New Feature", @"Task", @"Improvement", nil];
+				self.pickerViewArray = [NSMutableArray arrayWithObjects:@"Bug", @"New Feature", @"Task", @"Improvement", nil];
 				[ActionSheetPicker displayActionPickerWithView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)];
 				IssueType *t = [[IssueType alloc]init];
 				t.number=selectedIndex+1;
@@ -304,7 +313,7 @@
 			}
 			case ISSUE_PRIORITY_ROW: {
 				[self.pickerViewArray removeAllObjects];
-				self.pickerViewArray = [NSArray arrayWithObjects:@"Blocker", @"Critical", @"Major", @"Minor", @"Trivial", nil];
+				self.pickerViewArray = [NSMutableArray arrayWithObjects:@"Blocker", @"Critical", @"Major", @"Minor", @"Trivial", nil];
 				Priority *p = [[Priority alloc]init];
 				p.number=selectedIndex+1;
 				newIssue.priority=p;
@@ -360,7 +369,7 @@
 	}
 	else if ([error isKindOfClass:[SoapFault class]]) {
 		SoapFault *sf = (SoapFault *)error;
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" 
 														message:sf.faultString
 													   delegate:nil
 											  cancelButtonTitle:@"OK"

@@ -21,6 +21,7 @@
 	if (self = [super initWithNibName:@"IssueDetailsController" bundle:nil]) {
 		issue = [_issue retain];
 	}
+	self.clearsSelectionOnViewWillAppear=NO;
 	return self;
 }
 
