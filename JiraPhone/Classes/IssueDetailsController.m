@@ -181,7 +181,12 @@
 	else if (indexPath.section == ISSUE_MAN_SECTION) {
 		switch (indexPath.row) {
 			case ISSUE_ASSIGNEE_ROW:
-				[str appendFormat:@"%@", issue.assignee];				
+				if ([issue.assignee compare:@"(null)"] == NSOrderedSame) {
+					[str appendFormat:@"Unassigned"];
+				}
+				else {
+					[str appendFormat:@"%@", issue.assignee];
+				}
 				break;
 			case ISSUE_REPORTER_ROW:
 				[str appendFormat:@"%@", issue.reporter];				

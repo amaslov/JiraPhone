@@ -33,7 +33,7 @@
 		self.project = _project;
 		self.newIssue=[[Issue alloc] init];
 		self.newIssue.project=_project.key;
-		self.newIssue.reporter=[User loggedInUser].name;∏
+		self.newIssue.reporter=[User loggedInUser].name;
 	}
 	return self;	
 }
@@ -54,9 +54,12 @@
 }
 
 -(void)textFieldDidEndEditing:(UITextField *)textField {
+	NSLog(@"Did End Editing");
 	MutableIssueDetailCell *cell = (MutableIssueDetailCell *)[[textField superview] superview];
     UITableView *table = (UITableView *)[cell superview];
     NSIndexPath *textFieldIndexPath = [table indexPathForCell:cell];
+	NSLog(@"Index Path Section: %d", textFieldIndexPath.section);
+	NSLog(@"Index Path Row: %d", textFieldIndexPath.row);
 	if (textFieldIndexPath.section==ISSUE_DATA_SECTION){
 		if (textFieldIndexPath.row==ISSUE_SUMMARY_ROW){
 			newIssue.summary=cell.textField.text;
@@ -71,9 +74,9 @@
 			newIssue.assignee=cell.textField.text;
 		}
 	}
-}
+}	
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)raneg replacementString:(NSString *)string
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
 	if ([string isEqualToString:@"\n"])
 	{
@@ -168,6 +171,7 @@
 				//cell=[[[MutableIssueDetailCell alloc]initWithStyle:styleText reuseIdentifier:idTextboxCell]autorelease];
 				[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
 				cell = mutableCell;
+				cell.textField.delegate = self;
 			}
 			cell.title.text= [self titleForCellAtIndexPath:indexPath];
 			return cell;
@@ -192,6 +196,7 @@
 				{
 					[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
 					cell = mutableCell;
+					cell.textField.delegate = self;
 				}
 				cell.title.text = [self titleForCellAtIndexPath:indexPath];
 				return cell;
@@ -205,6 +210,7 @@
 					//cell=[[[MutableIssueDetailCell alloc]initWithStyle:styleText reuseIdentifier:idTextboxCell]autorelease];
 					[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
 					cell = mutableCell;
+					cell.textField.delegate = self;
 				}
 				cell.title.text = [self titleForCellAtIndexPath:indexPath];
 				return cell;
@@ -253,6 +259,7 @@
 		if (cell==nil) {
 			[[NSBundle mainBundle] loadNibNamed:@"MutableIssueDetailCell" owner:self options:nil];
 			cell = mutableCell;
+			cell.textField.delegate = self;
 		}
 		cell.title.text = [self titleForCellAtIndexPath:indexPath];
 		return cell;

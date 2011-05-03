@@ -36,8 +36,8 @@
     [super dealloc];
 }
 
-//-(void)textFieldDidEndEditing:(UITextField *)textField {
-//	valueField=textField.text;
-//}
+/* -(void)textFieldDidEndEditing:(UITextField *)textField {
+	NSLog(@"DONE EDITING");
+} */
 
 @end
