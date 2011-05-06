@@ -324,25 +324,44 @@
 		switch (indexPath.row) {
 			case ISSUE_TYPE_ROW: {
 				[self.pickerViewArray removeAllObjects];
+				//if (newIssue.type == NULL)
+				//	selectedIndex=0;
+				//else {
+					selectedIndex=newIssue.type.number;
+				//}
 				self.pickerViewArray = [NSMutableArray arrayWithObjects:@"Bug", @"New Feature", @"Task", @"Improvement", nil];
-				[ActionSheetPicker displayActionPickerWithView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)];
+				ActionSheetPicker *asp = [[ActionSheetPicker alloc]initForDataWithContainingView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)];    //initWithContainingView:self.view target:self action:@selector(itemWasSelected:)];
+				[asp displayActionPickerWithView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)];
+				//[asp showDataPicker];
 				IssueType *t = [[IssueType alloc]init];
 				t.number=selectedIndex+1;
 				newIssue.type=t;
 				[str appendFormat:@"%@", t.stringRepresentation];
 				[t release];
 				currentCell.detailTextLabel.text=str;
+				[asp release];
 				break;
 			}
 			case ISSUE_PRIORITY_ROW: {
 				[self.pickerViewArray removeAllObjects];
 				self.pickerViewArray = [NSMutableArray arrayWithObjects:@"Blocker", @"Critical", @"Major", @"Minor", @"Trivial", nil];
+				//int indexSel=newIssue.priority.number;
+				//if (newIssue.priority == NULL)
+				//	selectedIndex=0;
+				//else {
+					selectedIndex=newIssue.priority.number;
+				//}
+
+				ActionSheetPicker *asp = [[ActionSheetPicker alloc]initForDataWithContainingView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)]; //initWithContainingView:self.view target:self action:@selector(itemWasSelected:)];
+				[asp displayActionPickerWithView:self.view data:self.pickerViewArray selectedIndex:self.selectedIndex target:self action:@selector(itemWasSelected:)];
 				Priority *p = [[Priority alloc]init];
+				//[asp showDataPicker];
 				p.number=selectedIndex+1;
 				newIssue.priority=p;
 				[str appendFormat:@"%@", p.stringRepresentation];
 				[p release];
 				currentCell.detailTextLabel.text=str;
+				[asp release];
 				break;
 			}
 		}
