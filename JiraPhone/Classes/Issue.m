@@ -63,15 +63,58 @@
 + (void)cacheIssues:(NSArray *)_issues ofProject:(Project *)_proj {
 	
 	//TODO: change to support issue updating in the DB
-	NSString *updateString = [NSString stringWithFormat:@"delete from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];	
+	//NSString *updateString = [NSString stringWithFormat:@"delete from issues where project = \"%@\" and user_id = \"%@\"", _proj.key, [User loggedInUser].ID];	
 	
 	// clear
+	//FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	//[db executeUpdate:updateString];
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
-	[db executeUpdate:updateString];
 		
 	// insert
 	for (Issue *issue in _issues) {
-		updateString = [NSString stringWithFormat:@"insert into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+		/*NSString *updateString = [NSString stringWithFormat:@"select * from issues where project = \"%@\" and user_id = \"%@\" and key = \"%@\" and server = \"%@\"", _proj.key, [User loggedInUser].ID, issue.key, [User loggedInUser].server];
+		
+		FMResultSet *rs = [db executeQuery:updateString];
+		if ([rs next])
+		{
+			updateString = [NSString stringWithFormat:@"update issues set assignee = \"%@\", created = \"%@\", description = \"%@\", due_date = \"%@\", priority = \"%@\", project = \"%@\", reporter = \"%@\", resolution = \"%@\", status = \"%@\", summary = \"%@\", type = \"%@\", updated = \"%@\", user_id = \"%@\" where project = \"%@\" and user_id = \"%@\" and key = \"%@\" and server = \"%@\"", 
+							issue.assignee,
+							issue.created,
+							issue.description,
+							issue.duedate,
+							[NSString stringWithFormat: @"%i", issue.priority.number],
+							issue.project,
+							issue.reporter,
+							issue.resolution,
+							issue.status,
+							issue.summary,
+							[NSString stringWithFormat: @"%i", issue.type.number],
+							issue.updated, 
+							[User loggedInUser].ID,
+							_proj.key, [User loggedInUser].ID, issue.key, [User loggedInUser].server];
+			
+			
+			[db executeUpdate:updateString];
+		}else{
+			updateString = [NSString stringWithFormat:@"insert into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
+							issue.assignee,
+							issue.created,
+							issue.description,
+							issue.duedate,
+							issue.key,
+							[NSString stringWithFormat: @"%i", issue.priority.number],
+							issue.project,
+							issue.reporter,
+							issue.resolution,
+							issue.status,
+							issue.summary,
+							[NSString stringWithFormat: @"%i", issue.type.number],
+							issue.updated, [User loggedInUser].ID];
+			
+							
+			[db executeUpdate:updateString];	
+		 }*/
+		NSString *updateString = [NSString stringWithFormat:@"replace into issues (assignee, created, description, due_date, key, priority, project, reporter, resolution, status, summary, type, updated, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
 						issue.assignee,
 						issue.created,
 						issue.description,
@@ -86,8 +129,8 @@
 						[NSString stringWithFormat: @"%i", issue.type.number],
 						issue.updated, [User loggedInUser].ID];
 		
-						
-		[db executeUpdate:updateString];		
+		
+		[db executeUpdate:updateString];
 	}
 	
 	if ([db hadError]) {

@@ -9,14 +9,39 @@
 #import "Project.h"
 #import "Connector.h"
 #import "Issue.h"
+#import "Filter.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
+#import "JiraPhoneAppDelegate.h"
+
+#define SORT_UPDATED_BUTTON 0
+#define SORT_KEY_BUTTON 1
+#define SORT_PRIORITY_BUTTON 2
+#define CREATE_ISSUE_BUTTON 3
 
 @implementation IssuesController
 @synthesize project;
+@synthesize filter;
+@synthesize jql;
+
 - (id)initForProject:(Project *)_project {
+	// Initialize screen for a project
 	if (self = [super init]) {
 		self.project = _project;
+	}
+	return self;
+}
+- (id)initForFilter:(Filter *)_filter {
+	// Initialize screen for a filter
+	if (self = [super init]) {
+		self.filter = _filter;
+	}
+	return self;
+}
+- (id)initForJql:(NSString *)_jql {
+	// Initialize screen for a jql search
+	if (self = [super init]) {
+		self.jql = _jql;
 	}
 	return self;
 }
@@ -26,6 +51,7 @@
 #pragma mark View lifecycle
 
 - (void)showCreateIssueScreen {
+	// Present the create issues screen to the user
 	CreateIssueController *createIssueController = [[CreateIssueController alloc] initForIssueInProject: project];
 	createIssueController.delegate = self;
 	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:createIssueController];
@@ -37,15 +63,31 @@
 
 - (void)viewDidLoad {
     //[super viewDidLoad];
-	self.title = project.name;
 	
-	// get list of cashed projects
+	// Set the title of the view
+	if (project) {
+		self.title = project.name;
+	}
+	else if (filter) {
+		self.title = filter.name;
+	}
+	else {
+		self.title = @"Issues";
+	}
+
+	
+	// If there are no issues, initialize the array
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
-	[Issue getCachedIssues:issues ofProject: project];
 	
-	// if there's no cashed issues show wait spinner
+	// If we are loading the issue list for a project,
+	// get cached issues
+	if (project) {
+		[Issue getCachedIssues:issues ofProject: project];
+	}
+	
+	// if there's no cached issues show wait spinner
 	if (!issues.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
@@ -56,23 +98,34 @@
 		[activityIndicator startAnimating];		
 	}
 	
+	// Reload data in the table
 	[self.tableView reloadData];
 	
-	// sync with server for list of issues for given project
+	// Sync with server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
-	[connector getIssuesOfProject:project];	
+	
+	if (project) {
+		// Get the issues for the current project
+		[connector getIssuesOfProject:project];
+	}
+	else if (filter) {
+		// Get the issues returned by the current filter
+		[connector getIssuesFromFilter:filter.ID];
+	}
+	else {
+		[connector getIssuesFromJql:jql];
+	}
 	
 	// add + (create issue) button
 	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showActionSheet:)];
 	self.navigationItem.rightBarButtonItem = btn;
 	[btn release];
-	
-	//[issues sortUsingSelector:@selector(compareCreationDate:)];
-	//[self.tableView reloadData];
+
 }
 
 - (IBAction)showActionSheet:(id)sender {
+	// Present sorting options to the user
 	UIActionSheet *popupQuery = [[UIActionSheet alloc] initWithTitle:@"Sorting Options" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Sort By Updated Date", @"Sort by Key", @"Sort by Priority", @"Create Issue", nil];
 	popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
 	[popupQuery showInView:self.view];
@@ -81,22 +134,23 @@
 
 - (void)actionSheet:(UIActionSheet*)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	switch (buttonIndex) {
-		case 0:
+		case SORT_UPDATED_BUTTON:
 			// User wants to sort by updated date
 			[issues sortUsingSelector:@selector(compareUpdatedDate:)];
 			[self.tableView reloadData];
 			break;
-		case 1:
+		case SORT_KEY_BUTTON:
 			// User wants to sort by issue key
 			[issues sortUsingSelector:@selector(compareKey:)];
 			[self.tableView reloadData];
 			break;
-		case 2:
+		case SORT_PRIORITY_BUTTON:
 			// User wants to sort by priority
 			[issues sortUsingSelector:@selector(comparePriority:)];
 			[self.tableView reloadData];
 			break;
-		case 3:			
+		case CREATE_ISSUE_BUTTON:
+			// User wants to create an issue
 			[self showCreateIssueScreen];
 			break;
 		default:
@@ -151,6 +205,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     static NSString *CellIdentifier = @"Cell";
+	
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
 		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
@@ -158,26 +214,12 @@
 
 	
 	// Configure the cell...
-	Issue *issue = [issues objectAtIndex:indexPath.row];
-
-	switch (issue.priority.number) {
-		case 1:
-			cell.imageView.image = [UIImage imageNamed:@"priority_blocker.gif"];
-			break;
-		case 2:
-			cell.imageView.image = [UIImage imageNamed:@"priority_critical.gif"];
-			break;
-		case 3:
-			cell.imageView.image = [UIImage imageNamed:@"priority_major.gif"];
-			break;
-		case 4:
-			cell.imageView.image = [UIImage imageNamed:@"priority_minor.gif"];
-			break;
-		case 5:
-			cell.imageView.image = [UIImage imageNamed:@"priority_trivial.gif"];
-			break;
-	}
 	
+	// Get the issue that will be displayed
+	Issue *issue = [issues objectAtIndex:indexPath.row];
+	
+	// Fill in the cell with details from the issue
+	cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
 	cell.textLabel.text = [NSString stringWithFormat:@"%@", issue.key];
 	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", issue.summary];
 	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -229,6 +271,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// If the user selects an issue, display the issue details
 	IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
 	[self.navigationController pushViewController:issueDetailsController animated:YES];
 	[issueDetailsController release];
@@ -252,6 +295,7 @@
 
 
 - (void)dealloc {
+	// Free up memory
 	[Connector sharedConnector].delegate = nil;
 	[project release];
 	[issues release];
@@ -262,23 +306,37 @@
 #pragma mark Connector delegate
 
 - (void)didReceiveData:(id)result {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	
+	// Store issues returned from connector
 	if ([result isKindOfClass:[NSArray class]]) {
-		[Issue cacheIssues:result ofProject: project];
+		if (!filter)
+		{
+			[Issue cacheIssues:result ofProject: project];
+		}
 		[issues release];
 		issues = [result retain];
+		// Reload data in the table
 		[self.tableView reloadData];
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Stop the activity indicator
 	[activityIndicator stopAnimating];
+	
+	// Display an error to the user
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 #pragma mark -
 #pragma mark Create Issue delegate
 
 - (void)didCreateNewIssue:(Issue *)_issue {
+	// If the user created an issue, add it to the list
 	[issues addObject:_issue];
 	[self.tableView reloadData];
 }

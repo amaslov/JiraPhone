@@ -7,6 +7,8 @@
 //
 #import <Foundation/Foundation.h>
 #import "AbstractNamedEntity.h"
+#import "FMDatabase.h"
+#import "FMResultSet.h"
 
 @interface User : AbstractNamedEntity {
 	NSString* _server; // server name
@@ -15,6 +17,7 @@
 	NSString* _email;
 	NSString *_password;
 	NSDate* _lastLoginDate;
+	
 //	NSUInteger _hashcode;
 	
 }
@@ -30,4 +33,7 @@
 
 // insert or get logged in users data from local db
 + (void)setLoggedInUser:(User *)_user;
+
+//fills user object from database
+- (void)fillFromResultSet:(FMResultSet *)rs;
 @end

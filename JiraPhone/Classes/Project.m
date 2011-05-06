@@ -29,6 +29,7 @@
 @synthesize hashCode=_hashCode;
 - (void) dealloc
 {
+	// Free up memory
 	if(self.description != nil) { [self.description release]; }
 	if(self.key != nil) { [self.key release]; }
 	if(self.lead != nil) { [self.lead release]; }
@@ -42,13 +43,16 @@
 #pragma mark -
 #pragma mark Class methods
 + (void)cacheProjects:(NSArray *)_projects {
+	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];	
 
-	// clear
+	// Build the delete query
 	NSString *updateString = @"delete from projects";
+	
+	// Execute the delete
 	[db executeUpdate:updateString];
 
-	// insert
+	// Insert projects into database
 	for (Project *proj in _projects) {
 		updateString = [NSString stringWithFormat:@"insert into projects (description, key, lead, project_url, url, name, user_id) values (\"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\", \"%@\")", 
 						proj.description, proj.key, proj.lead, proj.projectUrl, proj.url, proj.name, [User loggedInUser].ID];
@@ -57,18 +61,23 @@
 }
 
 + (void)getCachedProjects:(NSMutableArray *)_projects {
-	
+	// Build a query string
 	NSString *queryString = [NSString stringWithFormat: @"select * from projects where user_id = \"%@\"", [User loggedInUser].ID];
-		
+	
+	// Get the database
 	FMDatabase *db = [JiraPhoneAppDelegate sharedDB];
+	
+	// Get results from the query
 	FMResultSet *rs = [db executeQuery:queryString];
 	while ([rs next])
 	{
+		// Make a project from the results and store it
 		Project *project = [[Project alloc]init];
 		[project fillFromResultSet:rs];
 		[_projects addObject:project];
 		[project release];
 	}
+	// Close the result set
 	[rs close];
 }
 
@@ -76,6 +85,7 @@
 #pragma mark Private Methods
 - (void)fillFromResultSet:(FMResultSet *)rs
 {
+	// Create a project from a database record
 	self.description = [rs stringForColumn: @"description"];
 	self.key = [rs stringForColumn:@"key"];
 	self.lead = [rs stringForColumn:@"lead"];

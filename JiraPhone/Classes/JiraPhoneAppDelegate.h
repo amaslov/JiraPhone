@@ -17,6 +17,15 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UIViewController *viewController;
 
+//+(NSMutableDictionary *)priorityImages;
++(UIImage *)getImageByPriority:(NSNumber *)_num;
++(void)initializePriorityImageMap;
++(NSString *)getStringByPriority:(NSNumber *)_num;
++(void)initializePriorityStringMap;
++(NSString *)getStringByStatus:(NSNumber *)_num;
++(void)initializeStatusStringMap;
++(UIImage *)getImageByStatus:(NSNumber *)_num;
++(void)initializeStatusImageMap;
 // database managing
 + (FMDatabase *)sharedDB;
 + (void)allocAndOpenDatabase;

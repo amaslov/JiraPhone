@@ -8,6 +8,9 @@
 #import "IssueDetailsController.h"
 #import "Issue.h"
 #import "IssueType.h"
+#import "User.h"
+#import "UserController.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation IssueDetailsController
 
@@ -15,15 +18,18 @@
 #pragma mark View lifecycle
 
 - (id)initForIssue:(Issue *)_issue {
+	// Initialize this screen for the given issue
 	if (self = [super initWithNibName:@"IssueDetailsController" bundle:nil]) {
 		issue = [_issue retain];
 	}
+	self.clearsSelectionOnViewWillAppear=NO;
 	return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	// Set the title
 	self.title = issue.key;
 }
 
@@ -67,12 +73,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    if (section == ISSUE_DATA_SECTION) return 7;
-	if (section == ISSUE_DATE_SECTION) return 3;
-	return 2;
+    return section == ISSUE_DATA_SECTION ? 6 : 2;
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
+	// Given an index path, return the title for that cell
 	NSString *ret = nil;
     if (indexPath.section == ISSUE_DATA_SECTION) {
 		switch (indexPath.row) {
@@ -88,16 +93,15 @@
 			case ISSUE_STATUS_ROW:
 				ret = @"Status: ";
 				break;
+			case ISSUE_DESCRIPTION_ROW:
+				ret=@"Description: ";
+				break;
 			case ISSUE_RESOLUTION_ROW:
 				ret = @"Resolution: ";
 				break;
 			case ISSUE_SUMMARY_ROW:
 				ret = @"Summary: ";
 				break;
-			case ISSUE_DESCRIPTION_ROW:
-				ret = @"Description: ";
-				break;
-
 			default:
 				break;
 		}
@@ -122,8 +126,6 @@
 			case ISSUE_UPDATED_ROW:
 				ret = @"Updated: ";
 				break;
-			case ISSUE_DUE_ROW:
-				ret = @"Due Date:";
 			default:
 				break;
 		}
@@ -136,6 +138,7 @@
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -160,7 +163,7 @@
 				[str appendFormat:@"%@", @"todo"];
 				break;
 			case ISSUE_STATUS_ROW:
-				[str appendFormat:@"%@", issue.status];
+				[str appendFormat:@"%@", [JiraPhoneAppDelegate getStringByStatus:[NSNumber numberWithInteger:[issue.status integerValue]]]];
 				break;
 			case ISSUE_RESOLUTION_ROW:
 				[str appendFormat:@"%@", issue.resolution? issue.resolution : @""];
@@ -171,7 +174,6 @@
 			case ISSUE_DESCRIPTION_ROW:
 				[str appendFormat:@"%@", issue.description];
 				break;
-	
 			default:
 				break;
 		}
@@ -179,7 +181,12 @@
 	else if (indexPath.section == ISSUE_MAN_SECTION) {
 		switch (indexPath.row) {
 			case ISSUE_ASSIGNEE_ROW:
-				[str appendFormat:@"%@", issue.assignee];				
+				if ([issue.assignee compare:@"(null)"] == NSOrderedSame) {
+					[str appendFormat:@"Unassigned"];
+				}
+				else {
+					[str appendFormat:@"%@", issue.assignee];
+				}
 				break;
 			case ISSUE_REPORTER_ROW:
 				[str appendFormat:@"%@", issue.reporter];				
@@ -196,8 +203,6 @@
 			case ISSUE_UPDATED_ROW:
 				[str appendFormat:@"%@", issue.updated];				
 				break;	
-			case ISSUE_DUE_ROW:
-				[str appendFormat:@"%@", issue.duedate];
 			default:
 				break;
 		}
@@ -251,23 +256,35 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-	 <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-	 // ...
-	 // Pass the selected object to the new view controller.
-	 [self.navigationController pushViewController:detailViewController animated:YES];
-	 [detailViewController release];
-	 */
+	if (indexPath.section == ISSUE_MAN_SECTION) {
+		// If the user selects a user related to the issue (assignee or reporter), display
+		// the user profile
+		if (indexPath.row == 0)
+		{
+			if ([issue.assignee compare:[NSString stringWithFormat:@"(null)"]] != NSOrderedSame)
+			{
+				UserController *userController = [[UserController alloc] initForUsername:issue.assignee];
+				[self.navigationController pushViewController:userController animated:YES];
+				[userController release];
+			}
+		}
+		else if(indexPath.row == 1)
+		{
+			UserController *userController = [[UserController alloc] initForUsername:issue.reporter];
+			[self.navigationController pushViewController:userController animated:YES];
+			[userController release];
+		}
+	}
+
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0:
+		case ISSUE_DATA_SECTION:
 			return [NSString stringWithFormat:@"Issue Data:"];
-		case 1:
+		case ISSUE_MAN_SECTION:
 			return [NSString stringWithFormat:@"Issue Manager:"];
-		case 2:
+		case ISSUE_DATE_SECTION:
 			return [NSString stringWithFormat:@"Issue Dates:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
@@ -291,6 +308,7 @@
 
 
 - (void)dealloc {
+	// Free up memory
 	if(issue){[issue release]; issue = nil;}
     [super dealloc];
 }

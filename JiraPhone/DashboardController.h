@@ -13,9 +13,11 @@
 @class Project;
 @class Issue;
 @class User;
+@class Filter;
 @interface DashboardController : UITableViewController <ConnectorDelegate> {
 	Project *project;
 	NSMutableArray *issues;
+	NSMutableArray *filters;
 	User *currentUser;
 	UIActivityIndicatorView *activityIndicator;
 }

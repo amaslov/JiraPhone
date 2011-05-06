@@ -8,6 +8,8 @@
 // http://docs.atlassian.com/software/jira/docs/api/rpc-jira-plugin/latest/com/atlassian/jira/rpc/soap/JiraSoapService.html
 // jql - jira query language
 
+//TODO create static initializer
+
 #import "Connector.h"
 #import "JiraSoapServiceService.h"
 #import "RemoteIssue.h"
@@ -19,10 +21,12 @@
 #import "User.h"
 #import "Group.h"
 #import "Filter.h"
+#import "Comment.h"
 
 @implementation Connector
 @synthesize delegate;
 
+//vl singleton.h
 - (id)init {
 	if (self = [super init]) {
 		jira = [[JiraSoapServiceService alloc] init];
@@ -60,7 +64,7 @@
 }
 
 - (void)getIssuesForDashboard:(User *)_user {
-	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = \"%@\" and status = open order by updated, priority DESC", [User loggedInUser].name] in2:10];
+	[jira getIssuesFromJqlSearch:self in0:token in1:[NSString stringWithFormat:@"assignee = currentUser() AND resolution = unresolved ORDER BY priority DESC, created ASC"] in2:10];//@"assignee = \"%@\" and status = open order by priority DESC", [User loggedInUser].name] in2:10];
 }
 
 - (void)getDueIssuesForProject:(Project *)_project {
@@ -82,6 +86,13 @@
 	[jira getFavouriteFilters:self in0:token];
 }
 
+- (void)getIssuesFromJql:(NSString *)_jql {
+	[jira getIssuesFromJqlSearch:self in0:token in1:_jql in2:10];
+}
+
+- (void)getUser:(NSString *)_username {
+	[jira getUser:self in0:token in1:_username];
+}
  //this should work with RemoteIssue!
  /*
 - (void)getCustomFieldValues:(Issue *)_issue {
@@ -109,10 +120,12 @@
 	[rIssue release];
 }
 //TODO consider dynamic class initialization (didreceivedata)
+//keys - dictionary, blocks - embedded functions
 #pragma mark -
 #pragma mark Soap Service delegate
 #pragma mark default handlers
 - (void) onload: (id) value {
+	//[here goes value populate]
 	//Array of Projects
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteProject class]]) {
 
@@ -210,13 +223,36 @@
 		return;		
 	}
 	
+	if ([value isKindOfClass:[RemoteUser class]]) {
+		RemoteUser *remUser = (RemoteUser *)value;
+		User *user = [[User alloc] init];
+		user.name = remUser.name;
+		user.email = remUser.email;
+		user.fullName = remUser.fullname;
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:user];
+		}
+		return;
+	}
+	
 	//group
 	if ([value isKindOfClass:[RemoteGroup class]]) {
 
 		RemoteGroup *remGroup = (RemoteGroup *)value;
 		Group *group = [[Group alloc] init];
-		NSMutableArray *users = remGroup.users;
-		
+		ArrayOf_tns1_RemoteUser *remUsers = remGroup.users;
+		for (RemoteUser *remUser in remUsers)
+		{
+			User *userTemp = [[User alloc]init];
+			userTemp.name=remUser.name;
+			userTemp.fullName=remUser.fullname;
+			userTemp.email=remUser.email;
+			userTemp.server=[User loggedInUser].server;
+			[group.users addObject:userTemp];
+			[userTemp release];
+		}
+		group.name=remGroup.name;
+		group.server=[User loggedInUser].server;
 		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 			[delegate didReceiveData:group];
 		}
@@ -224,11 +260,11 @@
 	}
 	if ([value isKindOfClass:[ArrayOf_tns1_RemoteFilter class]]){
 		ArrayOf_tns1_RemoteFilter *remFilters = (ArrayOf_tns1_RemoteFilter *)value;
-		Filter *filter;
-		NSMutableArray *filters = [NSMutableArray array];
+			NSMutableArray *filters = [NSMutableArray array];
 		for (RemoteFilter *remFilter in remFilters) {
-			filter = [[Filter alloc]init];
+			Filter *filter = [[Filter alloc] init];
 			filter.ID=remFilter._id;
+			NSLog(@"Filter: %@", remFilter._id);
 			filter.name=remFilter.name;
 			filter.description=remFilter.description;
 			filter.author=remFilter.author;
@@ -245,7 +281,6 @@
 	//TODO: create comment fetching screen in Issue Details
 /*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
 		ArrayOf_tns1_RemoteComment *remComments = (ArrayOf_tns1_RemoteComment *)value;
-		Comment *comment;
 		NSMutableArray *comments = [NSMutableArray array];
 		for (RemoteComment *remComment in remComments) {
 			Comment *comment = [[Comment alloc] init];
@@ -254,14 +289,16 @@
 			comment.body=remComment.body;
 			comment.updated=remComment.updated;
 			comment.created=remComment.created;
-			if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
-				[delegate didReceiveData:comment];
-			}
-			return;				
+			[comment release];
 		}
-	}
+		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
+			[delegate didReceiveData:comments];
+		}
+		return;				
+	} */
 	//Comment
-	if ([value isKindOfClass:[RemoteComment class]])
+	//apparently doesn't work - some problem with comment class (or remote comment). 
+	/*	if ([value isKindOfClass:[RemoteComment class]])
 	{
 		RemoteComment *remComment = (RemoteComment *)value;
 		Comment *comment = [[Comment alloc] init];
@@ -275,10 +312,12 @@
 		}
 		return;	
 	} */
+	 
 	//TODO implement versions parsing.
 	if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 		[delegate didReceiveData:value];
 	}
+
 }
 
 - (void) onerror: (NSError*) error {

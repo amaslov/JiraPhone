@@ -74,7 +74,7 @@
 		return [Soap generateHash:self];
 
 	}
-	
+
 	- (void) dealloc
 	{
 		if(self._id != nil) { [self._id release]; }

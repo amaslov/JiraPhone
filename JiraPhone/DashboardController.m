@@ -10,13 +10,21 @@
 #import "Project.h"
 #import "Issue.h"
 #import "Priority.h"
+#import "Filter.h"
 #import "IssuesController.h"
 #import "ProjectsController.h"
+#import "ActivityController.h"
 #import "IssueDetailsController.h"
 #import "CreateIssueController.h"
 #import "LoginController.h"
 #import "Connector.h"
 #import "User.h"
+#import "JiraPhoneAppDelegate.h"
+
+#define ISSUES_SECTION 0
+#define MISC_SECTION 1
+#define FILTERS_SECTION 2
+#define ACTIVITY_SECTION 3
 
 @implementation DashboardController
 @synthesize currentUser;
@@ -31,9 +39,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	self.title = [NSString stringWithFormat:@"Welcome"];
+	// Set the view's title
+	self.title = [NSString stringWithFormat:@"Dashboard"];
 	
-	// set custom back button
+	// Create a logout button and push
+	// it to the navigation controller
 	UIButton *backButtonInternal = [[UIButton alloc] initWithFrame:CGRectMake(0,0,54,30)];
 	[backButtonInternal setTitle:@"Logout" forState:UIControlStateNormal];
 	[backButtonInternal.titleLabel setFont : [UIFont boldSystemFontOfSize:12]];
@@ -44,21 +54,39 @@
 	[[self navigationItem] setLeftBarButtonItem:backBarButton];
 	[backBarButton release];
 	
-	// get list of cashed projects
+	// If there are no issues loaded, initialize the issue list
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
+
+	// If there are no filters loaded, initialize the filter list
+	if (!filters) {
+		filters = [[NSMutableArray alloc] init];
+	}
 	
-	//[Issue getCachedIssuesForUser:issues];
-	//[self.tableView reloadData];
-	
-	// sync with server for list of projects
+	// Sync with server
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
+	
+	// Get a list of issues assigned to the user
 	[connector getIssuesForDashboard:[User loggedInUser]];
 	
-	// if there are no cashed projects show wait spinner
+	// If there are no cached issues, show wait spinner
 	if (!issues.count) {
+		if (!activityIndicator) {
+			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+			[self.view addSubview:activityIndicator];
+			[activityIndicator release];
+		}
+		[activityIndicator startAnimating];		
+	}
+	
+	// Get a list of the user's filters
+	[connector getFavouriteFilters];
+	
+	// If there are no cached filters, show wait spinner
+	if (!filters.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
@@ -71,147 +99,158 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	// only first category has 6 items, the last two have 2 items in each
-	if (section == 0) {
-		return [issues count];
-	}
-	else {
-		return 3;
-	}
-
-}
-
-- (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
-	NSString *ret = nil;
-    if (indexPath.section == 0) {
-		ret = @"Issue:";
-	}
-	else if (indexPath.section == 1) {
-		switch (indexPath.row) {
-			case 0:
-				ret = @"Project: ";
-				break;
-			case 1:
-				ret = @"Issue List";
-				break;
-			case 2:
-				ret = @"Create Issue";
-			default:
-				break;
-		}
-	}
-	else if (indexPath.section == 2)
-	{
-		ret = @"Filters";
-	}
-	return ret;
-}
-
-- (UIImage *)getImageByPriority:(Priority *)priority {
-	switch (priority.number) {
-		case 1:
-			return [UIImage imageNamed:@"priority_blocker.gif"];
-		case 2:
-			return [UIImage imageNamed:@"priority_critical.gif"];
-		case 3:
-			return [UIImage imageNamed:@"priority_major.gif"];
-		case 4:
-			return [UIImage imageNamed:@"priority_minor.gif"];
-		case 5:
-			return [UIImage imageNamed:@"priority_trivial.gif"];
+	// Only first category has 6 items, the last two have 2 items in each
+	switch (section) {
+		case ISSUES_SECTION:
+			return [issues count];
+		case MISC_SECTION:
+			return 2;
+		case FILTERS_SECTION:
+			return [filters count] ? [filters count] : 1;
+		case ACTIVITY_SECTION:
+			return 1;
 		default:
-			return nil;
+			return 3;
 	}
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
     
+	// Create a cell
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
-		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
-		cell.textLabel.numberOfLines = 0;
     }
-    
-    // Configure the cell...
-	NSMutableString *str = [NSMutableString string];
-	[str appendString: [self titleForCellAtIndexPath:indexPath]];
 	
-	//if (issues.count >= indexPath.row+1)
-	if (indexPath.section == 0)
+	// If we are in the issues section of the dashboard...
+	if (indexPath.section == ISSUES_SECTION)
 	{
+		// Make sure there are issues before trying to populate cells
 		if (issues.count >= indexPath.row + 1) {
+			// Get the issue at the current row
 			Issue *issue = [issues objectAtIndex:indexPath.row];
-			if (indexPath.section == 0) {
-				cell.textLabel.text = issue.key;
-				cell.detailTextLabel.text = issue.summary;
-				cell.imageView.image = [self getImageByPriority:issue.priority];
-				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-			}
+			
+			// Set the cell details according to the issue
+			cell.textLabel.text = issue.key;
+			cell.detailTextLabel.text = issue.summary;
+			cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 		}
 		else {
-			cell.textLabel.text = @"This shouldn't happen.";
+			cell.textLabel.text = @"Issue";
 		}
 	}
-	else if (indexPath.section == 1) {
+	else if (indexPath.section == MISC_SECTION) {
+		cell.detailTextLabel.text = nil;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryNone;
 		switch (indexPath.row) {
 			case 0:
 				cell.textLabel.text = [NSString stringWithFormat:@"Projects"];
+				cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 				break;
 			case 1:
-				cell.textLabel.text = [NSString stringWithFormat:@"Issue List"];				
-				break;
-			case 2:
-				cell.textLabel.text = [NSString stringWithFormat:@"Create issue"];
+				cell.textLabel.text = [NSString stringWithFormat:@"Create Issue"];				
 				break;
 			default:
 				break;
 		}
 	}
-	else if (indexPath.section == 2)
+	// If we are in the filters section...
+	else if (indexPath.section == FILTERS_SECTION)
 	{
-		cell.textLabel.text = [NSString stringWithFormat:@"Filter"];
+		// Make sure there are enough filters to populate the cell
+		if (filters.count >= indexPath.row + 1)
+		{
+			// Get the filter at the current row
+			Filter *filter = [filters objectAtIndex:indexPath.row];
+			
+			// Initialize the cell for the given filter
+			cell.textLabel.text = [NSString stringWithFormat:@"%@",filter.name];
+			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",filter.description];
+			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+		}
+		else {
+			cell.textLabel.text = [NSString stringWithFormat:@"No filters available."];
+			cell.detailTextLabel.text = nil;
+			cell.accessoryType = UITableViewCellAccessoryNone;
+		}
+
+		// Don't display any extra details
 		cell.imageView.image = nil;
+	}
+	else if (indexPath.section == ACTIVITY_SECTION)
+	{
+		// Create a cell for users to go to the activity stream
+		cell.textLabel.text = [NSString stringWithFormat:@"View Activity Stream"];
 		cell.detailTextLabel.text = nil;
-		cell.accessoryType = UITableViewCellAccessoryNone;
+		cell.imageView.image = nil;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	
     return cell;
 }
 
+- (void)showActivityScreen {
+	// Show the rss activity stream for the dashboard
+	ActivityController *activityController = [ActivityController alloc];
+	[self.navigationController pushViewController:activityController animated:YES];
+	[activityController release];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == 0)
-	{
-		IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
-		[self.navigationController pushViewController:issueDetailsController animated:YES];
-		[issueDetailsController release];
-	}
-	else if (indexPath.section == 1)
-	{
-		if (indexPath.row == 0)
-		{
-			// show projects
-			ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
-			[self.navigationController pushViewController:projController animated:YES];
-			[projController release];
-		}
+	// If the user selects an issue, push the issue details screen
+	switch (indexPath.section) {
+		case ISSUES_SECTION:
+			if ([issues count] >= indexPath.row + 1) {
+			IssueDetailsController *issueDetailsController = [[IssueDetailsController alloc] initForIssue:[issues objectAtIndex:indexPath.row]];
+			[self.navigationController pushViewController:issueDetailsController animated:YES];
+			[issueDetailsController release];
+			}
+			break;
+		case MISC_SECTION:
+			if (indexPath.row == 0) {
+				// show projects
+				ProjectsController *projController = [[ProjectsController alloc] initWithNibName:@"ProjectsController" bundle:nil];
+				[self.navigationController pushViewController:projController animated:YES];
+				[projController release];
+			}
+			break;
+		case FILTERS_SECTION:
+			// If the user selects a filter,
+			// display issues returned by filter
+			if ([filters count] >= indexPath.row + 1) {
+				IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
+				[self.navigationController pushViewController:issuesController animated:YES];
+				[issuesController release];
+			}
+			break;
+		case ACTIVITY_SECTION:
+			// Show the activity stream
+			[self showActivityScreen];
+			break;
+		default:
+			break;
 	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	switch (section) {
-		case 0:
+		case ISSUES_SECTION:
 			return [NSString stringWithFormat:@"Assigned To Me:"];
-		case 1:
+		case MISC_SECTION:
 			return [NSString stringWithFormat:@"Project:"];
-		case 2:
+		case FILTERS_SECTION:
 			return [NSString stringWithFormat:@"Filters:"];
+		case ACTIVITY_SECTION:
+			return [NSString stringWithFormat:@"Activity Stream:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
 	}
@@ -234,20 +273,38 @@
 
 
 - (void)dealloc {
+	//free up the memory
 	if(issues){[issues release]; issues = nil;}
+	if(filters){[filters release]; filters = nil;}
     [super dealloc];
 }
 
 - (void)didReceiveData:(id)result {
+	// Stop showing the wait spinner
 	[activityIndicator stopAnimating];
+	// Check if the data received is an array
 	if ([result isKindOfClass:[NSArray class]]) {
-		[issues release];
-		issues = [result retain];
-		[self.tableView reloadData];
+		// Check if the array is full of filters
+		if ([[result objectAtIndex:0] isKindOfClass:[Filter class]]) {
+			[filters release];
+			// Chop off the first issue, since it is just junk
+			result = [result subarrayWithRange:NSMakeRange(1, [result count]-1)];
+			filters = [result retain];
+			[self.tableView reloadData];
+		}
+		// Otherwise, we received issues
+		else {
+			// Store the issues that were returned
+			[issues release];
+			issues = [result retain];
+			[issues sortUsingSelector:@selector(comparePriority:)];
+			[self.tableView reloadData];
+		}
 	}
 }
 
 - (void)didFailWithError:(NSError *)error {
+	// Show an error if the connector fails to download data
 	[activityIndicator stopAnimating];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Oops!" message: [error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
 	[alert show];
@@ -255,6 +312,8 @@
 }
 
 - (IBAction)backButtonPressed {
+	// If the user wishes to log out, log the user out,
+	// then push the login screen.
 	LoginController *lc = [self.navigationController.viewControllers objectAtIndex:0];
 	[self.navigationController popViewControllerAnimated:YES];
 	[lc logoutAction];

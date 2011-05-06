@@ -10,8 +10,10 @@
 
 @implementation IssueType
 
+
+
 - (NSString *)stringRepresentation {
-	NSString *r = nil;
+	NSString *r = nil; //issueTypesArray[number-1];
 	switch (number) {
 		case 1:
 			r = @"Bug";
@@ -29,7 +31,15 @@
 		default:
 			break;
 	}
+	 
+	
 	return r;
 }
+
+/*-(NSInteger)intRepresentation{
+
+	return [issueTypesArray indexOfObject:value]+1;
+}
+*/
 
 @end

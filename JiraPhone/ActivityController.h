@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Project.h"
 
-@interface ProjectActivityController : UITableViewController
-{
+@interface ActivityController : UITableViewController <NSXMLParserDelegate>{
 	Project *project;
 	UIActivityIndicatorView *activityIndicator;
 	NSXMLParser *rssParser;
@@ -18,10 +17,10 @@
 	NSMutableDictionary *item;
 	NSString *currentElement;
 	NSMutableString *currentTitle;
-	NSMutableString *currentDate;
 	NSMutableString *currentSummary;
 }
 
-<#methods#>
-
+@property (nonatomic, retain) Project *project;
+- (id)initForProject:(Project *)_project;
+- (void)parseXMLFileAtURL:(NSString *)URL;
 @end
