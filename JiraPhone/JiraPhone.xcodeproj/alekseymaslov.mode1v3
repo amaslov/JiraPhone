@@ -281,7 +281,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 679}, {272, 664}}</string>
+							<string>{{0, 679}, {272, 464}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -293,14 +293,14 @@
 					<key>GeometryConfiguration</key>
 					<dict>
 						<key>Frame</key>
-						<string>{{0, 0}, {289, 682}}</string>
+						<string>{{0, 0}, {289, 482}}</string>
 						<key>GroupTreeTableConfiguration</key>
 						<array>
 							<string>MainColumn</string>
 							<real>272</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>57 50 1228 723 0 0 1280 778 </string>
+						<string>57 255 1228 523 0 0 1280 778 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -328,7 +328,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>0366E731137345510051F9A7</string>
+										<string>0366E75E13738F710051F9A7</string>
 										<key>history</key>
 										<array>
 											<string>0302C215130F322A003E95A6</string>
@@ -480,14 +480,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {934, 410}}</string>
+								<string>{{0, 0}, {934, 210}}</string>
 								<key>RubberWindowFrame</key>
-								<string>57 50 1228 723 0 0 1280 778 </string>
+								<string>57 255 1228 523 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>410pt</string>
+							<string>210pt</string>
 						</dict>
 						<dict>
 							<key>BecomeActive</key>
@@ -502,9 +502,9 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 415}, {934, 267}}</string>
+								<string>{{0, 215}, {934, 267}}</string>
 								<key>RubberWindowFrame</key>
-								<string>57 50 1228 723 0 0 1280 778 </string>
+								<string>57 255 1228 523 0 0 1280 778 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -684,7 +684,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>0366E732137345510051F9A7</string>
 		<string>1C0AD2AF069F1E9B00FABCE6</string>
 		<string>0366E6E5137327980051F9A7</string>
 		<string>0366E6E6137327980051F9A7</string>
@@ -694,7 +693,7 @@
 		<string>/Users/alekseymaslov/Documents/Development/JiraPhone/JiraPhone/JiraPhone.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>57 50 1228 723 0 0 1280 778 </string>
+	<string>57 255 1228 523 0 0 1280 778 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
