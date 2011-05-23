@@ -8,8 +8,9 @@
 
 #import "FiltersController.h"
 #import "Connector.h"
+#import "IssuesController.h"
 #import "Issue.h"
-
+#import "Filter.h"
 
 @implementation FiltersController
 
@@ -31,7 +32,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return filters.count + 1; // +1 for search cell
+	return [filters count];
+    //return filters.count + 1; // +1 for search cell
 }
 
 
@@ -63,8 +65,9 @@
 	// Store the filters retrieved from the server
 	if ([result isKindOfClass:[NSArray class]]) {		
 		[filters release];
+		// Chop off the first filter, since it is just junk
+		result = [result subarrayWithRange:NSMakeRange(1, [result count]-1)];
 		filters = [result retain];
-		// Reload the data in the table
 		[self.tableView reloadData];
 	}
 }
@@ -80,6 +83,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+	
+	self.title = [NSString stringWithFormat:@"Favorite Filters"];
 	
 	// Initialize the filter list
 	if (!filters) {
@@ -114,6 +119,40 @@
 	[self.tableView reloadData];
 }
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+    static NSString *CellIdentifier = @"Cell";
+	
+	// Create a cell
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+	}
+	
+	
+	// Configure the cell...
+	
+	// Get the issue that will be displayed
+	Filter *filter = [filters objectAtIndex:indexPath.row];
+	
+	// Fill in the cell with details from the issue
+	cell.imageView.image = nil;
+	//cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
+	cell.textLabel.text = [NSString stringWithFormat:@"%@", filter.name];
+	cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", filter.description];
+	cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+	return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	// If the user selects a filter,
+	// display issues returned by filter
+	if ([filters count] >= indexPath.row + 1) {
+		IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
+		[self.navigationController pushViewController:issuesController animated:YES];
+		[issuesController release];
+	}
+}
 
 - (void)viewDidUnload {
 	Connector *conn = [Connector sharedConnector];

@@ -11,6 +11,7 @@
 #import "Issue.h"
 #import "Priority.h"
 #import "Filter.h"
+#import "FiltersController.h"
 #import "IssuesController.h"
 #import "ProjectsController.h"
 #import "ActivityController.h"
@@ -58,11 +59,6 @@
 	if (!issues) {
 		issues = [[NSMutableArray alloc] init];
 	}
-
-	// If there are no filters loaded, initialize the filter list
-	if (!filters) {
-		filters = [[NSMutableArray alloc] init];
-	}
 	
 	// Sync with server
 	Connector *connector = [Connector sharedConnector];
@@ -73,20 +69,6 @@
 	
 	// If there are no cached issues, show wait spinner
 	if (!issues.count) {
-		if (!activityIndicator) {
-			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
-			[self.view addSubview:activityIndicator];
-			[activityIndicator release];
-		}
-		[activityIndicator startAnimating];		
-	}
-	
-	// Get a list of the user's filters
-	[connector getFavouriteFilters];
-	
-	// If there are no cached filters, show wait spinner
-	if (!filters.count) {
 		if (!activityIndicator) {
 			activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
 			activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
@@ -110,7 +92,7 @@
 		case MISC_SECTION:
 			return 2;
 		case FILTERS_SECTION:
-			return [filters count] ? [filters count] : 1;
+			return 1;
 		case ACTIVITY_SECTION:
 			return 1;
 		default:
@@ -166,25 +148,10 @@
 	// If we are in the filters section...
 	else if (indexPath.section == FILTERS_SECTION)
 	{
-		// Make sure there are enough filters to populate the cell
-		if (filters.count >= indexPath.row + 1)
-		{
-			// Get the filter at the current row
-			Filter *filter = [filters objectAtIndex:indexPath.row];
-			
-			// Initialize the cell for the given filter
-			cell.textLabel.text = [NSString stringWithFormat:@"%@",filter.name];
-			cell.detailTextLabel.text = [NSString stringWithFormat:@"%@",filter.description];
-			cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-		}
-		else {
-			cell.textLabel.text = [NSString stringWithFormat:@"No filters available."];
-			cell.detailTextLabel.text = nil;
-			cell.accessoryType = UITableViewCellAccessoryNone;
-		}
-
-		// Don't display any extra details
+		cell.textLabel.text = [NSString stringWithFormat:@"Favorite Filters"];
 		cell.imageView.image = nil;
+		cell.detailTextLabel.text = nil;
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	else if (indexPath.section == ACTIVITY_SECTION)
 	{
@@ -224,14 +191,14 @@
 			}
 			break;
 		case FILTERS_SECTION:
-			// If the user selects a filter,
-			// display issues returned by filter
-			if ([filters count] >= indexPath.row + 1) {
-				IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
-				[self.navigationController pushViewController:issuesController animated:YES];
-				[issuesController release];
-			}
+		{
+			// If the user clocks the favorite filters button,
+			// display a filter list
+			FiltersController *filtersController = [FiltersController alloc];
+			[self.navigationController pushViewController:filtersController animated:YES];
+			[filtersController release];
 			break;
+		}
 		case ACTIVITY_SECTION:
 			// Show the activity stream
 			[self showActivityScreen];
@@ -284,22 +251,11 @@
 	[activityIndicator stopAnimating];
 	// Check if the data received is an array
 	if ([result isKindOfClass:[NSArray class]]) {
-		// Check if the array is full of filters
-		if ([[result objectAtIndex:0] isKindOfClass:[Filter class]]) {
-			[filters release];
-			// Chop off the first issue, since it is just junk
-			result = [result subarrayWithRange:NSMakeRange(1, [result count]-1)];
-			filters = [result retain];
-			[self.tableView reloadData];
-		}
-		// Otherwise, we received issues
-		else {
-			// Store the issues that were returned
-			[issues release];
-			issues = [result retain];
-			[issues sortUsingSelector:@selector(comparePriority:)];
-			[self.tableView reloadData];
-		}
+		// Store the issues that were returned
+		[issues release];
+		issues = [result retain];
+		[issues sortUsingSelector:@selector(comparePriority:)];
+		[self.tableView reloadData];
 	}
 }
 

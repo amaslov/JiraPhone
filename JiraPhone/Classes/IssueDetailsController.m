@@ -256,7 +256,7 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.section == ISSUE_MAN_SECTION) {
+	/* if (indexPath.section == ISSUE_MAN_SECTION) {
 		// If the user selects a user related to the issue (assignee or reporter), display
 		// the user profile
 		if (indexPath.row == 0)
@@ -274,8 +274,7 @@
 			[self.navigationController pushViewController:userController animated:YES];
 			[userController release];
 		}
-	}
-
+	} */
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
