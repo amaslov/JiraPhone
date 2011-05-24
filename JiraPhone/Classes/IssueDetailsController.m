@@ -11,6 +11,7 @@
 #import "User.h"
 #import "UserController.h"
 #import "JiraPhoneAppDelegate.h"
+#import "CommentsController.h"
 
 @implementation IssueDetailsController
 
@@ -31,6 +32,16 @@
 	
 	// Set the title
 	self.title = issue.key;
+	
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showCommentsScreen)];
+	self.navigationItem.rightBarButtonItem = btn;
+	[btn release];
+}
+
+- (void)showCommentsScreen {
+	CommentsController *commentsController = [[CommentsController alloc] initForIssue:issue];
+	[self.navigationController pushViewController:commentsController animated:YES];
+	[commentsController release];
 }
 
 /*
@@ -94,7 +105,7 @@
 				ret = @"Status: ";
 				break;
 			case ISSUE_DESCRIPTION_ROW:
-				ret=@"Description: ";
+				ret = @"Description: ";
 				break;
 			case ISSUE_RESOLUTION_ROW:
 				ret = @"Resolution: ";

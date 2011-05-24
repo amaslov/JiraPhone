@@ -39,10 +39,13 @@
 		347F1676133585C9000BC1A7 /* ActivityController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F1674133585C9000BC1A7 /* ActivityController.xib */; };
 		347F2FCF134FB8DB001D94A5 /* UserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 347F2FCD134FB8DB001D94A5 /* UserController.xib */; };
 		34835F1F13197262005DC6C9 /* DashboardController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34835F1E13197262005DC6C9 /* DashboardController.xib */; };
+		3483BAFC138C06BA00B3862F /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 032988CB131C4A3900C5FF23 /* Comment.m */; };
 		34864C9113685AD0009650C5 /* status_open.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9013685AD0009650C5 /* status_open.gif */; };
 		34864C9713685B0A009650C5 /* status_closed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9413685B0A009650C5 /* status_closed.gif */; };
 		34864C9813685B0A009650C5 /* status_inprogress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9513685B0A009650C5 /* status_inprogress.gif */; };
 		34864C9913685B0A009650C5 /* status_resolved.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9613685B0A009650C5 /* status_resolved.gif */; };
+		349F1653138BFBD9001648FE /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349F1651138BFBD9001648FE /* CommentsController.m */; };
+		349F1654138BFBD9001648FE /* CommentsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349F1652138BFBD9001648FE /* CommentsController.xib */; };
 		4F36096512DFB95D00C60A50 /* JiraSoapServiceServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */; };
 		4F36096612DFB95D00C60A50 /* AbstractNamedRemoteEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AE12DFB95D00C60A50 /* AbstractNamedRemoteEntity.m */; };
 		4F36096712DFB95D00C60A50 /* AbstractRemoteConstant.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608B012DFB95D00C60A50 /* AbstractRemoteConstant.m */; };
@@ -228,6 +231,9 @@
 		34864C9413685B0A009650C5 /* status_closed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_closed.gif; sourceTree = "<group>"; };
 		34864C9513685B0A009650C5 /* status_inprogress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_inprogress.gif; sourceTree = "<group>"; };
 		34864C9613685B0A009650C5 /* status_resolved.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_resolved.gif; sourceTree = "<group>"; };
+		349F1650138BFBD9001648FE /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsController.h; sourceTree = "<group>"; };
+		349F1651138BFBD9001648FE /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsController.m; sourceTree = "<group>"; };
+		349F1652138BFBD9001648FE /* CommentsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsController.xib; sourceTree = "<group>"; };
 		4F3608AA12DFB95D00C60A50 /* JiraSoapServiceServiceExample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JiraSoapServiceServiceExample.h; sourceTree = "<group>"; };
 		4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JiraSoapServiceServiceExample.m; sourceTree = "<group>"; };
 		4F3608AD12DFB95D00C60A50 /* AbstractNamedRemoteEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractNamedRemoteEntity.h; sourceTree = "<group>"; };
@@ -526,6 +532,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				349F164F138BFBB1001648FE /* Comment Screen */,
 				030030DA137F3D080024C4ED /* icon.png */,
 				03E1E12F136A10B40037E10A /* User Controller */,
 				347F2FCA134FB8C3001D94A5 /* User Details Screen */,
@@ -636,6 +643,16 @@
 				347F2FCD134FB8DB001D94A5 /* UserController.xib */,
 			);
 			name = "User Details Screen";
+			sourceTree = "<group>";
+		};
+		349F164F138BFBB1001648FE /* Comment Screen */ = {
+			isa = PBXGroup;
+			children = (
+				349F1650138BFBD9001648FE /* CommentsController.h */,
+				349F1651138BFBD9001648FE /* CommentsController.m */,
+				349F1652138BFBD9001648FE /* CommentsController.xib */,
+			);
+			name = "Comment Screen";
 			sourceTree = "<group>";
 		};
 		4F087EA912E02990009FE766 /* Issues Screen */ = {
@@ -1095,6 +1112,7 @@
 				34864C9913685B0A009650C5 /* status_resolved.gif in Resources */,
 				03E1E142136A10D60037E10A /* UserController.xib in Resources */,
 				030030DB137F3D080024C4ED /* icon.png in Resources */,
+				349F1654138BFBD9001648FE /* CommentsController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1230,6 +1248,8 @@
 				035F85CF13689FB5006C5E15 /* LinkCell.m in Sources */,
 				035F861B13694DC1006C5E15 /* ActionSheetPicker.m in Sources */,
 				03E1E141136A10D60037E10A /* UserController.m in Sources */,
+				349F1653138BFBD9001648FE /* CommentsController.m in Sources */,
+				3483BAFC138C06BA00B3862F /* Comment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

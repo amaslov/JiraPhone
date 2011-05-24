@@ -108,6 +108,10 @@
 	[jira getIssue:self in0:token in1:_issue.key];
 }
 
+- (void)getCommentsOfIssue:(Issue *)_issue {
+	[jira getComments:self in0:token in1:_issue.key];
+}
+
 - (void)createIssue:(Issue *)_issue {
 	RemoteIssue *rIssue = [[RemoteIssue alloc] init];
 	rIssue.project = _issue.project;
@@ -279,23 +283,24 @@
 	}	
 		//Array of comments
 	//TODO: create comment fetching screen in Issue Details
-/*	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
+	if ([value isKindOfClass:[ArrayOf_tns1_RemoteComment class]]) {
 		ArrayOf_tns1_RemoteComment *remComments = (ArrayOf_tns1_RemoteComment *)value;
 		NSMutableArray *comments = [NSMutableArray array];
 		for (RemoteComment *remComment in remComments) {
-			Comment *comment = [[Comment alloc] init];
+			Comment *comment = [Comment alloc];
 			comment.Id=remComment._id;
 			comment.author=remComment.author;
 			comment.body=remComment.body;
 			comment.updated=remComment.updated;
 			comment.created=remComment.created;
+			[comments addObject:comment];
 			[comment release];
 		}
 		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 			[delegate didReceiveData:comments];
 		}
 		return;				
-	} */
+	}
 	//Comment
 	//apparently doesn't work - some problem with comment class (or remote comment). 
 	/*	if ([value isKindOfClass:[RemoteComment class]])

@@ -57,6 +57,9 @@
 // request details of _issues
 - (void)getDetailsOfIssue:(Issue *)_issue;
 
+// get comments for the given issue
+- (void)getCommentsOfIssue:(Issue *)_issue;
+
 // create new issue
 - (void)createIssue:(Issue *)_issue;
 
