@@ -32,10 +32,6 @@
 	
 	// Set the title
 	self.title = issue.key;
-	
-	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showCommentsScreen)];
-	self.navigationItem.rightBarButtonItem = btn;
-	[btn release];
 }
 
 - (void)showCommentsScreen {
@@ -78,13 +74,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 3;
+    return 4;
 }
 
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	// only first category has 6 items, the last two have 2 items in each
-    return section == ISSUE_DATA_SECTION ? 6 : 2;
+	NSInteger numberOfRows = 0;
+	switch (section) {
+		case ISSUE_DATA_SECTION:
+			numberOfRows = 6;
+			break;
+		case ISSUE_MAN_SECTION:
+			numberOfRows = 2;
+			break;
+		case ISSUE_DATE_SECTION:
+			numberOfRows = 2;
+			break;
+		case ISSUE_COMMENTS_SECTION:
+			numberOfRows = 1;
+			break;
+	}
+	return numberOfRows;
+    //return section == ISSUE_DATA_SECTION ? 6 : 2;
 }
 
 - (NSString *)titleForCellAtIndexPath:(NSIndexPath *)indexPath {
@@ -141,6 +153,9 @@
 				break;
 		}
 	}
+	else if (indexPath.section == ISSUE_COMMENTS_SECTION) {
+		ret = @"View Comments";
+	}
 	return ret;
 }
 
@@ -160,6 +175,7 @@
     // Configure the cell...
 	NSMutableString *str = [NSMutableString string];
 	[str appendString: [self titleForCellAtIndexPath:indexPath]];
+	cell.accessoryType = UITableViewCellAccessoryNone;
     if (indexPath.section == ISSUE_DATA_SECTION) {
 		switch (indexPath.row) {
 			case ISSUE_TYPE_ROW:
@@ -217,6 +233,9 @@
 			default:
 				break;
 		}
+	}
+	else if (indexPath.section == ISSUE_COMMENTS_SECTION) {
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
 	cell.textLabel.text = str;
     return cell;
@@ -286,6 +305,9 @@
 			[userController release];
 		}
 	} */
+	if (indexPath.section == ISSUE_COMMENTS_SECTION) {
+		[self showCommentsScreen];
+	}
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -296,6 +318,8 @@
 			return [NSString stringWithFormat:@"Issue Manager:"];
 		case ISSUE_DATE_SECTION:
 			return [NSString stringWithFormat:@"Issue Dates:"];
+		case ISSUE_COMMENTS_SECTION:
+			return [NSString stringWithFormat:@"Issue Comments:"];
 		default:
 			return [NSString stringWithFormat:@"Category %d", section+1];
 	}

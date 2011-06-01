@@ -12,6 +12,7 @@
 #define ISSUE_DATA_SECTION	0
 #define ISSUE_MAN_SECTION	1
 #define ISSUE_DATE_SECTION	2
+#define ISSUE_COMMENTS_SECTION 3
 
 // rows
 #define ISSUE_SUMMARY_ROW			0
@@ -29,6 +30,9 @@
 //date rows
 #define ISSUE_CREATED_ROW			0
 #define ISSUE_UPDATED_ROW			1
+
+// comment row
+#define ISSUE_COMMENT_ROW			0
 
 @class Issue;
 @interface IssueDetailsController : UITableViewController 

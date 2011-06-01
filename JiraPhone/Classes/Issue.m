@@ -246,7 +246,8 @@
 }
 - (NSComparisonResult)compareKey:(Issue*)_issue {
 	// Sort keys alphabetically
-	return [self.key compare:_issue.key];
+	return [self.ID compare:_issue.ID];
+	//return [self.key compare:_issue.key];
 }
 - (NSComparisonResult)comparePriority:(Issue*)_issue {
 	// Sort keys by priority in ascending order (most critical issues first)

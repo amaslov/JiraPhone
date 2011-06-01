@@ -28,4 +28,9 @@
 	[super dealloc];
 }
 
+- (NSComparisonResult)compareCreatedDate:(Comment*)_comment {
+	//Compare comments so they are in chronological order
+	return [self.created compare:_comment.created];
+}
+
 @end

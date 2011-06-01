@@ -79,7 +79,7 @@
 }
 
 - (void)getIssuesFromFilter:(NSString *)_id {
-	[jira getIssuesFromFilter:self in0:token in1:_id];
+	[jira getIssuesFromFilterWithLimit:self in0:token in1:_id in2:0 in3:10];
 }
 
 - (void)getFavouriteFilters {
@@ -160,9 +160,11 @@
 		ArrayOf_tns1_RemoteIssue *remIssues = (ArrayOf_tns1_RemoteIssue *)value;
 		Issue *issue;
 		NSMutableArray *issues = [NSMutableArray array];
+		NSLog(@"Got array of remote issues from server.");
 		for (RemoteIssue *remIssue in remIssues) {
 			issue = [[Issue alloc] init];
 			issue.key = remIssue.key;
+			NSLog(@"%@", issue.key);
 			issue.assignee = remIssue.assignee;
 			issue.created = remIssue.created;
 			issue.description = remIssue.description;
@@ -190,6 +192,7 @@
 			[issues addObject:issue];
 			[issue release];
 		}
+		NSLog(@"Done with array of remote issues.");
 		if ([delegate respondsToSelector:@selector(didReceiveData:)]) {
 			[delegate didReceiveData:issues];
 		}

@@ -14,7 +14,6 @@
 @implementation CommentsController
 @synthesize issue;
 
-
 - (id)initForIssue:(Issue *)_issue {
 	// Initialize this screen for the given issue
 	if (self = [super initWithNibName:@"CommentsController" bundle:nil]) {
@@ -29,9 +28,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = [NSString stringWithFormat:@"Comments"];
-
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 	
 	// If there are no comments, initialize the array
 	if (!comments) {
@@ -53,6 +49,7 @@
 	Connector *connector = [Connector sharedConnector];
 	connector.delegate = self;
 	
+	// Get comments for this issue
 	[connector getCommentsOfIssue:self.issue];
 }
 
@@ -96,7 +93,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-	return comments.count;
+	return comments.count ? comments.count : 1;
 }
 
 
@@ -107,26 +104,104 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
+		
+		// Set the properties for the title text (user and date)
 		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.textLabel.numberOfLines = 0;
-		cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:17.0];
+		cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+		
+		// Set the properties for the comment text
+		cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+		cell.detailTextLabel.numberOfLines = 0;
+		cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
     }
     
-    // Configure the cell...
-	Comment *comment = [comments objectAtIndex:indexPath.row];
-	cell.textLabel.text = [NSString stringWithFormat:@"%@ : %@", comment.author, comment.body];
+	// If there are comments, show them
+	if (comments.count >= indexPath.row+1)
+	{
+		// Get the comment for this cell
+		Comment *comment = [comments objectAtIndex:indexPath.row];
+		
+		// Create a formatter to produce a human readable
+		// date at which the comment was created.
+		NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+		[dateFormat setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+		
+		// Get the body of the comment
+		NSString *commentText = comment.body;
+		
+		// Format the date that the comment was created
+		NSString *dateText = [dateFormat stringFromDate:comment.created];
+		
+		// Format the title
+		NSString *titleText = [NSString stringWithFormat:@"%@ added a comment on %@", comment.author, dateText];	
+		
+		// Set the cell text
+		cell.textLabel.text = titleText;
+		cell.detailTextLabel.text = commentText;
+		
+		// Clean up memory
+		[dateFormat release];
+	}
+	// Otherwise, display a message
+	else {
+		// Set the cell text
+		cell.textLabel.text = [NSString stringWithFormat:@"No comments available."];
+		cell.detailTextLabel.text = nil;
+	}
 	
     return cell;
 }
 
+- (int)heightOfCellWithTitle:(NSString *)titleText andDetails:(NSString *)detailText {
+	CGSize titleSize = {0, 0};
+	CGSize detailSize = {0, 0};
+	
+	// Get the size needed to display the title
+	if (titleText && ![titleText isEqualToString:@""]) {
+		titleSize = [titleText sizeWithFont:[UIFont boldSystemFontOfSize:17] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+	}
+	// Get the size needed to display the comment
+	if (detailText && ![detailText isEqualToString:@""]) {
+		detailSize = [detailText sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+	}
+	
+	// Return the height needed to display the text, and 10px buffer
+	return titleSize.height + detailSize.height + 10;
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	Comment *comment = [comments objectAtIndex:indexPath.row];
-	NSString *cellText = [NSString stringWithFormat:@"%@ : %@", comment.author, comment.body];
-	UIFont *cellFont = [UIFont fontWithName:@"Helvetica" size:17.0];
-	CGSize constraintSize = CGSizeMake(280.0f, MAXFLOAT);
-	CGSize labelSize = [cellText sizeWithFont:cellFont constrainedToSize:constraintSize];
-	return labelSize.height + 20;
+	// Get the height of the cell if it contains a comment
+	if ([comments count] >= indexPath.row + 1) {
+		// Get the comment that needs to be displayed
+		Comment *comment = [comments objectAtIndex:indexPath.row];
+		
+		// Make a formatter to format the creation date of the comment
+		NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+		[dateFormat setDateFormat:@"yyyy-MM-dd 'at' HH:mm"];
+		
+		// Get the text of the comment
+		NSString *commentText = comment.body;
+		
+		// Format the creation date
+		NSString *dateText = [dateFormat stringFromDate:comment.created];
+		
+		// Create the title to be displayed
+		NSString *titleText = [NSString stringWithFormat:@"%@ added a comment on %@", comment.author, dateText];
+		
+		// Get the height needed to display the text
+		int height = [self heightOfCellWithTitle:titleText andDetails:commentText];
+
+		// Clean up the memory
+		[dateFormat release];
+		
+		// Return the height needed to display the text, or
+		// a minimum of 44 pixels.
+		return (height < 44 ? 44.0f : height);
+	}
+	// Return the default cell height
+	return 44.0f;
 }
 
 /*
@@ -211,12 +286,16 @@
 	// Stop the activity indicator
 	[activityIndicator stopAnimating];
 	
-	// Store issues returned from connector
+	// Store comments returned from connector
 	if ([result isKindOfClass:[NSArray class]]) {
 		[comments release];
 		// Chop off the first comment, since it is just junk
 		result = [result subarrayWithRange:NSMakeRange(1, [result count]-1)];
-		comments = [result retain];
+		// Need to make a mutable copy so that we can sort
+		comments = [result mutableCopy];
+		// Sort the comments in ascending order based on
+		// creation date
+		[comments sortUsingSelector:@selector(compareCreatedDate:)];
 		// Reload data in the table
 		[self.tableView reloadData];
 	}

@@ -18,6 +18,8 @@
 	//this one add manually! Not from the database, but from the current user.
 	NSString* _issueId;
 }
+- (NSComparisonResult)compareCreatedDate:(Comment*)_comment;
+
 @property (nonatomic, retain) NSString* Id;
 @property (nonatomic,retain) NSString* author;
 @property (nonatomic, retain) NSString* body;

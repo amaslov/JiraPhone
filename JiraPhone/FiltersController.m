@@ -148,6 +148,8 @@
 	// If the user selects a filter,
 	// display issues returned by filter
 	if ([filters count] >= indexPath.row + 1) {
+		Filter *filter = [filters objectAtIndex:indexPath.row];
+		NSLog(@"Getting issues for filter with ID: %@", filter.ID);
 		IssuesController *issuesController = [[IssuesController alloc] initForFilter:[filters objectAtIndex:indexPath.row]];
 		[self.navigationController pushViewController:issuesController animated:YES];
 		[issuesController release];

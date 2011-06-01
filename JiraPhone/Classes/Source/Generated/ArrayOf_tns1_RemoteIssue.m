@@ -16,6 +16,47 @@
 	- (id) initWithNode: (CXMLNode*) node
 	{
 		if(self = [super init]) {
+			/* NSLog(@"In SOAP didFinishLoading");
+			CXMLNode *firstChild = [node childAtIndex:0];
+			if (!firstChild) { NSLog(@"No first child");}
+			NSString *firstName = [firstChild name];
+			NSLog(@"Name: %@", firstName);
+			NSString *firstKey = [Soap getNodeValue:firstChild withName:@"key"];
+			NSLog(@"First Child Key: %@", firstKey);
+			NSString *firstXML = [firstChild  XMLString];
+			NSLog(@"First child xml: \n%@", firstXML);
+			CXMLNode *childChild = [firstChild childAtIndex:0];
+			NSString *childName = [childChild name];
+			NSString *childKey = [Soap getNodeValue:childChild withName:@"key"];
+			NSString *childXML = [childChild XMLString];
+			NSLog(@"Child of Child Name: %@ , Key: %@", childName, childKey);
+			NSLog(@"Child of Child XML: \n%@", childXML);
+			NSUInteger nChild = [childChild childCount];
+			NSLog(@"Child of Child has %u children.", nChild);
+			NSUInteger numChildren = [node childCount];
+			CXMLNode *firstIssue = [childChild childAtIndex:0];
+			RemoteIssue *rem = [Soap deserialize:firstIssue];//[[RemoteIssue newWithNode:firstIssue] object];
+			NSString *firstIssueXML = [firstIssue XMLString];
+			NSString *firstIssueKey = [Soap getNodeValue:firstIssue withName:@"key"];
+			NSLog(@"First Issue: \n%@", firstIssueXML);
+			NSLog(@"First Key: %@", rem.key);//firstIssueKey);
+			for (NSUInteger i = 0; i < numChildren; i++) {
+				CXMLNode *child = [node childAtIndex:i];
+				
+				if (![Soap getNodeValue:child withName:@"key"])
+				{
+					continue;
+				}
+				
+				NSString *key = [Soap getNodeValue:child withName:@"key"];
+				NSLog(@"%@", key);
+				
+				RemoteIssue *value = [[RemoteIssue newWithNode:child] object];
+				NSLog(@"Child node = Issue with key %@", value.key);
+				if (value != nil) {
+					[self addObject: value];
+				}
+			} */
 			for(CXMLElement* child in [node children])
 			{
 				// skip not issue elements
@@ -24,6 +65,7 @@
 				}
 				
 				RemoteIssue* value = [[RemoteIssue newWithNode: child] object];
+				NSLog(@"Child node = Issue with Key: %@", value.key);
 				if(value != nil) {
 					[self addObject: value];
 				}

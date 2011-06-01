@@ -311,6 +311,10 @@
 	
 	// Store issues returned from connector
 	if ([result isKindOfClass:[NSArray class]]) {
+		for (Issue *issue in result)
+		{
+			NSLog(@"%@", issue.key);
+		}
 		if (!filter)
 		{
 			[Issue cacheIssues:result ofProject: project];
