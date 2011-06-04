@@ -280,13 +280,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>20</integer>
-									<integer>18</integer>
+									<integer>42</integer>
+									<integer>30</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {264, 556}}</string>
+							<string>{{0, 623}, {264, 556}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -323,7 +323,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>ActivityController.m</string>
+								<string>Issue.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -331,11 +331,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>ActivityController.m</string>
+										<string>Issue.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3441B8A4139AD5880047A266</string>
+										<string>3441B8CF139ADF120047A266</string>
 										<key>history</key>
 										<array>
 											<string>347C953812FF3541006D9BA8</string>
@@ -437,7 +437,6 @@
 											<string>34A328FD139683EE0077BDB6</string>
 											<string>34A3292013968BBC0077BDB6</string>
 											<string>34A3292113968BBC0077BDB6</string>
-											<string>34A3292213968BBC0077BDB6</string>
 											<string>34A3292813968BBC0077BDB6</string>
 											<string>34A3294B13968BF00077BDB6</string>
 											<string>34A3294C13968BF00077BDB6</string>
@@ -450,9 +449,10 @@
 											<string>34754A121396B72100FDCC90</string>
 											<string>34754A131396B72100FDCC90</string>
 											<string>347AC284139AD2FC000C7BED</string>
-											<string>347AC285139AD2FC000C7BED</string>
 											<string>3441B8A2139AD5880047A266</string>
-											<string>3441B8A3139AD5880047A266</string>
+											<string>3441B8BC139ADB580047A266</string>
+											<string>3441B8BD139ADB580047A266</string>
+											<string>3441B8BE139ADB580047A266</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -677,7 +677,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>Issue.m</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -694,6 +694,8 @@
 							<string>299pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

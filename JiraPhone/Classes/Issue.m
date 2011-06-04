@@ -245,9 +245,23 @@
 	return [_issue.updated compare:self.updated];
 }
 - (NSComparisonResult)compareKey:(Issue*)_issue {
-	// Sort keys alphabetically
-	return [self.ID compare:_issue.ID];
-	//return [self.key compare:_issue.key];
+	// Sort keys alphabetically	
+	NSArray *issueSplit = [_issue.key componentsSeparatedByString:@"-"];
+	NSArray *selfSplit = [self.key componentsSeparatedByString:@"-"];
+	
+	NSString *issueProject = [issueSplit objectAtIndex:0];
+	NSString *selfProject = [selfSplit objectAtIndex:0];
+	
+	NSInteger issueNum = [[issueSplit objectAtIndex:1] integerValue];
+	NSInteger selfNum = [[selfSplit objectAtIndex:1] integerValue];
+	
+	NSComparisonResult retVal = NSOrderedSame;
+	retVal = [selfProject compare:issueProject];
+	if (retVal == NSOrderedSame) {
+		retVal = selfNum > issueNum;
+	}
+	return retVal;
+	
 }
 - (NSComparisonResult)comparePriority:(Issue*)_issue {
 	// Sort keys by priority in ascending order (most critical issues first)
