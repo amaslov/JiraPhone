@@ -10,12 +10,6 @@
 #import "Project.h"
 #import "User.h"
 
-#define CONST_textLabelFontSize 17
-#define CONST_detailLabelFontSize 15
-
-static UIFont *titleFont;
-static UIFont *summaryFont;
-
 @implementation ActivityController
 
 @synthesize project;
@@ -197,18 +191,6 @@ static UIFont *summaryFont;
 	return _text;
 }
 
-- (UIFont *)TitleFont {
-	// Return the font for titles
-	if (!titleFont) titleFont = [UIFont boldSystemFontOfSize:17];
-	return titleFont;
-}
-
-- (UIFont *)SummaryFont {
-	// Return the font for summaries
-	if (!summaryFont) summaryFont = [UIFont systemFontOfSize:15];
-	return summaryFont;
-}
-
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -220,9 +202,10 @@ static UIFont *summaryFont;
 		
 		// Set the details of the cell
 		cell.textLabel.numberOfLines = 0;
-		cell.textLabel.font = [self TitleFont];
+		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
+		
 		cell.detailTextLabel.numberOfLines = 0;
-		cell.detailTextLabel.font = [self SummaryFont];
+		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
     }
 	
 	// Get the title and summary of the current cell
@@ -317,11 +300,11 @@ static UIFont *summaryFont;
 	
 	// Get the size needed to display the title
 	if (titleText && ![titleText isEqualToString:@""]) {
-		titleSize = [titleText sizeWithFont:[self TitleFont] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+		titleSize = [titleText sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
 	}
 	// Get the size needed to display the summary
 	if (summaryText && ![summaryText isEqualToString:@""] && ![summaryText isEqualToString:titleText]) {
-		summarySize = [summaryText sizeWithFont:[self SummaryFont] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+		summarySize = [summaryText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
 	}
 	return titleSize.height + summarySize.height;
 }

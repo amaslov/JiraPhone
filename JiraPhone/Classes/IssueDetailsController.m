@@ -199,7 +199,12 @@
 				[str appendFormat:@"%@", issue.summary];
 				break;
 			case ISSUE_DESCRIPTION_ROW:
-				[str appendFormat:@"%@", issue.description];
+				if ([issue.description compare:@"(null)"] == NSOrderedSame) {
+					[str appendFormat:@"No description available."];
+				}
+				else {
+					[str appendFormat:@"%@", issue.description];
+				}
 				break;
 			default:
 				break;
@@ -308,6 +313,81 @@
 	if (indexPath.section == ISSUE_COMMENTS_SECTION) {
 		[self showCommentsScreen];
 	}
+}
+
+- (int)heightOfCellWithText:(NSString *)cellText{
+	CGSize textSize = {0, 0};
+	
+	textSize = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+
+	return textSize.height + 10;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+	// Figure out what text we need to display
+	NSMutableString *str = [NSMutableString string];
+	[str appendString: [self titleForCellAtIndexPath:indexPath]];
+    if (indexPath.section == ISSUE_DATA_SECTION) {
+		switch (indexPath.row) {
+			case ISSUE_TYPE_ROW:
+			{
+				[str appendFormat:@"%@", issue.type.stringRepresentation];
+				break;
+			}
+			case ISSUE_PRIORITY_ROW:
+				[str appendFormat:@"%@", issue.priority.stringRepresentation];
+				break;
+			case ISSUE_AFFECT_VERSIONS_ROW:
+				[str appendFormat:@"%@", @"todo"];
+				break;
+			case ISSUE_STATUS_ROW:
+				[str appendFormat:@"%@", [JiraPhoneAppDelegate getStringByStatus:[NSNumber numberWithInteger:[issue.status integerValue]]]];
+				break;
+			case ISSUE_RESOLUTION_ROW:
+				[str appendFormat:@"%@", issue.resolution? issue.resolution : @""];
+				break;
+			case ISSUE_SUMMARY_ROW:
+				[str appendFormat:@"%@", issue.summary];
+				break;
+			case ISSUE_DESCRIPTION_ROW:
+				[str appendFormat:@"%@", issue.description];
+				break;
+			default:
+				break;
+		}
+	}
+	else if (indexPath.section == ISSUE_MAN_SECTION) {
+		switch (indexPath.row) {
+			case ISSUE_ASSIGNEE_ROW:
+				if ([issue.assignee compare:@"(null)"] == NSOrderedSame) {
+					[str appendFormat:@"Unassigned"];
+				}
+				else {
+					[str appendFormat:@"%@", issue.assignee];
+				}
+				break;
+			case ISSUE_REPORTER_ROW:
+				[str appendFormat:@"%@", issue.reporter];				
+				break;	
+			default:
+				break;
+		}
+	}
+	else if (indexPath.section == ISSUE_DATE_SECTION) {
+		switch (indexPath.row) {
+			case ISSUE_CREATED_ROW:
+				[str appendFormat:@"%@", issue.created];				
+				break;
+			case ISSUE_UPDATED_ROW:
+				[str appendFormat:@"%@", issue.updated];				
+				break;	
+			default:
+				break;
+		}
+	}
+	
+	int height = [self heightOfCellWithText:str];
+	return (height < 44 ? 44.0f : height);
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {

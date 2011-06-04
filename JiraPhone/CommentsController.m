@@ -109,12 +109,12 @@
 		// Set the properties for the title text (user and date)
 		cell.textLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.textLabel.numberOfLines = 0;
-		cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
+		//cell.textLabel.font = [UIFont boldSystemFontOfSize:17];
 		
 		// Set the properties for the comment text
 		cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
 		cell.detailTextLabel.numberOfLines = 0;
-		cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
+		//cell.detailTextLabel.font = [UIFont systemFontOfSize:15];
     }
     
 	// If there are comments, show them
@@ -160,11 +160,11 @@
 	
 	// Get the size needed to display the title
 	if (titleText && ![titleText isEqualToString:@""]) {
-		titleSize = [titleText sizeWithFont:[UIFont boldSystemFontOfSize:17] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+		titleSize = [titleText sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
 	}
 	// Get the size needed to display the comment
 	if (detailText && ![detailText isEqualToString:@""]) {
-		detailSize = [detailText sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
+		detailSize = [detailText sizeWithFont:[UIFont fontWithName:@"Helvetica" size:14.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
 	}
 	
 	// Return the height needed to display the text, and 10px buffer
