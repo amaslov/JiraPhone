@@ -245,16 +245,22 @@
 	return [_issue.updated compare:self.updated];
 }
 - (NSComparisonResult)compareKey:(Issue*)_issue {
-	// Sort keys alphabetically	
+	// Split issue keys on hyphen to seperate keys
+	// into project key and numerical issue key
 	NSArray *issueSplit = [_issue.key componentsSeparatedByString:@"-"];
 	NSArray *selfSplit = [self.key componentsSeparatedByString:@"-"];
 	
+	// Get the project part of the key for each issue being
+	// compared
 	NSString *issueProject = [issueSplit objectAtIndex:0];
 	NSString *selfProject = [selfSplit objectAtIndex:0];
 	
+	// Get the numerical issue key for each issue being compared
 	NSInteger issueNum = [[issueSplit objectAtIndex:1] integerValue];
 	NSInteger selfNum = [[selfSplit objectAtIndex:1] integerValue];
 	
+	// Compare issues based on project key,
+	// then on numerical issue key
 	NSComparisonResult retVal = NSOrderedSame;
 	retVal = [selfProject compare:issueProject];
 	if (retVal == NSOrderedSame) {

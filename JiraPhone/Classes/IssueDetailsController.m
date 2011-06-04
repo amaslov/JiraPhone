@@ -318,8 +318,10 @@
 - (int)heightOfCellWithText:(NSString *)cellText{
 	CGSize textSize = {0, 0};
 	
+	// Get the size needed to display the text
 	textSize = [cellText sizeWithFont:[UIFont fontWithName:@"Helvetica-Bold" size:16.0] constrainedToSize:CGSizeMake(270.0f, 4000) lineBreakMode:UILineBreakModeWordWrap];
 
+	// Add 10 pixels as a buffer
 	return textSize.height + 10;
 }
 
@@ -386,7 +388,11 @@
 		}
 	}
 	
+	// Get the height needed to display cell text
 	int height = [self heightOfCellWithText:str];
+	
+	// Return the height needed to display the text,
+	// or 44 pixels, whichever is larger.
 	return (height < 44 ? 44.0f : height);
 }
 

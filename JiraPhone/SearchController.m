@@ -9,6 +9,7 @@
 #import "Connector.h"
 #import "Issue.h"
 #import "IssueDetailsController.h"
+#import "JiraPhoneAppDelegate.h"
 
 @implementation SearchController
 @synthesize searchCell;
@@ -100,12 +101,15 @@
 		static NSString *CellIdentifier = @"Cell";
 		cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
-			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+			cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier] autorelease];
 		}
 		
 		// configure result cell
 		Issue *issue = [results objectAtIndex:indexPath.row - 1];
 		cell.textLabel.text = issue.summary;
+		cell.detailTextLabel.text = issue.description;
+		cell.imageView.image = [JiraPhoneAppDelegate getImageByPriority:[NSNumber numberWithInt:issue.priority.number]];
+		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 	}
     return cell;
 }
