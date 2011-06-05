@@ -22,6 +22,7 @@
 #import "Group.h"
 #import "Filter.h"
 #import "Comment.h"
+#import "RemoteComment.h"
 
 @implementation Connector
 @synthesize delegate;
@@ -55,6 +56,14 @@
 - (void)logout {
 	[jira logout:self action:@selector(logoutHandler:) in0: token];
 }
+
+- (void)addComment:(NSString *)_issueKey comment:(Comment *)_comment {
+	RemoteComment *rComment = [[RemoteComment alloc] init];
+	[rComment setBody:_comment.body];
+	[jira addComment:self in0:token in1:_issueKey in2:rComment];
+	[rComment release];
+}
+
 - (void)getProjects {
 	[jira getProjectsNoSchemes:self in0: token];
 }

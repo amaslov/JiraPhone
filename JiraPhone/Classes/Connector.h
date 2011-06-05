@@ -17,6 +17,7 @@
 @class Issue;
 @class User;
 @class Filter;
+@class Comment;
 @interface Connector : NSObject <SoapDelegate> {
 
 	// delegate, to which to tell results of connecting to jira server
@@ -35,6 +36,9 @@
 
 // logout
 - (void)logout;
+
+// Add comment to issue
+- (void)addComment:(NSString *)_issueKey comment:(Comment *)_comment;
 
 // request projects from server
 - (void)getProjects;

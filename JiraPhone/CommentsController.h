@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "ConnectorDelegate.h"
+#import "CreateCommentDelegate.h"
 
 @class Issue;
-@interface CommentsController : UITableViewController <ConnectorDelegate, UITableViewDelegate>{
+@interface CommentsController : UITableViewController <ConnectorDelegate, UITableViewDelegate, CreateCommentDelegate>{
 	Issue *issue;
 	NSMutableArray *comments;
 	UIActivityIndicatorView *activityIndicator;

@@ -44,6 +44,8 @@
 		34864C9713685B0A009650C5 /* status_closed.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9413685B0A009650C5 /* status_closed.gif */; };
 		34864C9813685B0A009650C5 /* status_inprogress.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9513685B0A009650C5 /* status_inprogress.gif */; };
 		34864C9913685B0A009650C5 /* status_resolved.gif in Resources */ = {isa = PBXBuildFile; fileRef = 34864C9613685B0A009650C5 /* status_resolved.gif */; };
+		349E868D139C157C00AC3004 /* CommentDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349E868B139C157C00AC3004 /* CommentDetailController.m */; };
+		349E868E139C157C00AC3004 /* CommentDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349E868C139C157C00AC3004 /* CommentDetailController.xib */; };
 		349F1653138BFBD9001648FE /* CommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 349F1651138BFBD9001648FE /* CommentsController.m */; };
 		349F1654138BFBD9001648FE /* CommentsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 349F1652138BFBD9001648FE /* CommentsController.xib */; };
 		4F36096512DFB95D00C60A50 /* JiraSoapServiceServiceExample.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F3608AB12DFB95D00C60A50 /* JiraSoapServiceServiceExample.m */; };
@@ -231,6 +233,10 @@
 		34864C9413685B0A009650C5 /* status_closed.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_closed.gif; sourceTree = "<group>"; };
 		34864C9513685B0A009650C5 /* status_inprogress.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_inprogress.gif; sourceTree = "<group>"; };
 		34864C9613685B0A009650C5 /* status_resolved.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = status_resolved.gif; sourceTree = "<group>"; };
+		349E868A139C157C00AC3004 /* CommentDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentDetailController.h; sourceTree = "<group>"; };
+		349E868B139C157C00AC3004 /* CommentDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentDetailController.m; sourceTree = "<group>"; };
+		349E868C139C157C00AC3004 /* CommentDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentDetailController.xib; sourceTree = "<group>"; };
+		349E86C2139C2F4100AC3004 /* CreateCommentDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateCommentDelegate.h; sourceTree = "<group>"; };
 		349F1650138BFBD9001648FE /* CommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsController.h; sourceTree = "<group>"; };
 		349F1651138BFBD9001648FE /* CommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsController.m; sourceTree = "<group>"; };
 		349F1652138BFBD9001648FE /* CommentsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentsController.xib; sourceTree = "<group>"; };
@@ -651,6 +657,10 @@
 				349F1650138BFBD9001648FE /* CommentsController.h */,
 				349F1651138BFBD9001648FE /* CommentsController.m */,
 				349F1652138BFBD9001648FE /* CommentsController.xib */,
+				349E868A139C157C00AC3004 /* CommentDetailController.h */,
+				349E868B139C157C00AC3004 /* CommentDetailController.m */,
+				349E868C139C157C00AC3004 /* CommentDetailController.xib */,
+				349E86C2139C2F4100AC3004 /* CreateCommentDelegate.h */,
 			);
 			name = "Comment Screen";
 			sourceTree = "<group>";
@@ -1113,6 +1123,7 @@
 				03E1E142136A10D60037E10A /* UserController.xib in Resources */,
 				030030DB137F3D080024C4ED /* icon.png in Resources */,
 				349F1654138BFBD9001648FE /* CommentsController.xib in Resources */,
+				349E868E139C157C00AC3004 /* CommentDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1250,6 +1261,7 @@
 				03E1E141136A10D60037E10A /* UserController.m in Sources */,
 				349F1653138BFBD9001648FE /* CommentsController.m in Sources */,
 				3483BAFC138C06BA00B3862F /* Comment.m in Sources */,
+				349E868D139C157C00AC3004 /* CommentDetailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

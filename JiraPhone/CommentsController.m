@@ -7,6 +7,7 @@
 //
 
 #import "CommentsController.h"
+#import "CommentDetailController.h"
 #import "Comment.h"
 #import "Issue.h"
 #import "Connector.h"
@@ -24,10 +25,14 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
 	self.title = [NSString stringWithFormat:@"Comments"];
+	
+	// add + (create issue) button
+	UIBarButtonItem *btn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(showCreateCommentScreen)];
+	self.navigationItem.rightBarButtonItem = btn;
+	[btn release];
 	
 	// If there are no comments, initialize the array
 	if (!comments) {
@@ -311,6 +316,35 @@
 	[alert release];
 }
 
+- (void)showCreateCommentScreen {
+	CommentDetailController *commentDetailContoller = [[CommentDetailController alloc] initWithStyle:UITableViewStyleGrouped];
+	commentDetailContoller.delegate = self;
+	UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:commentDetailContoller];
+	navController.navigationBar.barStyle = UIBarStyleBlackTranslucent;
+	commentDetailContoller.issueKey = self.issue.key;
+	commentDetailContoller.newComment = [[Comment alloc] init];
+	[self.navigationController presentModalViewController:navController animated:YES];
+	[navController release];
+	[commentDetailContoller release];
+}
+
+#pragma mark -
+#pragma mark Create Comment delegate
+
+- (void)didCreateNewComment {
+	// If the user created a comment, add it to the list
+	Connector *connector = [Connector sharedConnector];
+	connector.delegate = self;
+	
+	if (!activityIndicator) {
+		activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+		activityIndicator.center = CGPointMake(self.view.bounds.size.width/2., self.view.bounds.size.height/2.);
+		[self.view addSubview:activityIndicator];
+		[activityIndicator release];
+	}
+	[activityIndicator startAnimating];
+	[connector getCommentsOfIssue:self.issue];
+}
 
 @end
 
